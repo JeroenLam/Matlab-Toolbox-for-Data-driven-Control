@@ -1,5 +1,5 @@
 function [Xm, Xp, n, U, m] = testDataInput(A, B)
-%TEST Summary of this function goes here
+%TESTDATAINPUT (Support function) - Validates input data and returns usefull matrices and values.
 %   Detailed explanation goes here
     if ( nargin < 2 )
         X = A;
@@ -18,6 +18,8 @@ function [Xm, Xp, n, U, m] = testDataInput(A, B)
             throw(baseException)
         end
     end
+    % Throw if data is to small
+
     % Defining readable variables
     Xm = X(:, 1:end-1);     % X-
     Xp = X(:, 2:end);       % X+

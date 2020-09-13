@@ -1,5 +1,5 @@
 function bool = isControllable(A, B)
-%ISCONTROLLABLE Summary of this function goes here
+%ISCONTROLLABLE Returns if the data (U, X) is informative for controllability.
 %   Detailed explanation goes here
     % Check data validity
     [Xm, Xp, n] = testDataInput(A, B);

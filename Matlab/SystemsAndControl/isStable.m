@@ -1,5 +1,5 @@
 function bool = isStable(A)
-    %ISSTABLE Summary of this function goes here
+    %ISSTABLE Returns if the matrix A is stable
     %   Detailed explanation goes here
         bool = false;
         spectrum = eig ( Xp * pinv(Xm) );

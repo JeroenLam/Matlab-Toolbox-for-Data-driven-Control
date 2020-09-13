@@ -1,5 +1,5 @@
 function [trueA, trueB] = identification(A, B)
-%IDENTIFICATION Summary of this function goes here
+%IDENTIFICATION Returns if possible the true system A and B described by the data.
 %   Detailed explanation goes here
 
     % Check data validity

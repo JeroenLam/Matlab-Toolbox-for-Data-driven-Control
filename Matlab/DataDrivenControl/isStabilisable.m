@@ -1,5 +1,5 @@
 function bool = isStabilisable(A, B)
-%ISStabilisable Summary of this function goes here
+%ISStabilisable Returns if the data (U, X) is informative for stabilizability.
 %   Detailed explanation goes here
     % Check data validity
     [Xm, Xp, n] = testDataInput(A, B);

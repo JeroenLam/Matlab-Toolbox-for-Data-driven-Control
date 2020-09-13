@@ -1,5 +1,5 @@
 function bool = isInformStability(X)
-%ISSTABLE Summary of this function goes here
+%ISINFORMSTABLE Returns if the data (X) is informative for stability for an autonomous system.
 %   Detailed explanation goes here
     % Check data validity
     [Xm, Xp, n] = testDataInput(X);
