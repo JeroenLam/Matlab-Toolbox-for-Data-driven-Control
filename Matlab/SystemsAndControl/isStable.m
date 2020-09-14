@@ -2,9 +2,9 @@ function bool = isStable(A)
     %ISSTABLE Returns if the matrix A is stable
     %   Detailed explanation goes here
         bool = false;
-        spectrum = eig ( Xp * pinv(Xm) );
+        spectrum = eig( A )
         for eigV = spectrum.'
-            if ( eigV >= 0 )
+            if ( abs(eigV) >= 1 )
                 return;
             end
         end
