@@ -1,12 +1,5 @@
 function bool = isStable(A)
     %ISSTABLE Returns if the matrix A is stable
     %   Detailed explanation goes here
-        bool = false;
-        spectrum = eig( A )
-        for eigV = spectrum.'
-            if ( abs(eigV) >= 1 )
-                return;
-            end
-        end
-        bool = true;
+        bool = sum( abs( eig(A) ) >= 1 , 'all') == 0;
     end
