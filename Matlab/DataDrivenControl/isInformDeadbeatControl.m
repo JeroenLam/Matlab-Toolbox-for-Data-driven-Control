@@ -11,15 +11,19 @@ function [bool, K] = isInformDeadbeatControl(A,B)
     if ( rank(Xm) == n )
         % Case where Xm is square
         if ( size(Xm,2) == n )
-            testPoly = zeros(1,n);
-            testPoly(1) = 1;
-            if ( charpoly(Xp / Xm) == testPoly ) % test for nilpotence
+            if ( isNilpotent(Xp / Xm) ) 
                 bool = true;
                 K = U / Xm;
             end
         % Case where Xm is not square    
         else
-            
+            F = pinv(Xm);
+            G = null(Xm);
+            % Note that place() is unreliable for poles with multiplicity
+            % Note acker is unreliable for order greater than 10
+            H = acker(Xp*F, -Xp*G, zeros(1,n));
+            K = U * ( F + G * H );
+            bool = true;
         end
     end
 end

@@ -9,7 +9,7 @@ function bool = isControllable(A, B)
         spectrum = eig(Xm * pinv(Xp));
         for eigV = spectrum.'
             if eigV ~= 0
-                if ~(rank(Xp - eigV * Xm) == n)
+                if ~(rank(Xp - inv(eigV) * Xm) == n)
                     return
                 end
             end
