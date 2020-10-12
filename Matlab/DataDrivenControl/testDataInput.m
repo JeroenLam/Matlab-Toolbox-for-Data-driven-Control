@@ -14,8 +14,7 @@ function [Xm, Xp, n, U, m] = testDataInput(A, B)
         else
             errID = 'testDataInput:InconsistentLengthData';
             msg = 'The data is not the correst size, U should be 1 shorter than X.';
-            baseException = MException(errID, msg);
-            throw(baseException)
+            throw(MException(errID, msg))
         end
     end
     % Throw if data is to small

@@ -1,30 +1,17 @@
-%X = [ 1 0.5 -1/4 ; 0 1 1 ];
-%U = [-1 -1];
-%disp("Run example 19")
-%[bool, k1, k2] = isStabByStateFeedback(X,U)
-%[bool, k] = isInformDeadbeatControl(X,U)
-
-%X = zeros(2,3);
-%U = zeros(1,2);
-%disp("Run zeros test")
-%[bool, k1, k2] = isStabByStateFeedback(X,U)
-
-%X = [ 0 0 1 ; 2 3 4 ];
-%U = [-1 -1];
-%disp("Run NaN test")
-%[bool, k1, k2] = isStabByStateFeedback(X,U)
-
-
-
-%A = [-1 -2; 1 0];
-%B = [ 1 ; 0];
-%U = [ 1 1 1 1 1 ];
-
 A = [-6 -11 -6; 1 0 0; 0 1 0];
 B = [1 ; 0 ; 0];
-U = [ 1 1 1 1 ];
-x0 = [1;1;1];
-[U,X] = generateData(A,B,x0,U);
+U = [ 0 0 0 0 ];
+x0 = [1;0;0];
+[U,X] = generateData(A,B,x0,U)
+
+%X = [ 1 1 2 2 2 ]
+%U = [ 0 0 0 0 ]
 identifieable = isIdentifiable(X,U)
-controllable = isControllable(X,U)
-[deadbeat, k] = isInformDeadbeatControl(X,U)
+[An, Bn] = identification(U,X,true)
+[X(:,1:end-1) ; U] * pinv([X(:,1:end-1) ; U])
+symInv = symRightInverse([X(:,1:end-1) ; U])
+
+ansA = solve(An == A)
+%ansB = solve(Bn == B)
+%newA = subs(An, ansA)
+%newB = subs(Bn, ansB)

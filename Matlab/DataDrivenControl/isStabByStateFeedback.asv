@@ -18,21 +18,20 @@ function [bool, K1, K2] = isStabByStateFeedback(A, B)
     
     % Method 2 (Check stability using the matrix inequality)
     cvx_begin quiet
-        variable Theta(size(Xm,2), n)
+        variable Theta(size(Xm,2), n)           % Find a Theta,
         [ Xm * Theta    Xp * Theta ;
          (Xp * Theta)'  Xm * Theta ] >= 1e-8*eye(2*n)
 
         subject to
-            Xm * Theta == (Xm * Theta)'
+            XmT == XmT'
     cvx_end
     
-    meq = eig([ Xm * Theta    Xp * Theta ;
-               (Xp * Theta)'  Xm * Theta ])
+    meq = eig([ XmT XpT ; XpT' XmT ])
     
     % Return true if Theta does not contain a NaN and is non zero
-    if ( min(Xm * Theta == (Xm * Theta)') )
+    if ( min(XmT == XmT') )
     %if ( sum(isnan(Theta), 'all') == 0 ) &&  sum( Theta ~= zeros(size(Theta)) , 'all')
         bool = true;
-        K2 = U * Theta * inv(Xm * Theta);
+        K2 = U * Theta * inv(XmT);
     end   
 end
