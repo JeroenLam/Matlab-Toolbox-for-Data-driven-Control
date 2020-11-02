@@ -9,8 +9,10 @@ However, constructing a set of all possible models describing the data and then 
 Luckily, better methods were developed to more easily show data informativity without computing all possible models. 
 In this project we will implement these methods in a Matlab toolbox.
 
+## To do
+https://trello.com/b/c7ulvv6Q/matlab-toolbox-for-data-driven-control
 
-\section*{Problem}
+##Problem
 
 When applying methods from systems and control to an actual problem, computers are often needed due to the complexity and size of the systems and data. Thus, in this project we will start development on a Matlab toolbox based on the necessary and sufficient condition as well as the methods discussed in (at least) the papers, "\textit{Data informativity: a new perspective on data-driven analysis and control}" \cite{waarde2019data} and "\textit{From noisy data to feedback controllers: non-conservative design via a matrix S-lemma}" \cite{waarde2020noisy}. These papers discuss how to determine if certain system theoretic properties hold (the specific properties will be discussed later on) as well as methods on how to construct and compute controllers for multiple forms of feedback and stabilisation.
 
