@@ -6,7 +6,10 @@ function [A, B] = identification(X, U)
 %          U = matrix containing the measured input (optional)
 %  Output: A = A matrix of the state space model representation
 %          B = B matrix of the state space model representation
-%  Throws: The methods throws if the data is not of the correct format
+%  Throws: InsufficientArguments  : Not enough input arguments.
+%          NonNumericArgument     : Only provide numeric arguments!
+%          InconsistentLengthData : The data is not the correst size, U should be 1 shorter than X.
+%          EmptyStateData         : Provide a non empty state measurement matrix.
 
     % Used to support system identification of unforced systems
     if nargin < 2
@@ -20,7 +23,11 @@ function [A, B] = identification(X, U)
     end
     
     % Check data validity
-    [Xmin, Xplus, n, Umin] = testDataInput(X, U);
+    try
+        [Xmin, Xplus, n, Umin] = testDataInput(X, U);
+    catch exception
+        rethrow(exception)
+    end
     
     % Find the right inverse
     inv = pinv([Xmin ; Umin]);

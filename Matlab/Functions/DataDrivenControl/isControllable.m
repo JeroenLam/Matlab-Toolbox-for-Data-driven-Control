@@ -1,13 +1,18 @@
-function bool = isControllable(X, U)
+function bool = isControllable(X)
 %ISCONTROLLABLE Returns if the data is informative for controllability.
 %  Input:  X = matrix containing the measured state
-%          U = matrix containing the measured input
 %  Output: bool = true if controllable, false otherwise
-%  Throws: The methods throws if the data is not of the correct format
+%  Throws: InsufficientArguments  : Not enough input arguments.
+%          NonNumericArgument     : Only provide numeric arguments!
+%          EmptyStateData         : Provide a non empty state measurement matrix.
 
     % Check data validity
-    [Xmin, Xplus, n] = testDataInput(X, U);
-	
+    try
+        [Xmin, Xplus, n] = testDataInput(X);
+	catch exception
+        rethrow(exception)
+    end
+    
     % Define return value to be false unless otherwise shown
     bool = false;
     

@@ -15,3 +15,23 @@ ansA = solve(An == A)
 %ansB = solve(Bn == B)
 %newA = subs(An, ansA)
 %newB = subs(Bn, ansB)
+
+%fun = @(X)isStabilisable(X);
+fun = @(X)isControllable(X);
+
+range = -6:6;
+for a=range
+    for b=range
+        for c=range
+            for d=range
+                for e=range
+                    for f=range
+                        if fun([a b c;d e f])
+                            fprintf('[%d %d %d;%d %d %d]\n',a,b,c,d,e,f)
+                        end
+                    end
+                end
+            end
+        end
+    end
+end
