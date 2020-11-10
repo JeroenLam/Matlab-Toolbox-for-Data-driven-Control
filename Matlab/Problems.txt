@@ -1,0 +1,10 @@
+*Deadbeat Control*
+place(A, B, p) does not work with higher multiplicity
+acker(A, B, p) does not work with non signle input
+
+*StateFeedbackCVX*
+Does not adhere to own restrictions, Yalmip does work
+
+
+*State Feedback / LQR*
+Variable and symetry constraint are not the same, problem in LQR possibly

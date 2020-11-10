@@ -1,13 +1,17 @@
-function bool = isStabilisable(X)
+function bool = isStabilisable(X, tolerance)
 %ISStabilisable Returns if the data is informative for stabilisability.
-%  Input:  X = matrix containing the measured state
+%  Input:  X          = matrix containing the measured state
+%          tolerances = limit for singular to working presision (default: 1e-14)
 %  Output: bool = true if stabilisable, false otherwise
 %  Throws: InsufficientArguments  : Not enough input arguments.
 %          NonNumericArgument     : Only provide numeric arguments!
 %          EmptyStateData         : Provide a non empty state measurement matrix.
 
-    TOLORANCE = 1e-14;
-
+    % Default value for parameters
+    if nargin < 2
+        tolerance = 1e-14;
+    end
+    
     % Check data validity
     try
         [Xmin, Xplus, n] = testDataInput(X);
@@ -26,9 +30,10 @@ function bool = isStabilisable(X)
     % For each non-zero eigenvalue we check if the rank condition holds
     spectrum = eig(Xmin * pinv(Xplus - Xmin));
     for eigV = spectrum.'
-        if eigV ~= 0
+        if abs(eigV) >= tolerance
             lambda = inv(eigV) + 1;
-            if max(max(Xplus - lambda * Xmin)) < TOLORANCE
+            % Check if the data is singular to working precision
+            if max(max(abs(Xplus - lambda * Xmin))) < tolerance
                 %warning('Singular to working precision');
                 return;
             end
