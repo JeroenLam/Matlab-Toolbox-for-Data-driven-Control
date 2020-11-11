@@ -23,7 +23,7 @@ function [bool, K, diagnostics] = StateFeedbackYalmip(X, U, tolerance, options)
         options = sdpsettings('verbose',0,'debug',0);
     end
     if nargin < 3
-        tolerance = 1e-14;
+        tolerance = 1e-12;
     end
     
     % Define variable (XminTheta is symmetric by construction)
@@ -36,11 +36,8 @@ function [bool, K, diagnostics] = StateFeedbackYalmip(X, U, tolerance, options)
     % Solving the problem
     diagnostics = optimize(C, [], options);
     
-    % DEBUG REMOVE LATER ON
-    ThetaValidity(value(Theta), Xmin, Xplus);
-    
     % If no problems occured, return K
-    if not(diagnostics.problem)
+    if not(diagnostics.problem) && ThetaValidity(value(Theta), Xmin, Xplus, 0)
         bool = true;
         K = Umin * value(Theta) * inv( Xmin * value(Theta) );
     end
