@@ -1,4 +1,4 @@
-function bool = isStabilisable(X, tolerance)
+function bool = isInformStabilisable(X, tolerance)
 %ISStabilisable Returns if the data is informative for stabilisability.
 %  Input:  X          = matrix containing the measured state
 %          tolerances = limit for singular to working presision (default: 1e-14)

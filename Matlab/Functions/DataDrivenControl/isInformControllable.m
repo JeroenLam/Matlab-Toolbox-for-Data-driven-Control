@@ -1,4 +1,4 @@
-function bool = isControllable(X)
+function bool = isInformControllable(X)
 %ISCONTROLLABLE Returns if the data is informative for controllability.
 %  Input:  X = matrix containing the measured state
 %  Output: bool = true if controllable, false otherwise

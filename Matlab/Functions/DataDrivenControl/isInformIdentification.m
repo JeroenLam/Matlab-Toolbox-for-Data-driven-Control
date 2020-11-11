@@ -1,4 +1,4 @@
-function [bool, A, B] = isIdentifiable(X, U)
+function [bool, A, B] = isInformIdentification(X, U)
 %IDENTIFICATION Checks if the data is informative for system identification.
 %  Input:  X = matrix containing the measured state
 %          U = matrix containing the measured input (optional)

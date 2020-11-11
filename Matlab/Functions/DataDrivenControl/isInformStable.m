@@ -11,8 +11,9 @@ function bool = isInformStable(X)
     bool = false;
     
     % Check if the system is identifiable and if so, if it is stable
-    if isIdentifiable(X)
-        bool = isStableD( identification(X) );
+    [bool_ident, A] = isInformIdentification(X);
+    if bool_ident
+        bool = isStableD(A);
     end
 end
 
