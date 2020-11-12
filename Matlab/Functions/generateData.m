@@ -1,5 +1,6 @@
 function [U, X] = generateData(A, B, x0, U)
-%GENERATEDATA Generates the data matrix U and X based on a system (A,B) and i.c. x0 using input U.
+%GENERATEDATA Generates the data matrix U and X based on a system (A,B) 
+%and i.c. x0 using input U.
 %   Detailed explanation goes here
 
     % Defining readable variables

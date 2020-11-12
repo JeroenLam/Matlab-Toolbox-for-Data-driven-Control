@@ -22,7 +22,7 @@ function [bool, K] = isInformDeadbeatControl(X, U)
     bool = false;
     K = [];
     
-    if ( rank(Xmin) == n )
+    if rank(Xmin) == n
         % Case where Xm is square
         if ( size(Xmin,2) == n )
             if ( isNilpotent(Xplus / Xmin) ) 
