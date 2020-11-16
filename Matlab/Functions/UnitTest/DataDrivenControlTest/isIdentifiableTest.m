@@ -99,24 +99,24 @@ classdef isIdentifiableTest < matlab.unittest.TestCase
         function testVerifyError(testCase, errorId, X, U)
             % Used to test if the function returns an error
             if nargin < 4
-                testCase.verifyError(@() isIdentifiable(X), errorId);
+                testCase.verifyError(@() isInformIdentification(X), errorId);
             else
-                testCase.verifyError(@() isIdentifiable(X, U), errorId);
+                testCase.verifyError(@() isInformIdentification(X, U), errorId);
             end
         end
         
         function testVerifyEqual(testCase, X, U, expected)
             % Used to test equalities
-            actual = isIdentifiable(X, U);
+            actual = isInformIdentification(X, U);
             testCase.verifyEqual(actual, expected);
         end
         
         function testVerifyInformative(testCase, exp_A, exp_B, X, U)
             % Used to test true statements
             if nargin < 5
-                [bool, A, B] = isIdentifiable(X);
+                [bool, A, B] = isInformIdentification(X);
             else
-                [bool, A, B] = isIdentifiable(X, U);
+                [bool, A, B] = isInformIdentification(X, U);
             end
             testCase.verifyTrue(bool);
             testCase.verifyEqual(A, exp_A);
@@ -126,9 +126,9 @@ classdef isIdentifiableTest < matlab.unittest.TestCase
         function testVerifyNotInformative(testCase, X, U)
             % Used to test false statements
             if nargin < 3
-                [bool, A, B] = isIdentifiable(X);
+                [bool, A, B] = isInformIdentification(X);
             else
-                [bool, A, B] = isIdentifiable(X, U);
+                [bool, A, B] = isInformIdentification(X, U);
             end
             testCase.verifyFalse(bool);
             testCase.verifyEqual(A, []);

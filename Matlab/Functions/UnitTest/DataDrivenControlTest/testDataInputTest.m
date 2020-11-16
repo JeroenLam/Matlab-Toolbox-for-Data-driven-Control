@@ -110,11 +110,10 @@ classdef testDataInputTest < matlab.unittest.TestCase
         end
                 
         function testEmptyAndNonEmpty(testCase)
-            % Test A empty and B non-empty (and reverse)
-            A = ones(3,7);
-            B = [];
-            testCase.verifyEqual(testDataInput(A), testDataInput(A,B));
-            testCase.verifyEqual(testDataInput(A), testDataInput(B,A));
+            % Test U empty and X non-empty
+            X = ones(3,7);
+            U = [];
+            testCase.verifyEqual(testDataInput(X), testDataInput(X,U));
         end
         
         function testEmptyAB(testCase)
@@ -139,7 +138,6 @@ classdef testDataInputTest < matlab.unittest.TestCase
             testCase.verifyEqual(act_n,     exp_n);
             testCase.verifyEqual(act_Umin,  exp_Umin);
             testCase.verifyEqual(act_m,     exp_m);
-            testCase.verifyEqual(testDataInput(B,A), testDataInput(A,B));
         end
     end    
 end

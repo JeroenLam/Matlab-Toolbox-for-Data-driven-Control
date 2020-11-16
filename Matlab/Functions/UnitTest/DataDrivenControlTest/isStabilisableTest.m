@@ -7,7 +7,7 @@ classdef isStabilisableTest < matlab.unittest.TestCase
     
     % Used for reusing code from other tests for different functions
     properties
-        func = @(X)isStabilisable(X);
+        func = @(X)isInformStabilisable(X);
     end
 
     % Unit tests for the isStabilisable(X) function

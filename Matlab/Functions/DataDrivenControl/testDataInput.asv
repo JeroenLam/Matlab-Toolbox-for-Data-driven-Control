@@ -24,7 +24,7 @@ function [Xmin, Xplus, n, Umin, m, Ymin] = testDataInput(X, U, Y)
             Umin = [];
             Ymin = [];
         case 2
-            if not(isnumeric(X) && isnumeric(U))
+            if not(isnumeric(A) && isnumeric(B))
                 errID = 'testDataInput:NonNumericArgument';
                 msg = 'Only provide numeric arguments';
                 error(errID, msg);
@@ -32,22 +32,6 @@ function [Xmin, Xplus, n, Umin, m, Ymin] = testDataInput(X, U, Y)
             if size(U,2) + 1 == size(X,2) || isempty(U)
                 Umin = U;
                 Ymin = [];
-            else % Throw if data is not the correct size
-                errID = 'testDataInput:InconsistentLengthData';
-                msg = 'The data is not the correst size, U should be 1 shorter than X.';
-                error(errID, msg);
-            end
-        case 3
-            if not(isnumeric(X) && isnumeric(U) && isnumeric(Y))
-                errID = 'testDataInput:NonNumericArgument';
-                msg = 'Only provide numeric arguments';
-                error(errID, msg);
-            end
-            if size(U,2) + 1 == size(X,2) || isempty(U)
-                Umin = U;
-                if size(Y,2) + 1 == size(X,2) || isempty(Y)
-                    Ymin = Y;
-                end
             else % Throw if data is not the correct size
                 errID = 'testDataInput:InconsistentLengthData';
                 msg = 'The data is not the correst size, U should be 1 shorter than X.';

@@ -7,7 +7,7 @@ classdef isControllableTest < matlab.unittest.TestCase
 
     % Used for reusing code from other tests for different functions
     properties
-        func = @(X)isControllable(X);
+        func = @(X)isInformControllable(X);
     end
     
     % Unit tests for the isControllable(X) function

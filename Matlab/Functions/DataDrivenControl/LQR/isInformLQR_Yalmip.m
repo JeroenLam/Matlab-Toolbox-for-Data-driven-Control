@@ -3,16 +3,17 @@ function [bool, K] = isInformLQR_Yalmip(X, U, Q, R, tolerance, options)
 %   Detailed explanation goes here
 
     % Check data validity
-    [Xmin, Xplus, n, Umin] = testDataInput(X, U);
+    [Xmin, Xplus, n, Umin, m] = testDataInput(X, U);
     
     % Prepare return variables
     bool = false;
     K = [];
     
     % Define default solver and setting
-    if nargin < 4
+    if nargin < 6
         options = sdpsettings('verbose',0,'debug',0);
-    elseif nargin < 4
+    end
+    if nargin < 5
         tolerance = 1e-8;
     end
     
@@ -20,8 +21,8 @@ function [bool, K] = isInformLQR_Yalmip(X, U, Q, R, tolerance, options)
     % Case 1
     % The data is informative for system identification and the given
     % system is LQR solvable.
-    if isIdentifiable(X, U)
-        [A, B] = identification(X, U);
+    if isInformIdentification(X, U)
+        [A, B] = isInformIdentification(X, U);
         [bool, K] = isLQRSolvable(A, B, Q, R);
         return;
     % Case 2
@@ -41,11 +42,12 @@ function [bool, K] = isInformLQR_Yalmip(X, U, Q, R, tolerance, options)
         % Solving the problem
         diagnostics = optimize(C, [], options);
         
+        % TODO: Recheck conditions
+        
         % If no problems occured, return K
         if not(diagnostics.problem)
             bool = true;
             K = zeros(m, n);
-            % TODO Calculate K based on Data
         end
     end
 end
