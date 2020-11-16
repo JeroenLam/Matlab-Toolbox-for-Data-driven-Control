@@ -1,4 +1,4 @@
-function [U, X] = generateData(A, B, x0, U)
+function [U, X, Y] = generateData(A, B, x0, U, C, D)
 %GENERATEDATA Generates the data matrix U and X based on a system (A,B) 
 %and i.c. x0 using input U.
 %   Detailed explanation goes here
@@ -9,8 +9,12 @@ function [U, X] = generateData(A, B, x0, U)
     
     X = zeros( n, samples + 1 );
     X(:, 1) = x0;
+    Y = [];
     for idx = 1:samples
         X(:, idx + 1) = A * X(:, idx) + B * U(:, idx);
+        if nargin == 6
+            Y = [Y C * X(:, idx) + D * U(:, idx)];
+        end
     end
 end
 
