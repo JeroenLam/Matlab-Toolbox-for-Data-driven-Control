@@ -43,10 +43,6 @@ function [bool, K, L, M] = isInformDynamicMeasurementFeedback(X, U, Y, polesM, p
         if boolIdent && isStabilizableD(A,B) && isDetectableD(C,A)
             bool = true;
             M = place(A, -B, polesM);
-            disp(A)
-            disp(B)
-            disp(C)
-            disp(D)
             L = place(A', C', polesL).';
             K = A + B*M - L*C - L*D*M;
         end
