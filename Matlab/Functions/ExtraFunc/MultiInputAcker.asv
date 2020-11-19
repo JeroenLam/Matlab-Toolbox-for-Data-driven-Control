@@ -2,9 +2,11 @@ function [K] = MultiInputAcker(A, B, poles)
 %MULTIINPUTACKER An extension to the ackerman function such that it
 %supports multi dimensional input. i.e. size(B) = nxm instead of nx1
 %   This function extends the acker(a,b,p) function of matlab to add multi
-%   input support to it. The function will return a controller of the form A + B * K The method is based on the 'Proof of the 
-%   sufficiency in theorem 3.29' from the book 'Control theory for linear 
-%   systems' by H.L. Trentelman, A.A. Stoorvogel and M. Hautus.
+%   input support to it. The function will return a controller of the form 
+%   A + B * K with poles places by the acker(a,b,p) function The method is 
+%   based on the 'Proof of the sufficiency in theorem 3.29' from the book 
+%   'Control theory for linear systems' by H.L. Trentelman, A.A. Stoorvogel
+%   and M. Hautus.
 
     n = size(A,2);
     m = size(B,2);
@@ -25,6 +27,8 @@ function [K] = MultiInputAcker(A, B, poles)
 
         running = true;
         while running
+            % TODO: Find a smarter choice for U_temp (We want to find a
+            % basis for R^n based on an i
             U_temp = rand(m,1);
             x_new = A * X(:, idx) + B * U_temp;
             % If x_new is independent w.r.t. the previously found x_i

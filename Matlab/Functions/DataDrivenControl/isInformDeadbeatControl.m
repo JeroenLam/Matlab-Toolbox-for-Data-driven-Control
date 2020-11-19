@@ -35,7 +35,8 @@ function [bool, K] = isInformDeadbeatControl(X, U)
             G = null(Xmin);
             % Note that place() is unreliable for poles with multiplicity
             % Note acker is unreliable for order greater than 10
-            H = acker(Xplus*F, -Xplus*G, zeros(1,n));
+            % Note acker does not nativly support multi-dimensional input
+            H = MultiInputAcker(Xplus*F, Xplus*G, zeros(1,n));
             K = Umin * ( F + G * H );
             bool = true;
         end

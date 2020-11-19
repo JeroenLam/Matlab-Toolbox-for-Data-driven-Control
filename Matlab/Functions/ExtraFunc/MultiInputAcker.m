@@ -27,6 +27,8 @@ function [K] = MultiInputAcker(A, B, poles)
 
         running = true;
         while running
+            % TODO: Find a smarter choice for U_temp (We want to find a
+            % basis for R^n based on an iterative map using A and B).
             U_temp = rand(m,1);
             x_new = A * X(:, idx) + B * U_temp;
             % If x_new is independent w.r.t. the previously found x_i
