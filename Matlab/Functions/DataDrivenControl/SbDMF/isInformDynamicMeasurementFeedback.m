@@ -56,7 +56,6 @@ function [bool, K, L, M] = isInformDynamicMeasurementFeedback(X, U, Y, polesM, p
         U_hat = pinv(S) * Umin;
         
         % Find the solution for the reduced problem
-        disp('DEBUG: recursion using reduced system')
         [bool, K, L, M] = isInformDynamicMeasurementFeedback(X, U_hat, Y, polesM, polesL);
         M = S * M;
     end

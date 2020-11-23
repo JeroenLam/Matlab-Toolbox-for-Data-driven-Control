@@ -28,7 +28,7 @@ function bool = isInformStabilisable(X, tolerance)
     end
         
     % For each non-zero eigenvalue we check if the rank condition holds
-    spectrum = eig(Xmin * pinv(Xplus - Xmin));
+    spectrum = sym(eig(Xmin * pinv(Xplus - Xmin)));
     for eigV = spectrum.'
         if abs(eigV) >= tolerance
             lambda = inv(eigV) + 1;

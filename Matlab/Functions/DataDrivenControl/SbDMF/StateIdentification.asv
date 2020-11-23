@@ -21,7 +21,7 @@ sys_d = ss(A,B,C,D,1);
 
 sys_cl = [ A    B*M;
           L*C K+L*D*M];
-eig(sys_cl)
+eig(sys_cl);
 
 
 
@@ -100,16 +100,14 @@ X_bar_real = X(:, k + 1:T - k + 1);
 X_1 = X_f;
 %X_bar = X_f2;
 
-%[boolIdent, A, B, C, D] = isInformIdentification(X_bar, U_bar, Y_bar);
+[boolIdent, A, B, C, D] = isInformIdentification(X_bar, U_bar, Y_bar)
 
 
 
 
-[bool_bar, K_bar, L_bar, M_bar] = isInformDynamicMeasurementFeedback(X_bar, U_bar, Y_bar)
 
-sys_cl_bar = [ A       B*M_bar;
-               L_bar*C K_bar+L_bar*D*M_bar];
-eig(sys_cl_bar)
+
+
 
 
 
@@ -117,15 +115,12 @@ eig(sys_cl_bar)
 
 [bool, X_bar, U_bar, Y_bar] = isInformStateIdentification(U, Y, 2)
 
-% Since we have knowlage about C, can we use it to retreive the correct (or
-% more correct) X_bar?, yes, yes we can
+% Since we have knolage about C, can we use it to retreive the correct (or
+% more correct) X_bar?
 
 S = sym('s', [2 2]);
 X_temp = X_bar(:,1:2);
 Y_temp = Y_bar(:,1:2);
-SX = S * X_temp;
-ansS = solve(Y_temp(1,:) == SX(1,:));
-S = [double(ansS.s1_1) double(ansS.s1_2) ; 0 1];
-X_bar_s = S * X_bar;
+solve(Y_temp == (S * X_temp)(1))
 
-[boolIdent, A, B, C, D] = isInformIdentification(X_bar_s, U_bar, Y_bar)
+
