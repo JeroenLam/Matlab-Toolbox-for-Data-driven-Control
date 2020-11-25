@@ -7,15 +7,13 @@ function [U, X, Y] = generateData(A, B, x0, U, C, D, W)
     n  = size(A,1);         % Dim of statespace
     samples = size(U,2);    % # of samples / inputs
     
-    if nargin < 7
-        W = zeros(n, samples);
-    end
+    if nargin =
     
     X = zeros( n, samples + 1 );
     X(:, 1) = x0;
     Y = [];
     for idx = 1:samples
-        X(:, idx + 1) = A * X(:, idx) + B * U(:, idx) + W(:, idx);
+        X(:, idx + 1) = A * X(:, idx) + B * U(:, idx);
         if nargin == 6
             Y = [Y C * X(:, idx) + D * U(:, idx)];
         end

@@ -1,0 +1,129 @@
+K = [];
+bool = false;
+
+% System matrices
+%A = [ 0 1 ; -1 -1]; % Stable
+%A = [ 0 0.75 ; 3 0 ];  % Unstable
+
+B = [ 0 ; 1];
+
+%Input and i.c.
+U = [3 1 0 2];
+x0 = [0;0];
+
+% Defining constants and allocating memory
+n  = size(A,1);
+samples = size(U,2);
+T = samples;
+X_noise = zeros( n, samples + 1 );
+X_noise(:, 1) = x0;
+Y = [];
+
+% Defining the noice we will use
+%W = 0.1*(rand([n samples]) - 0.5);
+W = [-0.0061    0.0266   -0.0313   -0.0054;
+     -0.0118    0.0295   -0.0010    0.0146];
+
+% Generating noisy data samples
+for idx = 1:samples
+    X_noise(:, idx + 1) = A * X_noise(:, idx) + B * U(:, idx) + W(:, idx);
+end
+
+% Generating non noisy data samples
+[U, X] = generateData(A,B,x0,U);
+
+% Finding the noice matrix (Seems to work for all W generated above)
+W11 = 0.1*eye(n); % n*n
+W12 = zeros(n,samples); % n*T
+W22 = -0.1*eye(samples); % T*T
+eig([eye(n,n) ; W']' * [W11 W12 ; W12' W22] * [eye(n,n) ; W']);
+
+% Constructing N
+[Xmin, Xplus, n, Umin, m] = testDataInput(X_noise, U);
+N = [eye(n,n) Xplus; zeros(n,n) -Xmin; zeros(m,n) -Umin] * ...
+    [W11 W12 ; W12' W22] * ...
+    [eye(n,n) Xplus; zeros(n,n) -Xmin; zeros(m,n) -Umin]';
+
+% Checking generelised Slater condition (TODO: DOES NOT FINISH
+% CALCULATIONS)
+tolerance = 1e-10;
+options = sdpsettings('verbose',0,'debug',0);
+
+%Z = sdpvar(n+m, n);
+%C = [eye(n) Z'] * N * [eye(n) ; Z] >= tolerance;
+%diagnostics_slater = optimize(C, [], options)
+
+% Checking for a P, L, a, b
+P = sdpvar(n);
+L = sdpvar(m,n);
+a = sdpvar(1);
+b = sdpvar(1);
+
+
+
+nn = zeros(n,n);
+nm = zeros(n,m);
+mn = zeros(m,n);
+mm = zeros(m,m);
+C = [P >= tolerance, ...
+     a >= 0, ...
+     b >= tolerance, ...
+     [P-b*eye(n) nn  nm nn;
+         nn      -P -L' nn;
+         mn      -L  mm  L;
+         nn      nn  L'  P ] -  a *...
+     [ eye(n)    Xplus;
+       nn        -Xmin; 
+       mn        -Umin;
+       zeros(n,n + T) ] * ...
+     [ W11 W12;
+       W12' W22 ] * ...
+     [ eye(n)    Xplus;
+       nn        -Xmin; 
+       mn        -Umin;
+       zeros(n,n + T) ]' >= 0];
+
+diagnostics_quadStab = optimize(C, [], options);
+
+% https://nl.mathworks.com/help/matlab/math/determine-whether-matrix-is-positive-definite.html
+try chol(value(P));
+    disp('Matrix is symmetric positive definite.')
+    disp('a')
+    disp(value(a))
+    disp('b')
+    disp(value(b))
+    if value(a) >= 0 && value(b) > -tolerance
+        bool = true;
+        K = value(L) / value(P)
+        
+        disp('The eigenvalues of the closed loop system are:')
+        disp(eig(A+B*K))
+    end
+catch ME
+    disp('Matrix is not symmetric positive definite')
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,53 @@
+function [bool,K] = isInformQuadraticStabilisation(X, U, W11, W12, W22)
+%ISINFORMQUADRATICSTABILISATION Summary of this function goes here
+%   Detailed explanation goes here
+
+    % Validating data
+    [Xmin, Xplus, n, Umin, m] = testDataInput(X, U);
+    T = size(X,2);
+    assert(min(size(W11) == [n n]));
+    assert(min(size(W12) == [n T]));
+    assert(min(size(W22) == [T T]));
+    
+    % Test for the generelised Slater condition
+    [diagnostics_slater, ~] = testSlater(X, U, W11, W12, W22);
+    if diagnostics_slater.problem
+        disp('Error finding a solution to the generelised Slater condition!');
+    end
+    
+    % Find P, L, a, b such that the condition of theorem 13 are satisfied
+    P = sdpvar(n);
+    L = sdpvar(m,n);
+    a = sdpvar(1);
+    b = sdpvar(1);
+    
+    nn = zeros(n,n);
+    nm = zeros(n,m);
+    mn = zeros(m,n);
+    mm = zeros(m,m);
+    C = [P >= tolerance, ...
+         a >= 0, ...
+         b >= tolerance, ...
+         [P-b*eye(n) nn  nm nn;
+             nn      -P -L' nn;
+             mn      -L  mm  L;
+             nn      nn  L'  P ] -  a *...
+         [ eye(n)    Xplus;
+           nn        -Xmin; 
+           mn        -Umin;
+           zeros(n,n + T) ] * ...
+         [ W11 W12;
+           W12' W22 ] * ...
+         [ eye(n)    Xplus;
+           nn        -Xmin; 
+           mn        -Umin;
+           zeros(n,n + T) ]' >= 0];
+    
+    diagnostics = optimize(C, [], options);
+    
+    % Verify the solution is in
+    if diagnostics_slater.problem
+        disp('Error finding a solution to the generelised Slater condition!');
+    end
+end
+
