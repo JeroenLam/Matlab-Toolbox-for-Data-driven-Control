@@ -1,0 +1,600 @@
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[-0.0280382229261236 -0.589794372222454 -0.474428788881332;-0.026580196306362 -0.0041453997807024 0.229109077663113]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[-0.0474722647390577 -0.210709229914342 -0.102964621538128;0.0651622866946366 0.190673182118556 0.405831128649909]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",0,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.119462038867047 -0.483158744346811 -0.360148263076084;-0.0165561515338701 0.17819681637796 0.434542025978803]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.105116833654821 -0.581052960562685 -0.512687487033081;-0.0138880583890869 0.221948672710415 0.524461255718056]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.0127477333106067 -0.228984106334033 -0.139538905590106;-0.0444202094657839 0.123189209569871 0.190004408203079]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.212790337902656 -0.503342106019584 -0.2644678992405;-0.343179009988591 0.422274264127577 0.968447165752726]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.254630227589217 -0.477310537732257 0.0613283480241375;-0.200614356104489 0.389756738360146 0.604358418635027]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.196908035193836 -0.621601549203866 -0.583722173991304;-0.0158436687407352 0.100657410176235 0.523551549436968]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.0339023354230842 -0.341904749421562 -0.251437866336894;-0.214048080221289 0.321017000468615 0.517048436962062]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.106301435391594 -0.459333447955066 -0.360895188777801;-0.582846112589112 0.688453596450854 0.982219344404313]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[-0.0206400728729449 -0.486892872293163 -0.453633205859484;-0.0966177189298603 0.272518747548817 0.533651717585593]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.117502329215484 -0.410753635508328 -0.311708545528767;-0.0245187626230585 0.260646145958695 0.479268119269719]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.420413812826332 -0.813373451704686 -0.705650240340447;-0.195203947575479 0.397447534733609 0.693140488231251]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.161390195138558 -0.796998523546735 -0.586321707559047;-0.187827466880182 0.502561793389836 0.801822106298429]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.32008591711218 -0.489428093881898 0.122338572450084;-0.0917056739681519 0.345494709005255 0.837929125661893]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.350975522734869 -0.614214241289703 -0.521190501700909;-0.24167000535978 0.32908553213653 0.600248730900466]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.149387230600129 -0.582187065270284 -0.371231757255518;0.0692523901519786 0.249623353231637 0.737853020015466]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[-0.0148346570356757 -0.419220586442589 -0.341914913792749;-0.163072313381758 0.349301686848823 0.549379841075425]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.266858419889267 -0.560795787493382 -0.373698191677729;-0.428766311856663 0.51116197038825 0.72046066831939]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.0154835479293379 -0.467002035666444 -0.328992964269593;-0.594627919270182 0.72554328819849 0.995879013272413]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[-0.0220980295728676 -0.290252249435643 -0.06957642596785;-0.287509587127179 0.261428578108928 0.657344359718333]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.31343681635601 -0.729330468738641 -0.709141405566773;-0.218086361011528 0.312250024690957 0.701797298102012]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","false",-1,"Unknown error (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.158300820770259 -0.504674017598455 -0.364187177168036;-0.00916955605545291 0.100174378532724 0.26690492287181]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.573162431403541 -0.963156894360756 -0.975930483674192;-0.908798790439138 0.969778035016874 1.25774358259552]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.342015319032208 -0.653097247593494 -0.632863271796428;-0.449516360036972 0.525052375294851 0.980038711575525]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.17794202889356 -0.578518236744821 -0.411516113170672;-0.0616199020645828 0.232357579812752 0.510407493629496]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.178513260270061 -0.721496022027462 -0.750680540295759;-0.353321095585667 0.562751590011708 0.790099397953954]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[-0.0439140905213292 -0.716332759090251 -0.539580646084754;-0.0869565288744131 0.334454941916856 0.654304041579274]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[-0.0253314973998531 -0.365438544985504 -0.265643951679444;-0.242133579562889 0.507590105746649 0.715107424604782]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.236746836015184 -0.66658258453931 -0.304361454477269;0.161699195626248 -0.0140630953578058 0.618299686655086]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.125705223069861 -0.438195057213651 -0.269062035141466;-0.530780493482754 0.662574060254026 1.01937868591245]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.185292992206528 -0.469531010925849 -0.265976713874343;-0.0223147204573648 0.263473654821473 0.693815825675799]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.0862163168468521 -0.464551734830071 -0.423475205611428;-0.145562106989561 0.358583096699705 0.650081071008918]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.0549289073382382 -0.479031087487263 -0.310271815949226;-0.849346122045698 0.557680148787521 0.766074555355215]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.136679649620603 -0.539738552421733 -0.245822198784505;-0.562797128009744 0.630756658578592 0.825333837212549]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.271141477657134 -0.682003369075943 -0.128056952478434;-0.103408537759596 0.497642930035598 0.991713098405875]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.156805709581396 -0.570564499646845 -0.445244455559945;-0.135964772910425 0.540791737754406 0.854861482363548]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.161129497771658 -0.452981516350011 -0.0148136155047122;0.349326210389247 -0.235340674105065 0.785620671766462]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.305166697525287 -0.629676587319489 -0.133650016883485;-0.0437719304280338 0.268116664697697 0.877934670102081]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.274179144151808 -0.664244159880389 -0.510950431403091;-0.175941285938114 0.275472864242116 0.661697904930938]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.129674320869319 -0.650110806311976 -0.546158572219486;-0.0824561569184234 0.269735614821889 0.577858487216586]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[-0.0873983101146761 -0.778028913723633 -0.640516719049519;0.0122607660800157 -0.108222111021727 0.197424401808035]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[-0.00785011484738818 -0.433643746312195 -0.244303684469218;-0.127094737469847 0.125924564298584 0.667016630035934]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.220700486884044 -0.686673457381086 -0.608958889449069;-0.0613723510160213 0.0852330863530502 0.33885592457176]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.0842560959348912 -0.478224355220783 -0.356116813805597;-0.120200121445677 -0.0108492209517405 0.305369319564615]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.164932896451436 -0.678401891272942 -0.629308067349991;0.0069308737176032 0.243798849280741 0.463023316320062]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[1.02777187787529 -1.47298274405857 -1.46525558490624;-1.24566699678024 1.28584981254958 1.75842857793969]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",0,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.333166947596318 -0.717250063314483 -0.141507574278459;-0.0457998851482803 0.442128540981302 0.892557118461738]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.285077376720113 -0.950952018084359 -0.867562897311028;-0.161596107077251 0.329836814670882 0.569192346757945]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[-0.0168448999994139 -0.462641836786034 -0.415007108534019;-0.221290520159814 0.160935346518123 0.406347609612007]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.588987880143189 -1.02518697144849 -1.02080949111135;-0.457808271187453 0.627080945981357 1.09536486374795]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.167205586739386 -0.626064421714204 -0.568831888245809;-0.0760960830608206 0.249563710989363 0.44878856848888]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.117474562061876 -0.515817803791864 -0.245788354089557;-0.0838632982746405 0.257457383919799 0.612134995860645]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.220956339581507 -1.02815095090976 -0.93937555671384;-0.901560969465947 1.31795697626147 1.58244361161012]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",0,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.246901150936281 -0.423761592797003 0.0737495316942153;-0.0343542182369935 0.14433733827889 0.380293630879316]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.285278601395818 -0.446900873963883 -0.0665345944342011;0.0253896921741172 0.160671880567389 0.769578833203818]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.275731824564348 -0.819457441803494 -0.655505793179293;-0.223276855431342 0.759190250898533 1.00858244962657]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.362284879582016 -0.543999033081607 -0.0248136784584677;-0.387465963033273 0.383349148082332 1.10471452243602]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.120291886206627 -0.533980796857474 -0.367441936603028;-0.16922899691725 0.121166648318918 0.435973745433101]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.167561528032717 -0.427090737606873 -0.358015463922068;-0.317312772299844 0.329434478565483 0.675773770615409]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.186037693543864 -0.704559703230635 -0.679054016189081;0.0119099723864016 0.0668446850738456 0.286572282028501]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.212033194603464 -0.627660998065172 -0.5640289568601;0.0153222004597064 0.168072087450874 0.560126189586323]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.147795337678522 -0.475101796496521 -0.29504264344967;-0.020680949168129 0.025593232795712 0.0693713152075744]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.205786679032124 -0.519309612024252 -0.249811694573761;0.0127679729604113 0.230949346089175 0.762080609865493]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.0664439147566752 -0.444493606035293 -0.286637135159212;-0.120717000257548 0.184785369853848 0.328085128014671]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.190227918360128 -0.566123140636866 -0.41274116025885;0.00278564454596953 0.075661318717315 0.299309509931144]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.161671491195551 -0.477437887716396 -0.481922546313632;-0.371170421622853 0.481887839117753 0.71563669421085]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[-0.0705080100911863 -0.41260367525351 -0.31772881628806;-0.2943530955403 0.658505760188387 0.865943425208143]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.0123223678669856 -0.325476837434597 -0.0807707977026579;-0.357729505125864 0.414019553528872 0.647848088784505]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.154586801206341 -0.58008038319759 -0.43891971112995;0.0164081120944542 0.00678928795772797 0.349885905289595]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[-0.0229221552846876 -0.415058011681503 -0.272636278266149;-0.255257185953664 0.355311305834541 0.728790699770687]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.202240003047317 -0.601497716305395 -0.572233868214326;-0.137641675360958 0.296318010808126 0.613846350094932]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.152833411623995 -0.615975217478794 -0.213730569848187;-0.24365312718035 0.466680149991582 1.07934223190768]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.127611650498415 -0.42858700938159 -0.375125700624829;-0.275237575272449 0.50793024342382 0.761938718615262]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.191756361871701 -0.646447335572972 -0.570496972708915;-0.870848692915631 0.931613700535389 1.29289497200099]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[-0.0634121278061644 -0.358862689681786 -0.248791766716415;-0.417830527879615 0.467139801185185 0.775844459645125]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.169409569135553 -0.448065945238858 -0.0721038888323305;-0.000666277424454147 0.168987242946516 0.475998371404434]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.150069187943126 -0.496653041816773 -0.339075210580181;-0.0613499814242532 0.303059241736616 0.419193393768052]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.695172035685986 -1.04803656687265 -1.09750743282342;-0.0942833118512181 0.240538764555622 0.526880268785675]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.12823237128016 -0.479093133925982 -0.388433747613384;-0.229917223044807 0.181323142499833 0.309330705982959]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.331929366013584 -0.622848479018426 -0.584621510933056;-0.261033721688009 0.323753997911628 0.542148726907747]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.282988942918392 -0.823023137605025 -0.549334866189912;-0.0330376050804199 0.190809702439845 0.459605867168141]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.106974137766204 -0.390075675077585 -0.26874619571056;-0.00530659672218722 0.253322173918672 0.407389467947021]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.16753792033806 -0.635608635798342 -0.528388168367385;-0.0584906659685434 0.172963727340693 0.285900531185024]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.187783126890417 -0.529223845899127 -0.453422687966315;-0.762311592371917 1.16080207311324 1.44170719654899]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",0,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[-0.0850087981073985 -0.422352500068294 -0.308500098155545;-0.173746214572678 0.443768814184217 0.75254037662093]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[-0.0416920938306231 -0.310442760391156 -0.264210918309569;-0.483614975520609 0.343857608061142 0.719628396809795]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.0188300286648668 -0.449462868856349 -0.373692598011532;-0.208689598954875 0.179218206178235 0.366947279319117]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.127809805007624 -0.453262344801601 -0.210998335387096;-0.111831541356313 0.320199425511684 0.790921889174849]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.336210106489703 -0.712808951936594 -0.6063978245064;-0.21679654194396 0.362177687788188 0.487376970674408]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.0525476051737125 -0.532373346309171 -0.471105728583072;-0.128582323717528 0.424039684203848 0.673900065975576]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.126165436430613 -0.583777811385299 -0.536357170820499;-0.0322167238767912 0.102803335993512 0.258604031057295]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.0439793913440628 -0.563791737121596 -0.524273162293263;-0.470048472866802 0.56331506873917 0.97115600637756]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.174059760206878 -0.633657735029929 -0.405340010364735;0.12869036885454 0.315754408266744 0.925264275681053]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[-0.0277626521973695 -0.486552646330165 -0.399603160218978;-0.0778752232091814 0.28020892384303 0.384150909220987]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.245430831224062 -0.536947507611749 -0.113627012584664;-0.121174493520735 0.315603388102845 0.748909529452012]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[-0.0433502258997164 -0.153164813887609 -0.0519190228886851;-0.10229219070033 0.116167416019067 0.0167382236656405]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",0,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.528002420882194 -0.931192295598061 -0.796719660284453;-0.384759552269153 0.542192090871259 0.858405893591864]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.209408925138505 -0.493027887150827 -0.387096762941141;-0.0440781766895602 0.112778422919382 0.397180942698549]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.122512019359273 -0.449549468810267 -0.235493535236791;-0.0360887852711682 0.228373077426412 0.513348876269464]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.118338634938318 -0.519226758370605 -0.438840619055608;0.0190558524877552 -0.00619795314263641 0.136059651567121]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.145353133790651 -0.390124345859414 -0.17168988027925;-0.0115889711481472 0.192959485478528 0.433834280829429]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[-0.0941249815187298 -0.335263738100616 -0.328590425206245;-0.0678752998145081 0.285047448799056 0.431275142659261]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.108988747201222 -0.469757686608097 -0.32522876191198;-0.122151992178211 0.299230850062376 0.606681875929295]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.144731300955327 -0.667778815570719 -0.568090897315938;-0.287824743449563 0.333371533698657 0.410959122602984]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.00165878178959997 -0.174521985033101 -0.0846363890580671;-0.0223613922860733 0.165310645576866 0.17722676361217]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",0,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.177877535171221 -0.537190899429349 -0.405649955850451;-0.436007776976731 0.436779726618101 0.899555558205557]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.101668255875758 -0.803278752376063 -0.764804271129914;-0.144797260578902 0.413448051748962 0.65895282734943]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.845908547822856 -1.18428998853633 -1.24130311714669;-1.17529069572387 1.19941477271141 1.84096892003309]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",0,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.0952059265638751 -0.445087077247672 -0.186302395320048;-0.0477221303554834 0.408951826449269 0.768845050411253]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.265527849484408 -0.521407257926522 -0.245878327529241;-0.234043012254184 0.514802011077216 0.934578883239699]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.183042008539342 -0.524610909860616 -0.206108488180494;0.0192011352244545 0.0614009299205789 0.497653659941346]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.0015578448946359 -0.0248893666309507 -0.0896717039162024;-0.0933517393031876 0.0266374023252209 0.113500139699601]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",0,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.413259845794199 -0.73685598093999 -0.450003196949655;-0.372517301097687 0.553674218645624 0.922118529596416]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.333894764434905 -0.523097197838869 -0.37425354476002;-0.284351192361914 0.259765266703735 0.460332104069072]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.177263430756298 -0.518750973518624 -0.405483350515562;-0.752457971971882 0.961617618456993 1.23398396285802]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.242677671783497 -0.743405319941965 -0.602492506665596;-0.237681874800916 0.268106939066817 0.803781865462511]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.0525644205446638 -0.513217470706303 -0.462042916588842;-0.0187591483586724 0.327793155303455 0.671150479140113]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.229633975488831 -0.40151973534452 0.0518705973575241;-0.0466477796535758 0.250798300700517 0.756766332721166]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.122819087544687 -0.55376821914787 -0.448542806544777;-0.0713876830728516 0.257220415064966 0.52569453041195]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.081248198478448 -0.399163119364145 -0.159620636378494;0.00523927137730722 0.107932935384029 0.432434823715838]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.155935917465543 -0.688101361266844 -0.595639013330436;-0.0596476020312679 0.158691277421865 0.386446549645855]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.040966965350932 -0.324147074627865 -0.230483870985531;0.0350234653946805 0.0647511716455432 0.447661660477443]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","false",-1,"Unknown error (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[0.254362645557957 -0.580222210358514 -0.256028934884131;-0.389871122494859 0.630909974102476 0.840273031831798]","succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
+
+"epsilon","K","b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
+1.6,"[]","a or b not valid",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",-1,
+

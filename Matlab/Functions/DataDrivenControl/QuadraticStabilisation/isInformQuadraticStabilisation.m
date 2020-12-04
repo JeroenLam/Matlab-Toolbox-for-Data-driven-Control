@@ -1,4 +1,4 @@
-function [bool,K, diagnostics, diagnostics_slater] = isInformQuadraticStabilisation(X, U, W11, W12, W22)
+function [bool, K, diagnostics, info] = isInformQuadraticStabilisation(X, U, W11, W12, W22, tolerance, options)
 %ISINFORMQUADRATICSTABILISATION Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -9,10 +9,25 @@ function [bool,K, diagnostics, diagnostics_slater] = isInformQuadraticStabilisat
     assert(min(size(W12) == [n T]));
     assert(min(size(W22) == [T T]));
     
+    % Defining missing input parameters
+    switch nargin
+        case 5
+            tolerance = 1e-8;
+            options = sdpsettings('verbose',0,'debug',0);
+        case 6
+            options = sdpsettings('verbose',0,'debug',0);
+    end
+    
+    bool = 0;
+    info = 0;
+    K = [];
+    
     % Test for the generelised Slater condition
-    [diagnostics_slater, ~] = testSlater(X, U, W11, W12, W22);
-    if diagnostics_slater.problem
-        disp('Error finding a solution to the generelised Slater condition!');
+    if ~testSlater(X, U, W11, W12, W22)
+        %info = 'Error finding a solution to the generelised Slater condition!';
+        info = info + 1;
+        diagnostics = [];
+        return;
     end
     
     % Find P, L, a, b such that the condition of theorem 13 are satisfied
@@ -21,53 +36,70 @@ function [bool,K, diagnostics, diagnostics_slater] = isInformQuadraticStabilisat
     a = sdpvar(1);
     b = sdpvar(1);
     
-    tolerance = 1e-10;
-    options = sdpsettings('verbose',0,'debug',0);
-    
-    nn = zeros(n,n);
-    nm = zeros(n,m);
-    mn = zeros(m,n);
-    mm = zeros(m,m);
-    C = [P >= tolerance, ...
+    condition_matrix = [ P-b*eye(n) zeros(n,2*n + m);
+                         zeros(n,n) -P -L' zeros(n,n);
+                         zeros(m,n) -L  zeros(m,m) L;
+                         zeros(n,2*n)  L'  P ] -  a *...
+                         [ eye(n)     Xplus;
+                           zeros(n,n) -Xmin; 
+                           zeros(m,n) -Umin;
+                           zeros(n,n + T) ] * ...
+                         [ W11 W12;
+                           W12' W22 ] * ...
+                         [ eye(n)     Xplus;
+                           zeros(n,n) -Xmin; 
+                           zeros(m,n) -Umin;
+                           zeros(n,n + T) ]';
+    % Defining the constraints
+    C = [P >= tolerance * 1e-2, ...
          a >= 0, ...
-         b >= tolerance, ...
-         [P-b*eye(n) nn  nm nn;
-             nn      -P -L' nn;
-             mn      -L  mm  L;
-             nn      nn  L'  P ] -  a *...
-         [ eye(n)    Xplus;
-           nn        -Xmin; 
-           mn        -Umin;
-           zeros(n,n + T) ] * ...
-         [ W11 W12;
-           W12' W22 ] * ...
-         [ eye(n)    Xplus;
-           nn        -Xmin; 
-           mn        -Umin;
-           zeros(n,n + T) ]' >= 0];
+         b >= tolerance * 1e-2, ...
+         condition_matrix >= 0];
 
+    % Finding a solution given the constraints
     diagnostics = optimize(C, [], options);
-    
+
     % Check for problems with the solver
     if diagnostics.problem
-        disp('The solver was not able to find a solution for the constraints');
-        K = [];
-        bool = false;
-        return;
+        %info = 'The solver was not able to find a solution for the constraints';
+        info = info + 2;
+        %disp(diagnostics.info)
+        %return;
     end
     
+    % Check if the matrix condition is valid
+    if min(eig(value(condition_matrix))) < -tolerance
+        %info = 'The matrix constraint was not positive semi definite';
+        fprintf('min(eig): %d\n', min(eig(value(condition_matrix))));
+        info = info + 4;
+        %return;
+    end
+    
+    K = value(L) / value(P);
+    
     % Verify the solution is valid given the constraints
-    try chol(value(P));
-        if value(a) >= 0 && value(b) > -tolerance
-            bool = true;
-            K = value(L) / value(P);
-        else
-            disp('a >= 0 or b > 0 was not valid')
-            fprintf('a : %d \n', value(a));
-            fprintf('b : %d \n', value(b));
+    if value(a) >= 0 && value(b) > -tolerance
+        bool = 1;
+        K = value(L) / value(P);
+        %info = 'no problems';
+    else
+        if value(a) < 0
+            fprintf('a: %d\n', value(a));
+            info = info + 8;
         end
+        if value(b) <= -tolerance
+            fprintf('b: %d\n', value(b));
+            info = info + 16;
+        end
+            %info = 'a >= 0 or b > 0 was not valid';
+            %return;
+    end
+    
+    try chol(value(P));
     catch ME
-        disp('P is not symmetric positive definite')
+        %info = 'P is not symmetric positive definite';
+        info = info + 32;
+        %return;
     end
 end
 

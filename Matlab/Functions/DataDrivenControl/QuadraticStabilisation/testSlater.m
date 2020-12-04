@@ -1,4 +1,4 @@
-function [diagnostics, Z] = testSlater(X, U, W11, W12, W22)
+function [bool] = testSlater(X, U, W11, W12, W22)
 %TESTSLATER Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -7,15 +7,13 @@ function [diagnostics, Z] = testSlater(X, U, W11, W12, W22)
     N = [eye(n,n) Xplus; zeros(n,n) -Xmin; zeros(m,n) -Umin] * ...
         [W11 W12 ; W12' W22] * ...
         [eye(n,n) Xplus; zeros(n,n) -Xmin; zeros(m,n) -Umin]';
-
-    % Checking generelised Slater condition (TODO: DOES NOT FINISH
-    % CALCULATIONS)
-    tolerance = 1e-10;
-    options = sdpsettings('verbose',0,'debug',0);
-
-    Z = sdpvar(n+m, n);
-    C = [eye(n) Z'] * N * [eye(n) ; Z] >= tolerance;
-    diagnostics = optimize(C, [], options);
-    Z = value(Z);
+    
+    bool = false;
+    
+    % Check if we have enough positive eigenvalues
+    if sum(eig(N) > 0) >= n
+        bool = true;
+        return
+    end
 end
 
