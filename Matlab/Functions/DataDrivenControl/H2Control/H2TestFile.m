@@ -1,4 +1,4 @@
-% System matrices
+%% System matrices
 %A = [ 0 1 ; -1 -1]; % Stable
 %A = [ 0 0.75 ; 3 0 ];  % Unstable
 A = [1 -0.374 -0.19 -0.321 0.056 -0.026; 
@@ -12,7 +12,7 @@ A = [1 -0.374 -0.19 -0.321 0.056 -0.026;
 B = [ 0.007 0 -0.043 0 0.259 0 ; -0.003 0 0.03 0 0 0.259]';
 
 %Input and i.c.
-T = 100;
+T = 750;
 U = 0.5*rand([size(B,2) T]);
 x0 = rand([size(A,1) 1]);
 
@@ -38,9 +38,9 @@ tolerance = 1e-10;
 options = sdpsettings('verbose',0,'debug',0);
 
 % (X, U, W11, W12, W22, C, D, gamma, tolerance, options)
-% ***************************************
+%% **************************************
 %          Code for H2 control
-% ***************************************
+%  **************************************
 
     % Validating data
     [Xmin, Xplus, n, Umin, m] = testDataInput(X, U);
@@ -53,7 +53,7 @@ options = sdpsettings('verbose',0,'debug',0);
     p = size(C,1);
     
     % Test for the generelised Slater condition
-    if ~testSlater(X, U, W11, W12, W22, tolerance, options)
+    if ~testSlater(X, U, W11, W12, W22)
         disp('Error finding a solution to the generelised Slater condition!');
     end
     

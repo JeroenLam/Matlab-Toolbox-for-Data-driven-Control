@@ -1,0 +1,100 @@
+\section{Deadbeat control}
+% Abstract section
+In this section we will see how we can find a deadbeat controller using only our data. We will first discusse the underlying mathematics after which we will focus on how we can implement this into code. We will also look at a few examples on how to use the provided function.
+
+% What is Deadbeat
+\Def{Informative for deadbeat control \cite[Def 20]{waarde2019data}}{
+	We say the data $(U_-,X)$ is informative for deadbeat control if there exists a feedback gain $K$ such that $\Sigma_{i/s} \subseteq \Sigma_K^{nil}$. 
+}
+
+In other words, the data is informative if we can stabilise all systems described by the data with a given $K$ such that all closed loop systems only have the zero eigenvalue.
+
+% Mathematics
+\subsection{Mathematics deadbeat control}
+We will begin by considering the following theorem that gives necessary and sufficient conditions for informativity for deadbeat control.
+
+\Thr{\cite[Thr 21]{waarde20}}{
+	The data $(U_-,X)$ is informative for deadbeat control if and only if the matrix $X_-$ has full row rank and there exists a right inverse $X_-^\dagger$ of $X_-$ such that $X_+ X_-^\dagger$ is nilpotent. Moreover, if this condition is satisfied then the feedback gain $K := U_- X_-^\dagger$ yields a deadbeat controller.
+}
+
+Using this theorem the problem boils down to finding a suitable right inverse such that $X_- X_-^\dagger$ is nilpotent given that $X_-$ has full row rank. We will consider the following 2 cases, first we will look at the case where $X_-$ is a (full rank) square matrix. Second we will look at the case where $X_-$ is a full row rank wide matrix.
+ 
+First lets assume $X_-$ is a square matrix and has full row rank. Then we know that the only right inverse of $X_-$ is its inverse $X_-^{-1}$. Hence the data is informative for deadbeat control if and only if $X_+ X_-^{-1}$ is nilpotent. 
+
+Now lets assume that $X_-$ is a wide matrix and has full row rank. Then there exists an $F \in \R^{T \times n}$ spanning the row space of $X_-$ and an $G \in \R^{T \times (T-n)}$ spanning the null space of $X_-$ such that $\begin{bmatrix}F&G\end{bmatrix}$ is non singular and $X_- \begin{bmatrix}F&G\end{bmatrix} = \begin{bmatrix}I_n&0_{n\times (T-n)}\end{bmatrix}$. Now let $X^\dagger_- = F + G H$ where $H \in \R^{(T-n) \times n}$ if and only if $X_-^\dagger$ is an right inverse of $X_-$.
+
+Proof '$\Rightarrow$': \\
+Let $X^\dagger_- = F + G H$ as described above. Then $X_- X^\dagger_- = X_- F + X_- G H = I_n + 0_{n\times (T-n)} * H = I_n$.
+
+Proof '$\Leftarrow$': \\
+\todo{add proof}
+
+Thus finding a right inverse such that $X_+ X_-^\dagger$ is nilpotent is equivalent to finding an $H$ such that $X_+ F + X_+ G H$ is nilpotent. Finding this $H$ can be done using pole placement methods for the pair $(X_+ F, X_+ G)$ and placing all eigenvalues at zero.
+
+% Pseudo code / algorithm
+\subsection{Algorithm deadbeat control}
+Using the mathematics above we can construct an algorithm for checking if the data is informative for deadbeat control and what the corresponding controller is.
+
+\begin{lstlisting}
+provide X_, X+ and U
+if X_ has full row rank
+	if X_ is square
+		if X+ * inv(X_) is nilpotent
+			The data is informative for deadbeat control
+			K = U_ * inv(X_)
+	else
+		F : spans rowspace of X_ (pseudo inverse of X_ -> pinv(X_)) 
+		G : spans the nullspace of X_ (null(X_))
+		if (X+ F, X+ G) is controllable
+			H = poleplacement(X+ F, X+ G, [0 ... 0])
+			The data is informative for deadbeat control
+			K = U_ * (F + G H)
+The data is not informative for deadbeat control
+\end{lstlisting}
+
+However, due to limitation in Matlabs pole placement function we are not able to implement the algorithm into matlab directly. This is because matlab has 2 functions for pole placement, the \mon{place()} function which does not support poles with high multiplicity, which is hence not useable. The other function \mon{acker()} does support pole placement of poles with high multiplicity, but it is limited to a single dimensional input space. Since $X_+ G$ is an $n \times (T-n)$ matrix, we have that our input space is of dimension $T-n$. However, we are able to circumvent this issue by extending the \mon{acker()} function to support higher dinmensional input. To do this we will use the proof of the sufficientcy in theroem 3.29 as well as lemma 3.31 from \cite{bookTrentelman}.
+
+\subsection{Mathematics extending pole placement}
+
+\Lemma{\cite[Lemma 3.31]{bookTrentelman}}{
+	If $(A,B)$ is controllable there exist vectors $u_0 , \dots u_{n-1}$ such that the vectors defined by
+	\[ x_0 := 0, \, \, \, x_{k+1} := Ax_k + Bu_k \, \, \, (k = 0, \dots , n-1) \]
+	are independent.
+}
+
+Assume that the pair $(A,B)$ is controllable, we will use \cite[Lemma 3.31]{bookTrentelman} to construct $u_0, \dots , u_{n-1}$ and $x_0,x_1, \dots ,x_n$. We pick $u_n$ to be arbitrary. Then there exists a unique map $F_0$ such that $F_0 x_k = u_k$ for $k = 1,\dots,n$. We can substitute this to get:
+\[ x_{k+1} = Ax_k + BF_0 x_k = (A + BF_0 ) x_k \]
+for $k \in [1, \dots, n]$. From this we can see that $x_k = (A+BF_0)^{k-1} x_1$. By construction of lemma 3.31 we have that $x_0 = 0$, thus we have $x_1 = A * 0 + B * u_0 = Bu_0$. We will call this $b = Bu_0 = x_1$. By construction $x_1,\dots,x_n$ are independent. Thus we know that the controlability matrix $\begin{bmatrix}b&(A+BF_0)b&\dots&(A+BF_0)^{n-1}b\end{bmatrix} = \begin{bmatrix}x_1&x_2&\dots&x_n\end{bmatrix}$ is full rank. Hence the pair $(A+BF_0,b)$ is controlable. Since the matrix $b$ is a column vector we can use the \mon{acker()} algorithm to compute a suitable controller $f$ such that $A+BF_0 + bf = A + B(F_0 + u_0 f)$ has apropriate eigenvalues. From this we construct the controller $F = F_0 + u_0 f$ that places the eigenvalues in the chosen positions.
+
+\subsection{Algorithm extending pole placement}
+We will now rewrite this into pseudo code:
+\begin{lstlisting}
+Provide A, B and poles
+n : dimension of state space
+m : dimension of input space
+construct linear independent x_1, ... ,x_n from u_0, ..., u_n-1
+pick an arbitrary u_n
+F0 := [u1 u2 ... un] * inv([x1 x2 ... xn])
+b  := B * u0
+f  := acker(A + B F0, b, poles)
+K  := F0 + u_0 f
+\end{lstlisting}
+
+% Example using function
+\subsection{Examples using implementation}
+The algorithm above is implemented in the following functions:
+\subsubsection*{Syntax}
+\mon{[bool, K] = isInformDeadbeatControl(X, U)} 
+
+\subsubsection*{Description}
+\mon{[bool, K] = isInformDeadbeatControl(X, U)}: Returns if the data is informative for deadbeat control. If so, it also returns a corresponding controller K for closed loop feedback control of the form \mon{A+BK}.
+
+\subsubsection*{Input arguments}
+\textbf{\mon{X}}: State data matrix of dimension $n \times T+1$.\\
+\textbf{\mon{U}}: Input data matrix of dimension $m \times T$.
+
+\subsubsection*{Output arguments}
+\textbf{\mon{bool}}: (boolean) True if the data is informative for deadbeat control, false otherwise\\
+\textbf{\mon{K}}: (matrix) If the data is informative, it contains a stabilising controller \mon{K} for closed loop control \mon{A+BK}, empty otherwise.
+
+\subsubsection{Examples}

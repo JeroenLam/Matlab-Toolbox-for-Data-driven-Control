@@ -1,0 +1,35 @@
+\section{Stabilisability}
+% Abstract section
+
+
+% What is Stabilisability
+
+
+% Mathematics
+
+
+% Proof?
+
+
+% Pseudo code / algorithm
+
+
+% Example using function
+\subsection{Examples using implementation}
+The algorithm above is implemented in the following functions:
+\subsubsection*{Syntax}
+\mon{[bool] = isInformStabilisable(X)} \\
+\mon{[bool] = isInformStabilisable(X, tolerance)}
+
+\subsubsection*{Description}
+\mon{[bool] = isInformStabilisable(X)}: Returns if the data is informative for stabilisability. Uses default tolerance of \mon{1e-14}.\\
+\mon{[bool] = isInformStabilisable(X, tolerance)}: Returns if the data is informative for stabilisability given a specific tolerance.  
+
+\subsubsection*{Input arguments}
+\textbf{\mon{X}}: State data matrix of dimension $n \times T+1$.\\
+\textbf{\mon{tolerance}}: Tolerance used for determining when a value is zero up to machine precision. Default value is \mon{1e-14}.
+
+\subsubsection*{Output arguments}
+\textbf{\mon{bool}}: (boolean) True if the data is informative for stabilisability, false otherwise\\
+
+\subsubsection{Examples}

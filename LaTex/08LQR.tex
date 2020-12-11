@@ -1,0 +1,44 @@
+\section{Linear quadratic regulation}
+% Abstract section
+
+
+% What is LQR
+
+
+% Mathematics
+
+
+% Proof?
+
+
+% Pseudo code / algorithm
+
+
+% Example using function
+\subsection{Examples using implementation}
+The algorithm above is implemented in the following functions:
+\subsubsection*{Syntax}
+\mon{[bool, K, diagnostics] = isInformLQR(X, U, Q, R)} \\
+\mon{[bool, K, diagnostics] = isInformLQR(X, U, Q, R, tolerance)} \\
+\mon{[bool, K, diagnostics] = isInformLQR(X, U, Q, R, tolerance, options)}
+
+\subsubsection*{Description}
+\mon{[bool, K, diagnostics] = isInformLQR(X, U, Q, R)}: Returns if the data is informative for LQR control. If so, it also returns a corresponding controller \mon{K} for the closed loop feedback control of the form \mon{A+BK}.\\
+\mon{[bool, K, diagnostics] = isInformLQR(X, U, Q, R, tolerance)}: Returns if the data is informative for LQR control given a specific tolerance. If so, it also returns a corresponding controller \mon{K} for the closed loop feedback control of the form \mon{A+BK}.\\
+\mon{[bool, K, diagnostics] = isInformLQR(X, U, Q, R, tolerance, options)}: Returns if the data is informative for LQR control given a specific tolerance and sdpsettings. If so, it also returns a corresponding controller \mon{K} for the closed loop feedback control of the form \mon{A+BK}.
+
+\subsubsection*{Input arguments}
+\textbf{\mon{X}}: State data matrix of dimension $n \times T+1$.\\
+\textbf{\mon{U}}: Input data matrix of dimension $m \times T$.\\
+\textbf{\mon{Q}}: State cost matrix.\\
+\textbf{\mon{R}}: Input cost matrix.\\
+\textbf{\mon{tolerance}}: Tolerance used for determining when a value is zero up to machine precision. Default value is \mon{1e-14}.\\
+\textbf{\mon{options}}: sdpsettings used with the Yalmip solver.
+
+\subsubsection*{Output arguments}
+\textbf{\mon{bool}}: (boolean) True if the data is informative for system identification, false otherwise\\
+\textbf{\mon{K}}: (matrix) If the data is informative, it contains a stabilising controller \mon{K} for closed loop control \mon{A+BK}, empty otherwise.\\
+\textbf{\mon{diagnostics}}: (struct) Diagnostics from the Yalmip \mon{optimize()} function.
+
+
+\subsubsection{Examples}

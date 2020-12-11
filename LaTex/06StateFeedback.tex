@@ -1,0 +1,41 @@
+\section{State feedback}
+% Abstract section
+
+
+% What is State feedback
+
+
+% Mathematics
+
+
+% Proof?
+
+
+% Pseudo code / algorithm
+
+
+% Example using function
+\subsection{Examples using implementation}
+The algorithm above is implemented in the following functions:
+\subsubsection*{Syntax}
+\mon{[bool, K, diagnostics] = isInformStateFeedback(X, U)} \\
+\mon{[bool, K, diagnostics] = isInformStateFeedback(X, U, tolerance)} \\
+\mon{[bool, K, diagnostics] = isInformStateFeedback(X, U, tolerance, options)}
+
+\subsubsection*{Description}
+\mon{[bool, K, diagnostics] = isInformStateFeedback(X, U)}: Returns if the data is informative for stabilisation by state feedback. If so, it also returns a corresponding controller K for closed loop feedback control of the form \mon{A+BK}.\\
+\mon{[bool, K, diagnostics] = isInformStateFeedback(X, U, tolerance)}: Returns if the data is informative for stabilisation by state feedback given a specific tolerance. If so, it also returns a corresponding controller K for closed loop feedback control of the form \mon{A+BK}.\\
+\mon{[bool, K, diagnostics] = isInformStateFeedback(X, U, tolerance, options)}: Returns if the data is informative for stabilisation by state feedback given a specific tolerance and a spdsettings object. If so, it also returns a corresponding controller K for closed loop feedback control of the form \mon{A+BK}.
+
+\subsubsection*{Input arguments}
+\textbf{\mon{X}}: State data matrix of dimension $n \times T+1$.\\
+\textbf{\mon{U}}: Input data matrix of dimension $m \times T$.\\
+\textbf{\mon{tolerance}}: Tolerance used for determining when a value is zero up to machine precision. Default value is \mon{1e-14}.\\
+\textbf{\mon{options}}: sdpsettings used with the Yalmip solver.
+
+\subsubsection*{Output arguments}
+\textbf{\mon{bool}}: (boolean) True if the data is informative for stabilisation by state feedback, false otherwise\\
+\textbf{\mon{K}}: (matrix) If the data is informative, it contains a stabilising controller \mon{K} for closed loop control \mon{A+BK}, empty otherwise.\\
+\textbf{\mon{diagnostics}}: (struct) Diagnostics from the Yalmip \mon{optimize()} function.
+
+\subsubsection{Examples}

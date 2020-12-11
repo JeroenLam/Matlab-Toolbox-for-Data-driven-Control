@@ -24,7 +24,7 @@ function bool = isInformControllable(X)
     % For each non-zero eigenvalue we check if the rank condition holds
     spectrum = eig(Xmin * pinv(Xplus));
     for eigV = spectrum.'
-        if eigV ~= 0 && ~(rank(Xplus - inv(eigV) * Xmin) == n)
+        if eigV ~= 0 && ~(rank(Xplus - eigV \ Xmin) == n)
         	return
         end
     end

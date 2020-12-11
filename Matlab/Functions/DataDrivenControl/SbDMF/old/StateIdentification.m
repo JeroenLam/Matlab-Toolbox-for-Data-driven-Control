@@ -21,11 +21,12 @@ sys_d = ss(A,B,C,D,1);
 
 sys_cl = [ A    B*M;
           L*C K+L*D*M];
+disp('eigenvalues Using full rank input')
 eig(sys_cl)
 
 
 
-% State extimation
+% State estimation
 n = size(A,1);
 m = size(B,2);
 k = rank(U);

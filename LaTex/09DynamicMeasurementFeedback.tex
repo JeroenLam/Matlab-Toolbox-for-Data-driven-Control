@@ -1,0 +1,64 @@
+\section{Dynamic measurement feedback}
+% Abstract section
+
+
+% What is DMF
+
+
+% State identification
+
+
+% Mathematics
+
+
+% Proof?
+
+
+% Pseudo code / algorithm
+
+
+% Example using function
+\subsection{Examples using implementation}
+The algorithm above is implemented in the following functions:
+\subsubsection*{Syntax} 
+\mon{[bool, K, L, M] = isInformDynamicMeasurementFeedback(X, U, Y)} \\
+\mon{[bool, K, L, M] = isInformDynamicMeasurementFeedback(X, U, Y, polesM)} \\
+\mon{[bool, K, L, M] = isInformDynamicMeasurementFeedback(X, U, Y, polesM, polesL)}
+
+\subsubsection*{Description} 
+\mon{[bool, K, L, M] = isInformDynamicMeasurementFeedback(X, U, Y)}: \\
+\mon{[bool, K, L, M] = isInformDynamicMeasurementFeedback(X, U, Y, polesM)}: \\
+\mon{[bool, K, L, M] = isInformDynamicMeasurementFeedback(X, U, Y, polesM, polesL)}: 
+
+\subsubsection*{Input arguments} 
+\textbf{\mon{X}}: State data matrix of dimension $n \times T+1$.\\
+\textbf{\mon{U}}: Input data matrix of dimension $m \times T$.\\
+\textbf{\mon{Y}}: Output data matrix of dimension $p \times T$.\\
+\textbf{\mon{polesM}}: .\\
+\textbf{\mon{polesL}}: .
+
+\subsubsection*{Output arguments} 
+\textbf{\mon{bool}}: (boolean) True if the data is informative for dynamic measurement feedback, false otherwise\\
+\textbf{\mon{K}}: (matrix) .\\
+\textbf{\mon{L}}: (matrix) .\\
+\textbf{\mon{M}}: (matrix) .
+
+
+\subsubsection*{Syntax}
+\mon{[bool, X\_bar, U\_bar, Y\_bar] = isInformStateIdentification(U, Y, n)}
+
+\subsubsection*{Description}
+\mon{[bool, X\_bar, U\_bar, Y\_bar] = isInformStateIdentification(U, Y, n)}: 
+
+\subsubsection*{Input arguments}
+\textbf{\mon{U}}: Input data matrix of dimension $m \times T$.\\
+\textbf{\mon{Y}}: Output data matrix of dimension $p \times T$.\\
+\textbf{\mon{n}}: Dimension of the state space.
+
+\subsubsection*{Output arguments}
+\textbf{\mon{bool}}: (boolean) True if the data is informative for state space identification, false otherwise\\
+\textbf{\mon{X\_bar}}: (matrix) .\\
+\textbf{\mon{U\_bar}}: (matrix) .\\
+\textbf{\mon{Y\_bar}}: (matrix) .
+
+\subsubsection{Examples}

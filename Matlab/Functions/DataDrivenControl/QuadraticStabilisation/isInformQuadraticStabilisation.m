@@ -1,20 +1,18 @@
-function [bool, K, diagnostics, info] = isInformQuadraticStabilisation(X, U, W11, W12, W22, tolerance, options)
+function [bool, K, diagnostics, info] = isInformQuadraticStabilisation(X, U, Phi, tolerance, options)
 %ISINFORMQUADRATICSTABILISATION Summary of this function goes here
 %   Detailed explanation goes here
 
     % Validating data
     [Xmin, Xplus, n, Umin, m] = testDataInput(X, U);
     T = size(U,2);
-    assert(min(size(W11) == [n n]));
-    assert(min(size(W12) == [n T]));
-    assert(min(size(W22) == [T T]));
+    assert(min(size(Phi) == [n+T n+T]));
     
     % Defining missing input parameters
     switch nargin
-        case 5
+        case 3
             tolerance = 1e-8;
             options = sdpsettings('verbose',0,'debug',0);
-        case 6
+        case 4
             options = sdpsettings('verbose',0,'debug',0);
     end
     
@@ -23,7 +21,7 @@ function [bool, K, diagnostics, info] = isInformQuadraticStabilisation(X, U, W11
     K = [];
     
     % Test for the generelised Slater condition
-    if ~testSlater(X, U, W11, W12, W22)
+    if ~testSlater(X, U, Phi)
         %info = 'Error finding a solution to the generelised Slater condition!';
         info = info + 1;
         diagnostics = [];
@@ -44,8 +42,7 @@ function [bool, K, diagnostics, info] = isInformQuadraticStabilisation(X, U, W11
                            zeros(n,n) -Xmin; 
                            zeros(m,n) -Umin;
                            zeros(n,n + T) ] * ...
-                         [ W11 W12;
-                           W12' W22 ] * ...
+                         Phi * ...
                          [ eye(n)     Xplus;
                            zeros(n,n) -Xmin; 
                            zeros(m,n) -Umin;
@@ -68,7 +65,7 @@ function [bool, K, diagnostics, info] = isInformQuadraticStabilisation(X, U, W11
     end
     
     % Check if the matrix condition is valid
-    if min(eig(value(condition_matrix))) < -tolerance
+    if min(eig(value(condition_matrix))) < 0
         %info = 'The matrix constraint was not positive semi definite';
         fprintf('min(eig): %d\n', min(eig(value(condition_matrix))));
         info = info + 4;
@@ -78,7 +75,7 @@ function [bool, K, diagnostics, info] = isInformQuadraticStabilisation(X, U, W11
     K = value(L) / value(P);
     
     % Verify the solution is valid given the constraints
-    if value(a) >= 0 && value(b) > -tolerance
+    if value(a) >= 0 && value(b) > 0
         bool = 1;
         K = value(L) / value(P);
         %info = 'no problems';
@@ -87,7 +84,7 @@ function [bool, K, diagnostics, info] = isInformQuadraticStabilisation(X, U, W11
             fprintf('a: %d\n', value(a));
             info = info + 8;
         end
-        if value(b) <= -tolerance
+        if value(b) <= 0
             fprintf('b: %d\n', value(b));
             info = info + 16;
         end
