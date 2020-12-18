@@ -25,7 +25,6 @@ function [bool, K, diagnostics, info] = isInformStateFeedback(X, U, tolerance, o
     % Check data validity
     try
         [Xmin, Xplus, n, Umin] = testDataInput(X, U);
-        [~,T] = size(Xmin);
     catch exception
         rethrow(exception)
     end
@@ -45,11 +44,14 @@ function [bool, K, diagnostics, info] = isInformStateFeedback(X, U, tolerance, o
     end
     
     % Define variables (XminTheta is symmetric by construction)
-    Theta = sdpvar(T, n);
-    P = sdpvar(n);
+    %XminTheta = sdpvar(n);
+    %Theta = pinv(Xmin) * XminTheta;
+    Theta = sdpvar(T, n)
+    
     
     % Add constraint
-    C = [[P Xplus*Theta ; (Xplus*Theta)' P] >= tolerance*eye(2*n), P == Xmin * Theta];
+    C = [
+        [Xmin*Theta Xplus*Theta ; (Xplus*Theta)' Xmin*Theta] >= tolerance];
 
     % Solving the problem
     diagnostics = optimize(C, [], options);

@@ -42,16 +42,19 @@ step = 1;
 
 eigenvaluesHI = zeros(n,size(1:step:T,2));
 eigenvaluesH2 = zeros(n,size(1:step:T,2));
-ans_jeroen = zeros(size(1:step:T,2));
+gamma_h2      = zeros(1,size(1:step:T,2));
+gamma_hi      = zeros(1,size(1:step:T,2));
 
 parfor idx = 1:step:T
     Phi = [1.35 * idx * epsilon^2 * eye(n) zeros(n,idx);zeros(idx,n) -eye(idx)];
     [~, K_hi, ~, ~] = isInformHInf(X(:,1:idx+1), U(:,1:idx), Phi, C, D, tol, options);
     [~, K_h2, ~, ~] = isInformH2(X(:,1:idx+1), U(:,1:idx), Phi, C, D, tol, options);
-    if isStableD(A+B*K_hi)
+    %if isStableD(A+B*K_hi)
         %fprintf('H_inf: %d\n',idx);
-        eigenvaluesHI(:,idx) = abs(eig(A+B*K_hi));
-    end
+        eigenvaluesHI(:,idx) = abs(eig(A+B*K_hi))
+        sys_temp = ss(A+B*K_hi, zeros(6,1), eye(6), [], 0.01)
+        gamma_hi(idx) = hinfnorm(sys_temp)
+    %end
     if isStableD(A+B*K_h2)
         %fprintf('H_2: %d\n',idx);
         A_K = A+B*K_h2;
@@ -59,7 +62,7 @@ parfor idx = 1:step:T
         eigenvaluesH2(:,idx) = abs(eig(A_K));
         if max(abs(eig(A_K))) < 1
             P = dlyap(A_K',C_K'*C_K);
-            ans_jeroen(idx) = trace(P);   % value(gamma);
+            gamma_h2(idx) = trace(P);   % value(gamma);
         end
     end
 end
@@ -71,16 +74,16 @@ xlim([0,750])
 
 subplot(2,2,2);
 plot(eigenvaluesHI');
-title('H_inf eigenvalues')
+title('H_{inf} eigenvalues')
 xlim([0,750])
 
 subplot(2,2,3);
-plot(ans_jeroen);
+plot(gamma_h2);
 title('gamma H_2')
 axis([0 750 0 25])
 
 subplot(2,2,4);
-plot(linspace(sampling,T,T/sampling),NORMS)
-title('Gamma plot paper')
+plot(gamma_hi)
+title('Gamma H_{inf}')
 ylim([0,25])
 xlim([0,750])

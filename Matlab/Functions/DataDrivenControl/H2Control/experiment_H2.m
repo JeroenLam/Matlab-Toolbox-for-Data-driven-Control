@@ -8,7 +8,7 @@ options.mosek.MSK_DPAR_SEMIDEFINITE_TOL_APPROX = 10^(-15);
 %options = sdpsettings('solver','sedumi','debug',1,'verbose',0);
 %options.sedumi.eps = 10^(-15);
 
-tol = 10^(-6);
+
 
 %% system matrices 
 
