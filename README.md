@@ -10,7 +10,7 @@ Luckily, better methods were developed to more easily show data informativity wi
 In this project we will implement these methods in a Matlab toolbox.
 
 ## To do
-https://trello.com/b/c7ulvv6Q/matlab-toolbox-for-data-driven-control
+<!-- https://trello.com/b/c7ulvv6Q/matlab-toolbox-for-data-driven-control -->
 
 ## Problem
 
