@@ -1,0 +1,29 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\contentsline {section}{\numberline {1}Abstract}{2}%
+\contentsline {section}{\numberline {2}Introduction}{2}%
+\contentsline {section}{\numberline {3}Definitions}{2}%
+\contentsline {subsection}{\numberline {3.1}Informativity}{2}%
+\contentsline {subsection}{\numberline {3.2}Data and model classes}{3}%
+\contentsline {section}{\numberline {4}System identification}{5}%
+\contentsline {subsection}{\numberline {4.1}Mathematics}{5}%
+\contentsline {subsection}{\numberline {4.2}Algorithm}{5}%
+\contentsline {subsection}{\numberline {4.3}Examples using implementation}{6}%
+\contentsline {subsubsection}{\numberline {4.3.1}Examples}{6}%
+\contentsline {section}{\numberline {5}Controllability}{8}%
+\contentsline {subsection}{\numberline {5.1}Examples using implementation}{8}%
+\contentsline {section}{\numberline {6}Stabilisability}{10}%
+\contentsline {subsection}{\numberline {6.1}Examples using implementation}{10}%
+\contentsline {subsubsection}{\numberline {6.1.1}Examples}{11}%
+\contentsline {section}{\numberline {7}Stability}{12}%
+\contentsline {subsection}{\numberline {7.1}Mathematics stability}{12}%
+\contentsline {subsection}{\numberline {7.2}Examples using implementation}{12}%
+\contentsline {subsubsection}{\numberline {7.2.1}Examples}{13}%
+\contentsline {section}{\numberline {8}State feedback}{14}%
+\contentsline {subsection}{\numberline {8.1}Mathematics}{14}%
+\contentsline {subsection}{\numberline {8.2}Examples using implementation}{15}%
+\contentsline {subsubsection}{\numberline {8.2.1}Examples}{16}%
+\contentsline {section}{\numberline {9}Deadbeat control}{17}%
+\contentsline {subsection}{\numberline {9.1}Mathematics deadbeat control}{17}%
+\contentsline {subsection}{\numberline {9.2}Mathematics extending pole placement}{18}%
+\contentsline {subsection}{\numberline {9.3}Examples using implementation}{18}%
+\contentsline {subsubsection}{\numberline {9.3.1}Examples}{19}%

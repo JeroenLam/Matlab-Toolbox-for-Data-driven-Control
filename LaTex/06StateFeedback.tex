@@ -1,18 +1,59 @@
 \section{State feedback}
 % Abstract section
-
+In this section we will see when en how we can construct a state feedback controller directly from the state-input data. We will first consider the mathematics after which we will look at how we can implement this. Lastly we will look at an example and how we can apply the provided functions.
 
 % What is State feedback
+In this section we will consider closed loop state feedback. This means that we want to substitute our input with an input that is based on the state of the system, i.e. $u = K x$ where $K \in \mathbb{R}^{m\times n}$. We will consider the system to be in a stable closed loop form if all eigenvalues of $A + B K$ are stable (inside the unit circle). We can extend this notion to data-driven control as follows.
 
+\Def{Informative for state feedback \cite[Def 12]{waarde2019data}}{
+	We say that the data $(U_-,X)$ is informative for stabilization by state feedback if there exists a feedback gain $K$ such that all systems described by the data are part of the set of systems that are stabilised using the gain $K$. I.e. $\Sigma_{i/s} \subseteq \Sigma_K$.
+}
+
+We will start by noting that if the data is informative for controllability or stabilisability then there is no guarantee that the there also exists a state feedback controller that stabilises all of the systems at once. However, if we find such a controller that we do know that all the systems described by the data are stabilisable. We will see an example of this later on in this section.
 
 % Mathematics
+\subsection{Mathematics}
+We will start by looking at the following theorem that gives us necessary and sufficient conditions for informativity for stabilisation by state feedback.
 
+\Thr{\cite[Thr 16]{waarde2019data}}{
+The data $(U_-,X)$ is informative for stabilisation by state feedback if and only if the matrix $X_-$ has full row rank and there exists a right inverse $X_-^\dagger$ of $X_-$ such that $X_+ X_-^\dagger$ is stable. Moreover, $K$ is such that $\Sigma_{i/s} \subseteq \Sigma_K$ if and only if $K = U_- X_-^\dagger$, where $X_-^\dagger$ is as described above.
+}
 
 % Proof?
+From this theorem we can see that the problem can be reduced to finding a specific right inverse such that the systems are stable. From this right inverse we are able to construct the corresponding controller for stabilisation by state feedback.
 
+Before we take a look at the proof of the theorem we will first note a Lemma that will be used in the proof.
+
+\Lemma{\cite[Lemma 15]{waarde2019data}}{
+Suppose that the data $(U_-,X)$ are informative for stabilisation by state feedback, and let $K$ be a feedback gain such that $\Sigma_{i/s} \subseteq \Sigma_K$. Then $A_0 + B_0 K = 0$ for all $(A_0, B_0) \in \Sigma_{i/o}^0$. Equivalently: 
+\begin{equation}\label{lemma15} im\begin{bmatrix}I\\K \end{bmatrix} \subseteq im\begin{bmatrix}X_-\\U_- \end{bmatrix} \end{equation}
+}
 
 % Pseudo code / algorithm
+Proof '$\Leftarrow$': \\
+Suppose $X_-$ has full row rank and that there exists a right inverse $X_-^\dagger$ such that $X_+ X_-^\dagger$ is stable. Let us define $K$ as $K = U_- X_-^\dagger$. Let us consider the following:
+\begin{equation} \label{proofStateFeedback}
+X_+ X_-^\dagger = \begin{bmatrix}A&B\end{bmatrix} \begin{bmatrix}X_-&U_-\end{bmatrix} X_-^\dagger = A + B K
+\end{equation}
+This statement hold for all systems describing the data, $(A,B) \in \Sigma_{i/s}$. Hence we can conclude that $K$ is a stabilising controller for all closed loop systems $A + B K$ with $(A,B) \in \Sigma_{i/s}$. Thus $\Sigma_{i/s} \subseteq \Sigma_K$. Hence we can conclude that the data is informative for stabilisation by state feedback. 
 
+
+Proof '$\Rightarrow$': \\
+Suppose that the data is informative for stabilisation by state feedback. Let $K$ be such that $A+BK$ is stable for all $(A,B) \in \Sigma_{i/s}$. By \cite[Lemma 15]{waarde2019data} we know (\ref{lemma15}). This implies that $X_-$ has full row rank and there exists a right inverse $X_-^\dagger$ such that:
+\[ \begin{bmatrix}I\\K \end{bmatrix} = \begin{bmatrix}X_-\\U_- \end{bmatrix}X_-^\dagger \] 
+By (\ref{proofStateFeedback}), we find that $A + BK = X_+ X_-^\dagger$, which shows that $X_+ X_-^\dagger$ is stable. Note that the stabilising feedback gain is given by $K = U_- X_-^\dagger$ concluding the proof.
+
+However, in its current form it is not strait forward to compute a right inverse such that $X_+ X_-^\dagger$ is stable. Hence we will use a different version of this theorem that has been rewritten in terms of linear matrix inequalities.
+
+\Thr{\cite[Thr 17]{waarde2019data}}{
+The data $(U_-,X)$ is informative for stabilisation by state feedback if and only if there exists a matrix $\Theta \in \mathbb{R}^{T\times n}$ satisfying
+\begin{align*}
+X_- \Theta &= (X_- \Theta)^\top & \begin{bmatrix} X_- \Theta & X_+ \Theta \\ \Theta^\top X_+^\top & X_- \Theta \end{bmatrix} &> 0
+\end{align*}
+Moreover, $K$ satisfies $\Sigma_{i/s} \subseteq \Sigma_K$ if and only if $K = U_- \Theta(X_-\Theta)^-1$ for some matrix $\Theta$ satisfying the above conditions.
+}
+
+This version of the theorem can be implemented using linear matrix inequality solvers such as Yalmip of CVX. The function provided in the toolbox are implemented using Yalmip.
 
 % Example using function
 \subsection{Examples using implementation}
@@ -39,3 +80,50 @@ The algorithm above is implemented in the following functions:
 \textbf{\mon{diagnostics}}: (struct) Diagnostics from the Yalmip \mon{optimize()} function.
 
 \subsubsection{Examples}
+%let us consider the following data.
+%\begin{align*} X &= \begin{bmatrix} -1&-1&-0.5&0.5&2 \\ 0&0.5&1&1.5&2 \end{bmatrix} & U &= \begin{bmatrix} 1&1&1&1 \end{bmatrix}\end{align*} 
+%As we can see $X_-$ has full row rank. Now we need to construct a right inverse such that $X_+ X_-^\dagger$ is stable. 
+%
+%Since $X_-$ is a wide matrix with full row rank we can find an $F$ and $G$ such that $X_- \begin{bmatrix}F&G\end{bmatrix} = \begin{bmatrix} I_2 & 0_{2\times 2}\end{bmatrix}$ and such that $\begin{bmatrix}F&G\end{bmatrix}$ is non singular. Then the right inverse $X_-^\dagger$ can be written as $X_-^\dagger = F + G * H$ where $H \in \mathbb{R}^{2\times 2}$. (More details about this right inverse will be provided in the next section)
+%
+%Note that $X_+ X_-^\dagger = X_+ F + X_+ G H$ where $X_+$, $F$ and $G$ are known. Now the problem is reduced to a pole placement optimisation problem. Provided that the pair $(X_+ F, X_+ G)$ is controllable we can pick any eigenvalues for the stabilising controller. However, is mainly the case if the data is also informative for identification as well as controllability \todo{add reasoning}. In most other cases we are not able to pick arbitrary poles for the closed loop system. In this example however, we do have that the pair $(X_+ F, X_+ G)$ is controllable for the following $F$ and $G$.
+%\begin{align*}
+%F &= \begin{bmatrix}
+%	-0.4029 & -0.0288 \\ 
+%	-0.3885 &  0.1151 \\ 
+%	-0.1727 &  0.2734 \\ 
+%	 0.2446 &  0.4460 \\ 
+%\end{bmatrix} & 
+%G &= \begin{bmatrix}
+%-0.0274 &  0.7723 \\ 
+%-0.5306 & -0.5219 \\ 
+% 0.7758 & -0.1960 \\ 
+%-0.3403 &  0.3047 \\ 
+%\end{bmatrix}
+%\end{align*}
+%If we use the \mon{place()} command provided by Matlab to place the eigenvalues at $0.4$ and $0.5$ we get the following $H$.
+%\[ H = \begin{bmatrix}-0.1017 & 2.5607 \\ 0.2979 & -7.4989\end{bmatrix} \]
+%Recall that the controller was given by $K = U_- X_-^\dagger = U_- (F + G * H) = \begin{bmatrix}-0.6&-2.2\end{bmatrix}$. Using the previously discussed method for system identification we can find that the data is informative for system identification and the the system is given by:
+%\begin{align*}
+%A &= \begin{bmatrix}
+%1&1\\0&1
+%\end{bmatrix}&
+%B &= \begin{bmatrix}
+%0\\0.5
+%\end{bmatrix}
+%\end{align*}
+%Using this we can verify that the eigenvalues of the closed loop system are indeed $\{0.4, 0.5\}$.
+
+%Let us consider the following data:
+%\begin{align*} X &= \begin{bmatrix} 1&0.5&-0.25 \\ 0&1&1 \end{bmatrix} & U &= \begin{bmatrix} -1&-1 \end{bmatrix}\end{align*} 
+%$X_-$ is a square invertible matrix and if we consider $X_+ X_-^{-1} = \begin{bmatrix} 0.5&-0.5\\1&0.5 \end{bmatrix}$ we can see that it is indeed stable since its eigenvalues are $\frac{1}{2}(1 \pm \sqrt{2}i)$. Hence we can conclude that the data is informative for stabilisation by state feedback.
+
+%We can also solve this problem using the linear matrix inequality. If we pick $\Theta = \begin{bmatrix} 1 & -1 \\ 0 & 2 \end{bmatrix}$ then we can see that it it a solution to the equations. 
+
+
+
+
+
+
+
+

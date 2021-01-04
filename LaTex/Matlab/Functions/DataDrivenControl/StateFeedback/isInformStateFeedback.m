@@ -44,14 +44,11 @@ function [bool, K, diagnostics, info] = isInformStateFeedback(X, U, tolerance, o
     end
     
     % Define variables (XminTheta is symmetric by construction)
-    %XminTheta = sdpvar(n);
-    %Theta = pinv(Xmin) * XminTheta;
-    Theta = sdpvar(T, n)
-    
-    
+    XminTheta = sdpvar(n);
+    Theta = pinv(Xmin) * XminTheta;
+
     % Add constraint
-    C = [
-        [Xmin*Theta Xplus*Theta ; (Xplus*Theta)' Xmin*Theta] >= tolerance];
+    C = [[XminTheta Xplus*Theta ; (Xplus*Theta).' XminTheta] >= tolerance];
 
     % Solving the problem
     diagnostics = optimize(C, [], options);
@@ -64,7 +61,7 @@ function [bool, K, diagnostics, info] = isInformStateFeedback(X, U, tolerance, o
     end
     
     % Check if the Xmin * Theta is symetric
-    if Xmin * Theta ~= (Xmin * Theta)'
+    if Xmin * Theta ~= (Xmin * Theta).'
         info = info + 2;
     end
     

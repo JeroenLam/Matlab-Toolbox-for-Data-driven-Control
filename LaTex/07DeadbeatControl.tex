@@ -32,27 +32,28 @@ Proof '$\Leftarrow$': \\
 Thus finding a right inverse such that $X_+ X_-^\dagger$ is nilpotent is equivalent to finding an $H$ such that $X_+ F + X_+ G H$ is nilpotent. Finding this $H$ can be done using pole placement methods for the pair $(X_+ F, X_+ G)$ and placing all eigenvalues at zero.
 
 % Pseudo code / algorithm
-\subsection{Algorithm deadbeat control}
-Using the mathematics above we can construct an algorithm for checking if the data is informative for deadbeat control and what the corresponding controller is.
+%\subsection{Algorithm deadbeat control}
+%Using the mathematics above we can construct an algorithm for checking if the data is informative for deadbeat control and what the corresponding controller is.
 
-\begin{lstlisting}
-provide X_, X+ and U
-if X_ has full row rank
-	if X_ is square
-		if X+ * inv(X_) is nilpotent
-			The data is informative for deadbeat control
-			K = U_ * inv(X_)
-	else
-		F : spans rowspace of X_ (pseudo inverse of X_ -> pinv(X_)) 
-		G : spans the nullspace of X_ (null(X_))
-		if (X+ F, X+ G) is controllable
-			H = poleplacement(X+ F, X+ G, [0 ... 0])
-			The data is informative for deadbeat control
-			K = U_ * (F + G H)
-The data is not informative for deadbeat control
-\end{lstlisting}
+%\begin{lstlisting}
+%provide X_, X+ and U
+%if X_ has full row rank
+%	if X_ is square
+%		if X+ * inv(X_) is nilpotent
+%			The data is informative for deadbeat control
+%			K = U_ * inv(X_)
+%	else
+%		F : spans rowspace of X_ (pseudo inverse of X_ -> pinv(X_)) 
+%		G : spans the nullspace of X_ (null(X_))
+%		if (X+ F, X+ G) is controllable
+%			H = poleplacement(X+ F, X+ G, [0 ... 0])
+%			The data is informative for deadbeat control
+%			K = U_ * (F + G H)
+%else
+%	The data is not informative for deadbeat control
+%\end{lstlisting}
 
-However, due to limitation in Matlabs pole placement function we are not able to implement the algorithm into matlab directly. This is because matlab has 2 functions for pole placement, the \mon{place()} function which does not support poles with high multiplicity, which is hence not useable. The other function \mon{acker()} does support pole placement of poles with high multiplicity, but it is limited to a single dimensional input space. Since $X_+ G$ is an $n \times (T-n)$ matrix, we have that our input space is of dimension $T-n$. However, we are able to circumvent this issue by extending the \mon{acker()} function to support higher dinmensional input. To do this we will use the proof of the sufficientcy in theroem 3.29 as well as lemma 3.31 from \cite{bookTrentelman}.
+However, due to limitation in Matlab's pole placement function we are not able to implement the algorithm into Matlab directly. This is because Matlab has 2 functions for pole placement, the \mon{place()} function which does not support poles with high multiplicity, which is hence not useable. The other function \mon{acker()} does support pole placement of poles with high multiplicity, but it is limited to a single dimensional input space. Since $X_+ G$ is an $n \times (T-n)$ matrix, we have that our input space is of dimension $T-n$. However, we are able to circumvent this issue by extending the \mon{acker()} function to support higher dimensional input. To do this we will use the proof of the sufficiency in theorem 3.29 as well as lemma 3.31 from \cite{bookTrentelman}.
 
 \subsection{Mathematics extending pole placement}
 
@@ -64,21 +65,21 @@ However, due to limitation in Matlabs pole placement function we are not able to
 
 Assume that the pair $(A,B)$ is controllable, we will use \cite[Lemma 3.31]{bookTrentelman} to construct $u_0, \dots , u_{n-1}$ and $x_0,x_1, \dots ,x_n$. We pick $u_n$ to be arbitrary. Then there exists a unique map $F_0$ such that $F_0 x_k = u_k$ for $k = 1,\dots,n$. We can substitute this to get:
 \[ x_{k+1} = Ax_k + BF_0 x_k = (A + BF_0 ) x_k \]
-for $k \in [1, \dots, n]$. From this we can see that $x_k = (A+BF_0)^{k-1} x_1$. By construction of lemma 3.31 we have that $x_0 = 0$, thus we have $x_1 = A * 0 + B * u_0 = Bu_0$. We will call this $b = Bu_0 = x_1$. By construction $x_1,\dots,x_n$ are independent. Thus we know that the controlability matrix $\begin{bmatrix}b&(A+BF_0)b&\dots&(A+BF_0)^{n-1}b\end{bmatrix} = \begin{bmatrix}x_1&x_2&\dots&x_n\end{bmatrix}$ is full rank. Hence the pair $(A+BF_0,b)$ is controlable. Since the matrix $b$ is a column vector we can use the \mon{acker()} algorithm to compute a suitable controller $f$ such that $A+BF_0 + bf = A + B(F_0 + u_0 f)$ has apropriate eigenvalues. From this we construct the controller $F = F_0 + u_0 f$ that places the eigenvalues in the chosen positions.
+for $k \in [1, \dots, n]$. From this we can see that $x_k = (A+BF_0)^{k-1} x_1$. By construction of lemma 3.31 we have that $x_0 = 0$, thus we have $x_1 = A * 0 + B * u_0 = Bu_0$. We will call this $b = Bu_0 = x_1$. By construction $x_1,\dots,x_n$ are independent. Thus we know that the controllability matrix $\begin{bmatrix}b&(A+BF_0)b&\dots&(A+BF_0)^{n-1}b\end{bmatrix} = \begin{bmatrix}x_1&x_2&\dots&x_n\end{bmatrix}$ is full rank. Hence the pair $(A+BF_0,b)$ is controllable. Since the matrix $b$ is a column vector we can use the \mon{acker()} algorithm to compute a suitable controller $f$ such that $A+BF_0 + bf = A + B(F_0 + u_0 f)$ has appropriate eigenvalues. From this we construct the controller $F = F_0 + u_0 f$ that places the eigenvalues in the chosen positions.
 
-\subsection{Algorithm extending pole placement}
-We will now rewrite this into pseudo code:
-\begin{lstlisting}
-Provide A, B and poles
-n : dimension of state space
-m : dimension of input space
-construct linear independent x_1, ... ,x_n from u_0, ..., u_n-1
-pick an arbitrary u_n
-F0 := [u1 u2 ... un] * inv([x1 x2 ... xn])
-b  := B * u0
-f  := acker(A + B F0, b, poles)
-K  := F0 + u_0 f
-\end{lstlisting}
+%\subsection{Algorithm extending pole placement}
+%We will now rewrite this into pseudo code:
+%\begin{lstlisting}
+%Provide A, B and poles
+%n : dimension of state space
+%m : dimension of input space
+%construct linear independent x_1, ... ,x_n from u_0, ..., u_n-1
+%pick an arbitrary u_n
+%F0 := [u1 u2 ... un] * inv([x1 x2 ... xn])
+%b  := B * u0
+%f  := acker(A + B F0, b, poles)
+%K  := F0 + u_0 f
+%\end{lstlisting}
 
 % Example using function
 \subsection{Examples using implementation}
@@ -98,3 +99,49 @@ The algorithm above is implemented in the following functions:
 \textbf{\mon{K}}: (matrix) If the data is informative, it contains a stabilising controller \mon{K} for closed loop control \mon{A+BK}, empty otherwise.
 
 \subsubsection{Examples}
+In this example we will consider the following data:
+\begin{align*} X &= \begin{bmatrix} 0&2&1&0\\1&1&0&0 \end{bmatrix} & U &= \begin{bmatrix} 1&0&0 \end{bmatrix}\end{align*} 
+Before we look if the data is informative for deadbeat control, we will fist consider if the data is informative for system identification and controllability. Recall that for system identification we need that $\begin{bmatrix} X_- \\ U_- \end{bmatrix}$ is full row rank and for controllability we need that $X_+ - \lambda X_-$ is full row rank for all $\lambda \in \mathbb{C}$.
+\begin{align*}
+rank(\begin{bmatrix} X_- \\ U_- \end{bmatrix}) &= n + m & rank(X_+ - \lambda X_-) &= n \\
+rank(\begin{bmatrix} 0&2&1\\1&1&0\\1&0&0 \end{bmatrix}) &= 3 & rank(\begin{bmatrix} 2&1 - 2\lambda &-\lambda\\1-\lambda&-\lambda&0 \end{bmatrix}) &= 2
+\end{align*}
+
+Hence the data is informative for system identification and controllability. Due to the being able to identify the system and the system being controllable we expect that we are able to find a deadbeat controller. We will first attempt to construct one from the data directly. For this we will first need to find an $F$ and $G$ such that $X_- \begin{bmatrix}F&G\end{bmatrix} = \begin{bmatrix}I_2&0_{2\times 1}\end{bmatrix}$. We find the following $F$ and $G$:
+\begin{align*}
+F &= \begin{bmatrix}
+	-\frac{1}{3} & \frac{5}{6} \\ \frac{1}{3} & \frac{1}{6} \\ \frac{1}{3} & -\frac{1}{3}
+\end{bmatrix} &
+G &= \begin{bmatrix}
+	\frac{1}{\sqrt{6}} \\ -\frac{1}{\sqrt{6}} \\ \frac{\sqrt{2}}{\sqrt{3}}
+\end{bmatrix}
+\end{align*}
+Any right inverse of $X_-$ can be expressed as $X_-^\dagger = F + G H$ where $H \in \mathbb{R}^{1 \times 2}$. Recall that we need to find a right inverse such that $X_+ X_-^\dagger$ is nilpotent. Hence we need to find an $H$ such that $X_+ F + X_+ G H$ only has zero eigenvalues. 
+\begin{align*}
+X_+ F + X_+ G H &= \begin{bmatrix} -\frac{1}{3} & \frac{11}{6} \\ -\frac{1}{3} & \frac{5}{6} \end{bmatrix} + \begin{bmatrix}\frac{1}{\sqrt{6}} \\ \frac{1}{\sqrt{6}}\end{bmatrix} \begin{bmatrix} h_1 & h_2 \end{bmatrix} \\
+\end{align*} 
+By applying pole placement methods we can find that $H = \begin{bmatrix} \frac{\sqrt{2}}{\sqrt{3}} & \frac{-5}{\sqrt{6}} \end{bmatrix}$ does indeed provide a right inverse such that $X_+ X_-^\dagger$ is nilpotent. Using this right inverse we can construct the deadbeat controller $K$ as follows.
+\[ K = U_- * X_-^\dagger = U_- (F + G H) = \begin{bmatrix} 1&0&0 \end{bmatrix} \begin{bmatrix} 0&0\\0&1\\1&2 \end{bmatrix} = \begin{bmatrix} 0&0 \end{bmatrix} \] 
+
+At this point we will recall that we where able to identify the system using the data. If we do this we find that the system is given by:
+\begin{align*}
+A &= \begin{bmatrix}0&1\\0&0\end{bmatrix} & B &= \begin{bmatrix}1\\1\end{bmatrix}
+\end{align*}
+As we can see the system already has only zero eigenvalues, hence it will follow the properties of deadbeat control if we provide no input.
+
+We can also find the same results by using the Matlab function:
+\begin{lstlisting}
+X = [0 2 1 0 ; 1 1 0 0]; U = [1 0 0];
+[bool, K] = isInformDeadbeatControl(X,U)
+\end{lstlisting}
+Which will return: \mon{[ 1, [0.5329e-14 -0.6217e-14] ]}.
+
+
+
+
+
+
+
+
+
+
