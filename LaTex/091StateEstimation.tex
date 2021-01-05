@@ -1,0 +1,50 @@
+\section{State estimation}
+% Abstract section
+
+
+% Introduce state estimation
+
+
+% Introduce the i/o set (and informativity?)
+
+
+% Note that we have another duality
+Note that similar to the stabilisation by dynamic measurement feedback, we can reduce our input to be in a form which is full rank.
+
+% Introduce block Henkel matrices
+
+
+% Introduce the Henkel matrices that we are going to use
+
+
+% Thr 40 state estimation 
+
+
+% Section about how to compute the intersection of the rowspace
+
+
+% Combine state estimation with stabilisation by dynamic measurement feedback
+
+
+
+% Example using function
+\subsection{Examples using implementation}
+The algorithm above is implemented in the following functions:
+\subsubsection*{Syntax}
+\mon{[bool, X\_bar, U\_bar, Y\_bar] = isInformStateIdentification(U, Y, n)}
+
+\subsubsection*{Description}
+\mon{[bool, X\_bar, U\_bar, Y\_bar] = isInformStateIdentification(U, Y, n)}: 
+
+\subsubsection*{Input arguments}
+\textbf{\mon{U}}: Input data matrix of dimension $m \times T$.\\
+\textbf{\mon{Y}}: Output data matrix of dimension $p \times T$.\\
+\textbf{\mon{n}}: Dimension of the state space.
+
+\subsubsection*{Output arguments}
+\textbf{\mon{bool}}: (boolean) True if the data is informative for state space identification, false otherwise\\
+\textbf{\mon{X\_bar}}: (matrix) .\\
+\textbf{\mon{U\_bar}}: (matrix) .\\
+\textbf{\mon{Y\_bar}}: (matrix) .
+
+\subsubsection{Examples}

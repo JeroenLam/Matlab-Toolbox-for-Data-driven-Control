@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7350 64-bit) (preloaded format=pdflatex 2020.3.25)  4 JAN 2021 14:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7350 64-bit) (preloaded format=pdflatex 2020.3.25)  5 JAN 2021 13:44
 entering extended mode
 **./main.tex
 (main.tex
@@ -1222,12 +1222,7 @@ LaTeX Font Info:    Trying to load font information for U+rsfs on input line 97
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/jknappen\ursfs.fd"
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
-) (main.toc)
-\tf@toc=\write7
-\openout7 = `main.toc'.
-
-
-(abstract.tex
+) (main.toc
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
 Make it at least 13.59999pt.
@@ -1236,7 +1231,11 @@ This may cause the page layout to be inconsistent, however.
 
 [1{C:/Users/Jeroen Lammers/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
-]) (introduction.tex
+])
+\tf@toc=\write7
+\openout7 = `main.toc'.
+
+(abstract.tex) (introduction.tex
 
 LaTeX Warning: Citation 'waarde2019data' on page 2 undefined on input line 2.
 
@@ -1351,7 +1350,36 @@ n/10.95 )$ is con-trol-lable, we will use [[]] to con-struct $\OML/cmm/m/it/10.
 95 u[]; [] ; u[]$
  []
 
-[18] [19]) [20]
+[18] [19]) [20] (08LQR.tex
+
+LaTeX Warning: Citation 'bookTrentelman' on page 21 undefined on input line 13.
+
+
+
+Overfull \hbox (30.85387pt too wide) in paragraph at lines 13--14
+[]\OT1/cmr/m/n/10.95 Using the fol-low-ing the-o-rem we can find the so-lu-tion
+ to the LQR prob-lem. Re-call from [[]]
+ []
+
+
+LaTeX Warning: Citation 'waarde2019data' on page 21 undefined on input line 33.
+
+
+[21]
+
+LaTeX Warning: Citation 'waarde2019data' on page 22 undefined on input line 44.
+
+
+
+LaTeX Warning: Citation 'waarde2019data' on page 22 undefined on input line 54.
+
+
+[22]
+
+LaTeX Warning: Citation 'waarde2019data' on page 23 undefined on input line 69.
+
+
+[23]) [24]
 
 LaTeX Warning: Empty bibliography on input line 125.
 
@@ -1371,10 +1399,10 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 28116 strings out of 480934
- 554524 string characters out of 2909653
- 1262857 words of memory out of 3000000
- 43469 multiletter control sequences out of 15000+200000
+ 28123 strings out of 480934
+ 554687 string characters out of 2909653
+ 1262881 words of memory out of 3000000
+ 43474 multiletter control sequences out of 15000+200000
  542363 words of font info for 62 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,15n,83p,880b,1633s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1392,9 +1420,9 @@ s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX
 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmtt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
 public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (20 pages, 262710 bytes).
+Output written on main.pdf (24 pages, 281572 bytes).
 PDF statistics:
- 154 PDF objects out of 1000 (max. 8388607)
+ 166 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  109 words of extra memory for PDF output out of 10000 (max. 10000000)
 

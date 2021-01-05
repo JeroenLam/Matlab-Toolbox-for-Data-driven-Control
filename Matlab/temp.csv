@@ -1,8 +1,0 @@
-"epsilon","K",,,"b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
-0,0.0019411,-0.4271,-0.25753,"succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
-,-0.21247,0.26913,0.62043,,,,,,,,
-
-"epsilon","K",,,"b_iqs","d_iqs_problem","d_iqs_info","b_s","d_s_problem","d_s_info","true_stable",
-0,0.079319,-0.40527,-0.34505,"succes",0,"Successfully solved (MOSEK)",0,3,"Maximum iterations or time limit exceeded (BMIBNB)",1,
-,-0.015735,0.18198,0.35666,,,,,,,,
-
