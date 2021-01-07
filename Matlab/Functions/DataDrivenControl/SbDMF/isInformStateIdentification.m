@@ -1,18 +1,17 @@
-function [bool, X_bar, U_bar, Y_bar] = isInformStateIdentification(U, Y, n)
+function [bool, X_hat, U_hat, Y_hat] = isInformStateIdentification(U, Y, n)
 %ISINFORMSTATEIDENTIFICATION Summary of this function goes here
 %   Detailed explanation goes here
 
     bool = false;
-    X_bar = [];
-    U_bar = []; 
-    Y_bar = [];
+    X_hat = [];
+    U_hat = []; 
+    Y_hat = [];
     
     if size(U,2) ~= size(Y,2)
         error("U and Y should have the same length");
     end
-    % n : when n is not given?
     m = size(U, 1);
-    k = rank(U);
+    k = n + 1;
     l = size(Y, 1);
     T = size(U,2);
     
@@ -30,8 +29,8 @@ function [bool, X_bar, U_bar, Y_bar] = isInformStateIdentification(U, Y, n)
             
             % Algorithm to find the X_f rowspace via the intersection
             % Method 1 (From paper [48 thr4])
-            H1 = [Y_p ; U_p];
-            H2 = [Y_f ; U_f];
+            H1 = [U_p ; Y_p];
+            H2 = [U_f ; Y_f];
             H  = [H1 ; H2];
             [U_h, S_h, ~] = svd(H);
             
@@ -48,10 +47,14 @@ function [bool, X_bar, U_bar, Y_bar] = isInformStateIdentification(U, Y, n)
             u_q = U_q(:, 1:s_q_rank);
             
             bool = true;
-            X_bar = u_q' * u_12' * H1;
-            U_bar = U(:, k + 1:T - k);
-            Y_bar = Y(:, k + 1:T - k);
+            X_hat = u_q' * u_12' * H1;
+            U_hat = U(:, k + 1:T - k);
+            Y_hat = Y(:, k + 1:T - k);
+        else
+            disp("Hankel matrix rank condition not satisfied")
         end
+    else
+        disp("No valid k found")
     end
 end
 

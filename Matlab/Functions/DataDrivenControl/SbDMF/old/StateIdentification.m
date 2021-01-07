@@ -1,31 +1,43 @@
-X = [];
-U = [1 0 2 0 1 2 1 1 1 1 1 1 4 6 8 9 5 2 4 3 1 1 1 1 1 1 1 1 1 5 8 7 4 6 9 8 7; 
+% Generate data
+%U = [1 0 2 0 1 2 1 1 1 1 1 1 4 6 8 9 5 2 4 3 1 1 1 1 1 1 1 1 1 5 8 7 4 6 9 8 7; 
      0 1 0 2 0 0 0 1 1 1 2 2 4 6 8 3 1 5 7 9 1 1 1 1 1 1 1 1 5 7 9 6 4 8 6 8 4;
      0 1 1 0 1 0 2 0 2 0 1 1 2 3 0 2 1 3 0 1 1 1 1 1 1 1 1 1 2 3 7 9 6 5 4 3 2];
-Y = [];
+%B = [0 1 2;0 1 0];
+%D = [0 0 0;0 0 0];
+
+U = [1 2 0 1 0 -2 -1 0 1 2 0 10 -5];
+B = [1 ; -1];
+D = [0];
 
 x0 = [0;0];
+A = [0 1 ; -1 -1];%*0.5;
+C = [1 0];
 
-A = [0 1 ; -1 -1]*0.5;
-B = [0 1 2;0 1 0];
-C = [1 0; 0 0];
-D = [0 0 0;0 0 0];
 
-sys_d = ss(A,B,C,D,1);
+
 
 [U, X, Y] = generateData(A,B,x0,U,C,D);
 
-[bool, K, L, M] = isInformDynamicMeasurementFeedback(X, U, Y);
 
+% Find a controller using state data
+[bool_dmf, K, L, M] = isInformDynamicMeasurementFeedback(X, U, Y);
 
+% Find a controller without state data
+[bool_si, X_bar, U_bar, Y_bar] = isInformStateIdentification(U, Y, 2)
+[bool_dmf_bar, K_bar, L_bar, M_bar] = isInformDynamicMeasurementFeedback(X_bar, U_bar, Y_bar)
 
 sys_cl = [ A    B*M;
           L*C K+L*D*M];
 disp('eigenvalues Using full rank input')
 eig(sys_cl)
 
+sys_cl_bar = [ A    B*M_bar;
+              L_bar*C K_bar+L_bar*D*M_bar];
+disp('eigenvalues using state extimation')
+eig(sys_cl_bar)
 
 
+%%
 % State estimation
 n = size(A,1);
 m = size(B,2);
@@ -75,12 +87,12 @@ X_f = u_q' * u_12' * H1;
 
 % - - Method 2 - - (Based on subspace intersection found on stackexchange)
 % Find a basis for the row space
-rs_p = colspace(sym([U_p ; Y_p]'))';
-rs_f = colspace(sym([U_f ; Y_f]'))';
+rs_p = colspace(sym([U_p ; Y_p]'));
+rs_f = colspace(sym([U_f ; Y_f]'));
 
 % Find the basis for the intersection
 % https://math.stackexchange.com/questions/25371/how-to-find-basis-for-intersection-of-two-vector-spaces-in-mathbbrn
-nullVec = null([rs_p' -rs_f']);
+nullVec = null([rs_p -rs_f]);
 
 X_f2 = [];
 for idx = 1:size(nullVec,2)
@@ -103,7 +115,7 @@ X_1 = X_f;
 
 %[boolIdent, A, B, C, D] = isInformIdentification(X_bar, U_bar, Y_bar);
 
-
+%%
 
 
 [bool_bar, K_bar, L_bar, M_bar] = isInformDynamicMeasurementFeedback(X_bar, U_bar, Y_bar)

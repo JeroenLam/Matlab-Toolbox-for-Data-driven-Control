@@ -51,7 +51,7 @@ With this representation of our state and input data we have that $X^{i}_{+} = A
 	X_{-} &= \left[ \begin{array}{ccc} X^{1}_{-} & \dots & X^{q}_{-} \end{array} \right]
 \end{align*}
 We will define our data $\mathcal{D} := (U_-, X)$. In this example we have that $\Sigma_\mathcal{D} = \Sigma_{(U_-,X)} = \Sigma_{i/s}$ and is defined by:
-\[ \Sigma_{(U_-,X)} = \left\{ (A, B) \, | \, X_{+} = \begin{bmatrix} A & B \end{bmatrix} \begin{bmatrix} X_{-} \\ U_{-} \end{bmatrix} \right\} \]
+\[ \Sigma_{i/s} = \Sigma_{(U_-,X)} = \left\{ (A, B) \, | \, X_{+} = \begin{bmatrix} A & B \end{bmatrix} \begin{bmatrix} X_{-} \\ U_{-} \end{bmatrix} \right\} \]
 By construction we know that at least the true system $(A_s,B_s)$ is contained in this set.
 
 We can extend this concept to also include the output of a system. Assume we have a system of the form:
@@ -68,6 +68,7 @@ Let us define $Y_-$ in the following way:
 Then we can define the set of systems that can describe the data as follows:
 \begin{equation}
 \label{isoSet} 
+\Sigma_{i/o/s} = 
 \Sigma_{(U_-,X, Y_-)} = \left\{ (A, B, C, D) \, | \, 
 \begin{bmatrix} X_{+} \\ Y_{-} \end{bmatrix} = 
 \begin{bmatrix} A & B \\ C & D \end{bmatrix} 

@@ -2,13 +2,13 @@
 \contentsline {section}{\numberline {1}Abstract}{2}%
 \contentsline {section}{\numberline {2}Introduction}{2}%
 \contentsline {section}{\numberline {3}Definitions}{2}%
-\contentsline {subsection}{\numberline {3.1}Informativity}{2}%
+\contentsline {subsection}{\numberline {3.1}Informativity}{3}%
 \contentsline {subsection}{\numberline {3.2}Data and model classes}{3}%
 \contentsline {section}{\numberline {4}System identification}{5}%
 \contentsline {subsection}{\numberline {4.1}Mathematics}{5}%
 \contentsline {subsection}{\numberline {4.2}Algorithm}{5}%
 \contentsline {subsection}{\numberline {4.3}Examples using implementation}{6}%
-\contentsline {subsubsection}{\numberline {4.3.1}Examples}{6}%
+\contentsline {subsubsection}{\numberline {4.3.1}Examples}{7}%
 \contentsline {section}{\numberline {5}Controllability}{8}%
 \contentsline {subsection}{\numberline {5.1}Examples using implementation}{8}%
 \contentsline {section}{\numberline {6}Stabilisability}{10}%
@@ -32,3 +32,11 @@
 \contentsline {subsection}{\numberline {10.2}Data-driven LQR}{22}%
 \contentsline {subsection}{\numberline {10.3}Examples using implementation}{23}%
 \contentsline {subsubsection}{\numberline {10.3.1}Examples}{24}%
+\contentsline {section}{\numberline {11}Dynamic measurement feedback}{25}%
+\contentsline {subsection}{\numberline {11.1}Non-data driven dynamic feedback control}{25}%
+\contentsline {subsection}{\numberline {11.2}Data-driven stabilisation by dynamic measurement feedback}{25}%
+\contentsline {subsection}{\numberline {11.3}Examples using implementation}{27}%
+\contentsline {subsubsection}{\numberline {11.3.1}Examples}{28}%
+\contentsline {section}{\numberline {12}State estimation}{29}%
+\contentsline {subsection}{\numberline {12.1}Examples using implementation}{31}%
+\contentsline {subsubsection}{\numberline {12.1.1}Examples}{32}%

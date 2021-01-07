@@ -1,30 +1,115 @@
 \section{Dynamic measurement feedback}
 % Abstract section
+In this section we will consider input-state-output systems and how we can use their data to construct a dynamic measurement controller that stabilises the closed loop system. We will start by recalling what a dynamic measurement controller entails. After which we will consider how we can extend this to data-driven control and how we can define the set of systems as well as informativity. We will then consider how we can find necessary and sufficient conditions for finding a dynamic measurement controller for input-state-output data. In the next section we will introduce the consept of state estimation which we will use to extend our theory about dynamic measurement feedback to work using only input and output data.
 
+% Introduce Dynamic feedback control for normal control (reference to Trentelman book)
+\subsection{Non-data driven dynamic feedback control}
+In this section we will consider discrete time systems that are of the following form.
+\begin{subequations}\label{outputSys}
+	\begin{align} 
+		x(t+1) &= A_s x(t) + B_s u(t) \\
+		y(t)   &= C_s x(t) + D_s u(t)
+	\end{align}
+\end{subequations}
 
-% Introduce Observer based feedback for normal control (reference to Trentelman book)
-% State observer 
+Instead of only using state feedback we will also add an observer to the loop. By combining the observer and the state feedback we get a dynamic measurement controller (see \cite[section 3.12]{bookTrentelman}).
+%Instead of using a static feedback gain $K$ we will couple the input of the system to a new linear system. We will call this system the dynamic measurement controller and it is given by:
+\begin{align*}
+	w(t+1) &= Kw(t) + Ly(t) \\
+	u(t)   &= Mw(t)
+\end{align*}
+Using this controller we can write the closed loop system as:
+\begin{align*}
+	\begin{bmatrix}
+		x(t+1) \\ w(t+1)
+	\end{bmatrix}
+	&=
+	\begin{bmatrix}
+		A_s  & B_s M \\ LC_s & K + LD_s M
+	\end{bmatrix}
+	\begin{bmatrix}
+		x(t) \\ w(t)
+	\end{bmatrix}
+\end{align*}
+For this controller to be a stabilising controller we need that the closed loop system is stable.
 
-% Introduce the KLM plant
+\subsection{Data-driven stabilisation by dynamic measurement feedback}
+Recall that the $\Sigma_{i/o/s}$ is given by:
+\begin{equation}
+\tag{\ref{isoSet}} 
+\Sigma_{i/o/s} = \left\{ (A, B, C, D) \, | \, 
+\begin{bmatrix} X_{+} \\ Y_{-} \end{bmatrix} = 
+\begin{bmatrix} A & B \\ C & D \end{bmatrix} 
+\begin{bmatrix} X_{-} \\ U_{-} \end{bmatrix} \right\} 
+\end{equation}
+We will now define the set of systems to be stabilised using the dynamic feedback controller $(K,L,M)$ as follows.
+\[
+	\Sigma_{K,L,M} = \left\{ (A,B,C,D) \, | \, \begin{bmatrix} A & BM \\ LC & K + LDM \end{bmatrix} \mbox{ is stable} \right\}
+\]
+Using these sets we can construct a definition for informativity for dynamic measurement feedback as follows.
 
+\Def{Informative for stabilisation by dynamic measurement feedback \cite[Def 32]{waarde2019data}}{
+	We say that the data $(U_-, X, Y_-)$ is informative for stabilisation by dynamic measurement feedback if there exists matrices $K$, $L$ and $M$ such that all systems described by the data are stabilised using the dynamic measurement controller $(K,L,M)$. I.e. $\Sigma_{i/o/s} \subseteq \Sigma_{K,L,M}$.
+}
 
-% Introduce i/o/s set en KLM set
+We will start by assuming that our input data is of full rank. The following theorem provides us with a condition on when the data is informative for dynamic measurement feedback.
 
+\Thr{\cite[Thr 34]{waarde2019data}}{
+	Consider the data $(U_-,X,Y_-)$ and assume that $U_-$ has full row rank. Then the data is informative for stabilisation by dynamic measurement feedback if and only if the following conditions are satisfied:
+	\begin{enumerate}
+		\item We have that the data is informative for system identification.
+			\[ \Sigma_{i/o/s} = \left\{ (A_s, B_s, C_s, D_s) \right\} \]
+		\item The pair $(A_s,B_s)$ is stabilisable and the pair $(C_s,A_s)$ is detectable.
+	\end{enumerate}
+	Moreover, if the above conditions are satisfied, a stabilising controller $(K,L,M)$ can be constructed as follows:
+	\begin{enumerate}
+		\item Take $M$ such that $A_s + B_sM$ is stable.
+		\item Take $L$ such that $A_s - LC_s$ is stable.
+		\item Define $K = A_s + B_sM - LC_s - LD_sM$.
+	\end{enumerate}
+}
 
-% Introduce informativity of stabilisation by dynamic measurement feedback
+Although the results of this theorem is useful it is quite limited in applicability. Hence we will consider the following lemma that we will use to remove the full input rank restriction from the previous theorem.
 
+\Lemma{\cite[Lem 33]{waarde2019data}}{
+	Consider the data $(U_-, X, Y_-)$ and the corresponding set $\Sigma_{i/o/s}$. Let the rank $U_-$ be $k$ where $k \leq m$. Then we can find a matrix $S$ of size $m \times k$ such that $S$ has full column rank and $U_- = S \bar{U}_-$ where $\bar{U}_-$ has full row rank of dimension $k$. 
+	Then the data $(U_-,X,Y_-)$ is informative for stabilisation by dynamic measurement feedback if and only if the data $(\bar{U}_-, X, Y_-)$ is informative for stabilisation by dynamic measurement feedback. 
+	Moreover, if we $\bar{\Sigma}_{i/o/s}$ be the set of systems that are described by the reduced data $(\bar{U}_-,X,Y_-)$ , $(\bar{K},\bar{L},\bar{M})$ is the corresponding dynamic measurement controller and $S^\dagger$ is the left inverse of $S$, then 
+	\begin{align*}
+		\Sigma_{i/o/s} \subseteq \Sigma_{K,L,M} &\Longrightarrow \bar{\Sigma}_{i/o/s} \subseteq \Sigma_{K,L,S^\dagger M} \\
+		\bar{\Sigma}_{i/o/s} \subseteq \Sigma_{\bar{K},\bar{L},\bar{M}} &\Longrightarrow \Sigma_{i/o/s} \subseteq \Sigma_{\bar{K},\bar{L},S\bar{M}}
+	\end{align*}
+}
 
-% Thr 34 Solution for full rank U_
-We will first consider the case in which we have that $U_-$ has fill row rank. After which we will consider a lemma which makes this condition obsolete.
+Using this duality we are able to extend the precious theorem to work for cases in which the input data is not full rank.
 
-% Lemma 33 Dual for U_ and Û_ (input reduction?)
+\Cor{\cite[Cor 36]{waarde2019data}}{
+	Let $S$ be any full column rank matrix such that $U_- = S \bar{U}_-$ with $\bar{U}_-$ full row rank $k$. The data $(U_-,X,Y_-)$ is informative for stabilisation by dynamic measurement feedback if and only if the follwoinf two conditions are satisfied:
+	\begin{enumerate}
+		\item $(\bar{U}_-,X,Y_-)$ is informative for system identification.
+			\[ \Sigma_{i/o/s} = \left\{ (\bar{A}_s, \bar{B}_s, \bar{C}_s, \bar{D}_s) \right\} \]
+		\item The pair $(\bar{A}_s,\bar{B}_s)$ is stabilisable and the pair $(\bar{C}_s,\bar{A}_s)$ is detectable.
+	\end{enumerate}
+	Moreover, if the above conditions are satisfied, a stabilising controller $(K,L,M)$ is constructed as follows:
+	\begin{enumerate}
+		\item Let $\bar{M}$ be such that $\bar{A}_s + \bar{B}_s \bar{M}$ is stable.
+		\item Take $M = S \bar{M}$.
+		\item Take $L$ such that $\bar{A}_s - L \bar{C}_s$ is stable.
+		\item Define $K = \bar{A}_s + \bar{B}_s \bar{M} - L\bar{C}_s - L\bar{D}_s\bar{M}$.
+	\end{enumerate}
+}
 
-
-% Cor 36 Solution for Û_
-
-
-% Rmk 37 Note that B,D might not be identifieble
-Note that due to $U_-$ not having full row rank we might not be able to properly identify $B_s$ and $D_s$ in the cases where we use input reduction.
+Note that if we where to substitute $U_- = S\bar{U}_-$ in the model class we get the following.
+\[ \begin{bmatrix} X_{+} \\ Y_{-} \end{bmatrix} = 
+\begin{bmatrix} A_s & B_s \\ C_s & D_s \end{bmatrix} 
+\begin{bmatrix} X_{-} \\ U_{-} \end{bmatrix} = 
+\begin{bmatrix} A_s & B_s \\ C_s & D_s \end{bmatrix} 
+\begin{bmatrix} I \\ S \end{bmatrix}
+\begin{bmatrix} X_{-} \\ \bar{U}_{-} \end{bmatrix} = 
+\begin{bmatrix} A_s & B_sS \\ C_s & D_sS \end{bmatrix} 
+\begin{bmatrix} X_{-} \\ \bar{U}_{-} \end{bmatrix}
+ \]
+If we assume that the state and reduced input data have full rank then we can see that we are able to identify the systems $A_s$ and $C_s$ matrices uniquely. However we are only able to indentify the systems $B_s$ and $D_s$ matrices up to similarity transformation $S$.
 
 % Example using function
 \subsection{Examples using implementation}
