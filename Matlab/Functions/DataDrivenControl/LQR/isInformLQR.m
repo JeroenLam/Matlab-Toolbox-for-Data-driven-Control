@@ -59,15 +59,25 @@ function [bool, K, diagnostics, info] = isInformLQR(X, U, Q, R, tolerance, optio
     % stable and QA = 0. The optimal feedback gain is given by K = 0;
     else
         % Define variable (XminTheta is symmetric by construction)
+        [n,T] = size(Xmin);
         Theta = sdpvar(T, n);
         P = sdpvar(n);
         
         % Add constraint
         C = [ P                Xplus * Theta ;
              (Xplus * Theta)'  P             ] >= tolerance;
-        C = C + [Umin * Theta == 0];
-        C = C + [Q * Xplus * Theta == 0];
-        C = C + [P == Xmin * Theta];
+        try
+            C = C + [Umin * Theta == 0];
+        catch
+        end
+        try
+            C = C + [Q * Xplus * Theta == 0];
+        catch
+        end
+        try
+            C = C + [P == Xmin * Theta];
+        catch
+        end
         
         % Solving the problem
         diagnostics = optimize(C, [], options);

@@ -17,7 +17,7 @@ We will base our algorithm on theorem 8 and remark 9 from \cite{waarde2019data}.
 This theorem can be reduced to check a finite amount of complex numbers similar to the Hautus test. We have that the above theorem is equivalent to $rank(X+) = n$ and $rank(X_+ - \lambda X_-) = n$ for all $\lambda \neq 0$ with $\lambda^{-1} \in \sigma(X_- X_+^\dagger)$ with $X_+^\dagger$ being the right inverse of $X_+$ and $\sigma(\cdot)$ denotes the set of eigenvalues of the matrix.
 
 % Proof?
-\todo{proof?}
+%\todo{proof?}
 
 % Pseudo code / algorithm
 %This will result in the following pseudo code for the algorithm:
@@ -33,7 +33,7 @@ This theorem can be reduced to check a finite amount of complex numbers similar 
 %\end{lstlisting}
 
 % Example using function
-\subsection{Examples using implementation}
+\subsection{Implementation}
 The algorithm above is implemented in the following functions:
 \subsubsection*{Syntax}
 \mon{[bool] = isInformControllable(X)} 
@@ -47,7 +47,7 @@ The algorithm above is implemented in the following functions:
 \subsubsection*{Output arguments}
 \textbf{\mon{bool}}: (boolean) True if the data is informative for controllability, false otherwise
 
-\subsubsection*{Examples}
+\subsection{Examples} \label{NotIdentifyButControllable}
 We will consider the same data as we did in the example of system identification. Recall the provided data was:
 \begin{align*}
 X &= \begin{bmatrix} 0&1&0 \\ 0&0&1 \end{bmatrix} & U = \begin{bmatrix}	1&0	\end{bmatrix}

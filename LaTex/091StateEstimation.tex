@@ -15,12 +15,12 @@ In this section we will be considering discrete time systems of the following fo
 \end{subequations}
 We will assume that our data does not contain any state space data, i.e. $\mathcal{D} = \{ U_-,Y_- \}$. We will also assume our data to be sampled from a single interval as well as that the dimension of the state space is known. If the dimension of the state space is not know beforehand then it might be found using subspace identification methods. However, we will not be going into details about subspace identification methods in this paper.
 
-Using these assumption we will define the set of systems corresponding to the input output data as all systems $(A,B,C,D)$ such that there exists a state sequence $X$ such that the system equations hold. \todo{Add this to the start instead and reference?}
+Using these assumption we will define the set of systems corresponding to the input output data as all systems $(A,B,C,D)$ such that there exists a state sequence $X$ for which the system equations hold. %\todo{Add this to the start instead and reference?}
 \begin{equation*}
 	\Sigma_{i/o} = \left\{ (A,B,C,D) \, | \, \exists X \in \mathbb{R}^{n \times (T+1)} \mbox{ s.t. } \begin{bmatrix} X_{+} \\ Y_{-} \end{bmatrix} = \begin{bmatrix} A_s & B_s \\ C_s & D_s \end{bmatrix} \begin{bmatrix} X_{-} \\ U_{-} \end{bmatrix} \mbox{ holds} \right\}
 \end{equation*}
 
-Using this set we can redefine informativity for stabilisation by dynamic measurement feedback for input output data as follows.
+Using this set we can define informativity for stabilisation by dynamic measurement feedback for input output data as follows.
 
 \Def{\cite[Def 38]{waarde2019data}}{
 	We say that the data $(U_-,Y_-)$ is informative for stabilisation by dynamic measurement feedback if there exist matrices $K$, $L$ and $M$ such that all systems described by the data are stabilised using the given controller. I.e. $\Sigma_{i/o} \subseteq \Sigma_{K,L,M}$.
@@ -112,20 +112,19 @@ Before we look at an example we first make some notes on how to actually compute
 	\end{equation*}
 }
 
-This theorem gives us a retentively easy to compute method for finding the state sequence of the data. The above described algorithm has been implemented in the following function.
+This theorem gives us a relatively easy to compute method for finding the state sequence of the data. The above described algorithm has been implemented in the following function.
 
 % Example using function
-\subsection{Examples using implementation}
-The algorithm above is implemented in the following functions:
+\subsection{Implementation}
 \subsubsection*{Syntax}
 \mon{[bool, X\_hat, U\_hat, Y\_hat] = isInformStateIdentification(U, Y, n)} 
 
 \subsubsection*{Description}
-\mon{[bool, X\_hat, U\_hat, Y\_hat] = isInformStateIdentification(U, Y, n)}: Returns if the input/output data is informative for state identification, if it is then the function will return a state sequence up to simularit that can by used for finding a dynamic measurement controller using \mon{isInformDynamicMeasurementFeedback(X\_hat, U\_hat, Y\_hat)}.
+\mon{[bool, X\_hat, U\_hat, Y\_hat] = isInformStateIdentification(U, Y, n)}: Returns if the input/output data is informative for state identification, if the data is informative, then the function will return a state sequence up to similarity that can by used for finding a dynamic measurement controller using \mon{isInformDynamicMeasurementFeedback(X\_hat, U\_hat, Y\_hat)}.
 
 \subsubsection*{Input arguments}
-\textbf{\mon{U}}: Input data matrix of dimension $m \times T$.\\
-\textbf{\mon{Y}}: Output data matrix of dimension $p \times T$.\\
+\textbf{\mon{U}}: Input data matrix of dimension $m \times T$ from a input/output data set.\\
+\textbf{\mon{Y}}: Output data matrix of dimension $p \times T$ from a input/output data set.\\
 \textbf{\mon{n}}: Dimension of the state space.
 
 \subsubsection*{Output arguments}
@@ -134,7 +133,7 @@ The algorithm above is implemented in the following functions:
 \textbf{\mon{U\_hat}}: (matrix) A input sequence that can be used to find a dynamic measurement feedback controller.\\
 \textbf{\mon{Y\_hat}}: (matrix) A output sequence that can be used to find a dynamic measurement feedback controller.
 
-\subsubsection{Examples}
+\subsection{Examples}
 In this example we will consider the following system:
 \begin{align*}
 	A &= \begin{bmatrix} 0 & 1 \\ -1 & -1 \end{bmatrix} &
@@ -205,8 +204,8 @@ Now that we have found all the components to reconstruct a state sequence we get
 \end{equation*}
 Recall that the sequence $X_f$ was defined as $X_f = \begin{bmatrix} x(k) \dots x(T-k) \end{bmatrix}$. As we can see this state sequence differs from our original state sequence.
 \begin{align*}
-	X   &= \begin{bmatrix} 0& 2& 2&-2&2& 0&-4&3& 1&-3& 4&-1& 7&-11 \\ 
-						   0&-1&-2& 1&0&-2& 4&1&-4& 2&-1&-3&-6& 4 \end{bmatrix} \\
+%	X   &= \begin{bmatrix} 0& 2& 2&-2&2& 0&-4&3& 1&-3& 4&-1& 7&-11 \\ 
+%						   0&-1&-2& 1&0&-2& 4&1&-4& 2&-1&-3&-6& 4 \end{bmatrix} \\
 	X_f &= \begin{bmatrix} -2  &   2  &   0  &  -4  &   3  &   1  &  -3  &   4 \\
 							1  &   0  &  -2  &   4  &   1  &  -4  &   2  &  -1 \end{bmatrix}
 \end{align*}
@@ -226,7 +225,6 @@ U = [1  2  0  1  0 -2 -1  0  1  2  0 10 -5];
 Y = [0  1  1 -2  2  0 -4  3  1 -3  4 -1  7];
 [bool, X_hat, U_hat, Y_hat] = isInformStateIdentification(U, Y, 2)
 \end{lstlisting}
-Which will return the same results.
 
 
 We can now use this newly defined input/state/output data to find a controler for dynamic feedback stabilisation as described by the theorem. For this we will use the provided Matlab function discussed in the previous section.

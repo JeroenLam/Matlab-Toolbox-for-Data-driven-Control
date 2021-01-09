@@ -4,10 +4,10 @@ In this section we will see how we can find a deadbeat controller using only our
 
 % What is Deadbeat
 \Def{Informative for deadbeat control \cite[Def 20]{waarde2019data}}{
-	We say the data $(U_-,X)$ is informative for deadbeat control if there exists a feedback gain $K$ such that $\Sigma_{i/s} \subseteq \Sigma_K^{nil}$. 
+	We say the data $(U_-,X)$ is informative for deadbeat control if there exists a feedback gain $K$ such that all closed loop systems are nilpotent. I.e. $\Sigma_{i/s} \subseteq \Sigma_K^{nil}$. 
 }
 
-In other words, the data is informative if we can stabilise all systems described by the data with a given $K$ such that all closed loop systems only have the zero eigenvalue.
+In other words, the data is informative if we can stabilise all systems described by the data with a given $K$ such that all closed loop systems are stable in a single step, i.e. only have the zero eigenvalue.
 
 % Mathematics
 \subsection{Mathematics deadbeat control}
@@ -17,7 +17,7 @@ We will begin by considering the following theorem that gives necessary and suff
 	The data $(U_-,X)$ is informative for deadbeat control if and only if the matrix $X_-$ has full row rank and there exists a right inverse $X_-^\dagger$ of $X_-$ such that $X_+ X_-^\dagger$ is nilpotent. Moreover, if this condition is satisfied then the feedback gain $K := U_- X_-^\dagger$ yields a deadbeat controller.
 }
 
-Using this theorem the problem boils down to finding a suitable right inverse such that $X_- X_-^\dagger$ is nilpotent given that $X_-$ has full row rank. We will consider the following 2 cases, first we will look at the case where $X_-$ is a (full rank) square matrix. Second we will look at the case where $X_-$ is a full row rank wide matrix.
+Using this theorem the problem boils down to finding a suitable right inverse such that $X_- X_-^\dagger$ is nilpotent given that $X_-$ has full row rank. We will consider the following 2 cases, first we will look at the case where $X_-$ is a full rank square matrix. Second we will look at the case where $X_-$ is a full row rank wide matrix ($T > n$).
  
 First lets assume $X_-$ is a square matrix and has full row rank. Then we know that the only right inverse of $X_-$ is its inverse $X_-^{-1}$. Hence the data is informative for deadbeat control if and only if $X_+ X_-^{-1}$ is nilpotent. 
 
@@ -57,7 +57,7 @@ However, due to limitation in Matlab's pole placement function we are not able t
 
 \subsection{Mathematics extending pole placement}
 
-\Lemma{\cite[Lemma 3.31]{bookTrentelman}}{
+\Lemma{\cite[Lemma 3.31]{bookTrentelman}}{ \label{LemmaTrentelman}
 	If $(A,B)$ is controllable there exist vectors $u_0 , \dots u_{n-1}$ such that the vectors defined by
 	\[ x_0 := 0, \, \, \, x_{k+1} := Ax_k + Bu_k \, \, \, (k = 0, \dots , n-1) \]
 	are independent.
@@ -82,23 +82,28 @@ for $k \in [1, \dots, n]$. From this we can see that $x_k = (A+BF_0)^{k-1} x_1$.
 %\end{lstlisting}
 
 % Example using function
-\subsection{Examples using implementation}
+\subsection{Implementation}
 The algorithm above is implemented in the following functions:
 \subsubsection*{Syntax}
-\mon{[bool, K] = isInformDeadbeatControl(X, U)} 
+\mon{[bool, K] = isInformDeadbeatControl(X, U)} \\
+\mon{[K] = MultiInputAcker(A, B, poles)}
 
 \subsubsection*{Description}
-\mon{[bool, K] = isInformDeadbeatControl(X, U)}: Returns if the data is informative for deadbeat control. If so, it also returns a corresponding controller K for closed loop feedback control of the form \mon{A+BK}.
+\mon{[bool, K] = isInformDeadbeatControl(X, U)}: Returns if the data is informative for deadbeat control. If so, it also returns a corresponding controller K for closed loop feedback control of the form \mon{A+BK}.\\
+\mon{[K] = MultiInputAcker(A, B, poles)}: Returns a controller of the form \mon{A+BK} such that the eigenvalues are placed at \mon{poles}. 
 
 \subsubsection*{Input arguments}
 \textbf{\mon{X}}: State data matrix of dimension $n \times T+1$.\\
-\textbf{\mon{U}}: Input data matrix of dimension $m \times T$.
+\textbf{\mon{U}}: Input data matrix of dimension $m \times T$.\\
+\textbf{\mon{A}}: A matrix of state space representation.\\
+\textbf{\mon{B}}: B matrix of state space representation.\\
+\textbf{\mon{poles}}: Desired poles for pole placement.
 
 \subsubsection*{Output arguments}
 \textbf{\mon{bool}}: (boolean) True if the data is informative for deadbeat control, false otherwise\\
-\textbf{\mon{K}}: (matrix) If the data is informative, it contains a stabilising controller \mon{K} for closed loop control \mon{A+BK}, empty otherwise.
+\textbf{\mon{K}}: (matrix) Contains a stabilising controller \mon{K} for closed loop control \mon{A+BK}, empty otherwise.
 
-\subsubsection{Examples}
+\subsection{Examples}
 In this example we will consider the following data:
 \begin{align*} X &= \begin{bmatrix} 0&2&1&0\\1&1&0&0 \end{bmatrix} & U &= \begin{bmatrix} 1&0&0 \end{bmatrix}\end{align*} 
 Before we look if the data is informative for deadbeat control, we will fist consider if the data is informative for system identification and controllability. Recall that for system identification we need that $\begin{bmatrix} X_- \\ U_- \end{bmatrix}$ is full row rank and for controllability we need that $X_+ - \lambda X_-$ is full row rank for all $\lambda \in \mathbb{C}$.
@@ -107,7 +112,7 @@ rank(\begin{bmatrix} X_- \\ U_- \end{bmatrix}) &= n + m & rank(X_+ - \lambda X_-
 rank(\begin{bmatrix} 0&2&1\\1&1&0\\1&0&0 \end{bmatrix}) &= 3 & rank(\begin{bmatrix} 2&1 - 2\lambda &-\lambda\\1-\lambda&-\lambda&0 \end{bmatrix}) &= 2
 \end{align*}
 
-Hence the data is informative for system identification and controllability. Due to the being able to identify the system and the system being controllable we expect that we are able to find a deadbeat controller. We will first attempt to construct one from the data directly. For this we will first need to find an $F$ and $G$ such that $X_- \begin{bmatrix}F&G\end{bmatrix} = \begin{bmatrix}I_2&0_{2\times 1}\end{bmatrix}$. We find the following $F$ and $G$:
+Hence the data is informative for system identification and controllability. Due to the being able to identify the system and the system being controllable we expect that we are able to find a deadbeat controller. Before we actually identify the system we will first attempt to construct one from the data directly. For this we will first need to find an $F$ and $G$ such that $X_- \begin{bmatrix}F&G\end{bmatrix} = \begin{bmatrix}I_2&0_{2\times 1}\end{bmatrix}$. We find the following $F$ and $G$:
 \begin{align*}
 F &= \begin{bmatrix}
 	-\frac{1}{3} & \frac{5}{6} \\ \frac{1}{3} & \frac{1}{6} \\ \frac{1}{3} & -\frac{1}{3}

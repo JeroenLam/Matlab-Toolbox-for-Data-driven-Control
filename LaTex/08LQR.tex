@@ -1,6 +1,6 @@
 \section{Linear quadratic regulation}
 % Abstract section
-In this section we will see how we can construct a linear quadratic regulator (LQR) based on a given cost function directly from the input-state data. We will first define what LQR control entails for normal control theory after which we will consider its data-driven dual. We will also see how this data-driven version can be applied to retrieve the controller from the data. Lastly we will see how to solve such a problem both by doing it by hand as well as using the provided Matlab functions.
+In this section we will see how we can construct a linear quadratic regulator (LQR) based on a given cost function from the input-state data. We will first define what LQR control entails for normal control theory after which we will consider its data-driven dual. We will also see how this data-driven version can be applied to retrieve the controller from the data. Lastly we will see how to solve such a problem both by doing it by hand as well as using the provided Matlab functions.
 
 % What is LQR (normal control)
 \subsection{Non data-driven LQR}
@@ -8,7 +8,7 @@ We will first revisit the topic of non data-driven LQR. To given an intuitive id
 \begin{equation*}
 J(x_0 , u) = \sum_{t=0}^{\infty} x^\top (t) Q x (t) + u^\top (t) R u (t)
 \end{equation*}
-Where $Q$ is symmetric positive semi definite and $R$ is symmetric positive definite. Using these notions want to find for every initial condition $x_0$ an input $\bar{u}$ such that the system stabilises and the cost function is minimised as well as finite, In other words, the $\lim\limits_{t \to \infty} x_{x_0 , \bar{u}}(t) = 0$ given that the cost function $J(x_0 , \bar{u}) \leq J(x_0 , u)$ for all inputs $u$ that cause the system to stabilise. Such an input $\bar{u}$ is called optimal for the given initial condition. As we might expect, an optimal solution does not always exist for every initial condition. Hence we say that an LQR problem is solvable for given $(A,B,Q,R)$ if for every initial condition $x_0$ there exists an optimal solution.
+Where $Q$ is symmetric positive semi definite and $R$ is symmetric positive definite. Using this, we want to find for every initial condition $x_0$ an input $\bar{u}$ such that the system stabilises and the cost function is minimised as well as finite, In other words, the $\lim\limits_{t \to \infty} x_{x_0 , \bar{u}}(t) = 0$ given that the cost function $J(x_0 , \bar{u}) \leq J(x_0 , u)$ for all inputs $u$ that cause the system to stabilise. Such an input $\bar{u}$ is called optimal for the given initial condition. As we might expect, an optimal solution does not always exist for every initial condition. Hence we say that an LQR problem is solvable for given $(A,B,Q,R)$ if for every initial condition $x_0$ there exists an optimal solution.
 
 Using the following theorem we can find the solution to the LQR problem. Recall from \cite[Def 3.12]{bookTrentelman} that an eigenvalue is called $(Q,A)$-observable if 
 $$rank\begin{pmatrix}A - \lambda I \\ Q \end{pmatrix} = n$$
@@ -53,9 +53,9 @@ We will now consider the following theorem that gives us necessary and sufficien
 	\end{enumerate}
 }
 
-As we can see from the theorem if we are able to identify the system then the data-driven LQR problem reduces to a normal LQR problem for which we have already seen how to solve them. However, there is still the case in which all systems have the same $A = A_s$ matrix, $A_s$ matrix is inherently stable and $QA_s = 0$. We will now look at why this is a valid solution to the LQR problem in the first place.
+As we can see from the theorem if we are able to identify the system then the data-driven LQR problem reduces to a normal LQR problem for which we have already seen how to solve them. However, there is still the case in which all systems have the same $A = A_s$ matrix, the $A_s$ matrix is inherently stable and $QA_s = 0$. We will now look at why this is a valid solution to the LQR problem in the first place.
 
-Assume we have a $A_s$ which is stable and a $Q$ such that $QA_s = 0$. From this point we assume $B$ to be an arbitrary input matrix of dimension $n \times m$. Since $x(t) \in im(A)$ for all $t > 0$ we have that $Qx(t) = 0$ for all $t>0$ if we pick our input function to be zero. Note that if we pick our input to be zero then the input cost of the cost function will also be zero. Hence the cost will be equal to $J(x_0 , u) = x_0^\top Q x_0$, which is finite. Since the system is inherently stable we know that the system will stabilise without any input. Lastly we note that the cost associated with the initial condition is present in all cost sequences generated for different inputs, hence the zero input is the minimal solution to the cost function. Hence this case will provide a valid solution to our LQR problem.
+Assume we have a $A_s$ which is stable and a $Q$ such that $QA_s = 0$. From this point we assume $B$ to be an arbitrary input matrix of dimension $n \times m$. Since $x(t) \in im(A)$ for all $t > 0$ we have that $Qx(t) = 0$ for all $t>0$ if we pick our input function to be zero. Note that if we pick our input to be zero then the input cost of the cost function will also be zero. Hence the cost will be equal to $J(x_0 , u) = x_0^\top Q x_0$, which is finite. Since the system is inherently stable we know that the system will stabilise without any input. Lastly we note that the cost associated with the initial condition is present in all cost sequences generated for different inputs, hence the zero input case is the minimal solution to the cost function. Hence this case will provide a valid solution to our LQR problem.
 
 However, even though it is a valid solution it is not easily computable in its current form. Hence we will consider the following theorem which rewrites the condition to one of linear matrix inequalities which can be solved by computational means.
 
@@ -65,6 +65,7 @@ However, even though it is a valid solution it is not easily computable in its c
 		\item The data $(U_-,X)$ is informative for system identification, that is $\Sigma_{i/s} = \left\{(A_s, B_s)\right\}$, and the linear quadratic regulator problem is solvable for $(A_s,B_s,Q,R)$. In this case, the optimal feedback gain $K$ is of the form (\ref{LQRK}) where $P^+$ is of the form (\ref{DARE}).
 		\item There exists $\Theta \in \mathbb{R}^{T\times n}$ such that $X_-\Theta = (X_-\Theta)^\top$, $U_-\Theta = 0$, $QX_+\Theta=0$ and 
 		\[ \begin{bmatrix} X_-\Theta & X_+\Theta \\ \Theta^\top X_+^\top & X_-\Theta \end{bmatrix} > 0 \]
+		In this case, the optimal feedback gain $K = 0$.
 	\end{enumerate}
 }
 
@@ -85,8 +86,8 @@ The algorithm above is implemented in the following functions:
 \mon{[bool, K, diagnostics] = isInformLQR(X, U, Q, R, tolerance, options)}: Returns if the data is informative for LQR control given a specific tolerance and sdpsettings. If so, it also returns a corresponding controller \mon{K} for the closed loop feedback control of the form \mon{A+BK}.
 
 \subsubsection*{Input arguments}
-\textbf{\mon{X}}: State data matrix of dimension $n \times T+1$.\\
-\textbf{\mon{U}}: Input data matrix of dimension $m \times T$.\\
+\textbf{\mon{X}}: State data matrix of dimension $n \times T+1$ from an input-state dataset.\\
+\textbf{\mon{U}}: Input data matrix of dimension $m \times T$ from an input-state dataset.\\
 \textbf{\mon{Q}}: State cost matrix.\\
 \textbf{\mon{R}}: Input cost matrix.\\
 \textbf{\mon{tolerance}}: Tolerance used for determining when a value is zero up to machine precision. Default value is \mon{1e-14}.\\
@@ -99,4 +100,31 @@ The algorithm above is implemented in the following functions:
 
 
 \subsubsection{Examples}
-\todo{Todo}
+We will consider an example in which all systems have the same $A$ matrix, $A$ is stable and $QA = 0$. We will pick the input data in such a way that it is not full rank. For this we will use the following data
+\begin{align*}
+X &= \begin{bmatrix} 1&1.5&1.75 \end{bmatrix} & 
+U &= \begin{bmatrix} 1&1\\0&0 \end{bmatrix} & 
+Q &= \begin{bmatrix} 0 \end{bmatrix} &
+R &= \begin{bmatrix} 1&0\\0&1 \end{bmatrix}
+\end{align*} 
+Note that the choice of $R$ is arbitrary since we have picked the example such that the optimal input will be no input. We will start by checking $U_- \Theta = 0$.
+\begin{align*}
+U_- \Theta &= 0 \\
+\begin{bmatrix} 1&1\\0&0 \end{bmatrix}\begin{bmatrix} a\\b \end{bmatrix} &= \begin{bmatrix} a + b\\0 \end{bmatrix}
+\end{align*}
+Hence $\Theta = \begin{bmatrix} a & -a \end{bmatrix}^\top$. Since $Q = 0$ we know that $QX_+\Theta = 0$ is satisfied. We also know that $X_-\Theta = (X_-\Theta)^\top$ will hold since $X_-\Theta$ will be a scaler. Hence we only need to check the matrix inequality.
+\[ \begin{bmatrix} X_-\Theta & X_+\Theta \\ \Theta^\top X_+^\top & X_-\Theta \end{bmatrix} = 
+\begin{bmatrix} \frac{1}{2} a & \frac{1}{4} a \\ \frac{1}{4} a & \frac{1}{2} a \end{bmatrix}
+ > 0 \]
+If we pick $a = 1$ then the eigenvalues of the matrix will be $\{\frac{1}{4}, \frac{3}{4}\}$ and hence the matrix inequality is satisfied.
+
+
+We can also find the same result by using the Matlab function:
+\begin{lstlisting}
+X = [1 1.5 1.75];
+U = [1 1 ; 0 0];
+Q = [0];
+R = [1 0 ; 0 1];
+[bool, K] = isInformLQR(X, U, Q, R)
+\end{lstlisting}
+Which will return: \mon{[ 1, [0 ; 0] ]}.

@@ -1,6 +1,6 @@
 \section{Stabilisability}
 % Abstract section
-In this section we will see how we can use the data to conclude if a set of systems are stabilisable of not. We will first consider the mathematics and then we will see how this can be implemented. Lastly we will consider an example that we will solve using the Matlab function based on the previously discussed algorithm.
+In this section we will see how we can use the data to conclude if a set of systems are stabilisable or not. We will first consider the mathematics and then we will see how this can be implemented. Lastly we will consider an example that we will solve using the Matlab function based on the previously discussed algorithm.
 
 % What is Stabilisability
 \Def{Informative for stabilisability \cite[Def 7]{waarde2019data}}{
@@ -17,14 +17,13 @@ We will base our algorithm on theorem 8 and remark 9 from \cite{waarde2019data}.
 This theorem can be reduced to check a finite amount of complex numbers similar to the Hautus test. We have that the above theorem is equivalent to $rank(X_+ - X_-) = n$ and $rank(X_+ - \lambda X_-) = n$ for all $\lambda \neq 1$ with $(\lambda - 1)^{-1} \in \sigma(X_- (X_+ - X_-)^\dagger)$ with $(X_+ - X_-)^\dagger$ being the right inverse of $(X_+ - X_-)$ and $\sigma(\cdot)$ denotes the set of eigenvalues of the matrix.
 
 % Proof?
-\todo{proof?}
+%\todo{proof?}
 
 % Pseudo code / algorithm
 
 
 % Example using function
-\subsection{Examples using implementation}
-The algorithm above is implemented in the following functions:
+\subsection{Implementation}
 \subsubsection*{Syntax}
 \mon{[bool] = isInformStabilisable(X)} \\
 \mon{[bool] = isInformStabilisable(X, tolerance)}
@@ -34,13 +33,13 @@ The algorithm above is implemented in the following functions:
 \mon{[bool] = isInformStabilisable(X, tolerance)}: Returns if the data is informative for stabilisability given a specific tolerance.  
 
 \subsubsection*{Input arguments}
-\textbf{\mon{X}}: State data matrix of dimension $n \times T+1$.\\
+\textbf{\mon{X}}: State data matrix of dimension $n \times T+1$ from an input-state dataset. \\ 
 \textbf{\mon{tolerance}}: Tolerance used for determining when a value is zero up to machine precision. Default value is \mon{1e-14}.
 
 \subsubsection*{Output arguments}
 \textbf{\mon{bool}}: (boolean) True if the data is informative for stabilisability, false otherwise\\
 
-\subsubsection{Examples}
+\subsection{Examples}
 In this example we will consider the same data that we used in system identification and controllability, namely:
 \begin{align*}
 X &= \begin{bmatrix} 0&1&0 \\ 0&0&1 \end{bmatrix} & U = \begin{bmatrix}	1&0	\end{bmatrix}

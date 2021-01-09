@@ -2199,17 +2199,17 @@
     <bcf:citekey order="15">waarde2019data</bcf:citekey>
     <bcf:citekey order="16">waarde2019data</bcf:citekey>
     <bcf:citekey order="17">waarde2019data</bcf:citekey>
-    <bcf:citekey order="18">waarde2019data</bcf:citekey>
-    <bcf:citekey order="19">waarde20</bcf:citekey>
+    <bcf:citekey order="18">waarde20</bcf:citekey>
+    <bcf:citekey order="19">bookTrentelman</bcf:citekey>
     <bcf:citekey order="20">bookTrentelman</bcf:citekey>
     <bcf:citekey order="21">bookTrentelman</bcf:citekey>
     <bcf:citekey order="22">bookTrentelman</bcf:citekey>
-    <bcf:citekey order="23">bookTrentelman</bcf:citekey>
+    <bcf:citekey order="23">waarde2019data</bcf:citekey>
     <bcf:citekey order="24">waarde2019data</bcf:citekey>
     <bcf:citekey order="25">waarde2019data</bcf:citekey>
     <bcf:citekey order="26">waarde2019data</bcf:citekey>
-    <bcf:citekey order="27">waarde2019data</bcf:citekey>
-    <bcf:citekey order="28">bookTrentelman</bcf:citekey>
+    <bcf:citekey order="27">bookTrentelman</bcf:citekey>
+    <bcf:citekey order="28">waarde2019data</bcf:citekey>
     <bcf:citekey order="29">waarde2019data</bcf:citekey>
     <bcf:citekey order="30">waarde2019data</bcf:citekey>
     <bcf:citekey order="31">waarde2019data</bcf:citekey>
@@ -2217,8 +2217,7 @@
     <bcf:citekey order="33">waarde2019data</bcf:citekey>
     <bcf:citekey order="34">waarde2019data</bcf:citekey>
     <bcf:citekey order="35">waarde2019data</bcf:citekey>
-    <bcf:citekey order="36">waarde2019data</bcf:citekey>
-    <bcf:citekey order="37">bookMoonen</bcf:citekey>
+    <bcf:citekey order="36">bookMoonen</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="ynt">
