@@ -160,9 +160,15 @@ rank\begin{bmatrix} \bar{C}\\\bar{C}\bar{A} \end{bmatrix} &= rank\begin{bmatrix}
 \end{align*}
 From this we can conclude that the data is indeed informative for stabilisation by dynamic measurement feedback. At this point we can use non data-driven techniques to find a stabilising dynamic feedback controller $(K,L,\bar{M})$ for our system $(\bar{A},\bar{B},\bar{C},\bar{D})$. After we have found such a controller we can construct the controller for our original system by calculating $(K,L,S\bar{M})$.
 
+We can also find the same result by using the provided Matlab function.
+\begin{lstlisting}
+U = [1 -1 2 0 ; -1 1 -2 0];
+Y = [2  6 4 2];
+X = [1 3 2 1 -4 ; 0 3 -5 -6 -2];
 
-
-
+[bool] = isInformDynamicMeasurementFeedback(X, U, Y);
+\end{lstlisting}
+Which will return \mon{[ 1 ]}.
 
 
 

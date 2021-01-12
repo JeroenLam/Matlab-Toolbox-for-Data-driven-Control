@@ -37,7 +37,7 @@ tol = 10^(-6);
 %% Calling function
 poolobj = parpool(4);
 
-T = 750;
+T = 500;
 step = 1;
 
 eigenvaluesHI = zeros(n,size(1:step:T,2));
@@ -45,7 +45,7 @@ eigenvaluesH2 = zeros(n,size(1:step:T,2));
 gamma_h2      = zeros(1,size(1:step:T,2));
 gamma_hi      = zeros(1,size(1:step:T,2));
 
-parfor idx = 1:step:T
+parfor idx = 1:T
     Phi = [1.35 * idx * epsilon^2 * eye(n) zeros(n,idx);zeros(idx,n) -eye(idx)];
     [~, K_hi, ~, ~] = isInformHInf(X(:,1:idx+1), U(:,1:idx), Phi, C, D, tol, options);
     [~, K_h2, ~, ~] = isInformH2(X(:,1:idx+1), U(:,1:idx), Phi, C, D, tol, options);

@@ -3,7 +3,14 @@
 
 
 % What is Hinf
-
+\Def{Informative for $\mathcal{H}_\infty control$ \cite[Def 18]{waarde2020noisy}}{
+	The data $(U_-,X)$ is informative for $\mathcal{H}_\infty$ control with performance $\gamma$ if there exists matrices $P = P^\top > 0$ and $K$ such that:
+	\begin{align*}
+		P - (A + BK)^\top (P^{-1} - \frac{1}{\gamma^2}I)^{-1}(A + BK) - (C+DK)^\top (C+DK) &> 0 \\
+		P^{-1} - \frac{1}{\gamma^2}I &> 0
+	\end{align*}
+	Holds for all $(A,B) \in \Sigma$.
+}
 
 % Mathematics
 
@@ -11,7 +18,55 @@
 % Proof?
 
 
+% State theorem
+\Thr{\cite[Thr 13]{waarde2020noisy}}{
+	Assume that the generalised Slater condition (\ref{GenerelisedSlaterCondition}) holds for $N$ in (\ref{NData}) and some $\bar{Z} \in \mathbb{R}^{(n+m_ \times n)}$. Then the data $(U_-,X)$ is informative for $\mathcal{H}_\infty$ control with performance $\gamma$ if and only if there exists matrices $Y = Y^\top > 0$ and $L$, and scalars $\alpha \geq 0$ and $\beta > 0$ satisfying:
+	\begin{equation*}
+		\begin{bmatrix}
+			Y - \beta I & 0 & 0 & 0 & (CY + DL)^\top \\
+			0 & 0 & 0 & Y & 0 \\
+			0 & 0 & 0 & L & 0 \\
+			0 & Y & L^\top & Y - \frac{1}{\gamma^2}I & 0 \\
+			CY + DL & 0 & 0 & 0 & I
+		\end{bmatrix} - \alpha
+		\begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_- \\ 0&0 \\ 0&0 \end{bmatrix}
+		\begin{bmatrix} \Phi_{11} & \Phi_{12} \\ \Phi_{12}^\top & \Phi_{22} \end{bmatrix}
+		\begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_- \\ 0&0 \\ 0&0 \end{bmatrix}^\top \geq 0
+	\end{equation*}
+	\begin{equation*}
+		Y - \frac{1}{\gamma^2}I > 0
+	\end{equation*}
+	Moreover, if $Y$ and $L$ satisfy the above inequalities, then $K = LY^{-1}$ is such that $A + BK$ is stable and $\| G(z)\|_{\mathcal{H}_\infty} < \gamma$ for all $(A,B) \in \Sigma$. \todo{Explain G(z)}
+}
+
 % Pseudo code / algorithm
+\subsection{Implementation}
+\subsubsection*{Syntax} 
+\mon{[bool, K, diagnostics, gamma, info] = isInformHInf(X, U, Phi, C, D)} \\
+\mon{[bool, K, diagnostics, gamma, info] = isInformHInf(X, U, Phi, C, D, tolerance)} \\
+\mon{[bool, K, diagnostics, gamma, info] = isInformHInf(X, U, Phi, C, D, tolerance, options)} 
+
+\subsubsection*{Description}\todo{a}
+\mon{[[bool, K, diagnostics, gamma, info] = isInformHInf(X, U, Phi, C, D)}: . \\
+\mon{[bool, K, diagnostics, gamma, info] = isInformHInf(X, U, Phi, C, D, tolerance)}: . \\
+\mon{[bool, K, diagnostics, gamma, info] = isInformHInf(X, U, Phi, C, D, tolerance, options)}: .
+
+\subsubsection*{Input arguments}
+\textbf{\mon{X}}: State data matrix of dimension $n \times T+1$ from a input/state data set.\\
+\textbf{\mon{U}}: Input data matrix of dimension $m \times T$ from a input/state data set.\\
+\textbf{\mon{Phi}}: Noise matrix as in (\ref{noiseBound}). \\ 
+\textbf{\mon{C}}: State performance matrix. \\ 
+\textbf{\mon{D}}: State performance matrix. \\ 
+\textbf{\mon{tolerance}}: Tolerance used for determining when a value is zero up to machine precision. Default value is \mon{1e-14}.\\
+\textbf{\mon{options}}: sdpsettings used with the Yalmip solver.
+
+\subsubsection*{Output arguments}
+\textbf{\mon{bool}}: (boolean) True if the data is informative for quadratic stabilisation, false otherwise. If false then the \mon{info} variable can be check to find which condition failed. \\
+\textbf{\mon{K}}: (matrix) If the data is informative, it contains a stabilising controller \mon{K} for closed loop control \mon{A+BK}, empty otherwise.\\
+\textbf{\mon{diagnostics}}: (struct) Diagnostics from the Yalmip \mon{optimize()} function. \\
+\textbf{\mon{gamma}}: (double) Value of gamma as found by the solver. \\
+\textbf{\mon{info}}: (int) Diagnostic variable use to identify which conditions (if any) failed. The verification is done on the solution obtained from Yalmip. For information about the type of error use the \mon{help} command in Matlab
 
 
 % Example using function
+\subsection{Example}

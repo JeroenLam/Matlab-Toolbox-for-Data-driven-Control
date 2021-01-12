@@ -6,10 +6,8 @@ function [bool, K, L, M] = isInformDynamicMeasurementFeedback(X, U, Y, polesM, p
 %          Y      = matrix containing the measured output
 %          polesK = array containing proposed poles
 %          polesL = array containing proposed poles
-%  Output: bool = true if informative, false otherwise
-%          K    = 
-%          L    = 
-%          M    = 
+%  Output: bool  = true if informative, false otherwise
+%          K/L/M = controller matrices
 %  Throws: InsufficientArguments  : Not enough input arguments.
 %          NonNumericArgument     : Only provide numeric arguments!
 %          InconsistentLengthData : The data is not the correst size, U should be 1 shorter than X.

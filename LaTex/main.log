@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7350 64-bit) (preloaded format=pdflatex 2020.3.25)  9 JAN 2021 14:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7350 64-bit) (preloaded format=pdflatex 2020.3.25)  12 JAN 2021 17:16
 entering extended mode
 **./main.tex
 (main.tex
@@ -1253,11 +1253,7 @@ LaTeX Warning: Citation 'waarde2019data' on page 2 undefined on input line 40.
 
 LaTeX Warning: Citation 'waarde2019data' on page 2 undefined on input line 45.
 
-[2]
-
-LaTeX Warning: Reference `sectionNoise' on page 3 undefined on input line 106.
-
-) [3] (02SystemIdentification.tex
+[2]) [3] (02SystemIdentification.tex
 
 LaTeX Warning: Citation 'waarde2019data' on page 4 undefined on input line 8.
 
@@ -1414,40 +1410,156 @@ Overfull \hbox (16.32903pt too wide) in paragraph at lines 122--124
 Y, polesM, polesL)\OT1/cmr/m/n/10.95 : Re-turns
  []
 
-[27]) [28] (091StateEstimation.tex
+[27] [28]) [29] (091StateEstimation.tex
 
-LaTeX Warning: Citation 'waarde2019data' on page 29 undefined on input line 27.
-
-
-
-LaTeX Warning: Citation 'waarde2019data' on page 29 undefined on input line 34.
-
-
-[29]
-
-LaTeX Warning: Citation 'waarde2019data' on page 30 undefined on input line 68.
+LaTeX Warning: Citation 'waarde2019data' on page 30 undefined on input line 27.
 
 
 
-LaTeX Warning: Citation 'waarde2019data' on page 30 undefined on input line 89.
+LaTeX Warning: Citation 'waarde2019data' on page 30 undefined on input line 34.
 
 
 [30]
 
-LaTeX Warning: Citation 'bookMoonen' on page 31 undefined on input line 113.
+LaTeX Warning: Citation 'waarde2019data' on page 31 undefined on input line 68.
 
-[31] [32]
+
+
+LaTeX Warning: Citation 'waarde2019data' on page 31 undefined on input line 89.
+
+
+[31]
+
+LaTeX Warning: Citation 'bookMoonen' on page 32 undefined on input line 113.
+
+[32] [33]
 Overfull \hbox (38.9372pt too wide) in paragraph at lines 222--223
 []\OT1/cmr/m/n/10.95 Using the pro-vided mat-lab func-tion \OT1/cmtt/m/n/10.95 
 [bool, X[]hat, U[]hat, Y[]hat] = isInformStateIdentification(U,
  []
 
-[33]) [34]
+[34]) [35] (10Noise.tex
 
-LaTeX Warning: Marginpar on page 35 moved.
+LaTeX Warning: Citation 'waarde2020noisy' on page 36 undefined on input line 20
+.
 
 
-LaTeX Warning: Marginpar on page 35 moved.
+LaTeX Warning: Citation 'waarde2020noisy' on page 36 undefined on input line 57
+.
+
+[36]
+
+LaTeX Warning: Citation 'waarde2020noisy' on page 37 undefined on input line 67
+.
+
+
+LaTeX Warning: Citation 'waarde2020noisy' on page 37 undefined on input line 10
+1.
+
+
+LaTeX Warning: Citation 'waarde2020noisy' on page 37 undefined on input line 11
+4.
+
+[37] [38]) [39] (12QuadraticStabilisation.tex
+
+LaTeX Warning: Citation 'waarde2020noisy' on page 40 undefined on input line 13
+.
+
+
+LaTeX Warning: Citation 'waarde2020noisy' on page 40 undefined on input line 76
+.
+
+
+Overfull \hbox (7.3861pt too wide) in paragraph at lines 81--84
+\OT1/cmtt/m/n/10.95 [bool, K, diagnostics, info] = isInformQuadraticStabilisati
+on(X, U, Phi, tolerance) 
+ []
+
+
+Overfull \hbox (7.3861pt too wide) in paragraph at lines 81--84
+\OT1/cmtt/m/n/10.95 [bool, K, diagnostics, info] = isInformQuadraticStabilisati
+on(X, U, Phi, tolerance,
+ []
+
+[40]
+Overfull \hbox (35.07181pt too wide) in paragraph at lines 85--85
+[][][]\OT1/cmr/m/n/10.95 sdjklhdsfaklhjsd[]  
+ []
+
+
+Overfull \hbox (35.07181pt too wide) in paragraph at lines 85--85
+[][][]\OT1/cmr/m/n/10.95 sdjklhdsfaklhjsd[]  
+ []
+
+
+Overfull \hbox (10.42776pt too wide) in paragraph at lines 86--89
+\OT1/cmtt/m/n/10.95 [bool, K, diagnostics, info] = isInformQuadraticStabilisati
+on(X, U, Phi, tolerance)\OT1/cmr/m/n/10.95 :
+ []
+
+
+Overfull \hbox (7.3861pt too wide) in paragraph at lines 86--89
+\OT1/cmtt/m/n/10.95 [bool, K, diagnostics, info] = isInformQuadraticStabilisati
+on(X, U, Phi, tolerance,
+ []
+
+[41] [42]) [43] (13H2Control.tex
+
+LaTeX Warning: Citation 'waarde2020noisy' on page 44 undefined on input line 13
+.
+
+
+LaTeX Warning: Citation 'waarde2020noisy' on page 44 undefined on input line 42
+.
+
+
+Overfull \hbox (18.88347pt too wide) in paragraph at lines 47--50
+\OT1/cmtt/m/n/10.95 [bool, K, diagnostics, gamma, info] = isInformH2(X, U, Phi,
+ C, D, tolerance, options) 
+ []
+
+
+Overfull \hbox (21.92514pt too wide) in paragraph at lines 52--55
+\OT1/cmtt/m/n/10.95 [bool, K, diagnostics, gamma, info] = isInformH2(X, U, Phi,
+ C, D, tolerance, options)\OT1/cmr/m/n/10.95 :
+ []
+
+[44]
+Overfull \hbox (58.38298pt too wide) detected at line 81
+[]
+ []
+
+) [45] (14HinfControl.tex
+
+LaTeX Warning: Citation 'waarde2020noisy' on page 46 undefined on input line 13
+.
+
+
+LaTeX Warning: Citation 'waarde2020noisy' on page 46 undefined on input line 40
+.
+
+
+Overfull \hbox (30.38084pt too wide) in paragraph at lines 45--48
+\OT1/cmtt/m/n/10.95 [bool, K, diagnostics, gamma, info] = isInformHInf(X, U, Ph
+i, C, D, tolerance, options) 
+ []
+
+
+Overfull \hbox (33.42252pt too wide) in paragraph at lines 50--53
+\OT1/cmtt/m/n/10.95 [bool, K, diagnostics, gamma, info] = isInformHInf(X, U, Ph
+i, C, D, tolerance, options)\OT1/cmr/m/n/10.95 :
+ []
+
+[46]) [47] (20ContinuousSystems.tex) [48] (21Linearisation.tex) [49]
+(22ImprovingControllerH2.tex) [50]
+
+LaTeX Warning: Marginpar on page 51 moved.
+
+
+LaTeX Warning: Marginpar on page 51 moved.
+
+
+LaTeX Warning: Marginpar on page 51 moved.
 
 (references.tex
 
@@ -1455,7 +1567,7 @@ LaTeX Warning: Empty bibliography on input line 2.
 
 ) 
 AED: lastpage setting LastPage
-[35] (main.aux)
+[51] (main.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -1472,11 +1584,11 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 28177 strings out of 480934
- 555590 string characters out of 2909653
- 1265808 words of memory out of 3000000
- 43513 multiletter control sequences out of 15000+200000
- 546141 words of font info for 78 fonts, out of 3000000 for 9000
+ 28331 strings out of 480934
+ 559250 string characters out of 2909653
+ 1273521 words of memory out of 3000000
+ 43648 multiletter control sequences out of 15000+200000
+ 550973 words of font info for 99 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,15n,83p,880b,1678s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
@@ -1494,9 +1606,9 @@ s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX
 /type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
 ublic/amsfonts/cm/cmtt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
 sfonts/symbols/msbm10.pfb>
-Output written on main.pdf (35 pages, 339389 bytes).
+Output written on main.pdf (51 pages, 387821 bytes).
 PDF statistics:
- 205 PDF objects out of 1000 (max. 8388607)
+ 258 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  109 words of extra memory for PDF output out of 10000 (max. 10000000)
 

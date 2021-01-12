@@ -1,17 +1,197 @@
-\section{Quadratic stabilisation}
+\section{Quadratic stabilisation} \label{SectionQuadStab}
 % Abstract section
 
 
 % What is QS
+%Before we look at quadratic stabilisation for data driven problems, we will first consider it from a traditional point of view. We say that a pair $(A,B)$ is valid for quadratic stabilisation if there exists a symmetric, positive definite matrix $P$ and a feedback gain $K$ such that $P - (A+BK)P(A+BK)^\top > 0$.
+
+% Recall data driven defenition and inequalities from previous section
+Recall from the previous section that we defined the data to be informative for quadratic stabilisation in the following way.
+
+\Def{Informative for quadratic stabilisation \cite[Def 3]{waarde2020noisy}}{
+	The data $(U_-,X)$ is called informative for quadratic stabilisation if there exists a feedback gain $K$ and a Lyapunov matrix $P = P^\top > 0$ such that $P - (A + BK) P (A + BK)^\top > 0$ for all $(A,B) \in \Sigma_{i/s/n}$
+}
+
+We will also recall that this matrix inequality can be rewritten as:
+\begin{equation} \tag{\ref{noiseQSQMI}}
+P - (A + BK) P (A + BK)^\top = 
+\begin{bmatrix} I\\A^\top\\B^\top \end{bmatrix}^\top 
+\begin{bmatrix} P&0&0\\0&-P&-PK^\top\\0&-KP&-KPK^\top \end{bmatrix} 
+\begin{bmatrix} I\\A^\top\\B^\top \end{bmatrix} > 0
+\end{equation}
+
+As alluded to earlier, we want to find a condition in which case (\ref{noiseQSQMI}) holds as well as:
+\begin{equation} \tag{\ref{noiseSystemQMI}}
+\begin{bmatrix} I \\ A^\top \\ B^\top \end{bmatrix}^\top
+\begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_- \end{bmatrix}
+\begin{bmatrix} \Phi_{11} & \Phi_{12} \\ \Phi_{12}^\top & \Phi_{22} \end{bmatrix}
+\begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_- \end{bmatrix}^\top
+\begin{bmatrix} I \\ A^\top \\ B^\top \end{bmatrix} \geq 0
+\end{equation}
+
+% Combine with S-lemma to construct (fs)
+We will once again note that in order to find a solution, we want to check if (\ref{noiseQSQMI}) hold for all systems such that (\ref{noiseSystemQMI}) holds. To do this, we will partition our matrices in the following way.
+\begin{align*} 
+	M &= 
+	\left[ \begin{array}{c|c}
+		M_{11} & M_{12} \\ \hline M_{12}^\top & M_{22}
+	\end{array} \right] 
+	:=
+	\left[ \begin{array}{c|cc}
+	P&0&0 \\ \hline 0 & -P & -PK^\top \\ 0 & -KP & -KPK^\top
+	\end{array} \right]
+\end{align*}
+
+\begin{align} \label{NData}
+	N &= 
+	\left[ \begin{array}{c|c}
+		N_{11} & N_{12} \\ \hline N_{12}^\top & N_{22}
+	\end{array} \right] 
+	:=
+	\left[ \begin{array}{cc}
+		I&X_+ \\ \hline 0 & -X_- \\ 0&-U_-
+	\end{array} \right]
+	\left[ \begin{array}{cc}
+		\Phi_{11} & \Phi_{12} \\ \Phi_{12}^\top & \Phi_{22}
+	\end{array} \right]
+	\left[ \begin{array}{cc}
+		I&X_+ \\ \hline 0 & -X_- \\ 0&-U_-
+	\end{array} \right]^\top
+\end{align}
+\todo{Figure out how to present this}
 
 
-% Mathematics
-
-
-% Proof?
-
+% State theorem
+\Thr{\cite[Thr 13]{waarde2020noisy}}{
+	Assume that the generalised Slater condition (\ref{GenerelisedSlaterCondition}) holds for $N$ in (\ref{NData}) and some $\bar{Z} \in \mathbb{R}^{(n+m_ \times n)}$. Then the data $(U_-,X)$ is informative for quadratic stabilisation if and only if there exists an $n \times n$ matrix $P = P^\top > 0$, an $L \in \mathbb{R}^{m\times n}$ and scalars $\alpha \geq 0$ and $\beta > 0$ satisfying:
+	\begin{equation} \label{QuadStabCondition}
+	\begin{bmatrix}
+		P-\beta I&0&0&0\\0&-P&-L^\top&0\\0&-L&0&L\\0&0&L^\top&P
+	\end{bmatrix} - \alpha 
+	\begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_-\\0&0 \end{bmatrix}
+	\begin{bmatrix} \Phi_{11} & \Phi_{12} \\ \Phi_{12}^\top & \Phi_{22} \end{bmatrix}
+	\begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_-\\0&0 \end{bmatrix}^\top \geq 0
+	\end{equation}
+	Moreover, if $P$ and $L$ satisfy this matrix inequality, then $K = LP^{-1}$ is a stabilising feedback gain for all $(A,B) \in \Sigma$.
+}
 
 % Pseudo code / algorithm
+\subsection{Implementation}
+\subsubsection*{Syntax}
+\mon{[bool, K, diagnostics, info] = isInformQuadraticStabilisation(X, U, Phi)} \\
+\mon{[bool, K, diagnostics, info] = isInformQuadraticStabilisation(X, U, Phi, tolerance)} \\
+\mon{[bool, K, diagnostics, info] = isInformQuadraticStabilisation(X, U, Phi, tolerance, options)} 
+
+\subsubsection*{Description} \todo{sdjklhdsfaklhjsd}
+\mon{[bool, K, diagnostics, info] = isInformQuadraticStabilisation(X, U, Phi)}: . \\
+\mon{[bool, K, diagnostics, info] = isInformQuadraticStabilisation(X, U, Phi, tolerance)}: . \\
+\mon{[bool, K, diagnostics, info] = isInformQuadraticStabilisation(X, U, Phi, tolerance, options)}: .
+
+\subsubsection*{Input arguments}
+\textbf{\mon{X}}: State data matrix of dimension $n \times T+1$ from a input/state data set.\\
+\textbf{\mon{U}}: Input data matrix of dimension $m \times T$ from a input/state data set.\\
+\textbf{\mon{Phi}}: Noise matrix as in (\ref{noiseBound}). \\ 
+\textbf{\mon{tolerance}}: Tolerance used for determining when a value is zero up to machine precision. Default value is \mon{1e-14}.\\
+\textbf{\mon{options}}: sdpsettings used with the Yalmip solver.
+
+\subsubsection*{Output arguments}
+\textbf{\mon{bool}}: (boolean) True if the data is informative for quadratic stabilisation, false otherwise. If false then the \mon{info} variable can be check to find which condition failed. \\
+\textbf{\mon{K}}: (matrix) If the data is informative, it contains a stabilising controller \mon{K} for closed loop control \mon{A+BK}, empty otherwise.\\
+\textbf{\mon{diagnostics}}: (struct) Diagnostics from the Yalmip \mon{optimize()} function. \\
+\textbf{\mon{info}}: (int) Diagnostic variable use to identify which conditions (if any) failed. The verification is done on the solution obtained from Yalmip. For information about the type of error use the \mon{help} command in Matlab
 
 
 % Example using function
+\subsection{Example}
+In this example we will consider the following unstable system.
+\begin{align*}
+	x(t+1) &= 2x(t) - \frac{1}{2}u(t) + w(t) 
+\end{align*}
+We will assume our noise to be picked uniformly from the interval $[-0.1 , 0.1]$. We will start by generating a random noise sequence and a random input sequence which we will use to construct the following data.
+\begin{align*}
+	W_- &= \begin{bmatrix}  0.0706 &  0.0244 & -0.0298 & 0.0026 & -0.0196 \end{bmatrix} \\
+	U_- &= \begin{bmatrix} -0.1655 & -0.9007 &  0.8054 & 0.8896 & -0.0183 \end{bmatrix} \\
+	X   &= \begin{bmatrix}     0   &  0.1533 &  0.6281 & 0.1956 & -0.2466 & -0.2571 \end{bmatrix} \\
+\end{align*}
+
+For our noise matrix $\Phi$ we will use that if we pick $\Phi_{12} = \overline{0} = [0 \dots 0]$ and $\Phi_{22} = -I$ then we know that $W_- W_-^\top \leq \Phi_{11}$. Since we know that our data is sampled from a uniform distribution with a maximum value of $0.1$ we know that $W_- W_-^\top \leq 0.1^2 T$ where $T$ is the total number of samples considered. Since we are considering $5$ sample we will pick our noise matrix to be:
+\begin{equation*}
+	\Phi = \begin{bmatrix} 0.05 & \overline{0} \\ \overline{0}^\top & -I_9 \end{bmatrix}
+\end{equation*}
+Using some computation we can verify that this choice of $\Phi$ is indeed a valid one for the data.
+\begin{equation}
+\begin{bmatrix} I \\ W_-^\top \end{bmatrix} ^\top
+\begin{bmatrix} \Phi_{11} & \Phi_{12} \\ \Phi_{12}^\top & \Phi_{22} \end{bmatrix}
+\begin{bmatrix} I \\ W_-^\top \end{bmatrix} = 0.0431 \geq 0
+\end{equation}
+
+Before we attempt to solve the matrix inequality, we need to check if the generalised Slater condition holds. As we have seen in the previous section, we only have to verify that $N$ has at least 1 positive eigenvalue.
+\begin{equation*}
+ N = 
+ \begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_-\\0&\overline{0} \end{bmatrix}
+ \begin{bmatrix} 0.09 & \overline{0} \\ \overline{0}^\top & -I_9 \end{bmatrix}
+ \begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_-\\0&\overline{0} \end{bmatrix}^\top 
+ =
+ \begin{bmatrix} 
+ -0.5332 &  0.2343 & -0.6482 &  0\\
+ 0.2343 & -0.5171 & -0.5463 &  0\\
+ -0.6482 & -0.5463 & -2.2790 &  0\\
+ 0      &  0      &  0      &  0
+ \end{bmatrix} 
+\end{equation*}
+\begin{equation*}
+ \sigma(N) = \{ \begin{array}{cccc}
+ -2.5921 & -0.7571 & 0 & 0.02
+ \end{array} \}
+\end{equation*}
+
+Now that we have our data prepared, we will attempt to find a $P > 0$, $L$, $\alpha \geq 0$ and $\beta > 0$ such that (\ref{QuadStabCondition}) holds.
+\begin{align*}
+	\begin{bmatrix}
+		P-\beta I&0&0&0\\0&-P&-L^\top&0\\0&-L&0&L\\0&0&L^\top&P
+	\end{bmatrix} &- \alpha 
+	\begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_-\\0&\overline{0} \end{bmatrix}
+	\begin{bmatrix} 0.09 & \overline{0} \\ \overline{0}^\top & -I_9 \end{bmatrix}
+	\begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_-\\0&\overline{0} \end{bmatrix}^\top \geq 0 
+\end{align*}
+Using numerical tools such as Yalmip we can find that the following values form a valid solution to the matrix inequality.
+\begin{align*}
+	P &= \frac{3}{10} & L &= \frac{1}{2} & \alpha &= \frac{9}{10} & \beta &= \frac{1}{10}
+\end{align*}
+Using these values we are able to construct a stabilising controller $K = LP^{-1} = 1\frac{2}{3}$. As we can see the closed loop system is indeed stable.
+\begin{equation*}
+	A + BK = \frac{1}{6}
+\end{equation*}
+
+We are also able to find a stabilising feedback gain using the provided Matlab function.
+\begin{lstlisting}
+U = [-0.1655 -0.9007 0.8054 0.8896 -0.0183];
+X = [ 0       0.1533 0.6281 0.1956 -0.2466 -0.2571];
+Phi = [0.05 zeros(1,5) ; zeros(5,1) -eye(5)];
+[bool, K] = isInformQuadraticStabilisation(X, U, Phi)
+\end{lstlisting}
+Which will return: \mon{[ 1, 1.6977 ]}. Note that this is a different but still valid controller.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
