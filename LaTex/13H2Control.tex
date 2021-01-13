@@ -1,10 +1,53 @@
-\section{H$_2$ Control}
+\section{$\mathcal{H}_2$ Control}
 % Abstract section
 
 
-% What is H2
+% What is H2 Classical
+\subsection{Non data driven $\mathcal{H}_2$ Control}
+Similar to quadratic stabilisation, we will be considering systems of the following form.
+\begin{align} \tag{\ref{isnSystem}}
+\mathbf{x}(t+1) &= A_s \mathbf{x}(t) + B_s \mathbf{u}(t) + \mathbf{w}(t)
+\end{align}
+But in the case of $\mathcal{H}_2$ control we will also be considering an performance output on the system.
+\begin{align*}
+	\mathbf{z}(t) &= C \mathbf{x}(t) + D \mathbf{u}(t)
+\end{align*}
+In the case of $\mathcal{H}_2$ control we do not only want to find a stabilising feedback controller, we want to find one that minimises the performance output. In this sense it is similar to LQR control. Let $K$ be a stabilising feedback controller for the system. We will start by defining the closed loop transfer function ($G(z)$) on the closed loop system.
+\begin{align*}
+	\mathbf{x}(t+1) &= (A_s + B_s K) \mathbf{x}(t) + \mathbf{w}(t) \\
+	\mathbf{z}(t)   &= (C   + D   K) \mathbf{x}(t) \\
+	G(z) &= (C + DK)(z I - (A+BK))^{-1}
+\end{align*}
+We define the performance of a given controller as $\gamma$. Using this notation we can define the classical $\mathcal{H}_2$ control problem.
+
+\cite[Problem 11.1]{bookTrentelman} Consider systems in the following form as well as the cost function $\left\| G_K(z) \right\|^2_{\mathcal{H}_2}$.
+\begin{align*}
+	\mathbf{x}(t+1) &= (A_s + B_s K) \mathbf{x}(t) + \mathbf{w}(t) \\
+	\mathbf{z}(t)   &= (C   + D   K) \mathbf{x}(t) \\
+	G_K(z) &= (C + DK)(z I - (A+BK))^{-1}
+\end{align*}
+We want to find the feedback gain $K$ for which the cost function is minimal, i.e. let the minimal cost be as follows.
+\begin{equation*}
+	J^\ast = inf \{ J(K) := \left\| G_K(z) \right\|^2_{\mathcal{H}_2} \, | \, K \mbox{ stabilises the closed loop system}\}
+\end{equation*}
+Then we want to find $K$ such that $J(K) = J^\ast$.
+
+\todo{find reference for statement that is 'well-known' according to paper page 8}
+\Thr{}{
+	A+BK is stable and $\left\| G_K(z) \right\|^2_{\mathcal{H}_2} < \gamma$ if and only if there exists a symmetric positive definite matrix $P$ such that
+	\begin{align} \label{H2Inequalities}
+		P &> (A + BK)^\top P (A + BK) + (C+DK)^\top (C+DK) & trace(P) &< \gamma^2
+	\end{align}
+}
+
+
+
+% What is H2 Data-driven
+\subsection{Data driven $\mathcal{H}_2$ Control}
+We will now extend the $\mathcal{H}_2$ control problem to data driven control. We want to find a controller $K$ that stabilises all systems describing the data whilst still minimising $\gamma$. Using the theorem noted above we are able to do so since we can express $\gamma$ in relation to $P$ instead of it being directly dependent on $(A,B) \in \Sigma_{i/s/n}$. Using this we will formulate the following definition of informativity.
+
 \Def{Informative for $\mathcal{H}_2$ control \cite[Def 15]{waarde2020noisy}}{
-	the data $(U_-,X)$ is informative for $\mathcal{H}_2$ control with performance $\gamma$ if there exists matrices $p = p^\top > 0$ and $K$ such that:
+	the data $(U_-,X)$ is informative for $\mathcal{H}_2$ control with performance $\gamma$ if there exists a symmetric positive definite matrices $p$ and a matrix $K$ such that:
 	\begin{align*}
 		P &> (A + BK)^\top P (A + BK) + (C + DK)^\top(C+DK) & 
 		trace(P) &< \gamma^2
@@ -13,10 +56,39 @@
 }
 
 % Mathematics
+At this point, all that is left is to rewrite the inequality (\ref{H2Inequalities}) such that we are able to apply the previously discussed matrix S-lemma. To do this, we will first introduce some notation. Let $Y = P^{01}$ and $L = KY$. Then we are able to write (\ref{H2Inequalities}) as:
+\begin{equation*}
+	Y - (AY + BL)^\top P (AY + BL) - (CY + DL)^\top (CY+DL) > 0
+\end{equation*}
 
+\todo{Using a schur complement argument, this is equivalent to}
 
-% Proof?
+\begin{equation} \label{H2AfterSchur}
+	\begin{bmatrix} Y - (CY + DL)^\top(CY + DL) & (AY + BL)^\top \\ AY + BL & Y \end{bmatrix} > 0
+\end{equation}
 
+Note that this only holds if the following 2 condition hold.
+\begin{align*}
+	Y - (CY + DL)^\top(CY + DL) &> 0 \\
+	Y - (AY + BL) \left(Y - (CY + DL)^\top(CY + DL)\right)^{-1} (AY + BL)^\top &> 0
+\end{align*}
+
+Since the first equation is independent of $A$ and $B$, we are able to write it as follows.
+
+\begin{equation*}
+	\left[\begin{array}{c}
+		I \\ \hline A^\top \\ B^\top
+	\end{array}\right]^\top
+	\left[\begin{array}{c|c}
+		Y & 0 \\ \hline
+		0 & \begin{bmatrix} Y \\ L \end{bmatrix} \left(Y - (CY + DL)^\top(CY + DL)\right)^{-1} \begin{bmatrix} Y \\ L \end{bmatrix}^\top
+	\end{array}\right]
+	\left[\begin{array}{c}
+		I \\ \hline A^\top \\ B^\top
+	\end{array}\right] > 0
+\end{equation*}
+
+As we can see the inequality is in a similar form as (\ref{noiseSystemQMI}) and thus via the S-lemma to get the following theorem.
 
 % State theorem
 \Thr{\cite[Thr 16]{waarde2020noisy}}{
@@ -38,8 +110,10 @@
 		\begin{bmatrix} Z & I \\ I & Y \end{bmatrix} &\geq 0 &
 		trace(Z) &< \gamma^2
  	\end{align*}
-	Moreover, if $Y$ and $L$ satisfy the above conditions, then $K = LY^{-1}$ is such that $A + BK$ is stable and $\| G(z)\|_{\mathcal{H}_2} < \gamma$ for all $(A,B) \in \Sigma$. \todo{Explain G(z)}
+	Moreover, if $Y$ and $L$ satisfy the above conditions, then $K = LY^{-1}$ is such that $A + BK$ is stable and $\| G(z)\|_{\mathcal{H}_2} < \gamma$ for all $(A,B) \in \Sigma$.
 }
+
+This theorem was implemented in the functions below.
 
 % Pseudo code / algorithm
 \subsection{Implementation}
@@ -71,37 +145,47 @@
 
 
 % Example using function
-\subsection{Example}
-In this example we will consider the same data that we used in the quadratic stabilisation example.
+\subsection{Example} \label{ExampleH2}
+In this example we will consider the same data that we used in the quadratic stabilisation example. However, we will be adding a performance output $z(t)$ to the system.
 \begin{align*}
-	x(t+1) &= 2x(t) - \frac{1}{2}u(t) + w(t) \\
+	x(t+1) &= x(t) - \frac{1}{2}u(t) + w(t) \\
+	z(t)   &= \frac{1}{2}x(t) \\
 	W_- &= \begin{bmatrix}  0.0706 &  0.0244 & -0.0298 & 0.0026 & -0.0196 \end{bmatrix} \\
 	U_- &= \begin{bmatrix} -0.1655 & -0.9007 &  0.8054 & 0.8896 & -0.0183 \end{bmatrix} \\
 	X   &= \begin{bmatrix}     0   &  0.1533 &  0.6281 & 0.1956 & -0.2466 & -0.2571 \end{bmatrix} \\
 \end{align*}
+
 As we saw in that example we can use the following $\Phi$ as a valid noise bound.
+
 \begin{equation*}
-\Phi = \begin{bmatrix} 0.05 & \overline{0} \\ \overline{0}^\top & -I_9 \end{bmatrix}
+\Phi = \begin{bmatrix} 0.05 & \overline{0} \\ \overline{0}^\top & -I_5 \end{bmatrix}
 \end{equation*}
-We also know that the generalised Slater condition holds. At this point we only need to find a $Y = Y^\top > 0$, $Z = Z^\top$, $L$, $\alpha$ and $\beta$ such that the following inequalities hold.
+
+We also know that the generalised Slater condition holds. Note that we picked $C = 0.5$ and $D=0$ Because of this we penalise the state being non zero. Hence the optimal controller will be a deadbeat controller. 
+
+At this point we only need to find a $Y = Y^\top > 0$, $Z = Z^\top$, $L$, $\alpha$ and $\beta$ such that the following inequalities hold.
+
 \begin{equation*}
-\begin{bmatrix}
-Y - \beta I & 0 & 0 & 0 & 0 \\
-0 & 0 & 0 & Y & 0 \\
-0 & 0 & 0 & L & 0 \\
-0 & Y & L^\top & Y & (CY + DL)^\top \\
-0 & 0 & 0 & CY + DL & I 
-\end{bmatrix} - \alpha
-\begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_- \\ 0&0 \\ 0&0 \end{bmatrix}
-\begin{bmatrix} \Phi_{11} & \Phi_{12} \\ \Phi_{12}^\top & \Phi_{22} \end{bmatrix}
-\begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_- \\ 0&0 \\ 0&0 \end{bmatrix}^\top \geq 0
+	\begin{bmatrix}
+		Y - \beta I & 0 & 0 & 0 & 0 \\
+		0 & 0 & 0 & Y & 0 \\
+		0 & 0 & 0 & L & 0 \\
+		0 & Y & L^\top & Y & (CY + DL)^\top \\
+		0 & 0 & 0 & CY + DL & I 
+	\end{bmatrix} - \alpha
+	\begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_- \\ 0&0 \\ 0&0 \end{bmatrix}
+	\begin{bmatrix} \Phi_{11} & \Phi_{12} \\ \Phi_{12}^\top & \Phi_{22} \end{bmatrix}
+	\begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_- \\ 0&0 \\ 0&0 \end{bmatrix}^\top \geq 0
 \end{equation*}
+
 \begin{align*}
-\begin{bmatrix} Y & (CY + DL)^\top \\ CY + DL & I \end{bmatrix} &> 0 &
-\begin{bmatrix} Z & I \\ I & Y \end{bmatrix} &\geq 0 &
-trace(Z) &< \gamma^2
+	\begin{bmatrix} Y & (CY + DL)^\top \\ CY + DL & I \end{bmatrix} &> 0 &
+	\begin{bmatrix} Z & I \\ I & Y \end{bmatrix} &\geq 0 &
+	trace(Z) &< \gamma^2
 \end{align*}
+
 Using numerical tools like Yalmip we are able to find that the following values form a valid solution.
+
 \begin{align*}
 	Y &= 3.578190407584625 \\
 	Z &= 0.279470874690682 \\
@@ -109,9 +193,10 @@ Using numerical tools like Yalmip we are able to find that the following values 
 	a &= 80.398493367163880 \\
 	b &= 1.162504055224782e-06
 \end{align*}
-With a performance of $\gamma = 0.528650049362224$ and a feedback gain $K = 1.917417382202476$.
-\todo{Check what the best gamma is}
-
+With a performance of $\gamma = 0.528650049362224$ and a feedback gain $K = 1.917417382202476$. This will result in a closed loop system which is 'close' to deadbeat stable.
+\begin{equation*}
+	A + BK = 0.0413
+\end{equation*}
 
 We are also able to find a stabilising feedback gain using the provided Matlab function.
 \begin{lstlisting}
@@ -123,3 +208,28 @@ Phi = [0.05 zeros(1,5) ; zeros(5,1) -eye(5)];
 [bool, K] = isInformH2(X, U, Phi, C, D)
 \end{lstlisting}
 Which will return: \mon{[ 1, 1.917417382202475 ]}.
+
+Since we have the 'true' system, we are also able to find the best possible $\gamma_{best}$ and $K_{best}$. For this we will use (\ref{H2AfterSchur}). We will use the following code to compute the optimal gain.
+\begin{lstlisting}
+A = 1;
+B = -0.5;
+C = 0.5;
+D = 0;
+L = sdpvar(1);
+Y = sdpvar(1);
+
+Cond = [ [Y - (C*Y+D*L)' * (C*Y+D*L) (A*Y+B*L)' ; (A*Y+B*L) Y] >= 0 ];
+Cond = Cond + [Y >= 1e-8];
+optimize(Cond,-Y);
+
+gamma_best = sqrt(trace(inv(value(Y))))
+K_best = value(L) * inv(value(Y))
+\end{lstlisting}
+Which will return: \mon{gamma\_best = 0.5} and \mon{K\_best = 2};
+
+From this we can see that the optimal feedback gain is indeed a deadbeat controller. We can verify that calculated gamma using (\ref{H2Inequalities}). Since we are considering the 1 dimensional case, we have that $\gamma^2 > P = trace(P)$, thus we can rewrite the equation to get the following. 
+\begin{align*}
+	\gamma^2 &> (A + BK)^2 P + (C+DK)^2 \\
+	\gamma^2 &>  C^2
+\end{align*}
+Note that since $P>0$ we want that $(A+BK) = 0$ to have the best gamma posible. As we can see, for our values of $(A,B,C,D)$ the optimal solution is $K_{best} = 2$ with $\gamma_{best} = \frac{1}{2}$.

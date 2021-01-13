@@ -102,10 +102,10 @@ We will once again note that in order to find a solution, we want to check if (\
 
 
 % Example using function
-\subsection{Example}
+\subsection{Example} \label{ExampleQS}
 In this example we will consider the following unstable system.
 \begin{align*}
-	x(t+1) &= 2x(t) - \frac{1}{2}u(t) + w(t) 
+	x(t+1) &= x(t) - \frac{1}{2}u(t) + w(t) 
 \end{align*}
 We will assume our noise to be picked uniformly from the interval $[-0.1 , 0.1]$. We will start by generating a random noise sequence and a random input sequence which we will use to construct the following data.
 \begin{align*}
@@ -116,7 +116,7 @@ We will assume our noise to be picked uniformly from the interval $[-0.1 , 0.1]$
 
 For our noise matrix $\Phi$ we will use that if we pick $\Phi_{12} = \overline{0} = [0 \dots 0]$ and $\Phi_{22} = -I$ then we know that $W_- W_-^\top \leq \Phi_{11}$. Since we know that our data is sampled from a uniform distribution with a maximum value of $0.1$ we know that $W_- W_-^\top \leq 0.1^2 T$ where $T$ is the total number of samples considered. Since we are considering $5$ sample we will pick our noise matrix to be:
 \begin{equation*}
-	\Phi = \begin{bmatrix} 0.05 & \overline{0} \\ \overline{0}^\top & -I_9 \end{bmatrix}
+	\Phi = \begin{bmatrix} 0.05 & \overline{0} \\ \overline{0}^\top & -I_5 \end{bmatrix}
 \end{equation*}
 Using some computation we can verify that this choice of $\Phi$ is indeed a valid one for the data.
 \begin{equation}
@@ -128,20 +128,19 @@ Using some computation we can verify that this choice of $\Phi$ is indeed a vali
 Before we attempt to solve the matrix inequality, we need to check if the generalised Slater condition holds. As we have seen in the previous section, we only have to verify that $N$ has at least 1 positive eigenvalue.
 \begin{equation*}
  N = 
- \begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_-\\0&\overline{0} \end{bmatrix}
- \begin{bmatrix} 0.09 & \overline{0} \\ \overline{0}^\top & -I_9 \end{bmatrix}
- \begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_-\\0&\overline{0} \end{bmatrix}^\top 
+ \begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_- \end{bmatrix}
+ \begin{bmatrix} 0.05 & \overline{0} \\ \overline{0}^\top & -I_5 \end{bmatrix}
+ \begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_- \end{bmatrix}^\top 
  =
  \begin{bmatrix} 
- -0.5332 &  0.2343 & -0.6482 &  0\\
- 0.2343 & -0.5171 & -0.5463 &  0\\
- -0.6482 & -0.5463 & -2.2790 &  0\\
- 0      &  0      &  0      &  0
+ -0.5332 &  0.2343 & -0.6482\\
+  0.2343 & -0.5171 & -0.5463 \\
+ -0.6482 & -0.5463 & -2.2790
  \end{bmatrix} 
 \end{equation*}
 \begin{equation*}
- \sigma(N) = \{ \begin{array}{cccc}
- -2.5921 & -0.7571 & 0 & 0.02
+ \sigma(N) = \{ \begin{array}{ccc}
+ -2.5921 & -0.7571 & 0.02
  \end{array} \}
 \end{equation*}
 
@@ -151,7 +150,7 @@ Now that we have our data prepared, we will attempt to find a $P > 0$, $L$, $\al
 		P-\beta I&0&0&0\\0&-P&-L^\top&0\\0&-L&0&L\\0&0&L^\top&P
 	\end{bmatrix} &- \alpha 
 	\begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_-\\0&\overline{0} \end{bmatrix}
-	\begin{bmatrix} 0.09 & \overline{0} \\ \overline{0}^\top & -I_9 \end{bmatrix}
+	\begin{bmatrix} 0.05 & \overline{0} \\ \overline{0}^\top & -I_5 \end{bmatrix}
 	\begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_-\\0&\overline{0} \end{bmatrix}^\top \geq 0 
 \end{align*}
 Using numerical tools such as Yalmip we can find that the following values form a valid solution to the matrix inequality.
@@ -170,7 +169,7 @@ X = [ 0       0.1533 0.6281 0.1956 -0.2466 -0.2571];
 Phi = [0.05 zeros(1,5) ; zeros(5,1) -eye(5)];
 [bool, K] = isInformQuadraticStabilisation(X, U, Phi)
 \end{lstlisting}
-Which will return: \mon{[ 1, 1.6977 ]}. Note that this is a different but still valid controller.
+Which will return: \mon{[ 1, 1.6977 ]}.
 
 
 

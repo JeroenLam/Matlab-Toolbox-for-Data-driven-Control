@@ -112,7 +112,9 @@ function [bool, K, diagnostics, info] = isInformLQR(X, U, Q, R, tolerance, optio
         end
         
         % return K
-        bool = true;
+        if info == 0
+            bool = true;
+        end
         K = zeros(m, n);
     end
 end
