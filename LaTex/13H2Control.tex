@@ -3,7 +3,7 @@
 
 
 % What is H2 Classical
-\subsection{Non data driven $\mathcal{H}_2$ Control}
+\subsection{Non data driven $\mathcal{H}_2$ control}
 Similar to quadratic stabilisation, we will be considering systems of the following form.
 \begin{align} \tag{\ref{isnSystem}}
 \mathbf{x}(t+1) &= A_s \mathbf{x}(t) + B_s \mathbf{u}(t) + \mathbf{w}(t)
@@ -14,7 +14,7 @@ But in the case of $\mathcal{H}_2$ control we will also be considering an perfor
 \end{align*}
 In the case of $\mathcal{H}_2$ control we do not only want to find a stabilising feedback controller, we want to find one that minimises the performance output. In this sense it is similar to LQR control. Let $K$ be a stabilising feedback controller for the system. We will start by defining the closed loop transfer function ($G(z)$) on the closed loop system.
 \begin{align*}
-	\mathbf{x}(t+1) &= (A_s + B_s K) \mathbf{x}(t) + \mathbf{w}(t) \\
+	\mathbf{x}(t+1) &= (A + B K) \mathbf{x}(t) + \mathbf{w}(t) \\
 	\mathbf{z}(t)   &= (C   + D   K) \mathbf{x}(t) \\
 	G(z) &= (C + DK)(z I - (A+BK))^{-1}
 \end{align*}
@@ -30,7 +30,7 @@ We want to find the feedback gain $K$ for which the cost function is minimal, i.
 \begin{equation*}
 	J^\ast = inf \{ J(K) := \left\| G_K(z) \right\|^2_{\mathcal{H}_2} \, | \, K \mbox{ stabilises the closed loop system}\}
 \end{equation*}
-Then we want to find $K$ such that $J(K) = J^\ast$.
+Then we want to find $K$ such that $J(K) = J^\ast$. However, instead of using this definition directly, we will be considering the following theorem that gives us an equivalence between the definition and a set of matrix inequalities.
 
 \todo{find reference for statement that is 'well-known' according to paper page 8}
 \Thr{}{
@@ -43,8 +43,8 @@ Then we want to find $K$ such that $J(K) = J^\ast$.
 
 
 % What is H2 Data-driven
-\subsection{Data driven $\mathcal{H}_2$ Control}
-We will now extend the $\mathcal{H}_2$ control problem to data driven control. We want to find a controller $K$ that stabilises all systems describing the data whilst still minimising $\gamma$. Using the theorem noted above we are able to do so since we can express $\gamma$ in relation to $P$ instead of it being directly dependent on $(A,B) \in \Sigma_{i/s/n}$. Using this we will formulate the following definition of informativity.
+\subsection{Data driven $\mathcal{H}_2$ control}
+We will now extend the $\mathcal{H}_2$ control problem to data driven control. We want to find a controller $K$ that stabilises all systems describing the data whilst still optimizing $\gamma$ to be as small as possible. Using the theorem noted above we are able to do so since we can express $\gamma$ in relation to $P$ instead of it being directly dependent on $(A,B) \in \Sigma_{i/s/n}$. Using this we will formulate the following definition of informativity.
 
 \Def{Informative for $\mathcal{H}_2$ control \cite[Def 15]{waarde2020noisy}}{
 	the data $(U_-,X)$ is informative for $\mathcal{H}_2$ control with performance $\gamma$ if there exists a symmetric positive definite matrices $p$ and a matrix $K$ such that:
@@ -123,9 +123,9 @@ This theorem was implemented in the functions below.
 \mon{[bool, K, diagnostics, gamma, info] = isInformH2(X, U, Phi, C, D, tolerance, options)} 
 
 \subsubsection*{Description} \todo{a}
-\mon{[bool, K, diagnostics, gamma, info] = isInformH2(X, U, Phi, C, D)}: . \\
-\mon{[bool, K, diagnostics, gamma, info] = isInformH2(X, U, Phi, C, D, tolerance)}: . \\
-\mon{[bool, K, diagnostics, gamma, info] = isInformH2(X, U, Phi, C, D, tolerance, options)}: .
+\mon{[bool, K, diagnostics, gamma, info] = isInformH2(X, U, Phi, C, D)}: Checks is the data is informative for \mbox{H2} control. \\
+\mon{[bool, K, diagnostics, gamma, info] = isInformH2(X, U, Phi, C, D, tolerance)}: Checks is the data is informative for \mbox{H2} control using a given tolerance. \\
+\mon{[bool, K, diagnostics, gamma, info] = isInformH2(X, U, Phi, C, D, tolerance, options)}: Checks is the data is informative for \mbox{H2} control using a given tolerance and a given spdsetting object from Yalmip.
 
 \subsubsection*{Input arguments}
 \textbf{\mon{X}}: State data matrix of dimension $n \times T+1$ from a input/state data set.\\
