@@ -25,19 +25,19 @@ This theorem can be reduced to check a finite amount of complex numbers similar 
 % Example using function
 \subsection{Implementation}
 \subsubsection*{Syntax}
-\mon{[bool] = isInformStabilisable(X)} \\
-\mon{[bool] = isInformStabilisable(X, tolerance)}
+\mon{[bool] = isInformStabilisable(X)} 
+%\mon{[bool] = isInformStabilisable(X, tolerance)}
 
 \subsubsection*{Description}
-\mon{[bool] = isInformStabilisable(X)}: Returns if the data is informative for stabilisability. Uses default tolerance of \mon{1e-14}.\\
-\mon{[bool] = isInformStabilisable(X, tolerance)}: Returns if the data is informative for stabilisability given a specific tolerance.  
+\mon{[bool] = isInformStabilisable(X)}: Returns if the data is informative for stabilisability.% Uses default tolerance of \mon{1e-14}.
+%\mon{[bool] = isInformStabilisable(X, tolerance)}: Returns if the data is informative for stabilisability given a specific tolerance.  
 
 \subsubsection*{Input arguments}
-\textbf{\mon{X}}: State data matrix of dimension $n \times T+1$ from an input-state dataset. \\ 
-\textbf{\mon{tolerance}}: Tolerance used for determining when a value is zero up to machine precision. Default value is \mon{1e-14}.
+\textbf{\mon{X}}: State data matrix of dimension $n \times T+1$ from an input-state dataset. \
+%\textbf{\mon{tolerance}}: Tolerance used for determining when a value is zero up to machine precision. Default value is \mon{1e-14}.
 
 \subsubsection*{Output arguments}
-\textbf{\mon{bool}}: (boolean) True if the data is informative for stabilisability, false otherwise\\
+\textbf{\mon{bool}}: (boolean) True if the data is informative for stabilisability, false otherwise.
 
 \subsection{Examples}
 In this example we will consider the same data that we used in system identification and controllability, namely:

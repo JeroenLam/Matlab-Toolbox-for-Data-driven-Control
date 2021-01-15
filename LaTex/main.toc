@@ -1,0 +1,64 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\contentsline {section}{\numberline {1}Abstract}{4}%
+\contentsline {section}{\numberline {2}Introduction}{4}%
+\contentsline {section}{\numberline {3}Definitions}{5}%
+\contentsline {subsection}{\numberline {3.1}Model classes}{5}%
+\contentsline {subsection}{\numberline {3.2}Informativity}{5}%
+\contentsline {subsection}{\numberline {3.3}Data}{6}%
+\contentsline {section}{\numberline {4}System identification}{8}%
+\contentsline {subsection}{\numberline {4.1}Mathematics}{8}%
+\contentsline {subsection}{\numberline {4.2}Algorithm}{8}%
+\contentsline {subsection}{\numberline {4.3}Implementation}{9}%
+\contentsline {subsection}{\numberline {4.4}Examples}{9}%
+\contentsline {section}{\numberline {5}Controllability}{11}%
+\contentsline {subsection}{\numberline {5.1}Implementation}{11}%
+\contentsline {subsection}{\numberline {5.2}Examples}{12}%
+\contentsline {section}{\numberline {6}Stabilisability}{13}%
+\contentsline {subsection}{\numberline {6.1}Implementation}{13}%
+\contentsline {subsection}{\numberline {6.2}Examples}{14}%
+\contentsline {section}{\numberline {7}Stability}{15}%
+\contentsline {subsection}{\numberline {7.1}Mathematics}{15}%
+\contentsline {subsection}{\numberline {7.2}Implementation}{15}%
+\contentsline {subsection}{\numberline {7.3}Examples}{16}%
+\contentsline {section}{\numberline {8}State feedback}{17}%
+\contentsline {subsection}{\numberline {8.1}Mathematics}{17}%
+\contentsline {subsection}{\numberline {8.2}Implementation}{18}%
+\contentsline {subsection}{\numberline {8.3}Examples}{19}%
+\contentsline {section}{\numberline {9}Deadbeat control}{21}%
+\contentsline {subsection}{\numberline {9.1}Mathematics deadbeat control}{21}%
+\contentsline {subsection}{\numberline {9.2}Mathematics extending pole placement}{22}%
+\contentsline {subsection}{\numberline {9.3}Implementation}{22}%
+\contentsline {subsection}{\numberline {9.4}Examples}{23}%
+\contentsline {section}{\numberline {10}Linear quadratic regulation}{25}%
+\contentsline {subsection}{\numberline {10.1}Non data-driven LQR}{25}%
+\contentsline {subsection}{\numberline {10.2}Data-driven LQR}{26}%
+\contentsline {subsection}{\numberline {10.3}Implementation}{27}%
+\contentsline {subsection}{\numberline {10.4}Examples}{28}%
+\contentsline {section}{\numberline {11}Dynamic measurement feedback}{30}%
+\contentsline {subsection}{\numberline {11.1}Non-data driven dynamic feedback control}{30}%
+\contentsline {subsection}{\numberline {11.2}Data-driven stabilisation by dynamic measurement feedback}{30}%
+\contentsline {subsection}{\numberline {11.3}Implementation}{32}%
+\contentsline {subsection}{\numberline {11.4}Examples}{33}%
+\contentsline {section}{\numberline {12}State estimation}{35}%
+\contentsline {subsection}{\numberline {12.1}Implementation}{37}%
+\contentsline {subsection}{\numberline {12.2}Examples}{38}%
+\contentsline {section}{\numberline {13}Noise and control}{41}%
+\contentsline {subsection}{\numberline {13.1}Noise and its set of systems}{41}%
+\contentsline {section}{\numberline {14}Quadratic stabilisation}{42}%
+\contentsline {subsection}{\numberline {14.1}Problem formulation}{42}%
+\contentsline {subsection}{\numberline {14.2}Implementation Slater condition}{43}%
+\contentsline {subsection}{\numberline {14.3}Solving the data driven quadratic stabilisation problem.}{43}%
+\contentsline {subsection}{\numberline {14.4}Implementation}{45}%
+\contentsline {subsection}{\numberline {14.5}Example}{46}%
+\contentsline {section}{\numberline {15}$\mathcal {H}_2$ Control}{48}%
+\contentsline {subsection}{\numberline {15.1}Non data driven $\mathcal {H}_2$ control}{48}%
+\contentsline {subsection}{\numberline {15.2}Data driven $\mathcal {H}_2$ control}{49}%
+\contentsline {subsection}{\numberline {15.3}Implementation}{49}%
+\contentsline {subsection}{\numberline {15.4}Example}{51}%
+\contentsline {section}{\numberline {16}H$_\infty $ Control}{53}%
+\contentsline {subsection}{\numberline {16.1}Non data driven $\mathcal {H}_\infty $ control}{53}%
+\contentsline {subsection}{\numberline {16.2}Data driven $\mathcal {H}_\infty $ control}{53}%
+\contentsline {subsection}{\numberline {16.3}Implementation}{54}%
+\contentsline {subsection}{\numberline {16.4}Example}{55}%
+\contentsline {section}{\numberline {17}Acknowledgements}{58}%
+\contentsline {section}{\numberline {18}Reference section title}{58}%

@@ -1,8 +1,6 @@
 \section{Noise and control} \label{sectionNoise}
 % Abstract section
-In this section we will discus how we can define our data in the case where there is an unknown noise term acting on the system. We will formulate an assumption on our noise that we will use to represent the control problem as one of quadratic matrix inequalities. We will consider the classical S-lemma for quadratic function and look at a generalised matrix S-lemma that we can use to solve the control problem. Lastly we will consider how we can implement the necessary condition in a function for use in the actual stabilisation problems coming in the next sections.
-
-
+In this section we will discus how we can define our data in the case where there is an unknown noise term acting on the system. We will formulate an assumption on our noise that we will use to represent the control problem as one of quadratic matrix inequalities. 
 
 \subsection{Noise and its set of systems}
 % Recall noise from start
@@ -58,94 +56,7 @@ Using this inequality we can redefine $\Sigma$ as follows.
 
 
 
-\subsection{Problem formulation}
-% Problem definition of QS
-We will start by defining when data is informative for quadratic stabilisation. We will go into more detail about this type of control in the later section \ref{SectionQuadStab}. For now we will use this definition to give an intuitive idea on how we end up at the final theory.
 
-\Def{Informative for quadratic stabilisation \cite[Def 3]{waarde2020noisy}}{
-	The data $(U_-,X)$ is called informative for quadratic stabilisation if there exists a feedback gain $K$ and a Lyapunov matrix $P = P^\top > 0$ such that $P - (A + BK) P (A + BK)^\top > 0$ for all $(A,B) \in \Sigma_{i/s/n}$
-}
-
-% Note that this is equivalent to the matrix inequalities
-We can expend the matrix inequality to get the following.
-\begin{equation} \label{noiseQSQMI}
-	P - (A + BK) P (A + BK)^\top = 
-	\begin{bmatrix} I\\A^\top\\B^\top \end{bmatrix}^\top 
-	\begin{bmatrix} P&0&0\\0&-P&-PK^\top\\0&-KP&-KPK^\top \end{bmatrix} 
-	\begin{bmatrix} I\\A^\top\\B^\top \end{bmatrix} > 0
-\end{equation}
-For the sake of argument, lets pick $P$ and $K$ to be fixed. Then our control problem reduces to knowing when there is sufficient overlap in both solution sets of the quadratic matrix inequalities (\ref{noiseQSQMI}) and (\ref{noiseSystemQMI}), or in other words, when does one quadratic matrix inequality imply another quadratic matrix inequality.
-
-
-
-\subsection{Classical S-lemma}
-We will start by recalling the S-lemma for quadratic functions. A function $f : \mathbb{R}^n \to \mathbb{R}$ is called quadratic if it can be written in the form
-\[ f(x) = \begin{bmatrix} 1\\x \end{bmatrix}^\top
-\begin{bmatrix} M_{11}&M_{12}\\M_{12}^\top&M_{22} \end{bmatrix}
-\begin{bmatrix} 1\\x \end{bmatrix} \]
-for some $M_{11}\in\mathbb{R}$, $M_{12}\in\mathbb{R}^{1\times n}$ and $M_{22} \in \mathbb{R}^{n \times n}$.
-
-% Normal S-Lemma ans Slater condition
-\Thr{S-lemma}{
-	Let $f,g : \mathbb{R}^n \to \mathbb{R}$ be quadratic functions. Suppose that there exists $\bar{x} \in \mathbb{R}^n$ such that $g(\bar{x}) > 0$. Then $f(x) \geq 0$ for all $x\in\mathbb{R}^n$ such that $g(x) \geq 0$ if and only if there exists a scalar $\alpha \geq 0$ such that 
-	\[ f(x) - \alpha g(x) \geq 0 \mbox{\hspace{1cm}} \forall x \in \mathbb{R}^n \]
-}
-However, using the previously mentioned definition of quadratic functions we are able to rewrite the S-lemma to matrix inequalities.
-\[ \begin{bmatrix} M_{11}&M_{12}\\M_{12}^\top&M_{22} \end{bmatrix} - \alpha \begin{bmatrix} N_{11}&M_{12}\\N_{12}^\top&N_{22} \end{bmatrix} \geq 0 \]
-In which $\alpha > 0$ is a scalar and $N_{11},N_{12}$ and $N_{22}$ define the quadratic function $g$. Note that the assumption that there exists a $\bar{x} \in \mathbb{R}^n$ such that $g(\bar{x}) > 0$ is called the Slater condition.
-
-
-
-% Matrix S-Lemma and Generelised Slater condition
-\subsection{Matrix S-lemma}
-Now that we have familiarised ourselves with the classical S-lemma, we will move on to the generalised matrix S-lemma as described in \cite[Theorem 9]{waarde2020noisy}.
-
-\Thr{Matrix S-lemma \cite[Theorem 9]{waarde2020noisy}}{
-	Let $M$, $N \in \mathbb{R}^{(n+k) \times (n+k)}$ be symmetric matrices and assume that there exists some matrix $\bar{Z} \in mathbb{R}^{n\times k}$ such that
-	\begin{equation} \label{GenerelisedSlaterCondition}
-	\begin{bmatrix} I\\\bar{Z} \end{bmatrix}^\top N 	\begin{bmatrix} I\\\bar{Z} \end{bmatrix} > 0. 
-	\end{equation}
-	Then the following statements are equivalent:
-	\begin{enumerate}
-		\item $\begin{bmatrix} I\\Z \end{bmatrix}^\top M \begin{bmatrix} I\\Z \end{bmatrix} \geq 0$ for all $Z\in\mathbb{R}^{n \times k}$ with $\begin{bmatrix} I\\Z \end{bmatrix}^\top N \begin{bmatrix} I\\Z \end{bmatrix} \geq 0$.
-		\item $\begin{bmatrix} I\\Z \end{bmatrix}^\top M \begin{bmatrix} I\\Z \end{bmatrix} \geq 0$ for all $Z\in\mathbb{R}^{n \times k}$ with $\begin{bmatrix} I\\Z \end{bmatrix}^\top N \begin{bmatrix} I\\Z \end{bmatrix} > 0$.
-		\item There exists a scalar $\alpha \geq 0$ such that $M - \alpha N \geq 0$.
-	\end{enumerate}
-}
-Similar to the classical S-lemma, the assumption (\ref{GenerelisedSlaterCondition}) is called the generalised Slater condition.
-
-Using this matrix S-lemma we are able to get find a solution to our quadratic matrix inequality problem. We will go into more detail about the details for each type of control in their respective sections. But before we look at the specific cases we will first consider how we can verify that the generalised Slater condition holds for a given matrix $N$. For this we will consider the following theorem which gives us an easy to compute condition for verifying the Slater condition.
-
-\Thr{}{
-Let $N \in \mathbb{R}^{(k+n)\times (k+n)}$ be symmetric. Then the following are equivalent.
-\begin{enumerate}
-	\item There exists a $Z \in \mathbb{R}^{n\times k}$ such that $\begin{bmatrix} I_k\\\bar{Z} \end{bmatrix}^\top N 	\begin{bmatrix} I_k\\\bar{Z} \end{bmatrix} > 0$.
-	\item $N$ has at least $k$ positive eigenvalues.
-\end{enumerate}
-}
-
-Proof '$1 \Rightarrow 2$': \\
-\todo{fdsa}
-
-Proof '$1 \Leftarrow 2$': \\
-\todo{fdsa}
-
-
-% Pseudo code / algorithm
-\subsection{Implementation}
-\subsubsection*{Syntax}
-\mon{[bool] = testSlater(X, U, Phi)} 
-
-\subsubsection*{Description}
-\mon{[bool] = testSlater(X, U, Phi)}: Returns if the Slater condition holds for a matrix \mon{N} constructed from the data \mon{(X,U)} and the noise matrix \mon{Phi}.
-
-\subsubsection*{Input arguments}
-\textbf{\mon{X}}: State data matrix of dimension $n \times T+1$ from a input/state data set.\\
-\textbf{\mon{U}}: Input data matrix of dimension $m \times T$ from a input/state data set.\\
-\textbf{\mon{Phi}}: Noise matrix as in (\ref{noiseBound}).
-
-\subsubsection*{Output arguments}
-\textbf{\mon{bool}}: (boolean) True if the Slater condition holds, false otherwise.
 
 
 

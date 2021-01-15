@@ -38,7 +38,7 @@ function [bool, K, diagnostics, gamma, info] = isInformH2(X, U, Phi, C, D, toler
         case 5
             options = sdpsettings('solver','mosek','debug',1,'verbose',0);
             options.mosek.MSK_DPAR_SEMIDEFINITE_TOL_APPROX = 10^(-15);
-            tolerance = 1e-6;
+            tolerance = 1e-8;
         case 6
             options = sdpsettings('solver','mosek','debug',1,'verbose',0);
             options.mosek.MSK_DPAR_SEMIDEFINITE_TOL_APPROX = 10^(-15);

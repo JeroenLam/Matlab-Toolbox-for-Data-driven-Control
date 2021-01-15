@@ -5,7 +5,7 @@ function [bool, K, diagnostics, gamma, info] = isInformHInf(X, U, Phi, C, D, tol
 %          Phi       = matrix containing noise bound
 %          C         = state output preformance matrix
 %          D         = input output preformance matrix
-%          tolerance = limit for singular to working presision (default: 1e-6)
+%          tolerance = limit for singular to working presision (default: 1e-8)
 %          options   = sdpsettings from YALMIP
 %  Output: bool        = true if informative, false otherwise
 %          K           = feedback gain A + BK if applicable, [] otherwise
@@ -38,7 +38,7 @@ function [bool, K, diagnostics, gamma, info] = isInformHInf(X, U, Phi, C, D, tol
         case 5
             options = sdpsettings('solver','mosek','debug',1,'verbose',0);
             options.mosek.MSK_DPAR_SEMIDEFINITE_TOL_APPROX = 10^(-15);
-            tolerance = 1e-6;
+            tolerance = 1e-8;
         case 6
             options = sdpsettings('solver','mosek','debug',1,'verbose',0);
             options.mosek.MSK_DPAR_SEMIDEFINITE_TOL_APPROX = 10^(-15);
@@ -122,10 +122,10 @@ function [bool, K, diagnostics, gamma, info] = isInformHInf(X, U, Phi, C, D, tol
         info = info + 128;
     end
     
-    
-    
     K = value(L) / value(Y);
-    bool = true; % Feels kind of pointless to add this since there is no good method for preemptive checking if the solution is correct.
+    if info == 0
+        bool = true; 
+    end
     gamma = value(gamma);
 end
 

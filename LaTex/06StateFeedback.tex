@@ -3,7 +3,7 @@
 In this section we will see when en how we can construct a state feedback controller directly from the state-input data. We will first consider the mathematics after which we will look at how we can implement this. Lastly we will look at an example and how we can apply the provided functions.
 
 % What is State feedback
-In this section we will consider closed loop state feedback. This means that we want to substitute our input with an input that is based on the state of the system, i.e. $u = K x$ where $K \in \mathbb{R}^{m\times n}$. We will consider the system to be in a stable closed loop form if all eigenvalues of $A + B K$ are stable (inside the unit circle). We can extend this notion to data-driven control as follows.
+We will consider closed loop state feedback. This means that we want to substitute our input with an input that is based on the state of the system, i.e. $u = K x$ where $K \in \mathbb{R}^{m\times n}$. We will consider the system to be in a stable closed loop form if all eigenvalues of $A + B K$ are stable (inside the unit circle). We can extend this notion to data-driven control as follows.
 
 \Def{Informative for state feedback \cite[Def 12]{waarde2019data}}{
 	We say that the data $(U_-,X)$ is informative for stabilization by state feedback if there exists a feedback gain $K$ such that all systems described by the data are part of the set of systems that are stabilised using the gain $K$. I.e. $\Sigma_{i/s} \subseteq \Sigma_K$.

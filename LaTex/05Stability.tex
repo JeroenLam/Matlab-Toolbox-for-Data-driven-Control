@@ -3,9 +3,9 @@
 In this section we will consider data informativity for stability of unforced systems. We will first consider the mathematics and then we will see how it can be implemented. Lastly we will consider an example that we will solve using the Matlab function based on the previously discussed algorithm.
 
 % What is Stability
-In this section we will consider our data to be obtained from an unforced system i.e. there was no input. Because of this we will define our data and set of systems as follows:
+We will consider our data to be obtained from an unforced system i.e. there was no input. Because of this we will define our data and set of systems as follows:
 \begin{align*}
-\mathcal{D} &= (X) & \Sigma_\mathcal{D} = \left\{ A | X_+ = A \, X_- \right\}
+\mathcal{D} &= (X) & \Sigma_s = \Sigma_\mathcal{D} = \left\{ A | X_+ = A \, X_- \right\}
 \end{align*}
 Using these definitions we can define data informativity for stability as follows.
 
@@ -19,7 +19,7 @@ Using these definitions we can define data informativity for stability as follow
 However, using our definition of informativity for stabilisability we are able to reduce the condition to showing that the data is informative for identification and that the identified system is stable.
 
 \Cor{\cite{Cor 11}{waarde2019data}}{
-	The data $X$ is informative for stability if and only if $X_-$ has full row rank and $X_+ X_-^\dagger$ is stable for any right inverse $X_-^\dagger$. This is equivalent to $\Sigma_\mathcal{D} = \left\{A_s\right\}$ and $A_s = X_+ X_-^\dagger$ being stable.
+	The data $X$ is informative for stability if and only if $X_-$ has full row rank and $X_+ X_-^\dagger$ is stable for any right inverse $X_-^\dagger$. This is equivalent to $\Sigma_s = \left\{A_s\right\}$ and $A_s = X_+ X_-^\dagger$ being stable.
 }
 
 % Proof?

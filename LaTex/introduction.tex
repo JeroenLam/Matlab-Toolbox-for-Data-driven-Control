@@ -1,2 +1,19 @@
+% meer overcoupelende context
+% introduceer onderwerp
+
 \section{Introduction}
-When studying systems and control theory we often focus on finding properties of a given mathematical model. However, in the real world the mathematical model of a system is not always available. In most cases we only have the measurements/data as produced by a system. To combat this, we can use tools from the field of data-driven analysis and control. These tools are able to infer system theoretical properties from the data without explicitly knowing the underlying mathematical model of the system. In this paper we will look at the implementation of the tools provided in \cite{waarde2019data} and \cite{waarde2020noisy}.
+% - Context - 
+When studying systems and control theory we often focus on finding properties of a given mathematical model. However, in the real world the mathematical model of a system is not always available. In most cases we only have the measurements/data as produced by a system. To combat this, we can use tools from the field of data-driven analysis and control. These tools are able to infer system theoretical properties an stabilising controllers from the data without explicitly knowing the underlying mathematical model of the system.
+
+Since we only have access to the data, we can not necessarily determine the model that describes this data uniquely. 
+It might be the case that there are an infinite amount of different mathematical models describing the same data.
+Because of this we will be considering the informativity framework as defined in \cite{waarde2019data} and \cite{waarde2020noisy} which loosely states that if a property holds for all systems describing the data, then the data is informative for that property.
+
+% Problem
+% - System & control Matlab use
+When applying methods from systems and control to an actual problem, computers are often needed due to the complexity and size of the systems and data. Thus, in this paper we will implement a Matlab toolbox based on the necessary and sufficient condition of data informativity from papers, "\textit{Data informativity: a new perspective on data-driven analysis and control}" \cite{waarde2019data} and "\textit{From noisy data to feedback controllers: non-conservative design via a matrix S-lemma}" \cite{waarde2020noisy}. 
+
+We will be considering 2 cases. First we will be considering data with no noise. For this case we will be considering methods to check if a system is identifiable, controllable, stabilisable or stable. We will also look at how we can construct a state feedback controller, deadbeat controller, LQR controller and a dynamic measurement controller directly from the data. In the case of dynamic measurement feedback we will also be considering state identification for cases in which we only have access to the input and output data of a system.
+
+% - implementation noisy data
+Second, we will be considering the case in which a bounded noise acts on the data. For this case we will only be looking at constructing controller directly from the data, more specifically, we will be looking at how to compute a quadratic stabilising controller, a controller for the $\mathcal{H}_2$ control problem and a controller for the $\mathcal{H}_\infty$ control problem.

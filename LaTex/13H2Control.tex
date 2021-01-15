@@ -1,6 +1,6 @@
 \section{$\mathcal{H}_2$ Control}
 % Abstract section
-
+In this section we will look at the $\mathcal{H}_2$ control control problem for non data-driven control. We will extend this to define informativity and look at a theorem that gives us a methods to compute a solution to the data driven $\mathcal{H}_2$ control problem. Lastly we will consider the implementation as well as an example.
 
 % What is H2 Classical
 \subsection{Non data driven $\mathcal{H}_2$ control}
@@ -48,7 +48,7 @@ We will now extend the $\mathcal{H}_2$ control problem to data driven control. W
 
 \Def{Informative for $\mathcal{H}_2$ control \cite[Def 15]{waarde2020noisy}}{
 	the data $(U_-,X)$ is informative for $\mathcal{H}_2$ control with performance $\gamma$ if there exists a symmetric positive definite matrices $p$ and a matrix $K$ such that:
-	\begin{align*}
+	\begin{align*} \tag{\ref{H2Inequalities}}
 		P &> (A + BK)^\top P (A + BK) + (C + DK)^\top(C+DK) & 
 		trace(P) &< \gamma^2
 	\end{align*}
@@ -56,39 +56,41 @@ We will now extend the $\mathcal{H}_2$ control problem to data driven control. W
 }
 
 % Mathematics
-At this point, all that is left is to rewrite the inequality (\ref{H2Inequalities}) such that we are able to apply the previously discussed matrix S-lemma. To do this, we will first introduce some notation. Let $Y = P^{01}$ and $L = KY$. Then we are able to write (\ref{H2Inequalities}) as:
-\begin{equation*}
-	Y - (AY + BL)^\top P (AY + BL) - (CY + DL)^\top (CY+DL) > 0
-\end{equation*}
+At this point, all that is left is to rewrite the inequality (\ref{H2Inequalities}) such that we are able to apply the previously discussed matrix S-lemma. Using similar techniques as in quadratic stabilisation we can derive the following theorem. For more information about this, we will refer the reader to \cite[Section V.A]{waarde2020noisy}.
 
-\todo{Using a schur complement argument, this is equivalent to}
+%To do this, we will first introduce some notation. Let $Y = P^{01}$ and $L = KY$. Then we are able to write (\ref{H2Inequalities}) as:
+%\begin{equation*}
+%	Y - (AY + BL)^\top P (AY + BL) - (CY + DL)^\top (CY+DL) > 0
+%\end{equation*}
 
-\begin{equation} \label{H2AfterSchur}
-	\begin{bmatrix} Y - (CY + DL)^\top(CY + DL) & (AY + BL)^\top \\ AY + BL & Y \end{bmatrix} > 0
-\end{equation}
+%\todo{Using a schur complement argument, this is equivalent to}
 
-Note that this only holds if the following 2 condition hold.
-\begin{align*}
-	Y - (CY + DL)^\top(CY + DL) &> 0 \\
-	Y - (AY + BL) \left(Y - (CY + DL)^\top(CY + DL)\right)^{-1} (AY + BL)^\top &> 0
-\end{align*}
+%\begin{equation} \label{H2AfterSchur}
+%	\begin{bmatrix} Y - (CY + DL)^\top(CY + DL) & (AY + BL)^\top \\ AY + BL & Y \end{bmatrix} > 0
+%\end{equation}
 
-Since the first equation is independent of $A$ and $B$, we are able to write it as follows.
+%Note that this only holds if the following 2 condition hold.
+%\begin{align*}
+%	Y - (CY + DL)^\top(CY + DL) &> 0 \\
+%	Y - (AY + BL) \left(Y - (CY + DL)^\top(CY + DL)\right)^{-1} (AY + BL)^\top &> 0
+%\end{align*}
 
-\begin{equation*}
-	\left[\begin{array}{c}
-		I \\ \hline A^\top \\ B^\top
-	\end{array}\right]^\top
-	\left[\begin{array}{c|c}
-		Y & 0 \\ \hline
-		0 & \begin{bmatrix} Y \\ L \end{bmatrix} \left(Y - (CY + DL)^\top(CY + DL)\right)^{-1} \begin{bmatrix} Y \\ L \end{bmatrix}^\top
-	\end{array}\right]
-	\left[\begin{array}{c}
-		I \\ \hline A^\top \\ B^\top
-	\end{array}\right] > 0
-\end{equation*}
+%Since the first equation is independent of $A$ and $B$, we are able to write it as follows.
 
-As we can see the inequality is in a similar form as (\ref{noiseSystemQMI}) and thus via the S-lemma to get the following theorem.
+%\begin{equation*}
+%	\left[\begin{array}{c}
+%		I \\ \hline A^\top \\ B^\top
+%	\end{array}\right]^\top
+%	\left[\begin{array}{c|c}
+%		Y & 0 \\ \hline
+%		0 & \begin{bmatrix} Y \\ L \end{bmatrix} \left(Y - (CY + DL)^\top(CY + DL)\right)^{-1} \begin{bmatrix} Y \\ L \end{bmatrix}^\top
+%	\end{array}\right]
+%	\left[\begin{array}{c}
+%		I \\ \hline A^\top \\ B^\top
+%	\end{array}\right] > 0
+%\end{equation*}
+
+%As we can see the inequality is in a similar form as (\ref{noiseSystemQMI}) and thus via the S-lemma to get the following theorem.
 
 % State theorem
 \Thr{\cite[Thr 16]{waarde2020noisy}}{
@@ -122,7 +124,7 @@ This theorem was implemented in the functions below.
 \mon{[bool, K, diagnostics, gamma, info] = isInformH2(X, U, Phi, C, D, tolerance)} \\
 \mon{[bool, K, diagnostics, gamma, info] = isInformH2(X, U, Phi, C, D, tolerance, options)} 
 
-\subsubsection*{Description} \todo{a}
+\subsubsection*{Description}
 \mon{[bool, K, diagnostics, gamma, info] = isInformH2(X, U, Phi, C, D)}: Checks is the data is informative for \mbox{H2} control. \\
 \mon{[bool, K, diagnostics, gamma, info] = isInformH2(X, U, Phi, C, D, tolerance)}: Checks is the data is informative for \mbox{H2} control using a given tolerance. \\
 \mon{[bool, K, diagnostics, gamma, info] = isInformH2(X, U, Phi, C, D, tolerance, options)}: Checks is the data is informative for \mbox{H2} control using a given tolerance and a given spdsetting object from Yalmip.
@@ -133,7 +135,7 @@ This theorem was implemented in the functions below.
 \textbf{\mon{Phi}}: Noise matrix as in (\ref{noiseBound}). \\ 
 \textbf{\mon{C}}: State performance matrix. \\ 
 \textbf{\mon{D}}: State performance matrix. \\ 
-\textbf{\mon{tolerance}}: Tolerance used for determining when a value is zero up to machine precision. Default value is \mon{1e-14}.\\
+\textbf{\mon{tolerance}}: Tolerance used for determining when a value is zero up to machine precision. Default value is \mon{1e-8}.\\
 \textbf{\mon{options}}: sdpsettings used with the Yalmip solver.
 
 \subsubsection*{Output arguments}
@@ -143,6 +145,8 @@ This theorem was implemented in the functions below.
 \textbf{\mon{gamma}}: (double) Value of gamma as found by the solver. \\
 \textbf{\mon{info}}: (int) Diagnostic variable use to identify which conditions (if any) failed. The verification is done on the solution obtained from Yalmip. For information about the type of error use the \mon{help} command in Matlab
 
+\subsubsection*{Limitation}
+Due to computational limitation in the solver or conditioning of this problem it might be the case that a valid \mon{K} is found even though \mon{bool} is false. This is because we are able to find a solution close enough to the real solution that the results are still satisfactory, even though not all conditions are met. 
 
 % Example using function
 \subsection{Example} \label{ExampleH2}
@@ -209,7 +213,7 @@ Phi = [0.05 zeros(1,5) ; zeros(5,1) -eye(5)];
 \end{lstlisting}
 Which will return: \mon{[ 1, 1.917417382202475 ]}.
 
-Since we have the 'true' system, we are also able to find the best possible $\gamma_{best}$ and $K_{best}$. For this we will use (\ref{H2AfterSchur}). We will use the following code to compute the optimal gain.
+Since we have the 'true' system, we are also able to find the best possible $\gamma_{best}$ and $K_{best}$. For this we will use on of the intemediary steps of the theorem \cite[Equation 36]{waarde2020noisy}. We will use the following code to compute the optimal gain.
 \begin{lstlisting}
 A = 1;
 B = -0.5;

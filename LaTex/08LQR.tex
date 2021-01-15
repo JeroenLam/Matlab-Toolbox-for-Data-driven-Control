@@ -73,7 +73,7 @@ However, even though it is a valid solution it is not easily computable in its c
 
 
 % Example using function
-\subsection{Examples using implementation}
+\subsection{Implementation}
 The algorithm above is implemented in the following functions:
 \subsubsection*{Syntax}
 \mon{[bool, K, diagnostics] = isInformLQR(X, U, Q, R)} \\
@@ -98,8 +98,10 @@ The algorithm above is implemented in the following functions:
 \textbf{\mon{K}}: (matrix) If the data is informative, it contains a stabilising controller \mon{K} for closed loop control \mon{A+BK}, empty otherwise.\\
 \textbf{\mon{diagnostics}}: (struct) Diagnostics from the Yalmip \mon{optimize()} function.
 
+\subsubsection*{Limitation}
+Due to computational limitation in the solver or conditioning of this problem it might be the case that a valid \mon{K} is found even though \mon{bool} is false. This is because we are able to find a solution close enough to the real solution that the results are still satisfactory, even though not all conditions are met. 
 
-\subsubsection{Examples}
+\subsection{Examples}
 We will consider an example in which all systems have the same $A$ matrix, $A$ is stable and $QA = 0$. We will pick the input data in such a way that it is not full rank. For this we will use the following data
 \begin{align*}
 X &= \begin{bmatrix} 1&1.5&1.75 \end{bmatrix} & 

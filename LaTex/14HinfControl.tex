@@ -1,13 +1,25 @@
 \section{H$_\infty$ Control}
 % Abstract section
-
+In this section we will look at the $\mathcal{H}_\infty$ control control problem for non data-driven control. We will extend this to define informativity and look at a theorem that gives us a methods to compute a solution to the data driven $\mathcal{H}_\infty$ control problem. Lastly we will consider the implementation as well as an example.
 
 \subsection{Non data driven $\mathcal{H}_\infty$ control}
+The $\mathcal{H}_\infty$ control problem is very similar to the $\mathcal{H}_2$ control problem. The main difference is that instead of using the $\| \cdot \|_{\mathcal{H}_2}$ norm we will be considering the $\| \cdot \|_{\mathcal{H}_\infty}$ norm instead. We will be considering the same type of system, namely:
 
+\begin{align*}
+	\mathbf{x}(t+1) &= (A + B K) \mathbf{x}(t) + \mathbf{w}(t) \\
+	\mathbf{z}(t)   &= (C   + D   K) \mathbf{x}(t) 
+\end{align*}
 
+We will define the closed loop transfer function for a given $K$ in the same way.
+
+\begin{equation*}
+	G(z) = (C + DK)(z I - (A+BK))^{-1}
+\end{equation*}
+
+The $\mathcal{H}_\infty$ control problem entails finding a controller $K$ such that the closed loop system is stable and $\| G(z) \|_{\mathcal{H}_\infty}$ is minimised. We call the performance of the system as $\gamma$ which is bounded by $\| G(z) \|_{\mathcal{H}_\infty} < \gamma$. Using the following theorem, we can express the $\mathcal{H}_\infty$ control problem as one of matrix inequalities. 
 
 \Thr{\cite[Thr 4.6.6]{skelton1997unified}}{
-	Let $\gamma > 0$. $A+BK$ is stable and $\| G(z) \|_{\mathcal{H}_\infty}$ if and only if there exists a matrix $P = P^\top > 0$ such that
+	Let $\gamma > 0$. $A+BK$ is stable and $\| G(z) \|_{\mathcal{H}_\infty} < \gamma$ if and only if there exists a matrix $P = P^\top > 0$ such that
 	\begin{subequations}\label{HinfCondition}
 		\begin{align} 
 			P - (A + BK)^\top (P^{-1} - \frac{1}{\gamma^2}I)^{-1} (A + BK) - (C + DK)^\top (C + DK) &> 0 \\
@@ -18,7 +30,6 @@
 
 
 \subsection{Data driven $\mathcal{H}_\infty$ control}
-
 We will once again extend the $\mathcal{H}_\infty$ control problem to data driven control. In our case we want to find a controller $K$ that stabilises all matrices $(A,B) \in \Sigma_{i/s/n}$ while still optimising $\gamma$ to be as small as possible. Using the above mentioned theorem we are able to come to the following definition for informativity for $\mathcal{H}_\infty$ control.
 % What is Hinf
 
@@ -28,55 +39,60 @@ We will once again extend the $\mathcal{H}_\infty$ control problem to data drive
 		P - (A + BK)^\top (P^{-1} - \frac{1}{\gamma^2}I)^{-1}(A + BK) - (C+DK)^\top (C+DK) &> 0 \\
 		P^{-1} - \frac{1}{\gamma^2}I &> 0 \tag{\ref{HinfCondition}b}
 	\end{align}
-	Holds for all $(A,B) \in \Sigma_{i/s/n}$.
+	holds for all $(A,B) \in \Sigma_{i/s/n}$.
 }
 
-Similar to the quadratic stabilisation and $\mathcal{H}_2$ stabilisation, the only thing left is to rewrite (\ref{HinfCondition}a) to be of the form:
-\begin{equation*}
-	\begin{bmatrix} I \\ A^\top \\ B^\top \end{bmatrix}^\top
-	M
-	\begin{bmatrix} I \\ A^\top \\ B^\top \end{bmatrix} > 0
-\end{equation*}
+Similar to the quadratic stabilisation and $\mathcal{H}_2$ control, the only thing left is to rewrite (\ref{HinfCondition}a) such that we are able to apply the matrix S-lemma. For more information about this, we will refer the reader to \cite[Section V.B]{waarde2020noisy}.
+%\begin{equation*}
+%	\begin{bmatrix} I \\ A^\top \\ B^\top \end{bmatrix}^\top
+%	M
+%	\begin{bmatrix} I \\ A^\top \\ B^\top \end{bmatrix} > 0
+%\end{equation*}
 
-To achieve this we will multiply (\ref{HinfCondition}a) with $P^{-1}$ from both sides. We will define the following variables, $Y = P^{-1}$ and $L = KY$.
-\begin{align*}
-	Y - (AY + BL)^\top (Y - \frac{1}{\gamma^2} I )^{-1} (AY + BL) - (CY + DL)^\top (CY + DL) &> 0
-\end{align*}
 
-Using this we can rewrite the first inequality in the following form.
+%To achieve this we will multiply (\ref{HinfCondition}a) with $P^{-1}$ from both sides. We will define the following variables, $Y = P^{-1}$ and $L = KY$.
+%\begin{align*}
+%	Y - (AY + BL)^\top (Y - \frac{1}{\gamma^2} I )^{-1} (AY + BL) - (CY + DL)^\top (CY + DL) &> 0
+%\end{align*}
 
-\begin{equation*}
-	\left[\begin{array}{c}
-		I \\ \hline A^\top \\ B^\top
-	\end{array}\right]^\top
-	\left[\begin{array}{c|c}
-		Y - (CY + DL)^\top (CY + DL) & 0 \\ \hline
-		0 & -\begin{bmatrix} Y\\ L \end{bmatrix} \left(Y - \frac{1}{\gamma^2}I\right)^{-1} \begin{bmatrix} Y \\ L \end{bmatrix}^\top
-	\end{array}\right]
-	\left[\begin{array}{c}
-		I \\ \hline A^\top \\ B^\top
-	\end{array}\right] > 0
-\end{equation*}
+
+
+%Using this we can rewrite the first inequality in the following form.
+
+%\begin{equation*}
+%	\left[\begin{array}{c}
+%		I \\ \hline A^\top \\ B^\top
+%	\end{array}\right]^\top
+%	\left[\begin{array}{c|c}
+%		Y - (CY + DL)^\top (CY + DL) & 0 \\ \hline
+%		0 & -\begin{bmatrix} Y\\ L \end{bmatrix} \left(Y - \frac{1}{\gamma^2}I\right)^{-1} \begin{bmatrix} Y \\ L \end{bmatrix}^\top
+%	\end{array}\right]
+%	\left[\begin{array}{c}
+%		I \\ \hline A^\top \\ B^\top
+%	\end{array}\right] > 0
+%\end{equation*}
 
 % State theorem
 \Thr{\cite[Thr 13]{waarde2020noisy}}{
 	Assume that the generalised Slater condition (\ref{GenerelisedSlaterCondition}) holds for $N$ in (\ref{NData}) and some $\bar{Z} \in \mathbb{R}^{(n+m_ \times n)}$. Then the data $(U_-,X)$ is informative for $\mathcal{H}_\infty$ control with performance $\gamma$ if and only if there exists matrices $Y = Y^\top > 0$ and $L$, and scalars $\alpha \geq 0$ and $\beta > 0$ satisfying:
-	\begin{equation*}
-		\begin{bmatrix}
-			Y - \beta I & 0 & 0 & 0 & (CY + DL)^\top \\
-			0 & 0 & 0 & Y & 0 \\
-			0 & 0 & 0 & L & 0 \\
-			0 & Y & L^\top & Y - \frac{1}{\gamma^2}I & 0 \\
-			CY + DL & 0 & 0 & 0 & I
-		\end{bmatrix} - \alpha
-		\begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_- \\ 0&0 \\ 0&0 \end{bmatrix}
-		\begin{bmatrix} \Phi_{11} & \Phi_{12} \\ \Phi_{12}^\top & \Phi_{22} \end{bmatrix}
-		\begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_- \\ 0&0 \\ 0&0 \end{bmatrix}^\top \geq 0
-	\end{equation*}
-	\begin{equation*}
-		Y - \frac{1}{\gamma^2}I > 0
-	\end{equation*}
-	Moreover, if $Y$ and $L$ satisfy the above inequalities, then $K = LY^{-1}$ is such that $A + BK$ is stable and $\| G(z)\|_{\mathcal{H}_\infty} < \gamma$ for all $(A,B) \in \Sigma$. \todo{Explain G(z)}
+	\begin{subequations} \label{HInfConditionThr}
+		\begin{equation}
+			\begin{bmatrix}
+				Y - \beta I & 0 & 0 & 0 & (CY + DL)^\top \\
+				0 & 0 & 0 & Y & 0 \\
+				0 & 0 & 0 & L & 0 \\
+				0 & Y & L^\top & Y - \frac{1}{\gamma^2}I & 0 \\
+				CY + DL & 0 & 0 & 0 & I
+			\end{bmatrix} - \alpha
+			\begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_- \\ 0&0 \\ 0&0 \end{bmatrix}
+			\begin{bmatrix} \Phi_{11} & \Phi_{12} \\ \Phi_{12}^\top & \Phi_{22} \end{bmatrix}
+			\begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_- \\ 0&0 \\ 0&0 \end{bmatrix}^\top \geq 0
+		\end{equation}
+		\begin{equation}
+			Y - \frac{1}{\gamma^2}I > 0
+		\end{equation}
+	\end{subequations}
+	Moreover, if $Y$ and $L$ satisfy the above inequalities, then $K = LY^{-1}$ is such that $A + BK$ is stable and $\| G(z)\|_{\mathcal{H}_\infty} < \gamma$ for all $(A,B) \in \Sigma$.
 }
 
 % Pseudo code / algorithm
@@ -86,7 +102,7 @@ Using this we can rewrite the first inequality in the following form.
 \mon{[bool, K, diagnostics, gamma, info] = isInformHInf(X, U, Phi, C, D, tolerance)} \\
 \mon{[bool, K, diagnostics, gamma, info] = isInformHInf(X, U, Phi, C, D, tolerance, options)} 
 
-\subsubsection*{Description}\todo{a}
+\subsubsection*{Description}
 \mon{[[bool, K, diagnostics, gamma, info] = isInformHInf(X, U, Phi, C, D)}: Checks is the data is informative for \mbox{H$\infty$} control. \\
 \mon{[bool, K, diagnostics, gamma, info] = isInformHInf(X, U, Phi, C, D, tolerance)}: Checks is the data is informative for \mbox{H$\infty$} control using a given tolerance. \\
 \mon{[bool, K, diagnostics, gamma, info] = isInformHInf(X, U, Phi, C, D, tolerance, options)}: Checks is the data is informative for \mbox{H$\infty$} control using a given tolerance and a given spdsetting object from Yalmip.
@@ -97,7 +113,7 @@ Using this we can rewrite the first inequality in the following form.
 \textbf{\mon{Phi}}: Noise matrix as in (\ref{noiseBound}). \\ 
 \textbf{\mon{C}}: State performance matrix. \\ 
 \textbf{\mon{D}}: State performance matrix. \\ 
-\textbf{\mon{tolerance}}: Tolerance used for determining when a value is zero up to machine precision. Default value is \mon{1e-14}.\\
+\textbf{\mon{tolerance}}: Tolerance used for determining when a value is zero up to machine precision. Default value is \mon{1e-8}.\\
 \textbf{\mon{options}}: sdpsettings used with the Yalmip solver.
 
 \subsubsection*{Output arguments}
@@ -107,19 +123,32 @@ Using this we can rewrite the first inequality in the following form.
 \textbf{\mon{gamma}}: (double) Value of gamma as found by the solver. \\
 \textbf{\mon{info}}: (int) Diagnostic variable use to identify which conditions (if any) failed. The verification is done on the solution obtained from Yalmip. For information about the type of error use the \mon{help} command in Matlab
 
+\subsubsection*{Limitation}
+Due to computational limitation in the solver or conditioning of this problem it might be the case that a valid \mon{K} is found even though \mon{bool} is false. This is because we are able to find a solution close enough to the real solution that the results are still satisfactory, even though not all conditions are met. 
 
 % Example using function
 \subsection{Example}
 In this example we will consider data generated by the following system.
 \begin{align*}
-	x(t+1) &= -1\frac{1}{2}x(t) + u(t) \\
-	z(t)   &=  1\frac{1}{2}x(t) + \frac{1}{2}u(t)
+	x(t+1) &= \frac{1}{2}x(t) + u(t) \\
+	z(t)   &=  -\frac{1}{2}x(t)
 \end{align*}
+Since this system is already stable, our goal is to improve the preference of the system. Before we consider the data that we will use in this example, we will first look at the current preformence of the system. We can calculate the preformence by means of the matlab function \mon{ninf = hinfnorm(sys)}.
+\begin{lstlisting}
+A = 0.5;
+B = 1;
+C = -0.5;
+D = 0;
+sys = ss(A, B, C, D, 1);
+ninf = hinfnorm(sys)
+\end{lstlisting}
+Which will return a preformance of $\gamma_{old} = 1$.
+ 
 We will generate our data using the following random input and noise sequences. The input sequence is uniformly sample on the interval $[-1,1]$ and the noise is uniformly sampled from the interval $[-0.1, 0.1]$.
 \begin{align*}
 	W_- &= \begin{bmatrix}  0.0629 &   0.0812 &  -0.0746 &   0.0827 &   0.0265 \end{bmatrix} \\
 	U_- &= \begin{bmatrix} -0.8049 &  -0.4430 &   0.0938 &   0.9150 &   0.9298 \end{bmatrix} \\
-	X   &= \begin{bmatrix}  1.0000 &  -2.2420 &   3.0012 &  -4.4826 &   7.7216 & -10.6261 \end{bmatrix}
+	X   &= \begin{bmatrix}  1.0000 &  -0.2420 &  -0.4828 &  -0.2222 &   0.8866  &  1.3996 \end{bmatrix}
 \end{align*}
 
 We can use the same $\Phi$ matrix that we used in examples (\ref{ExampleQS}) and (\ref{ExampleH2}) since we have the same number of data points and the noise was sampled from the same distribution. 
@@ -137,64 +166,69 @@ N =
 \begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_- \end{bmatrix}^\top 
 =
 \begin{bmatrix} 
- -206.6146 &-139.0872 &  -2.7603\\
- -139.0872 & -94.7506 &  -3.5478\\
-   -2.7603 &  -3.5478 &  -2.5547
+	-3.0360 &   1.0260 &   2.5004 \\
+ 	 1.0260 &  -2.1271 &   0.1219 \\
+ 	 2.5004 &   0.1219 &  -2.5547
 \end{bmatrix} 
 \end{equation*}
 
 \begin{equation*}
 \sigma(N) = \{ \begin{array}{ccc}
-	-300.6559 & -3.2707 & 0.0068
+	-5.4505 & -2.2802 & 0.0130
 \end{array} \}
 \end{equation*}
 
 Hence the Slater condition is satisfied. Now we need to find a symmetric positive definite matrix $Y$, a matrix $L$, a non-negative scaler $\alpha$ and a positive scalar $\beta$ such that the following holds.
-
-\begin{equation*}
-	\begin{bmatrix}
-		Y - \beta I & 0 & 0 & 0 & (CY + DL)^\top \\
-		0 & 0 & 0 & Y & 0 \\
-		0 & 0 & 0 & L & 0 \\
-		0 & Y & L^\top & Y - \frac{1}{\gamma^2}I & 0 \\
-	CY + DL & 0 & 0 & 0 & I
-	\end{bmatrix} - \alpha
-	\begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_- \\ 0&0 \\ 0&0 \end{bmatrix}
-	\begin{bmatrix} \Phi_{11} & \Phi_{12} \\ \Phi_{12}^\top & \Phi_{22} \end{bmatrix}
-	\begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_- \\ 0&0 \\ 0&0 \end{bmatrix}^\top \geq 0
-\end{equation*}
-\begin{equation*}
-	Y - \frac{1}{\gamma^2}I > 0
-\end{equation*}
+\begin{subequations}
+	\begin{equation} \tag{\ref{HInfConditionThr}a}
+		\begin{bmatrix} 
+			Y - \beta I & 0 & 0 & 0 & (CY + DL)^\top \\
+			0 & 0 & 0 & Y & 0 \\
+			0 & 0 & 0 & L & 0 \\
+			0 & Y & L^\top & Y - \frac{1}{\gamma^2}I & 0 \\
+		CY + DL & 0 & 0 & 0 & I
+		\end{bmatrix} - \alpha
+		\begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_- \\ 0&0 \\ 0&0 \end{bmatrix}
+		\begin{bmatrix} \Phi_{11} & \Phi_{12} \\ \Phi_{12}^\top & \Phi_{22} \end{bmatrix}
+		\begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_- \\ 0&0 \\ 0&0 \end{bmatrix}^\top \geq 0
+	\end{equation}
+	\begin{equation} \tag{\ref{HInfConditionThr}b}
+		Y - \frac{1}{\gamma^2}I > 0
+	\end{equation}
+\end{subequations}
 
 Using numerical tools such as Yalmip we are able to find the following values such that the equations are satisfied.
 \begin{align*}
-	Y      &= 0.16\\
-	L      &= 0.25\\
-	\alpha &= 0.9\\
-	\beta  &= 1e-06
+	Y      &= 3.4835\\
+	L      &= -1.8723\\
+	\alpha &= 15.1235\\
+	\beta  &= 4.4899e-08
 \end{align*}
 
-Using these values we are able to retrieve the feedback gain $K = 1.5625$. If we look at the closed loop system we can see that it is indeed stabilised.
-\begin{equation*}
-	A + BK = 6.25e-2
-\end{equation*}
-
-We will use (\ref{HinfCondition}) to compute $\gamma$.
-
+Using these values we are able to define our controller $K = LY^{-1} = -0.5375$. If we consider the closed loop preformance of this controller we obtain the following $\gamma$.
 
 \begin{lstlisting}
-gamma2inv = sdpvar(1);
-invYGamma = sdpvar(1);
-
-Cond = [ Y - (A * Y + B * L)' * invYGamma * (A * Y + B * L) - (C * Y + D * L)' * (C * Y + D * L) >= 1e-8 ];
-Cond = Cond + [ Y - gamma2inv >= 1e-8 ];
-Cond = Cond + [ gamma2inv >= 1e-8 ];
-Cond = Cond + [ (Y - gamma2inv) * invYGamma == eye(1) ];
+A = 0.5;
+B = 1;
+C = -0.5;
+D = 1;
+K = -0.5375;
+sys = ss(A + B*K, B, C, D, 1);
+ninf = hinfnorm(sys)
 \end{lstlisting}
+Which has a preformance of $\gamma_{new} = 0.5195$. 
 
+We are also able to find a stabilising feedback gain using the provided Matlab function.
+\begin{lstlisting}
+C = -0.5;
+D = 0;
+U = [-0.8049   -0.4430    0.0938    0.9150    0.9298];
+X = [1.0000   -0.2420   -0.4828   -0.2222    0.8866    1.3996];
+Phi = [0.05 zeros(1,5) ; zeros(5,1) -eye(5)];
+[b, K] = isInformHInf(U,X,Phi,C,D)
+\end{lstlisting}
+Which will return: \mon{[ 1, -0.5375 ]}.
 
-\todo{Finish example}
 
 
 

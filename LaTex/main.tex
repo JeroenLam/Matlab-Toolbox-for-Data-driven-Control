@@ -29,6 +29,7 @@
 % - Code listing with color settings - 
 \usepackage{listings}
 \usepackage{color}
+\usepackage{pdfpages}
 \usepackage{todonotes}
 % ----------------- biblatex ----------------- 
 \usepackage[backend=biber,sorting=ynt]{biblatex}  %,style=alphabetic
@@ -99,9 +100,14 @@
 %----------------------------------------------------------------------------------------
 \begin{document}
 % ----------------------------- Abstract ---------------------------- 
+\begin{figure}
+	\includepdf{frontpage.pdf}
+\end{figure}
+
+%\tableofcontents \newpage
 \input{abstract}
 % ----------------------------- Introduction  -----------------------
-\input{introduction}\\
+\input{introduction}\newpage
 % ----------------------------- Discussion --------------------------
 \input{01Data} \newpage
 \input{02SystemIdentification}\newpage
@@ -119,20 +125,23 @@
 \input{13H2Control}\newpage
 \input{14HinfControl}\newpage
 
-\input{20ContinuousSystems}\newpage
-\input{21Linearisation}\newpage
-\input{22ImprovingControllerH2}\newpage
+%\input{20ContinuousSystems}\newpage
+%\input{21Linearisation}\newpage
+%\input{22ImprovingControllerH2}\newpage
 
-% Section about continuous time to discrete time
+
+% ----------------------------- Discussion and conclusion
+
+% ----------------------------- Future work
 
 % ----------------------------- Limitations -------------------------
-\todo{Methods work only sometimes due to limitation in Yalmip / other solvers}
-\todo{Further research: Conditions for pole placement (similar to deadbeat control), }
-\todo{Fix S in dynamic measurement feedback}
+
 % ----------------------------- Acknowladgements --------------------
+\section{Acknowledgements}
+I would like to thank dr. Henk J. van Waarde for his time and help with coordinating the project.
 % ----------------------------- References --------------------------
 \input{references.tex}
-
+\todo{Fix S in dynamic measurement feedback}
 % ----------------------------- Apendix ----------------------------- 
 
 

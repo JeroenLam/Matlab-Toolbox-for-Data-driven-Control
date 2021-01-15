@@ -23,11 +23,11 @@ First lets assume $X_-$ is a square matrix and has full row rank. Then we know t
 
 Now lets assume that $X_-$ is a wide matrix and has full row rank. Then there exists an $F \in \R^{T \times n}$ spanning the row space of $X_-$ and an $G \in \R^{T \times (T-n)}$ spanning the null space of $X_-$ such that $\begin{bmatrix}F&G\end{bmatrix}$ is non singular and $X_- \begin{bmatrix}F&G\end{bmatrix} = \begin{bmatrix}I_n&0_{n\times (T-n)}\end{bmatrix}$. Now let $X^\dagger_- = F + G H$ where $H \in \R^{(T-n) \times n}$ if and only if $X_-^\dagger$ is an right inverse of $X_-$.
 
-Proof '$\Rightarrow$': \\
-Let $X^\dagger_- = F + G H$ as described above. Then $X_- X^\dagger_- = X_- F + X_- G H = I_n + 0_{n\times (T-n)} * H = I_n$.
+%Proof '$\Rightarrow$': \\
+%Let $X^\dagger_- = F + G H$ as described above. Then $X_- X^\dagger_- = X_- F + X_- G H = I_n + 0_{n\times (T-n)} * H = I_n$.
 
-Proof '$\Leftarrow$': \\
-\todo{add proof}
+%Proof '$\Leftarrow$': \\
+%\todo{add proof}
 
 Thus finding a right inverse such that $X_+ X_-^\dagger$ is nilpotent is equivalent to finding an $H$ such that $X_+ F + X_+ G H$ is nilpotent. Finding this $H$ can be done using pole placement methods for the pair $(X_+ F, X_+ G)$ and placing all eigenvalues at zero.
 
