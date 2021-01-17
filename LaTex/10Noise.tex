@@ -25,7 +25,7 @@ Let the noise samples $w(0),W(1),\dots,w(T-1)$ be collected in the matrix $W_-$,
 for known matrices $\Phi_{11} = \Phi_{11}^\top$, $\Phi_{12}$ and $\Phi_{22} = \Phi_{22}^\top < 0$.
 
 % Note special case of noise matrix
-This assumption gives us a \todo{bound on noise, extend}.
+This assumption ensures that the noise is bounded.
 We can also look at the special case in which $\Phi_{12} = 0$ and $\Phi_{22} = -I$. In this case we are able to rewrite (\ref{noiseBound}) to get the following.
 \begin{equation} \label{noiseBoundSpecialCase}
 	W_- W_-^\top = \sum^{T-1}_{t = 0}w(t)w(t)^\top \leq \Phi_{11}
@@ -39,7 +39,7 @@ Now that we have introduced our notation, we are able to define the set of syste
 \end{equation}
 
 % Write system set as matrix inequality.
-We will now substitute (\ref{isnSystemData}) in (\ref{noiseBound}) to get a single quadratic matrix inequality that can be used to define $\Sigma$.
+We will now substitute (\ref{isnSystemData}) in (\ref{noiseBound}) to get a single quadratic matrix inequality that can be used to define $\Sigma_{i/s/n}$.
 \begin{equation} \label{noiseSystemQMI}
 	\begin{bmatrix} I \\ A^\top \\ B^\top \end{bmatrix}^\top
 	\begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_- \end{bmatrix}
@@ -48,10 +48,10 @@ We will now substitute (\ref{isnSystemData}) in (\ref{noiseBound}) to get a sing
 	\begin{bmatrix} I \\ A^\top \\ B^\top \end{bmatrix} \geq 0
 \end{equation}
 
-Using this inequality we can redefine $\Sigma$ as follows.
+Using this inequality we can redefine $\Sigma_{i/s/n}$ as follows.
 
 \Lemma{\cite[Lemma 4]{waarde2020noisy}}{
-	We have that $\Sigma = \left\{ (A,B) \, | \, \mbox{(\ref{noiseSystemQMI}) is satisfied} \right\}$.
+	Given $\Phi_{11}$, $\Phi_{12}$ and $\Phi_{22}$, we have that $\Sigma_{i/s/n} = \left\{ (A,B) \, | \, \mbox{(\ref{noiseSystemQMI}) is satisfied} \right\}$.
 }
 
 

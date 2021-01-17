@@ -4,7 +4,7 @@ In this section we will start by formulating the quadratic stabilisation problem
 
 \subsection{Problem formulation}
 % Problem definition of QS
-We will start by defining when data is informative for quadratic stabilisation. We will go into more detail about this type of control in the later section \ref{SectionQuadStab}. For now we will use this definition to give an intuitive idea on how we end up at the final theory.
+We will start by defining when data is informative for quadratic stabilisation. %We will go into more detail about this type of control in the later section \ref{SectionQuadStab}. For now we will use this definition to give an intuitive idea on how we end up at the final theory.
 
 \Def{Informative for quadratic stabilisation \cite[Def 3]{waarde2020noisy}}{
 	The data $(U_-,X)$ is called informative for quadratic stabilisation if there exists a feedback gain $K$ and a Lyapunov matrix $P = P^\top > 0$ such that $P - (A + BK) P (A + BK)^\top > 0$ for all $(A,B) \in \Sigma_{i/s/n}$
@@ -22,7 +22,7 @@ For the sake of argument, lets pick $P$ and $K$ to be fixed. Then our control pr
 
 
 % Matrix S-Lemma and Generelised Slater condition
-To see when one quadratic matrix inequality implies another matrix inequality, we can use the a theorem based on the strict matrix S-lemma as presented in \cite{waarde2020noisy}. However before we look at the theorem, we will first consider the generalised Slater condition.
+To see when one quadratic matrix inequality implies another matrix inequality, we can use the a theorem based on the strict matrix S-lemma as presented in \cite{waarde2020noisy}. %However before we look at the theorem, we will first consider the generalised Slater condition.
 
 \Thr{\cite[Thr 12]{waarde2020noisy}}{
 	Let $M, N \in \mathbb{R}^{(k+n) \times (k+n)}$ be symmetric matrices, partitioned as:
@@ -150,8 +150,8 @@ Now we only need to check that $ker \, N_{22} \subseteq ker \, N_{12}$. Since $\
 \[ ker \, N_{22} = ker \begin{bmatrix} X_- \\ U_- \end{bmatrix}^\top \]
 If we write out $N_{12}$ we get the following:
 \begin{align*}
-	 N_{12} &= (\Phi_{12} + X_+ \Phi_{22}) \begin{bmatrix} -X_- \\ -U_- \end{bmatrix}^top \\
-	 ker \, N_{12} &= ker -(\Phi_{12} + X_+ \Phi_{22}) \begin{bmatrix} X_- \\ U_- \end{bmatrix}^top
+	 N_{12} &= (\Phi_{12} + X_+ \Phi_{22}) \begin{bmatrix} -X_- \\ -U_- \end{bmatrix}^\top \\
+	 ker \, N_{12} &= ker -(\Phi_{12} + X_+ \Phi_{22}) \begin{bmatrix} X_- \\ U_- \end{bmatrix}^\top
 \end{align*}
 Thus we can conclude that $ker \, N_{22} \subseteq ker \, N_{12}$. 
 
@@ -173,10 +173,10 @@ Using this we can construct the following theorem.
 	\begin{bmatrix} \Phi_{11} & \Phi_{12} \\ \Phi_{12}^\top & \Phi_{22} \end{bmatrix}
 	\begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_-\\0&0 \end{bmatrix}^\top \geq 0
 	\end{equation}
-	Moreover, if $P$ and $L$ satisfy this matrix inequality, then $K = LP^{-1}$ is a stabilising feedback gain for all $(A,B) \in \Sigma$.
+	Moreover, if $P$ and $L$ satisfy this matrix inequality, then $K = LP^{-1}$ is a stabilising feedback gain for all $(A,B) \in \Sigma_{i/s/n}$.
 }
 
-Note that a change of coordinates is applied since the original $M$ matrix was not linear in $P$ and $K$. This theorem is incorporated in the following theorem.
+Note that a change of coordinates is applied since the original $M$ matrix was not linear in $P$ and $K$. This theorem is incorporated in the following function.
 
 % Pseudo code / algorithm
 \subsection{Implementation}
@@ -219,7 +219,7 @@ We will assume our noise to be picked uniformly from the interval $[-0.1 , 0.1]$
 	X   &= \begin{bmatrix}     0   &  0.1533 &  0.6281 & 0.1956 & -0.2466 & -0.2571 \end{bmatrix} \\
 \end{align*}
 
-For our noise matrix $\Phi$ we will use that if we pick $\Phi_{12} = \overline{0} = [0 \dots 0]$ and $\Phi_{22} = -I$ then we know that $W_- W_-^\top \leq \Phi_{11}$. Since we know that our data is sampled from a uniform distribution with a maximum value of $0.1$ we know that $W_- W_-^\top \leq 0.1^2 T$ where $T$ is the total number of samples considered. Since we are considering $5$ sample we will pick our noise matrix to be:
+For our noise matrix $\Phi$ we will use that if we pick $\Phi_{12} = \overline{0} = [0 \dots 0]$ and $\Phi_{22} = -I_5$ then we know that $W_- W_-^\top \leq \Phi_{11}$. Since we know that our data is sampled from a uniform distribution with a maximum value of $0.1$ we know that $W_- W_-^\top \leq 0.1^2 T$ where $T$ is the total number of samples considered. Since we are considering $5$ sample we will pick our noise matrix to be:
 \begin{equation*}
 	\Phi = \begin{bmatrix} 0.05 & \overline{0} \\ \overline{0}^\top & -I_5 \end{bmatrix}
 \end{equation*}

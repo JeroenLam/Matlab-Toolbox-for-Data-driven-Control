@@ -32,7 +32,7 @@ We want to find the feedback gain $K$ for which the cost function is minimal, i.
 \end{equation*}
 Then we want to find $K$ such that $J(K) = J^\ast$. However, instead of using this definition directly, we will be considering the following theorem that gives us an equivalence between the definition and a set of matrix inequalities.
 
-\todo{find reference for statement that is 'well-known' according to paper page 8}
+% \todo{find reference for statement that is 'well-known' according to paper page 8}
 \Thr{}{
 	A+BK is stable and $\left\| G_K(z) \right\|^2_{\mathcal{H}_2} < \gamma$ if and only if there exists a symmetric positive definite matrix $P$ such that
 	\begin{align} \label{H2Inequalities}
@@ -47,7 +47,7 @@ Then we want to find $K$ such that $J(K) = J^\ast$. However, instead of using th
 We will now extend the $\mathcal{H}_2$ control problem to data driven control. We want to find a controller $K$ that stabilises all systems describing the data whilst still optimizing $\gamma$ to be as small as possible. Using the theorem noted above we are able to do so since we can express $\gamma$ in relation to $P$ instead of it being directly dependent on $(A,B) \in \Sigma_{i/s/n}$. Using this we will formulate the following definition of informativity.
 
 \Def{Informative for $\mathcal{H}_2$ control \cite[Def 15]{waarde2020noisy}}{
-	the data $(U_-,X)$ is informative for $\mathcal{H}_2$ control with performance $\gamma$ if there exists a symmetric positive definite matrices $p$ and a matrix $K$ such that:
+	the data $(U_-,X)$ is informative for $\mathcal{H}_2$ control with performance $\gamma$ if there exists a symmetric positive definite matrices $P$ and a matrix $K$ such that:
 	\begin{align*} \tag{\ref{H2Inequalities}}
 		P &> (A + BK)^\top P (A + BK) + (C + DK)^\top(C+DK) & 
 		trace(P) &< \gamma^2
@@ -112,7 +112,7 @@ At this point, all that is left is to rewrite the inequality (\ref{H2Inequalitie
 		\begin{bmatrix} Z & I \\ I & Y \end{bmatrix} &\geq 0 &
 		trace(Z) &< \gamma^2
  	\end{align*}
-	Moreover, if $Y$ and $L$ satisfy the above conditions, then $K = LY^{-1}$ is such that $A + BK$ is stable and $\| G(z)\|_{\mathcal{H}_2} < \gamma$ for all $(A,B) \in \Sigma$.
+	Moreover, if $Y$ and $L$ satisfy the above conditions, then $K = LY^{-1}$ is such that $A + BK$ is stable and $\| G(z)\|_{\mathcal{H}_2} < \gamma$ for all $(A,B) \in \Sigma_{i/s/n}$.
 }
 
 This theorem was implemented in the functions below.
@@ -233,7 +233,7 @@ Which will return: \mon{gamma\_best = 0.5} and \mon{K\_best = 2};
 
 From this we can see that the optimal feedback gain is indeed a deadbeat controller. We can verify that calculated gamma using (\ref{H2Inequalities}). Since we are considering the 1 dimensional case, we have that $\gamma^2 > P = trace(P)$, thus we can rewrite the equation to get the following. 
 \begin{align*}
-	\gamma^2 &> (A + BK)^2 P + (C+DK)^2 \\
-	\gamma^2 &>  C^2
+	\gamma^2 &> (A + BK)^2 P + (C+DK)^2 
+	%\gamma^2 &>  C^2
 \end{align*}
 Note that since $P>0$ we want that $(A+BK) = 0$ to have the best gamma posible. As we can see, for our values of $(A,B,C,D)$ the optimal solution is $K_{best} = 2$ with $\gamma_{best} = \frac{1}{2}$.

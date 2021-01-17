@@ -6,8 +6,8 @@ In this section we will look at the $\mathcal{H}_\infty$ control control problem
 The $\mathcal{H}_\infty$ control problem is very similar to the $\mathcal{H}_2$ control problem. The main difference is that instead of using the $\| \cdot \|_{\mathcal{H}_2}$ norm we will be considering the $\| \cdot \|_{\mathcal{H}_\infty}$ norm instead. We will be considering the same type of system, namely:
 
 \begin{align*}
-	\mathbf{x}(t+1) &= (A + B K) \mathbf{x}(t) + \mathbf{w}(t) \\
-	\mathbf{z}(t)   &= (C   + D   K) \mathbf{x}(t) 
+	\mathbf{x}(t+1) &= A \mathbf{x}(t) + B \mathbf{u}(t) + \mathbf{w}(t) \\
+	\mathbf{z}(t)   &= C \mathbf{x}(t) + D \mathbf{u}(t)
 \end{align*}
 
 We will define the closed loop transfer function for a given $K$ in the same way.
@@ -92,7 +92,7 @@ Similar to the quadratic stabilisation and $\mathcal{H}_2$ control, the only thi
 			Y - \frac{1}{\gamma^2}I > 0
 		\end{equation}
 	\end{subequations}
-	Moreover, if $Y$ and $L$ satisfy the above inequalities, then $K = LY^{-1}$ is such that $A + BK$ is stable and $\| G(z)\|_{\mathcal{H}_\infty} < \gamma$ for all $(A,B) \in \Sigma$.
+	Moreover, if $Y$ and $L$ satisfy the above inequalities, then $K = LY^{-1}$ is such that $A + BK$ is stable and $\| G(z)\|_{\mathcal{H}_\infty} < \gamma$ for all $(A,B) \in \Sigma_{i/s/n}$.
 }
 
 % Pseudo code / algorithm

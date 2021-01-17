@@ -29,14 +29,14 @@
 % - Code listing with color settings - 
 \usepackage{listings}
 \usepackage{color}
-%\usepackage{pdfpages}
-\usepackage{todonotes}
+\usepackage{pdfpages} % Adds pdf inset pages
+\usepackage{todonotes} % Adds todo notes
+\usepackage{hyperref} % Adds hyperlinks
 % ----------------- biblatex ----------------- 
 \usepackage[backend=biber,sorting=ynt]{biblatex}  %,style=alphabetic
 \addbibresource{ref.bib}
 % -------------------------------------------- 
 \input{lstunputSettings.tex}
-
 
 \setcounter{MaxMatrixCols}{20}
 
@@ -100,9 +100,9 @@
 %----------------------------------------------------------------------------------------
 \begin{document}
 % ----------------------------- Abstract ---------------------------- 
-%\setcounter{page}{0}
-%\includepdf{frontpage.pdf}
-%\newpage
+\setcounter{page}{0}
+\includepdf{frontpage.pdf}
+\newpage
 
 \input{abstract}
 % ----------------------------- Introduction  -----------------------
@@ -132,7 +132,7 @@
 % ----------------------------- Discussion and conclusion
 \input{30Conclusion}
 % ----------------------------- Future work
-\input{31FutureWork}
+%\input{31FutureWork}
 % ----------------------------- Limitations -------------------------
 
 % ----------------------------- Acknowladgements --------------------
@@ -140,7 +140,6 @@
 I would like to thank dr. Henk J. van Waarde for his time and help with coordinating the project.
 % ----------------------------- References --------------------------
 \input{references.tex}
-\todo{Fix S in dynamic measurement feedback}
 % ----------------------------- Apendix ----------------------------- 
 
 
