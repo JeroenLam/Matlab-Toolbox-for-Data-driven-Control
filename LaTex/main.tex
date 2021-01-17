@@ -29,7 +29,7 @@
 % - Code listing with color settings - 
 \usepackage{listings}
 \usepackage{color}
-\usepackage{pdfpages}
+%\usepackage{pdfpages}
 \usepackage{todonotes}
 % ----------------- biblatex ----------------- 
 \usepackage[backend=biber,sorting=ynt]{biblatex}  %,style=alphabetic
@@ -100,11 +100,10 @@
 %----------------------------------------------------------------------------------------
 \begin{document}
 % ----------------------------- Abstract ---------------------------- 
-\begin{figure}
-	\includepdf{frontpage.pdf}
-\end{figure}
+%\setcounter{page}{0}
+%\includepdf{frontpage.pdf}
+%\newpage
 
-%\tableofcontents \newpage
 \input{abstract}
 % ----------------------------- Introduction  -----------------------
 \input{introduction}\newpage
@@ -125,15 +124,15 @@
 \input{13H2Control}\newpage
 \input{14HinfControl}\newpage
 
-%\input{20ContinuousSystems}\newpage
+\input{20ContinuousSystems}\newpage
 %\input{21Linearisation}\newpage
 %\input{22ImprovingControllerH2}\newpage
 
 
 % ----------------------------- Discussion and conclusion
-
+\input{30Conclusion}
 % ----------------------------- Future work
-
+\input{31FutureWork}
 % ----------------------------- Limitations -------------------------
 
 % ----------------------------- Acknowladgements --------------------
