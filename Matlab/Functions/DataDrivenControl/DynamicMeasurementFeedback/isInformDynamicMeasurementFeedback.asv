@@ -58,11 +58,10 @@ function [bool, K, L, M] = isInformDynamicMeasurementFeedback(X, U, Y, polesM, p
         S_ans = solve(Umin == S_var * U_hat);
         
         fn = fieldnames(S_ans);
-        S = zeros(k, m);
-        for idx = 1:numel(fn)
-            S(idx) = S_ans.(fn{idx});
+        S = zeros(m, k)
+        for idx = numel(fn)
+            
         end
-        S = S';
         
         % Find the solution for the reduced problem
         [bool, K, L, M] = isInformDynamicMeasurementFeedback(X, U_hat, Y, polesM, polesL);
