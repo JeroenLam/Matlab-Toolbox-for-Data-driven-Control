@@ -1,24 +1,24 @@
 \section{Quadratic stabilisation} \label{SectionQuadStab}
 % Abstract section
-In this section we will start by formulating the quadratic stabilisation problem for data driven control. We will rewrite the problem to a quadratic matrix inequality ans solve it using the matrix S-lemma. Lastly we will see the implementation of the described methods and an example on its application.
+In this section we will begin with formulating the quadratic stabilisation problem for data driven control. We will rewrite the problem to a quadratic matrix inequality ans solve it using the matrix S-lemma. Lastly we will see the implementation of the described methods and an example on its application.
 
 \subsection{Problem formulation}
 % Problem definition of QS
-We will start by defining when data is informative for quadratic stabilisation. %We will go into more detail about this type of control in the later section \ref{SectionQuadStab}. For now we will use this definition to give an intuitive idea on how we end up at the final theory.
+We will begin with defining when data is informative for quadratic stabilisation. %We will go into more detail about this type of control in the later section \ref{SectionQuadStab}. For now we will use this definition to give an intuitive idea on how we end up at the final theory.
 
 \Def{Informative for quadratic stabilisation \cite[Def 3]{waarde2020noisy}}{
-	The data $(U_-,X)$ is called informative for quadratic stabilisation if there exists a feedback gain $K$ and a Lyapunov matrix $P = P^\top > 0$ such that $P - (A + BK) P (A + BK)^\top > 0$ for all $(A,B) \in \Sigma_{i/s/n}$
+	The data $(U_-,X)$ is called informative for quadratic stabilisation if there exists a feedback gain $K$ and a Lyapunov matrix $P = P^\top > 0$ such that $P - (A + BK) P (A + BK)^\top > 0$ for all $(A,B) \in \Sigma_{i/s/n}$.
 }
 
 % Note that this is equivalent to the matrix inequalities
-We can expend the matrix inequality to get the following.
+We can expand the matrix inequality to get the following:
 \begin{equation} \label{noiseQSQMI}
 P - (A + BK) P (A + BK)^\top = 
 \begin{bmatrix} I\\A^\top\\B^\top \end{bmatrix}^\top 
 \begin{bmatrix} P&0&0\\0&-P&-PK^\top\\0&-KP&-KPK^\top \end{bmatrix} 
 \begin{bmatrix} I\\A^\top\\B^\top \end{bmatrix} > 0
 \end{equation}
-For the sake of argument, lets pick $P$ and $K$ to be fixed. Then our control problem reduces to knowing when there is sufficient overlap in both solution sets of the quadratic matrix inequalities (\ref{noiseQSQMI}) and (\ref{noiseSystemQMI}), or in other words, when does one quadratic matrix inequality imply another quadratic matrix inequality.
+For the sake of argument, let us pick $P$ and $K$ to be fixed. Then our control problem reduces to knowing when there is sufficient overlap in both solution sets of the quadratic matrix inequalities (\ref{noiseQSQMI}) and (\ref{noiseSystemQMI}), or in other words, when does one quadratic matrix inequality imply another quadratic matrix inequality.
 
 
 % Matrix S-Lemma and Generelised Slater condition
@@ -33,11 +33,11 @@ To see when one quadratic matrix inequality implies another matrix inequality, w
 	\begin{equation} \label{GenerelisedSlaterCondition}
 		\begin{bmatrix} I\\\bar{Z} \end{bmatrix}^\top N 	\begin{bmatrix} I\\\bar{Z} \end{bmatrix} > 0. 
 	\end{equation}
-	Then we have that
+	Then we have that:
 	\begin{equation} \label{QStheoremCondition}
 		\begin{bmatrix} I \\ Z \end{bmatrix}^\top M \begin{bmatrix} I \\ Z \end{bmatrix} > 0 \mbox{ for all } Z \in \left\{ Z \in \mathbb{R}^{n\times k} \, : \, \begin{bmatrix} I \\ Z \end{bmatrix}^\top N \begin{bmatrix} I \\ Z \end{bmatrix} \geq 0 \right\} 
 	\end{equation}
-	if and only if there exist $\alpha \geq 0$ and $\beta > 0$ such that 
+	if and only if there exist $\alpha \geq 0$ and $\beta > 0$ such that:
 	\begin{equation*}
 		M - \alpha N \geq \begin{bmatrix} \beta I & 0 \\ 0 & 0 \end{bmatrix}
 	\end{equation*}
@@ -57,7 +57,7 @@ To see when one quadratic matrix inequality implies another matrix inequality, w
 %}
 %Similar to the classical S-lemma, the assumption (\ref{GenerelisedSlaterCondition}) is called the generalised Slater condition.
 
-Using this theorem we are able to get find a solution to our quadratic matrix inequality problem. But before we look at the solution, we will first consider how we can verify that the generalised Slater condition holds for a given matrix $N$. For this we will consider the following theorem which gives us an easy to compute condition for verifying the Slater condition.
+Using this theorem we are able to find a solution to our quadratic matrix inequality problem. But before we look at the solution, we will first consider how we can verify that the generalised Slater condition holds for a given matrix $N$. For this we will consider the following theorem which gives us an easy to compute condition for verifying the Slater condition.
 
 \Thr{}{
 	Let $N \in \mathbb{R}^{(k+n)\times (k+n)}$ be symmetric. Then the following are equivalent.
@@ -84,7 +84,7 @@ This theorem is implemented in the following function.
 \mon{[bool] = testSlater(X, U, Phi)}: Returns if the Slater condition holds for a matrix \mon{N} constructed from the data \mon{(X,U)} and the noise matrix \mon{Phi}.
 
 \subsubsection*{Input arguments}
-\textbf{\mon{X}}: State data matrix of dimension $n \times T+1$ from a input/state data set.\\
+\textbf{\mon{X}}: State data matrix of dimension $n \times (T+1)$ from a input/state data set.\\
 \textbf{\mon{U}}: Input data matrix of dimension $m \times T$ from a input/state data set.\\
 \textbf{\mon{Phi}}: Noise matrix as in (\ref{noiseBound}).
 
@@ -93,7 +93,7 @@ This theorem is implemented in the following function.
 
 
 \subsection{Solving the data driven quadratic stabilisation problem.}
-We will recall that the quadratic stabilisation matrix inequality can be rewritten as:
+We will recall from (\ref{noiseQSQMI}) that the quadratic stabilisation matrix inequality can be rewritten as:
 \begin{equation} \tag{\ref{noiseQSQMI}}
 P - (A + BK) P (A + BK)^\top = 
 \begin{bmatrix} I\\A^\top\\B^\top \end{bmatrix}^\top 
@@ -101,7 +101,7 @@ P - (A + BK) P (A + BK)^\top =
 \begin{bmatrix} I\\A^\top\\B^\top \end{bmatrix} > 0
 \end{equation}
 
-As alluded to earlier, we want to find a condition in which case (\ref{noiseQSQMI}) holds as well as:
+As alluded to earlier, we want to find a condition in which case (\ref{noiseQSQMI}) holds as well as condition (\ref{noiseSystemQMI}):
 \begin{equation} \tag{\ref{noiseSystemQMI}}
 \begin{bmatrix} I \\ A^\top \\ B^\top \end{bmatrix}^\top
 \begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_- \end{bmatrix}
@@ -111,7 +111,7 @@ As alluded to earlier, we want to find a condition in which case (\ref{noiseQSQM
 \end{equation}
 
 % Combine with S-lemma to construct (fs)
-Before we apply the theorem we first need to partition our matrices and check the preliminary conditions. We will start by partitioning our matrices in the following way.
+Before we apply the theorem we first need to partition our matrices and check the preliminary conditions. We will begin with partitioning our matrices in the following way:
 \begin{subequations} \label{NData}
 	\begin{align} 
 		M &= 
@@ -139,19 +139,19 @@ Before we apply the theorem we first need to partition our matrices and check th
 	\end{align}
 \end{subequations}
 
-Now we need to check if $N_{22} \leq 0$ and $M_{22} \leq 0$. 
+Now we need to check if $N_{22} \leq 0$ and $M_{22} \leq 0$:
 \begin{align*}
 	N_{22} &= \begin{bmatrix} X_- \\ U_- \end{bmatrix} \Phi_{22} \begin{bmatrix} X_- \\ U_- \end{bmatrix}^\top \leq 0 &
 	M_{22} &= - \begin{bmatrix} I \\ K \end{bmatrix} P \begin{bmatrix} I \\ K \end{bmatrix}^\top \leq 0
 \end{align*}
-Since $P$ is symmetric positive definite and $\Phi_{22}$ is symmetric negative definite. 
+Using that $P$ is symmetric positive definite and $\Phi_{22}$ is symmetric negative definite we are able to verify that $N_{22}$ and $M_{22}$ are indeed negative semi definite.
 
 Now we only need to check that $ker \, N_{22} \subseteq ker \, N_{12}$. Since $\Phi_{22}$ is symmetric negative definite we know that:
 \[ ker \, N_{22} = ker \begin{bmatrix} X_- \\ U_- \end{bmatrix}^\top \]
 If we write out $N_{12}$ we get the following:
 \begin{align*}
 	 N_{12} &= (\Phi_{12} + X_+ \Phi_{22}) \begin{bmatrix} -X_- \\ -U_- \end{bmatrix}^\top \\
-	 ker \, N_{12} &= ker -(\Phi_{12} + X_+ \Phi_{22}) \begin{bmatrix} X_- \\ U_- \end{bmatrix}^\top
+	 ker \, N_{12} &= ker \left( (\Phi_{12} + X_+ \Phi_{22}) \begin{bmatrix} X_- \\ U_- \end{bmatrix}^\top \right)
 \end{align*}
 Thus we can conclude that $ker \, N_{22} \subseteq ker \, N_{12}$. 
 
@@ -191,7 +191,7 @@ Note that a change of coordinates is applied since the original $M$ matrix was n
 \mon{[bool, K, diagnostics, info] = isInformQuadraticStabilisation(X, U, Phi, tolerance, options)}: Checks if the data is informative for quadratic stabilisation using a given tolerance and a given spdsetting object from Yalmip.
 
 \subsubsection*{Input arguments}
-\textbf{\mon{X}}: State data matrix of dimension $n \times T+1$ from a input/state data set.\\
+\textbf{\mon{X}}: State data matrix of dimension $n \times (T+1)$ from a input/state data set.\\
 \textbf{\mon{U}}: Input data matrix of dimension $m \times T$ from a input/state data set.\\
 \textbf{\mon{Phi}}: Noise matrix as in (\ref{noiseBound}). \\ 
 \textbf{\mon{tolerance}}: Tolerance used for determining when a value is zero up to machine precision. Default value is \mon{1e-12}.\\
@@ -208,33 +208,33 @@ Due to computational limitation in the solver or conditioning of this problem it
 
 % Example using function
 \subsection{Example} \label{ExampleQS}
-In this example we will consider the following unstable system.
+In this example we will consider the following unstable system:
 \begin{align*}
 	x(t+1) &= x(t) - \frac{1}{2}u(t) + w(t) 
 \end{align*}
-We will assume our noise to be picked uniformly from the interval $[-0.1 , 0.1]$. We will start by generating a random noise sequence and a random input sequence which we will use to construct the following data.
+We will assume our noise to be picked uniformly from the interval $[-0.1 , 0.1]$. We will begin with generating a random noise sequence and a random input sequence which we will use to construct the following data:
 \begin{align*}
 	W_- &= \begin{bmatrix}  0.0706 &  0.0244 & -0.0298 & 0.0026 & -0.0196 \end{bmatrix} \\
 	U_- &= \begin{bmatrix} -0.1655 & -0.9007 &  0.8054 & 0.8896 & -0.0183 \end{bmatrix} \\
 	X   &= \begin{bmatrix}     0   &  0.1533 &  0.6281 & 0.1956 & -0.2466 & -0.2571 \end{bmatrix} \\
 \end{align*}
 
-For our noise matrix $\Phi$ we will use that if we pick $\Phi_{12} = \overline{0} = [0 \dots 0]$ and $\Phi_{22} = -I_5$ then we know that $W_- W_-^\top \leq \Phi_{11}$. Since we know that our data is sampled from a uniform distribution with a maximum value of $0.1$ we know that $W_- W_-^\top \leq 0.1^2 T$ where $T$ is the total number of samples considered. Since we are considering $5$ sample we will pick our noise matrix to be:
+For our noise matrix $\Phi$ we will use that if we pick $\Phi_{12} = 0_{1,5}$ and $\Phi_{22} = -I_5$ then we know that $W_- W_-^\top \leq \Phi_{11}$. Since we know that our data is sampled from a uniform distribution with a maximum value of $0.1$ we know that $W_- W_-^\top \leq 0.1^2 T$ where $T$ is the total number of samples considered. Since we are considering $5$ sample we will pick our noise matrix to be:
 \begin{equation*}
-	\Phi = \begin{bmatrix} 0.05 & \overline{0} \\ \overline{0}^\top & -I_5 \end{bmatrix}
+	\Phi = \begin{bmatrix} 0.05 & 0_{1,5} \\ 0_{5,1} & -I_5 \end{bmatrix}
 \end{equation*}
-Using some computation we can verify that this choice of $\Phi$ is indeed a valid one for the data.
+Using some computation we can verify that this choice of $\Phi$ is indeed a valid one for the data:
 \begin{equation}
 \begin{bmatrix} I \\ W_-^\top \end{bmatrix} ^\top
 \begin{bmatrix} \Phi_{11} & \Phi_{12} \\ \Phi_{12}^\top & \Phi_{22} \end{bmatrix}
 \begin{bmatrix} I \\ W_-^\top \end{bmatrix} = 0.0431 \geq 0
 \end{equation}
 
-Before we attempt to solve the matrix inequality, we need to check if the generalised Slater condition holds. As we have seen in the previous section, we only have to verify that $N$ has at least 1 positive eigenvalue.
+Before we attempt to solve the matrix inequality, we need to check if the generalised Slater condition holds. As we have seen in the previous section, we only have to verify that $N$ has at least 1 positive eigenvalue:
 \begin{equation*}
  N = 
  \begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_- \end{bmatrix}
- \begin{bmatrix} 0.05 & \overline{0} \\ \overline{0}^\top & -I_5 \end{bmatrix}
+ \begin{bmatrix} 0.05 & 0_{1,5} \\ 0_{5,1} & -I_5 \end{bmatrix}
  \begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_- \end{bmatrix}^\top 
  =
  \begin{bmatrix} 
@@ -244,37 +244,35 @@ Before we attempt to solve the matrix inequality, we need to check if the genera
  \end{bmatrix} 
 \end{equation*}
 \begin{equation*}
- \sigma(N) = \{ \begin{array}{ccc}
- -2.5921 & -0.7571 & 0.02
- \end{array} \}
+ \sigma(N) = \{ -2.5921 , \, -0.7571 , \, 0.02 \}
 \end{equation*}
 
-Now that we have our data prepared, we will attempt to find a $P > 0$, $L$, $\alpha \geq 0$ and $\beta > 0$ such that (\ref{QuadStabCondition}) holds.
+Now that we have our data prepared, we will attempt to find a $P > 0$, $L$, $\alpha \geq 0$ and $\beta > 0$ such that (\ref{QuadStabCondition}) holds:
 \begin{align*}
 	\begin{bmatrix}
 		P-\beta I&0&0&0\\0&-P&-L^\top&0\\0&-L&0&L\\0&0&L^\top&P
 	\end{bmatrix} &- \alpha 
 	\begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_-\\0&\overline{0} \end{bmatrix}
-	\begin{bmatrix} 0.05 & \overline{0} \\ \overline{0}^\top & -I_5 \end{bmatrix}
+	\begin{bmatrix} 0.05 & 0_{1,5} \\ 0_{5,1} & -I_5 \end{bmatrix}
 	\begin{bmatrix} I&X_+ \\ 0 & -X_- \\ 0&-U_-\\0&\overline{0} \end{bmatrix}^\top \geq 0 
 \end{align*}
-Using numerical tools such as Yalmip we can find that the following values form a valid solution to the matrix inequality.
+Using numerical tools such as Yalmip we can find that the following values form a valid solution to the matrix inequality:
 \begin{align*}
 	P &= \frac{3}{10} & L &= \frac{1}{2} & \alpha &= \frac{9}{10} & \beta &= \frac{1}{10}
 \end{align*}
-Using these values we are able to construct a stabilising controller $K = LP^{-1} = 1\frac{2}{3}$. As we can see the closed loop system is indeed stable.
+Using these values we are able to construct a stabilising controller $K = LP^{-1} = 1\frac{2}{3}$. As we can see the closed loop system is indeed stable:
 \begin{equation*}
 	A + BK = \frac{1}{6}
 \end{equation*}
 
-We are also able to find a stabilising feedback gain using the provided Matlab function.
+We are also able to find a stabilising feedback gain using the provided Matlab function:
 \begin{lstlisting}
 U = [-0.1655 -0.9007 0.8054 0.8896 -0.0183];
 X = [ 0       0.1533 0.6281 0.1956 -0.2466 -0.2571];
 Phi = [0.05 zeros(1,5) ; zeros(5,1) -eye(5)];
 [bool, K] = isInformQuadraticStabilisation(X, U, Phi)
 \end{lstlisting}
-Which will return: \mon{[ 1, 1.6977 ]}.
+which will return: \mon{[ 1, 1.6977 ]}.
 
 
 

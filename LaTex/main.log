@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7350 64-bit) (preloaded format=pdflatex 2020.3.25)  17 JAN 2021 15:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7350 64-bit) (preloaded format=pdflatex 2020.3.25)  28 JAN 2021 16:16
 entering extended mode
 **./main.tex
 (main.tex
@@ -1161,52 +1161,52 @@ File: lstlang1.sty 2019/09/10 1.8c listings language file
 ))
 
 Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less on input line 67.
-
-
-Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less on input line 68.
-
-
-Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less on input line 69.
-
-
-Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
 less on input line 70.
 
 
-Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
+Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
 less on input line 71.
 
 
-Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
+Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
 less on input line 72.
+
+
+Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
+less on input line 73.
+
+
+Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
+less on input line 74.
+
+
+Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
+less on input line 75.
 
 \@quotelevel=\count467
 \@quotereset=\count468
 (main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
 Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
-(lastpage)             ! on input line 101.
+(lastpage)             ! on input line 104.
  ("C:\Program Files\MiKTeX 2.9\tex/context/base/mkii\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count469
@@ -1280,10 +1280,10 @@ ABD: EveryShipout initializing macros
 Package todonotes Warning: The length marginparwidth is less than 2cm and will 
 most likely cause issues with the appearance of inserted todonotes. The issue c
 an be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to 
-loading the todonotes package. on input line 101.
+loading the todonotes package. on input line 104.
 
 \AtBeginShipoutBox=\box125
-Package hyperref Info: Link coloring OFF on input line 101.
+Package hyperref Info: Link coloring OFF on input line 104.
 ("C:\Program Files\MiKTeX 2.9\tex/latex/hyperref\nameref.sty"
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 
@@ -1295,9 +1295,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count476
 )
-LaTeX Info: Redefining \ref on input line 101.
-LaTeX Info: Redefining \pageref on input line 101.
-LaTeX Info: Redefining \nameref on input line 101.
+LaTeX Info: Redefining \ref on input line 104.
+LaTeX Info: Redefining \pageref on input line 104.
+LaTeX Info: Redefining \nameref on input line 104.
 
 (main.out) (main.out)
 \@outlinefile=\write7
@@ -1317,42 +1317,26 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
  (main.bbl)
-Package biblatex Info: Reference section=0 on input line 101.
-Package biblatex Info: Reference segment=0 on input line 101.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 101
+Package biblatex Info: Reference section=0 on input line 104.
+Package biblatex Info: Reference segment=0 on input line 104.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 104
 .
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 101
+LaTeX Font Info:    Trying to load font information for U+msb on input line 104
 .
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for U+rsfs on input line 10
-1.
+4.
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/jknappen\ursfs.fd"
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ) (abstract.tex)
-(introduction.tex
-
-LaTeX Warning: Citation 'waarde2019data' on page 1 undefined on input line 10.
-
-
-LaTeX Warning: Citation 'waarde2020noisy' on page 1 undefined on input line 10.
-
-
-
-LaTeX Warning: Citation 'waarde2019data' on page 1 undefined on input line 14.
-
-
-LaTeX Warning: Citation 'waarde2020noisy' on page 1 undefined on input line 14.
-
-
-)
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
 Make it at least 13.59999pt.
@@ -1362,100 +1346,131 @@ This may cause the page layout to be inconsistent, however.
 [1{C:/Users/Jeroen Lammers/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 ]
-(01Data.tex
+(introduction.tex
 
-LaTeX Warning: Citation 'waarde2019data' on page 2 undefined on input line 30.
-
-[2]
-
-LaTeX Warning: Citation 'waarde2019data' on page 3 undefined on input line 40.
+LaTeX Warning: Citation 'waarde2019data' on page 2 undefined on input line 10.
 
 
-LaTeX Warning: Citation 'waarde2019data' on page 3 undefined on input line 45.
-
-[3]) [4] (02SystemIdentification.tex
-
-LaTeX Warning: Citation 'waarde2019data' on page 5 undefined on input line 8.
+LaTeX Warning: Citation 'waarde2020noisy' on page 2 undefined on input line 10.
 
 
-LaTeX Warning: Citation 'waarde2019data' on page 5 undefined on input line 29.
 
-[5]
+LaTeX Warning: Citation 'waarde2019data' on page 2 undefined on input line 14.
+
+
+LaTeX Warning: Citation 'waarde2020noisy' on page 2 undefined on input line 14.
+
+
+) [2] (01Data.tex
+
+LaTeX Warning: Citation 'waarde2019data' on page 3 undefined on input line 27.
+
+[3]
+
+LaTeX Warning: Citation 'waarde2019data' on page 4 undefined on input line 39.
+
+
+LaTeX Warning: Citation 'waarde2019data' on page 4 undefined on input line 44.
+
+[4]) [5] (02SystemIdentification.tex
+
+LaTeX Warning: Citation 'waarde2019data' on page 6 undefined on input line 8.
+
+
+LaTeX Warning: Citation 'waarde2019data' on page 6 undefined on input line 31.
+
+[6pdfTeX warning (ext4): destination with the same identifier (name{equation.3.
+9}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.45 \subsection
+                {Implementation}]
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 57.
- [6]) [7] (03Controlability.tex
+ [7]) [8] (03Controlability.tex
 
-LaTeX Warning: Citation 'waarde2019data' on page 8 undefined on input line 8.
-
-
-LaTeX Warning: Citation 'waarde2019data' on page 8 undefined on input line 11.
-
-[8]) [9] (04Stabilisability.tex
-
-LaTeX Warning: Citation 'waarde2019data' on page 10 undefined on input line 8.
+LaTeX Warning: Citation 'waarde2019data' on page 9 undefined on input line 8.
 
 
-LaTeX Warning: Citation 'waarde2019data' on page 10 undefined on input line 11.
+LaTeX Warning: Citation 'waarde2019data' on page 9 undefined on input line 11.
 
 
-[10]) [11] (05Stability.tex
+LaTeX Warning: Citation 'waarde2019data' on page 9 undefined on input line 15.
 
-LaTeX Warning: Citation 'Cor 11' on page 12 undefined on input line 23.
+[9]) [10] (04Stabilisability.tex
 
-[12]) [13] (06StateFeedback.tex
+LaTeX Warning: Citation 'waarde2019data' on page 11 undefined on input line 8.
 
-LaTeX Warning: Citation 'waarde2019data' on page 14 undefined on input line 10.
+
+LaTeX Warning: Citation 'waarde2019data' on page 11 undefined on input line 11.
 
 
 
-LaTeX Warning: Citation 'waarde2019data' on page 14 undefined on input line 20.
+LaTeX Warning: Citation 'waarde2019data' on page 11 undefined on input line 15.
+
+
+[11]) [12] (05Stability.tex
+
+LaTeX Warning: Citation 'waarde2019data' on page 13 undefined on input line 23.
+
+
+[13]) [14] (06StateFeedback.tex
+
+LaTeX Warning: Citation 'waarde2019data' on page 15 undefined on input line 14.
 
 
 
-LaTeX Warning: Citation 'waarde2019data' on page 14 undefined on input line 54.
+LaTeX Warning: Citation 'waarde2019data' on page 15 undefined on input line 24.
 
 
-[14]
-Overfull \hbox (2.51974pt too wide) in paragraph at lines 66--69
+
+LaTeX Warning: Citation 'waarde2019data' on page 15 undefined on input line 58.
+
+
+[15]
+Overfull \hbox (2.51974pt too wide) in paragraph at lines 70--73
 \OT1/cmtt/m/n/10.95 [bool, K, diagnostics, info] = isInformStateFeedback(X, U, 
 tolerance, options)\OT1/cmr/m/n/10.95 : Re-
  []
 
-[15]
+[16]
 
-LaTeX Warning: Citation 'waarde2019data' on page 16 undefined on input line 109
+LaTeX Warning: Citation 'waarde2019data' on page 17 undefined on input line 113
 .
 
-[16]) [17] (07DeadbeatControl.tex
+[17]) [18] (07DeadbeatControl.tex
 
-LaTeX Warning: Citation 'waarde2019data' on page 18 undefined on input line 8.
-
-
-LaTeX Warning: Citation 'waarde20' on page 18 undefined on input line 18.
-
-
-LaTeX Warning: Citation 'bookTrentelman' on page 18 undefined on input line 56.
+LaTeX Warning: Citation 'waarde2019data' on page 19 undefined on input line 13.
 
 
 
-LaTeX Warning: Citation 'bookTrentelman' on page 18 undefined on input line 64.
-
-
-[18]
-
-LaTeX Warning: Citation 'bookTrentelman' on page 19 undefined on input line 66.
+LaTeX Warning: Citation 'waarde2019data' on page 19 undefined on input line 23.
 
 
 
-Overfull \hbox (3.01971pt too wide) in paragraph at lines 66--67
+LaTeX Warning: Citation 'bookTrentelman' on page 19 undefined on input line 61.
+
+
+[19]
+
+LaTeX Warning: Citation 'bookTrentelman' on page 20 undefined on input line 69.
+
+
+
+LaTeX Warning: Citation 'bookTrentelman' on page 20 undefined on input line 71.
+
+
+
+Overfull \hbox (3.01971pt too wide) in paragraph at lines 71--72
 []\OT1/cmr/m/n/10.95 Assume that the pair $(\OML/cmm/m/it/10.95 A; B\OT1/cmr/m/
 n/10.95 )$ is con-trol-lable, we will use [[]] to con-struct $\OML/cmm/m/it/10.
 95 u[]; [] ; u[]$
  []
 
-[19] [20]) [21] (08LQR.tex
+[20] [21]) [22] (08LQR.tex
 
-LaTeX Warning: Citation 'bookTrentelman' on page 22 undefined on input line 13.
+LaTeX Warning: Citation 'bookTrentelman' on page 23 undefined on input line 13.
 
 
 
@@ -1465,24 +1480,24 @@ Overfull \hbox (30.85387pt too wide) in paragraph at lines 13--14
  []
 
 
-LaTeX Warning: Citation 'waarde2019data' on page 22 undefined on input line 33.
-
-
-[22]
-
-LaTeX Warning: Citation 'waarde2019data' on page 23 undefined on input line 44.
-
-
-
-LaTeX Warning: Citation 'waarde2019data' on page 23 undefined on input line 54.
+LaTeX Warning: Citation 'waarde2019data' on page 23 undefined on input line 33.
 
 
 [23]
 
-LaTeX Warning: Citation 'waarde2019data' on page 24 undefined on input line 70.
+LaTeX Warning: Citation 'waarde2019data' on page 24 undefined on input line 44.
 
 
-[24] [25]) [26] (09DynamicMeasurementFeedback.tex
+
+LaTeX Warning: Citation 'waarde2019data' on page 24 undefined on input line 54.
+
+
+[24]
+
+LaTeX Warning: Citation 'waarde2019data' on page 25 undefined on input line 75.
+
+
+[25]) [26] (09DynamicMeasurementFeedback.tex
 
 LaTeX Warning: Citation 'bookTrentelman' on page 27 undefined on input line 15.
 
@@ -1512,87 +1527,87 @@ LaTeX Warning: Citation 'waarde2019data' on page 28 undefined on input line 100
 
 [28]
 LaTeX Font Info:    Trying to load font information for OMS+cmtt on input line 
-122.
-LaTeX Font Info:    No file OMScmtt.fd. on input line 122.
+121.
+LaTeX Font Info:    No file OMScmtt.fd. on input line 121.
 
 
 LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbraceleft' on input line 122.
+(Font)              for symbol `textbraceleft' on input line 121.
 
 
-Overfull \hbox (16.32903pt too wide) in paragraph at lines 122--124
+Overfull \hbox (16.32903pt too wide) in paragraph at lines 121--123
 \OT1/cmtt/m/n/10.95 [bool, K, L, M] = isInformDynamicMeasurementFeedback(X, U, 
 Y, polesM, polesL)\OT1/cmr/m/n/10.95 : Re-turns
  []
 
-[29] [30]) [31] (091StateEstimation.tex
+[29]) [30] (091StateEstimation.tex
 
-LaTeX Warning: Citation 'waarde2019data' on page 32 undefined on input line 27.
+LaTeX Warning: Citation 'waarde2019data' on page 31 undefined on input line 27.
 
 
 
-LaTeX Warning: Citation 'waarde2019data' on page 32 undefined on input line 34.
+LaTeX Warning: Citation 'waarde2019data' on page 31 undefined on input line 34.
+
+
+[31]
+
+LaTeX Warning: Citation 'waarde2019data' on page 32 undefined on input line 68.
+
+
+
+LaTeX Warning: Citation 'waarde2019data' on page 32 undefined on input line 89.
 
 
 [32]
 
-LaTeX Warning: Citation 'waarde2019data' on page 33 undefined on input line 68.
+LaTeX Warning: Citation 'bookMoonen' on page 33 undefined on input line 114.
 
-
-
-LaTeX Warning: Citation 'waarde2019data' on page 33 undefined on input line 89.
-
-
-[33]
-
-LaTeX Warning: Citation 'bookMoonen' on page 34 undefined on input line 113.
-
-[34] [35]
+[33] [34]
 Overfull \hbox (38.9372pt too wide) in paragraph at lines 222--223
 []\OT1/cmr/m/n/10.95 Using the pro-vided mat-lab func-tion \OT1/cmtt/m/n/10.95 
 [bool, X[]hat, U[]hat, Y[]hat] = isInformStateIdentification(U,
  []
 
-[36]) [37] (10Noise.tex
+[35]) [36] (10Noise.tex
 
-LaTeX Warning: Citation 'waarde2020noisy' on page 38 undefined on input line 18
+LaTeX Warning: Citation 'waarde2020noisy' on page 37 undefined on input line 18
 .
 
 
-LaTeX Warning: Citation 'waarde2020noisy' on page 38 undefined on input line 55
+LaTeX Warning: Citation 'waarde2020noisy' on page 37 undefined on input line 55
 .
 
-) [38] (12QuadraticStabilisation.tex
+) [37] (12QuadraticStabilisation.tex
 
-LaTeX Warning: Citation 'waarde2020noisy' on page 39 undefined on input line 11
-.
-
-
-LaTeX Warning: Citation 'waarde2020noisy' on page 39 undefined on input line 25
+LaTeX Warning: Citation 'waarde2020noisy' on page 38 undefined on input line 11
 .
 
 
-LaTeX Warning: Citation 'waarde2020noisy' on page 39 undefined on input line 44
+LaTeX Warning: Citation 'waarde2020noisy' on page 38 undefined on input line 25
 .
 
-[39] [40]pdfTeX warning (ext4): destination with the same identifier (name{equa
-tion.14.22}) has been already used, duplicate ignored
+
+LaTeX Warning: Citation 'waarde2020noisy' on page 38 undefined on input line 44
+.
+
+[38] [39]pdfTeX warning (ext4): destination with the same identifier (name{equa
+tion.13.24}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.115 \begin{subequations}
                            \label{NData}
 
-LaTeX Warning: Citation 'waarde2020noisy' on page 41 undefined on input line 17
+LaTeX Warning: Citation 'waarde2020noisy' on page 40 undefined on input line 17
 7.
 
-[41pdfTeX warning (ext4): destination with the same identifier (name{equation.1
-4.22}) has been already used, duplicate ignored
+[40pdfTeX warning (ext4): destination with the same identifier (name{equation.1
+3.24}) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.178 
-      ]
+l.177 }
+       ]
 Overfull \hbox (7.3861pt too wide) in paragraph at lines 184--187
 \OT1/cmtt/m/n/10.95 [bool, K, diagnostics, info] = isInformQuadraticStabilisati
 on(X, U, Phi, tolerance) 
@@ -1616,7 +1631,7 @@ Overfull \hbox (7.3861pt too wide) in paragraph at lines 189--192
 on(X, U, Phi, tolerance,
  []
 
-[42] [43]) [44] (13H2Control.tex
+[41] [42]) [43] (13H2Control.tex
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 1.
@@ -1642,65 +1657,65 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 6.
 
 
-LaTeX Warning: Citation 'bookTrentelman' on page 45 undefined on input line 23.
+LaTeX Warning: Citation 'bookTrentelman' on page 44 undefined on input line 23.
 
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 46.
+(hyperref)                removing `math shift' on input line 44.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 46.
+(hyperref)                removing `subscript' on input line 44.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 46.
+(hyperref)                removing `math shift' on input line 44.
 
-[45]
+[44]
 
-LaTeX Warning: Citation 'waarde2020noisy' on page 46 undefined on input line 56
+LaTeX Warning: Citation 'waarde2020noisy' on page 45 undefined on input line 54
 .
 
 
-LaTeX Warning: Citation 'waarde2020noisy' on page 46 undefined on input line 59
+LaTeX Warning: Citation 'waarde2020noisy' on page 45 undefined on input line 57
 .
 
 
-LaTeX Warning: Citation 'waarde2020noisy' on page 46 undefined on input line 11
-6.
+LaTeX Warning: Citation 'waarde2020noisy' on page 45 undefined on input line 11
+4.
 
 
-Overfull \hbox (18.88347pt too wide) in paragraph at lines 123--126
+Overfull \hbox (18.88347pt too wide) in paragraph at lines 121--124
 \OT1/cmtt/m/n/10.95 [bool, K, diagnostics, gamma, info] = isInformH2(X, U, Phi,
  C, D, tolerance, options) 
  []
 
 
-Overfull \hbox (7.96448pt too wide) in paragraph at lines 128--131
+Overfull \hbox (7.96448pt too wide) in paragraph at lines 126--129
 \OT1/cmtt/m/n/10.95 [bool, K, diagnostics, gamma, info] = isInformH2(X, U, Phi,
  C, D, tolerance)\OT1/cmr/m/n/10.95 : Checks
  []
 
 
-Overfull \hbox (21.92514pt too wide) in paragraph at lines 128--131
+Overfull \hbox (21.92514pt too wide) in paragraph at lines 126--129
 \OT1/cmtt/m/n/10.95 [bool, K, diagnostics, gamma, info] = isInformH2(X, U, Phi,
  C, D, tolerance, options)\OT1/cmr/m/n/10.95 :
  []
 
-[46] [47] [48]
+[45] [46] [47]
 
-LaTeX Warning: Citation 'waarde2020noisy' on page 49 undefined on input line 21
-6.
+LaTeX Warning: Citation 'waarde2020noisy' on page 48 undefined on input line 21
+4.
 
 LaTeX Font Info:    Trying to load font information for OML+cmr on input line 2
-25.
+23.
 ("C:\Program Files\MiKTeX 2.9\tex/latex/base\omlcmr.fd"
 File: omlcmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <9> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 225.
-) [49]
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 223.
+) [48]
 (14HinfControl.tex
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -1735,77 +1750,77 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 5.
 
 
-LaTeX Warning: Citation 'skelton1997unified' on page 50 undefined on input line
- 29.
+LaTeX Warning: Citation 'skelton1997unified' on page 49 undefined on input line
+ 27.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 32.
+(hyperref)                removing `math shift' on input line 28.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 32.
+(hyperref)                removing `subscript' on input line 28.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\infty' on input line 32.
+(hyperref)                removing `\infty' on input line 28.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 32.
+(hyperref)                removing `math shift' on input line 28.
 
 
-LaTeX Warning: Citation 'waarde2020noisy' on page 50 undefined on input line 43
-.
-
-[50]
-
-LaTeX Warning: Citation 'waarde2020noisy' on page 51 undefined on input line 45
+LaTeX Warning: Citation 'waarde2020noisy' on page 49 undefined on input line 39
 .
 
 
-LaTeX Warning: Citation 'waarde2020noisy' on page 51 undefined on input line 96
+LaTeX Warning: Citation 'waarde2020noisy' on page 49 undefined on input line 41
+.
+
+[49]
+
+LaTeX Warning: Citation 'waarde2020noisy' on page 50 undefined on input line 92
 .
 
 
-Overfull \hbox (30.38084pt too wide) in paragraph at lines 101--104
+Overfull \hbox (30.38084pt too wide) in paragraph at lines 97--100
 \OT1/cmtt/m/n/10.95 [bool, K, diagnostics, gamma, info] = isInformHInf(X, U, Ph
 i, C, D, tolerance, options) 
  []
 
 
-Overfull \hbox (11.31088pt too wide) in paragraph at lines 106--109
+Overfull \hbox (11.31088pt too wide) in paragraph at lines 102--105
 \OT1/cmtt/m/n/10.95 [[bool, K, diagnostics, gamma, info] = isInformHInf(X, U, P
 hi, C, D)\OT1/cmr/m/n/10.95 : Checks is the data
  []
 
 
-Overfull \hbox (19.46185pt too wide) in paragraph at lines 106--109
+Overfull \hbox (19.46185pt too wide) in paragraph at lines 102--105
 \OT1/cmtt/m/n/10.95 [bool, K, diagnostics, gamma, info] = isInformHInf(X, U, Ph
 i, C, D, tolerance)\OT1/cmr/m/n/10.95 : Checks
  []
 
 
-Overfull \hbox (33.42252pt too wide) in paragraph at lines 106--109
+Overfull \hbox (33.42252pt too wide) in paragraph at lines 102--105
 \OT1/cmtt/m/n/10.95 [bool, K, diagnostics, gamma, info] = isInformHInf(X, U, Ph
 i, C, D, tolerance, options)\OT1/cmr/m/n/10.95 :
  []
 
-[51] [52] [53pdfTeX warning (ext4): destination with the same identifier (name{
-equation.16.28a}) has been already used, duplicate ignored
+[50] [51] [52pdfTeX warning (ext4): destination with the same identifier (name{
+equation.15.30a}) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.210 \begin{lstlisting}
-                        ]) [54] (20ContinuousSystems.tex
-<MSD.png, id=887, 316.5426pt x 155.3805pt>
+l.212 sys 
+          = ss(A + B*K, B, C, D, 1);]) [53] (20ContinuousSystems.tex
+<MSD.png, id=883, 316.5426pt x 155.3805pt>
 File: MSD.png Graphic file (type png)
 <use MSD.png>
 Package pdftex.def Info: MSD.png  used on input line 9.
 (pdftex.def)             Requested size: 140.92792pt x 69.17847pt.
 
 
-LaTeX Warning: Citation 'kollar1996equivalence' on page 55 undefined on input l
+LaTeX Warning: Citation 'kollar1996equivalence' on page 54 undefined on input l
 ine 39.
 
 Package epstopdf Info: Source file: <impulse_response_msd.eps>
@@ -1823,13 +1838,13 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex.exe (file ./impulse_response_msd-eps-converted-to.pdf)
 : PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<impulse_response_msd-eps-converted-to.pdf, id=889, 421.575pt x 316.18124pt>
+<impulse_response_msd-eps-converted-to.pdf, id=885, 421.575pt x 316.18124pt>
 File: impulse_response_msd-eps-converted-to.pdf Graphic file (type pdf)
 <use impulse_response_msd-eps-converted-to.pdf>
 Package pdftex.def Info: impulse_response_msd-eps-converted-to.pdf  used on inp
 ut line 52.
 (pdftex.def)             Requested size: 328.82706pt x 246.6252pt.
-[55 <./MSD.png>] [56 <./impulse_response_msd-eps-converted-to.pdf>]
+[54 <./MSD.png>] [55 <./impulse_response_msd-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <step_response_msd.eps>
 (epstopdf)                    date: 2021-01-17 14:01:22
 (epstopdf)                    size: 37114 bytes
@@ -1844,37 +1859,38 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex.exe (file ./step_response_msd-eps-converted-to.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<step_response_msd-eps-converted-to.pdf, id=925, 421.575pt x 316.18124pt>
+<step_response_msd-eps-converted-to.pdf, id=921, 421.575pt x 316.18124pt>
 File: step_response_msd-eps-converted-to.pdf Graphic file (type pdf)
 <use step_response_msd-eps-converted-to.pdf>
 Package pdftex.def Info: step_response_msd-eps-converted-to.pdf  used on input 
 line 101.
 (pdftex.def)             Requested size: 328.82706pt x 246.6252pt.
-[57 <./step_response_msd-eps-converted-to.pdf>]) [58] (30Conclusion.tex
+[56 <./step_response_msd-eps-converted-to.pdf>]) [57] (30Conclusion.tex
 
-LaTeX Warning: Citation 'waarde2019data' on page 59 undefined on input line 2.
-
-
-LaTeX Warning: Citation 'waarde2020noisy' on page 59 undefined on input line 2.
+LaTeX Warning: Citation 'waarde2019data' on page 58 undefined on input line 2.
 
 
-) (31FutureWork.tex) (references.tex
+LaTeX Warning: Citation 'waarde2020noisy' on page 58 undefined on input line 2.
+
+
+)
+
+LaTeX Warning: Citation 'Lofberg2004' undefined on input line 145.
+
+(references.tex
 
 LaTeX Warning: Empty bibliography on input line 2.
 
-)
-Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 143.
- 
+) 
 AED: lastpage setting LastPage
-[59]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 147.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 147.
+[58]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 150.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 150.
  (main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 147.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 147.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 150.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 150.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 641E3C50CE2461DA8776B56ED249D9FA;4347.
+(rerunfilecheck)             Checksum: ABF21B3455F754205D5F297A28101FCF;4170.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -1890,16 +1906,16 @@ Package biblatex Warning: Please (re)run Biber on the file:
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 147.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 150.
  ) 
 Here is how much of TeX's memory you used:
- 32213 strings out of 480934
- 618182 string characters out of 2909653
- 1345276 words of memory out of 3000000
- 47070 multiletter control sequences out of 15000+200000
+ 32105 strings out of 480934
+ 615619 string characters out of 2909653
+ 1345152 words of memory out of 3000000
+ 46965 multiletter control sequences out of 15000+200000
  553198 words of font info for 108 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,15n,83p,935b,1650s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 60i,15n,83p,935b,2192s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Jeroen Lammers\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/e
 c/dpi600\tcrm0900.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
 m/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12
@@ -1918,9 +1934,9 @@ es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX
 s/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
 public/amsfonts/cm/cmtt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
 msfonts/symbols/msbm10.pfb>
-Output written on main.pdf (59 pages, 606385 bytes).
+Output written on main.pdf (58 pages, 604456 bytes).
 PDF statistics:
- 1101 PDF objects out of 1200 (max. 8388607)
- 382 named destinations out of 1000 (max. 500000)
- 668 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1096 PDF objects out of 1200 (max. 8388607)
+ 381 named destinations out of 1000 (max. 500000)
+ 652 words of extra memory for PDF output out of 10000 (max. 10000000)
 

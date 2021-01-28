@@ -1,5 +1,5 @@
-function [K] = MultiInputAcker(A, B, poles)
-%MULTIINPUTACKER An extension to the ackerman function such that it
+function [K] = heymann(A, B, poles)
+%HEYMANN An extension to the ackerman function such that it
 %supports multi dimensional input. i.e. size(B) = nxm instead of nx1
 %   This function extends the acker(a,b,p) function of matlab to add multi
 %   input support to it. The function will return a controller of the form 

@@ -37,7 +37,7 @@ function [bool, K] = isInformDeadbeatControl(X, U)
             % Note acker is unreliable for order greater than 10
             % Note acker does not nativly support multi-dimensional input
             if rank(ctrb(Xplus*F, Xplus*G)) == n
-                H = MultiInputAcker(Xplus*F, Xplus*G, zeros(1,n));
+                H = heymann(Xplus*F, Xplus*G, zeros(1,n));
                 K = Umin * ( F + G * H );
                 bool = true;
             end

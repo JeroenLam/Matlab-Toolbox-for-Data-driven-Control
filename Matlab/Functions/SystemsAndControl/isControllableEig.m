@@ -1,6 +1,5 @@
-function [bool] = isContEig(A, B, lambda)
-%ISCONTEIG Summary of this function goes here
-%   Detailed explanation goes here
+function [bool] = isControllableEig(A, B, lambda)
+%ISCONTEIG returns if the eigenvalue is controllable for the given system
     if size(A,1) ~= size(A,2) || size(A,1) ~= size(B,1)
         bool = false;
         % TODO: Throw parameterExcepsion

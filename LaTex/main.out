@@ -1,68 +1,66 @@
-\BOOKMARK [1][-]{section.1}{Abstract}{}% 1
-\BOOKMARK [1][-]{section.2}{Introduction}{}% 2
-\BOOKMARK [1][-]{section.3}{Definitions}{}% 3
-\BOOKMARK [2][-]{subsection.3.1}{Model classes}{section.3}% 4
-\BOOKMARK [2][-]{subsection.3.2}{Informativity}{section.3}% 5
-\BOOKMARK [2][-]{subsection.3.3}{Data}{section.3}% 6
-\BOOKMARK [1][-]{section.4}{System identification}{}% 7
-\BOOKMARK [2][-]{subsection.4.1}{Mathematics}{section.4}% 8
-\BOOKMARK [2][-]{subsection.4.2}{Algorithm}{section.4}% 9
-\BOOKMARK [2][-]{subsection.4.3}{Implementation}{section.4}% 10
-\BOOKMARK [2][-]{subsection.4.4}{Examples}{section.4}% 11
-\BOOKMARK [1][-]{section.5}{Controllability}{}% 12
-\BOOKMARK [2][-]{subsection.5.1}{Implementation}{section.5}% 13
-\BOOKMARK [2][-]{subsection.5.2}{Examples}{section.5}% 14
-\BOOKMARK [1][-]{section.6}{Stabilisability}{}% 15
-\BOOKMARK [2][-]{subsection.6.1}{Implementation}{section.6}% 16
-\BOOKMARK [2][-]{subsection.6.2}{Examples}{section.6}% 17
-\BOOKMARK [1][-]{section.7}{Stability}{}% 18
-\BOOKMARK [2][-]{subsection.7.1}{Mathematics}{section.7}% 19
-\BOOKMARK [2][-]{subsection.7.2}{Implementation}{section.7}% 20
-\BOOKMARK [2][-]{subsection.7.3}{Examples}{section.7}% 21
-\BOOKMARK [1][-]{section.8}{State feedback}{}% 22
-\BOOKMARK [2][-]{subsection.8.1}{Mathematics}{section.8}% 23
-\BOOKMARK [2][-]{subsection.8.2}{Implementation}{section.8}% 24
-\BOOKMARK [2][-]{subsection.8.3}{Examples}{section.8}% 25
-\BOOKMARK [1][-]{section.9}{Deadbeat control}{}% 26
-\BOOKMARK [2][-]{subsection.9.1}{Mathematics deadbeat control}{section.9}% 27
-\BOOKMARK [2][-]{subsection.9.2}{Mathematics extending pole placement}{section.9}% 28
-\BOOKMARK [2][-]{subsection.9.3}{Implementation}{section.9}% 29
-\BOOKMARK [2][-]{subsection.9.4}{Examples}{section.9}% 30
-\BOOKMARK [1][-]{section.10}{Linear quadratic regulation}{}% 31
-\BOOKMARK [2][-]{subsection.10.1}{Non data-driven LQR}{section.10}% 32
-\BOOKMARK [2][-]{subsection.10.2}{Data-driven LQR}{section.10}% 33
-\BOOKMARK [2][-]{subsection.10.3}{Implementation}{section.10}% 34
-\BOOKMARK [2][-]{subsection.10.4}{Examples}{section.10}% 35
-\BOOKMARK [1][-]{section.11}{Dynamic measurement feedback}{}% 36
-\BOOKMARK [2][-]{subsection.11.1}{Non-data driven dynamic feedback control}{section.11}% 37
-\BOOKMARK [2][-]{subsection.11.2}{Data-driven stabilisation by dynamic measurement feedback}{section.11}% 38
-\BOOKMARK [2][-]{subsection.11.3}{Implementation}{section.11}% 39
-\BOOKMARK [2][-]{subsection.11.4}{Examples}{section.11}% 40
-\BOOKMARK [1][-]{section.12}{State estimation}{}% 41
-\BOOKMARK [2][-]{subsection.12.1}{Implementation}{section.12}% 42
-\BOOKMARK [2][-]{subsection.12.2}{Examples}{section.12}% 43
-\BOOKMARK [1][-]{section.13}{Noise and control}{}% 44
-\BOOKMARK [2][-]{subsection.13.1}{Noise and its set of systems}{section.13}% 45
-\BOOKMARK [1][-]{section.14}{Quadratic stabilisation}{}% 46
-\BOOKMARK [2][-]{subsection.14.1}{Problem formulation}{section.14}% 47
-\BOOKMARK [2][-]{subsection.14.2}{Implementation Slater condition}{section.14}% 48
-\BOOKMARK [2][-]{subsection.14.3}{Solving the data driven quadratic stabilisation problem.}{section.14}% 49
-\BOOKMARK [2][-]{subsection.14.4}{Implementation}{section.14}% 50
-\BOOKMARK [2][-]{subsection.14.5}{Example}{section.14}% 51
-\BOOKMARK [1][-]{section.15}{H2 Control}{}% 52
-\BOOKMARK [2][-]{subsection.15.1}{Non data driven H2 control}{section.15}% 53
-\BOOKMARK [2][-]{subsection.15.2}{Data driven H2 control}{section.15}% 54
-\BOOKMARK [2][-]{subsection.15.3}{Implementation}{section.15}% 55
-\BOOKMARK [2][-]{subsection.15.4}{Example}{section.15}% 56
-\BOOKMARK [1][-]{section.16}{H Control}{}% 57
-\BOOKMARK [2][-]{subsection.16.1}{Non data driven H control}{section.16}% 58
-\BOOKMARK [2][-]{subsection.16.2}{Data driven H control}{section.16}% 59
-\BOOKMARK [2][-]{subsection.16.3}{Implementation}{section.16}% 60
-\BOOKMARK [2][-]{subsection.16.4}{Example}{section.16}% 61
-\BOOKMARK [1][-]{section.17}{Identifying continuous time systems using impulse and step response}{}% 62
-\BOOKMARK [2][-]{subsection.17.1}{Defining the system}{section.17}% 63
-\BOOKMARK [2][-]{subsection.17.2}{Impulse response}{section.17}% 64
-\BOOKMARK [2][-]{subsection.17.3}{Step response}{section.17}% 65
-\BOOKMARK [1][-]{section.18}{Conclusion}{}% 66
-\BOOKMARK [1][-]{section.19}{Acknowledgements}{}% 67
-\BOOKMARK [1][-]{section.20}{Reference section title}{}% 68
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Data informativity framework}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Model classes}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Informativity}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Data}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{System identification}{}% 6
+\BOOKMARK [2][-]{subsection.3.1}{Theory}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.2}{Algorithm}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.3}{Implementation}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.4}{Examples}{section.3}% 10
+\BOOKMARK [1][-]{section.4}{Controllability}{}% 11
+\BOOKMARK [2][-]{subsection.4.1}{Implementation}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.2}{Examples}{section.4}% 13
+\BOOKMARK [1][-]{section.5}{Stabilisability}{}% 14
+\BOOKMARK [2][-]{subsection.5.1}{Implementation}{section.5}% 15
+\BOOKMARK [2][-]{subsection.5.2}{Examples}{section.5}% 16
+\BOOKMARK [1][-]{section.6}{Stability}{}% 17
+\BOOKMARK [2][-]{subsection.6.1}{Theory}{section.6}% 18
+\BOOKMARK [2][-]{subsection.6.2}{Implementation}{section.6}% 19
+\BOOKMARK [2][-]{subsection.6.3}{Examples}{section.6}% 20
+\BOOKMARK [1][-]{section.7}{State feedback}{}% 21
+\BOOKMARK [2][-]{subsection.7.1}{Theory}{section.7}% 22
+\BOOKMARK [2][-]{subsection.7.2}{Implementation}{section.7}% 23
+\BOOKMARK [2][-]{subsection.7.3}{Examples}{section.7}% 24
+\BOOKMARK [1][-]{section.8}{Deadbeat control}{}% 25
+\BOOKMARK [2][-]{subsection.8.1}{Theory deadbeat control}{section.8}% 26
+\BOOKMARK [2][-]{subsection.8.2}{Theory extending pole placement}{section.8}% 27
+\BOOKMARK [2][-]{subsection.8.3}{Implementation}{section.8}% 28
+\BOOKMARK [2][-]{subsection.8.4}{Examples}{section.8}% 29
+\BOOKMARK [1][-]{section.9}{Linear quadratic regulation}{}% 30
+\BOOKMARK [2][-]{subsection.9.1}{LQR problem}{section.9}% 31
+\BOOKMARK [2][-]{subsection.9.2}{Data-driven LQR}{section.9}% 32
+\BOOKMARK [2][-]{subsection.9.3}{Implementation}{section.9}% 33
+\BOOKMARK [2][-]{subsection.9.4}{Examples}{section.9}% 34
+\BOOKMARK [1][-]{section.10}{Dynamic measurement feedback}{}% 35
+\BOOKMARK [2][-]{subsection.10.1}{Dynamic feedback control}{section.10}% 36
+\BOOKMARK [2][-]{subsection.10.2}{Data-driven stabilisation by dynamic measurement feedback}{section.10}% 37
+\BOOKMARK [2][-]{subsection.10.3}{Implementation}{section.10}% 38
+\BOOKMARK [2][-]{subsection.10.4}{Examples}{section.10}% 39
+\BOOKMARK [1][-]{section.11}{State estimation}{}% 40
+\BOOKMARK [2][-]{subsection.11.1}{Implementation}{section.11}% 41
+\BOOKMARK [2][-]{subsection.11.2}{Examples}{section.11}% 42
+\BOOKMARK [1][-]{section.12}{Noise and control}{}% 43
+\BOOKMARK [2][-]{subsection.12.1}{Noise and its set of systems}{section.12}% 44
+\BOOKMARK [1][-]{section.13}{Quadratic stabilisation}{}% 45
+\BOOKMARK [2][-]{subsection.13.1}{Problem formulation}{section.13}% 46
+\BOOKMARK [2][-]{subsection.13.2}{Implementation Slater condition}{section.13}% 47
+\BOOKMARK [2][-]{subsection.13.3}{Solving the data driven quadratic stabilisation problem.}{section.13}% 48
+\BOOKMARK [2][-]{subsection.13.4}{Implementation}{section.13}% 49
+\BOOKMARK [2][-]{subsection.13.5}{Example}{section.13}% 50
+\BOOKMARK [1][-]{section.14}{H2 Control}{}% 51
+\BOOKMARK [2][-]{subsection.14.1}{H2 control}{section.14}% 52
+\BOOKMARK [2][-]{subsection.14.2}{Data driven H2 control}{section.14}% 53
+\BOOKMARK [2][-]{subsection.14.3}{Implementation}{section.14}% 54
+\BOOKMARK [2][-]{subsection.14.4}{Example}{section.14}% 55
+\BOOKMARK [1][-]{section.15}{H Control}{}% 56
+\BOOKMARK [2][-]{subsection.15.1}{H control}{section.15}% 57
+\BOOKMARK [2][-]{subsection.15.2}{Data driven H control}{section.15}% 58
+\BOOKMARK [2][-]{subsection.15.3}{Implementation}{section.15}% 59
+\BOOKMARK [2][-]{subsection.15.4}{Example}{section.15}% 60
+\BOOKMARK [1][-]{section.16}{Identifying continuous-time systems using impulse and step response}{}% 61
+\BOOKMARK [2][-]{subsection.16.1}{Defining the system}{section.16}% 62
+\BOOKMARK [2][-]{subsection.16.2}{Impulse response}{section.16}% 63
+\BOOKMARK [2][-]{subsection.16.3}{Step response}{section.16}% 64
+\BOOKMARK [1][-]{section.17}{Conclusion}{}% 65
+\BOOKMARK [1][-]{section.18}{Acknowledgements}{}% 66

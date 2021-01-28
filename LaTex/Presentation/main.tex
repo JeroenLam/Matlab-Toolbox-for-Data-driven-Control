@@ -1,0 +1,193 @@
+\documentclass{beamer}
+
+\mode<presentation> {
+	\usetheme{Madrid}
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Bachelor’s Project]{Building a Matlab toolbox for data-driven analysis and control based on the informativity framework} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Jeroen Lammers} % Your name
+\institute[RUG] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+	\textit{First supervisor: Prof.dr. M.K. Camlibel} \\
+	\textit{Second supervisor: Dr. H.J. van Waarde} \\
+	\textit{Second assessor: Prof.dr. H.L. Trentelman} \\
+	\medskip
+}
+\date{\today} % Date, can be changed to a custom date
+
+\begin{document}
+	
+	\begin{frame}
+		\titlepage % Print the title page as the first slide
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Overview} % Table of contents slide, comment this block out to remove it
+		\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+	\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+%------------------------------------------------
+% Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+%------------------------------------------------
+\section{Data informativity}
+
+\section{Noiseless data}
+
+\section{Data with bounded noise}
+
+\section{Software}
+
+%------------------------------------------------
+
+\begin{frame}
+	\frametitle{Data informativity}
+	\begin{block}{Data informativity for properties}
+		Let $\Sigma_\mathcal{D}$ be the set of systems that is able to generate the data $\mathcal{D}$. Let $\Sigma_\mathcal{P}$ be the set of systems such that a system theoretic property $\mathcal{P}$ holds. Then the data is informative for that property $\mathcal{P}$ if all systems from $\Sigma_\mathcal{D}$ have that property $\mathcal{P}$. \\
+		I.e. $\Sigma_\mathcal{D} \subseteq \Sigma_\mathcal{P}$
+	\end{block}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+	\frametitle{Data informativity}
+	\begin{block}{Data informativity for control}
+		Let $\Sigma_\mathcal{D}$ be the set of systems that is able to generate the data $\mathcal{D}$. Let $\Sigma_{\mathcal{P}(\mathcal{K})}$ be the set of systems such that a system is stabilised using the controller $\mathcal{K}$. Then the data is informative for $\mathcal{P}$ control if all systems from $\Sigma_\mathcal{D}$ are stabilised using the same $\mathcal{K}$. \\
+		I.e. $\Sigma_\mathcal{D} \subseteq \Sigma_{\mathcal{P}(\mathcal{K})}$
+	\end{block}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+	\frametitle{Data informativity}
+	\begin{block}{State space system}
+		\[ \mathbf{x}(t+1) = A\mathbf{x}(t) + B\mathbf{u}(t) + w(t) \]
+	\end{block}
+
+	\begin{block}{Data matrices}
+		\begin{align*}
+			X_- &= \begin{bmatrix} x(0) & x(1) & \dots & x(T-1) \end{bmatrix} \\
+			X_+ &= \begin{bmatrix} x(1) & x(2) & \dots & x(T)   \end{bmatrix} \\
+			U_- &= \begin{bmatrix} u(0) & u(1) & \dots & u(T-1) \end{bmatrix} \\
+			W_- &= \begin{bmatrix} w(0) & w(1) & \dots & w(T-1) \end{bmatrix} 
+		\end{align*}
+	\end{block}	
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+	\frametitle{Data informativity}
+	\begin{block}{State space system}
+		\[ X_+ = \begin{bmatrix} A & B \end{bmatrix} \begin{bmatrix} X_- \\ U_- \end{bmatrix} \]
+	\end{block}
+
+	\begin{block}{Data matrices}
+		\begin{align*}
+		X_- &= \begin{bmatrix} x(0) & x(1) & \dots & x(T-1) \end{bmatrix} \\
+		X_+ &= \begin{bmatrix} x(1) & x(2) & \dots & x(T)   \end{bmatrix} \\
+		U_- &= \begin{bmatrix} u(0) & u(1) & \dots & u(T-1) \end{bmatrix} \\
+		W_- &= \begin{bmatrix} w(0) & w(1) & \dots & w(T-1) \end{bmatrix} 
+		\end{align*}
+	\end{block}	
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+	\frametitle{Question 2}
+	
+	2. VW built sales network after 1964, what is its influence on the demand of Beetles in the US market? Why VW can increase its revenue through increasig price again ?\\~\\
+	
+	\begin{itemize}
+		\item The demand curve of Beetles in the US market moves upward. In other words, we have an increase in demand of Bettles in the US market after 1964. Since the increase in demand will cause the original unit elastic price point to be at the inelastic price, the revenue at that price will increase again.
+	\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+	\frametitle{Question 3}
+	
+	3. Assume we have the same slope of demand curve before 1964 and after 1964. Draw the two demand curve, write down the two demand function, and calculate the elasticities when price increases from \$800 to \$1000, from \$1200 to \$1350, and then from \$1500 to \$1800.\\~\\
+\end{frame}
+
+%------------------------------------------------
+
+
+\begin{frame}
+	\frametitle{Question 3: Steps of Finding Price Elasticity}
+	\begin{block}{Step 1: Obtain the Demand Curve After 1964}
+		$$ \left\{
+		\begin{aligned}
+		1500 = 562000a + b\\
+		1800 = 538000a + b\\
+		\end{aligned}
+		\right.\Rightarrow
+		P_{\textit{after}} = -\dfrac{1}{80} Q_{\textit{after}} + 8525
+		$$
+	\end{block}
+	
+	\begin{block}{Step 2: Obtain the Demand Curve Before 1964}
+		$$ \left\{
+		\begin{aligned}
+		Q_{\pi_{max}} &= 40d\\
+		1350 &= -\dfrac{1}{80} 40d + d\\
+		\end{aligned}
+		\right.\Rightarrow
+		P_{\textit{before}} = -\dfrac{1}{80} Q_{\textit{before}} + 2700
+		$$
+	\end{block}
+	
+	\begin{block}{Step 3: Obtain the Elasticity}
+		$$ \left\{
+		\begin{aligned}
+		P_{\textit{after}}  &= -\dfrac{1}{80} Q_{\textit{after}} + 8525\\
+		P_{\textit{before}} &= -\dfrac{1}{80} Q_{\textit{before}} + 2700\\
+		\end{aligned}
+		\right.\Rightarrow
+		E_{(Q,P)}
+		$$
+	\end{block}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+	\frametitle{Profit Maximization}
+	\begin{theorem}[Profit Maximization]
+		\centering
+		If the linear demand curve is unit elastic or $E_{(P,Q)}= -1$:\\
+		Then $MR = 0$
+	\end{theorem}
+\end{frame}
+
+%------------------------------------------------
+
+
+
+%------------------------------------------------
+
+
+
+%------------------------------------------------
+
+\begin{frame}
+	\Huge{\centerline{The End}}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\end{document} 

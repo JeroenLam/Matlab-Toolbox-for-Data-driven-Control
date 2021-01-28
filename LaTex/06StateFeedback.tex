@@ -1,19 +1,23 @@
 \section{State feedback}
 % Abstract section
-In this section we will see when en how we can construct a state feedback controller directly from the state-input data. We will first consider the mathematics after which we will look at how we can implement this. Lastly we will look at an example and how we can apply the provided functions.
+In this section we will see when and how we can construct a state feedback controller directly from the state-input data. We will first consider the theory after which we will look at how we can implement this. Lastly we will look at an example and how we can apply the provided functions.
 
 % What is State feedback
-We will consider closed loop state feedback. This means that we want to substitute our input with an input that is based on the state of the system, i.e. $u = K x$ where $K \in \mathbb{R}^{m\times n}$. We will consider the system to be in a stable closed loop form if all eigenvalues of $A + B K$ are stable (inside the unit circle). We can extend this notion to data-driven control as follows.
+We will consider closed loop state feedback. This means that we want to substitute our input with an input that is based on the state of the system, i.e. $u = K x$ where $K \in \mathbb{R}^{m\times n}$. We will consider the system to be in a stable closed loop form if all eigenvalues of $A + B K$ are stable (inside the unit circle). Recall that we defined the set of all systems such that they are stable for a given controller $K$ as (\ref{SigmaK}):
+\begin{equation} \tag{\ref{SigmaK}}
+	\Sigma_K = \{ (A,B) \, | \, A + B \, K \mbox{ is stable} \}
+\end{equation}
+Using $\Sigma_K$ we can extend state feedback to data-driven control as follows.
 
 \Def{Informative for state feedback \cite[Def 12]{waarde2019data}}{
-	We say that the data $(U_-,X)$ is informative for stabilization by state feedback if there exists a feedback gain $K$ such that all systems described by the data are part of the set of systems that are stabilised using the gain $K$. I.e. $\Sigma_{i/s} \subseteq \Sigma_K$.
+	We say that the data $(U_-,X)$ is informative for stabilization by state feedback if there exists a feedback gain $K$ such that all systems described by the data are part of the set of systems that are stabilised using the gain $K$, i.e. $\Sigma_{i/s} \subseteq \Sigma_K$.
 }
 
-We will start by noting that if the data is informative for controllability or stabilisability then there is no guarantee that the there also exists a state feedback controller that stabilises all of the systems at once. However, if we find such a controller that we do know that all the systems described by the data are stabilisable. We will see an example of this later on in this section.
+We begin with noting that if the data is informative for controllability or stabilisability then there is no guarantee that the there also exists a state feedback controller that stabilises all of the systems at once. However, if we find such a controller that we do know that all the systems described by the data are stabilisable. We will see an example of this later on in this section.
 
 % Mathematics
-\subsection{Mathematics}
-We will start by looking at the following theorem that gives us necessary and sufficient conditions for informativity for stabilisation by state feedback.
+\subsection{Theory}
+We will begin with looking at the following theorem that gives us necessary and sufficient conditions for informativity for stabilisation by state feedback.
 
 \Thr{\cite[Thr 16]{waarde2019data}}{
 The data $(U_-,X)$ is informative for stabilisation by state feedback if and only if the matrix $X_-$ has full row rank and there exists a right inverse $X_-^\dagger$ of $X_-$ such that $X_+ X_-^\dagger$ is stable. Moreover, $K$ is such that $\Sigma_{i/s} \subseteq \Sigma_K$ if and only if $K = U_- X_-^\dagger$, where $X_-^\dagger$ is as described above.
@@ -46,7 +50,7 @@ From this theorem we can see that the problem can be reduced to finding a specif
 However, in its current form it is not straightforward to compute a right inverse such that $X_+ X_-^\dagger$ is stable. Hence we will use a different version of this theorem that has been rewritten in terms of linear matrix inequalities.
 
 \Thr{\cite[Thr 17]{waarde2019data}}{
-The data $(U_-,X)$ is informative for stabilisation by state feedback if and only if there exists a matrix $\Theta \in \mathbb{R}^{T\times n}$ satisfying
+The data $(U_-,X)$ is informative for stabilisation by state feedback if and only if there exists a matrix $\Theta \in \mathbb{R}^{T\times n}$ satisfying:
 \begin{align*}
 X_- \Theta &= (X_- \Theta)^\top & \begin{bmatrix} X_- \Theta & X_+ \Theta \\ \Theta^\top X_+^\top & X_- \Theta \end{bmatrix} &> 0
 \end{align*}
@@ -63,13 +67,13 @@ This version of the theorem can be implemented using linear matrix inequality so
 \mon{[bool, K, diagnostics, info] = isInformStateFeedback(X, U, tolerance, options)}
 
 \subsubsection*{Description}
-\mon{[bool, K, diagnostics, info] = isInformStateFeedback(X, U)}: Returns if the data is informative for stabilisation by state feedback. If so, it also returns a corresponding controller K for closed loop feedback control of the form \mon{A+BK}.\\
-\mon{[bool, K, diagnostics, info] = isInformStateFeedback(X, U, tolerance)}: Returns if the data is informative for stabilisation by state feedback given a specific tolerance. If so, it also returns a corresponding controller K for closed loop feedback control of the form \mon{A+BK}.\\
-\mon{[bool, K, diagnostics, info] = isInformStateFeedback(X, U, tolerance, options)}: Returns if the data is informative for stabilisation by state feedback given a specific tolerance and a spdsettings object. If so, it also returns a corresponding controller K for closed loop feedback control of the form \mon{A+BK}.
+\mon{[bool, K, diagnostics, info] = isInformStateFeedback(X, U)}: Returns if the data is informative for stabilisation by state feedback. If so, it also returns a corresponding controller \mon{K} for closed loop feedback control of the form \mon{A+BK}.\\
+\mon{[bool, K, diagnostics, info] = isInformStateFeedback(X, U, tolerance)}: Returns if the data is informative for stabilisation by state feedback given a specific tolerance. If so, it also returns a corresponding controller \mon{K} for closed loop feedback control of the form \mon{A+BK}.\\
+\mon{[bool, K, diagnostics, info] = isInformStateFeedback(X, U, tolerance, options)}: Returns if the data is informative for stabilisation by state feedback given a specific tolerance and a spdsettings object. If so, it also returns a corresponding controller \mon{K} for closed loop feedback control of the form \mon{A+BK}.
 
 \subsubsection*{Input arguments}
-\textbf{\mon{X}}: State data matrix of dimension $n \times T+1$ from an input-state dataset..\\
-\textbf{\mon{U}}: Input data matrix of dimension $m \times T$ from an input-state dataset..\\
+\textbf{\mon{X}}: State data matrix of dimension $n \times (T+1)$ from an input-state dataset.\\
+\textbf{\mon{U}}: Input data matrix of dimension $m \times T$ from an input-state dataset.\\
 \textbf{\mon{tolerance}}: Tolerance used for determining when a value is zero up to machine precision. Default value is \mon{1e-14}.\\
 \textbf{\mon{options}}: sdpsettings used with the Yalmip solver.
 
@@ -86,48 +90,48 @@ Due to computational limitation in the solver or conditioning of this problem it
 We will consider 2 examples in which the data is not informative for system identification. In both of the examples the data is informative for controllability. However in only one of the example will the data be informative for stabilisation by state feedback.
 
 \paragraph*{Example 1}
-Let us consider the data from the controllability example.
+Let us consider the data from the controllability example:
 \begin{align*}
 X &= \begin{bmatrix} 0&1&0 \\ 0&0&1 \end{bmatrix} & U = \begin{bmatrix}	1&0	\end{bmatrix}
 \end{align*} 
 From that example we know that the data is informative for controllability and that the general form of systems that can produce this data is given by:
 \[ \Sigma_{i/s} = \left\{ \left( \begin{bmatrix} 0&a_1 \\ 1&a_2 \end{bmatrix}, \begin{bmatrix} 1 \\ 0 \end{bmatrix} \right) \, | \, a_1, a_2 \in \R \right\} \]
-Using this we can write the general closed loop form.
+Using this we can write the general closed loop form:
 \[ x(t+1) = \begin{bmatrix}
 -k_1 & a_1 - k_2 \\ 1 & a_2
 \end{bmatrix} x(t) \]
-Where $k_1$ and $k_2$ are fixed and $a_1 , a_2 \in \mathbb{R}$. Using the first theorem we conclude that the data is not informative for stabilisation by state feedback since $X_-$ does not have full row rank. 
+where $k_1$ and $k_2$ are fixed and $a_1 , a_2 \in \mathbb{R}$. Using the first theorem we conclude that the data is not informative for stabilisation by state feedback since $X_-$ does not have full row rank. 
 
 We can also find the same result by using the Matlab function:
 \begin{lstlisting}
 X = [0 1 0; 0 0 1]; U = [1 0];
 [bool] = isInformStateFeedback(X, U)
 \end{lstlisting}
-Which will return: \mon{[ 0 ]}.
+which will return: \mon{[ 0 ]}.
 
 \paragraph*{Example 2 \cite[Example 19]{waarde2019data}}
-In the next example we will consider the following data.
+In the next example we will consider the following data:
 \begin{align*}
 X &= \begin{bmatrix} 1&0.5&-0.25 \\ 0&1&1 \end{bmatrix} & U = \begin{bmatrix}	-1&-1	\end{bmatrix}
 \end{align*}
-Since $X_-$ in square and non-singular, we are able to use the first theorem to check if $X_+ X_-^{-1}$ is stable.
+Since $X_-$ in square and non-singular, we are able to use the first theorem to check if $X_+ X_-^{-1}$ is stable:
 \[ X_+ X_-^{-1} = \begin{bmatrix} 0.5&-0.5\\1&0.5 \end{bmatrix} \]
-Since its eigenvalues are $\frac{1}{2}(1 \pm \sqrt{2}i)$ we can conclude that $X_+ X_-^{-1}$ is stable. Hence the data is informative for stabilisation by state feedback and the corresponding controller is given by:
+Since the eigenvalues of this matrix are $\frac{1}{2}(1 \pm \sqrt{2}i)$ we can conclude that $X_+ X_-^{-1}$ is stable. Hence the data is informative for stabilisation by state feedback and the corresponding controller is given by:
 \[ K = U_- X_-^{-1} = \begin{bmatrix} -1 & -0.5 \end{bmatrix} \]
 We will note that the general form for systems that can produce this data is given by:
 \[ \Sigma_{i/s} = \left\{ \left( \begin{bmatrix} 1.5+a_1&0.5 \, a_1 \\ 1 + a_2 &0.5 + 0.5 \, a_2 \end{bmatrix}, \begin{bmatrix} 1 + a_1 \\ a_2 \end{bmatrix} \right) \, | \, a_1, a_2 \in \R \right\} \]
-Using this we are able to verify that the closed loop system is indeed stable for all values $a_1$ and $a_2$.
+Using this we are able to verify that the closed loop system is indeed stable for all values $a_1$ and $a_2$:
 \begin{equation*}
 	A + BK = \begin{bmatrix} 1.5+a_1&0.5 \, a_1 \\ 1 + a_2 &0.5 + 0.5 \, a_2 \end{bmatrix} + \begin{bmatrix} - 1 - a_1 &  - 0.5 - 0.5 \, a_1 \\ -a_2 & -0.5 \, a_2 \end{bmatrix} = \begin{bmatrix} 0.5&-0.5\\1&0.5 \end{bmatrix}
 \end{equation*}
-Which, as we saw earlier, is indeed stable.
+which, as we saw earlier, is indeed stable.
 
 We can also find the same result by using the Matlab function:
 \begin{lstlisting}
 X = [1 0.5 0.25; 0 1 1]; U = [-1 -1];
 [bool, K] = isInformStateFeedback(X, U)
 \end{lstlisting}
-Which will return: \mon{[ 0, [-1 -0.5] ]}. See the limitiation section for more details on why \mon{bool} is false.
+which will return: \mon{[ 0, [-1 -0.5] ]}. See the limitiation section for more details on why \mon{bool} is false.
 
 %let us consider the following data.
 %\begin{align*} X &= \begin{bmatrix} -1&-1&-0.5&0.5&2 \\ 0&0.5&1&1.5&2 \end{bmatrix} & U &= \begin{bmatrix} 1&1&1&1 \end{bmatrix}\end{align*} 

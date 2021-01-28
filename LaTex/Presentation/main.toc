@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Data informativity}{3}{0}{1}
+\beamer@sectionintoc {2}{Noiseless data}{3}{0}{2}
+\beamer@sectionintoc {3}{Data with bounded noise}{3}{0}{3}
+\beamer@sectionintoc {4}{Software}{3}{0}{4}

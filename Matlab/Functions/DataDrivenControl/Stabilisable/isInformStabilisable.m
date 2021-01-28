@@ -25,7 +25,7 @@ function bool = isInformStabilisable(X)
     spectrum = sym(eig(Xmin * pinv(Xplus - Xmin)));
     for eigV = spectrum.'
         if abs(eigV) >= 0
-            lambda = inv(eigV) + 1;
+            lambda = inv(eigV + 1);
             % Check if the data is singular to working precision
             if max(max(abs(Xplus - lambda * Xmin))) < 0
                 %warning('Singular to working precision');

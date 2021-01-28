@@ -44,6 +44,16 @@ function [bool, K, diagnostics, info] = isInformStateFeedback(X, U, tolerance, o
         tolerance = 1e-14;
     end
     
+    % Check pseudo inverse before hand
+    if rank(Xmin) == n
+        if isStableD(Xplus * pinv(Xmin))
+            bool = 1;
+            K = Umin * pinv(Xmin);
+            diagnostics = [];
+            return
+        end
+    end
+    
     % Define variables (XminTheta is symmetric by construction)
     Theta = sdpvar(T, n);
     P = sdpvar(n);

@@ -29,11 +29,14 @@
 % - Code listing with color settings - 
 \usepackage{listings}
 \usepackage{color}
-\usepackage{pdfpages} % Adds pdf inset pages
+%\usepackage{pdfpages} % Adds pdf inset pages
 \usepackage{todonotes} % Adds todo notes
 \usepackage{hyperref} % Adds hyperlinks
 % ----------------- biblatex ----------------- 
-\usepackage[backend=biber,sorting=ynt]{biblatex}  %,style=alphabetic
+\usepackage[backend=biber,
+			sorting=ynt,
+			maxnames=4
+		   ]{biblatex}  %,style=alphabetic
 \addbibresource{ref.bib}
 % -------------------------------------------- 
 \input{lstunputSettings.tex}
@@ -100,11 +103,11 @@
 %----------------------------------------------------------------------------------------
 \begin{document}
 % ----------------------------- Abstract ---------------------------- 
-\setcounter{page}{0}
-\includepdf{frontpage.pdf}
-\newpage
+%\setcounter{page}{0}
+%\includepdf{frontpage.pdf}
+%\newpage
 
-\input{abstract}
+\input{abstract} \newpage
 % ----------------------------- Introduction  -----------------------
 \input{introduction}\newpage
 % ----------------------------- Discussion --------------------------

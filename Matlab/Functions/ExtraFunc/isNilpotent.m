@@ -1,6 +1,5 @@
 function [bool] = isNilpotent(A)
-%ISNULPOTENT Summary of this function goes here
-%   Detailed explanation goes here
+%ISNULPOTENT returns of the matrix is nilpotent
     bool = false;
     if size(A,1) ~= size(A,2)
         return

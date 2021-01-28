@@ -1,18 +1,18 @@
 \section{$\mathcal{H}_2$ Control}
 % Abstract section
-In this section we will look at the $\mathcal{H}_2$ control control problem for non data-driven control. We will extend this to define informativity and look at a theorem that gives us a methods to compute a solution to the data driven $\mathcal{H}_2$ control problem. Lastly we will consider the implementation as well as an example.
+In this section we will look at the $\mathcal{H}_2$ control problem. We will extend this to define informativity and quote a theorem that gives us a methods to compute a solution to the data driven $\mathcal{H}_2$ control problem. Lastly we will consider the implementation as well as an example.
 
 % What is H2 Classical
-\subsection{Non data driven $\mathcal{H}_2$ control}
-Similar to quadratic stabilisation, we will be considering systems of the following form.
+\subsection{$\mathcal{H}_2$ control}
+Similar to quadratic stabilisation, we will consider systems of the following form:
 \begin{align} \tag{\ref{isnSystem}}
 \mathbf{x}(t+1) &= A_s \mathbf{x}(t) + B_s \mathbf{u}(t) + \mathbf{w}(t)
 \end{align}
-But in the case of $\mathcal{H}_2$ control we will also be considering an performance output on the system.
+But in the case of $\mathcal{H}_2$ control we will also consider an performance output on the system:
 \begin{align*}
 	\mathbf{z}(t) &= C \mathbf{x}(t) + D \mathbf{u}(t)
 \end{align*}
-In the case of $\mathcal{H}_2$ control we do not only want to find a stabilising feedback controller, we want to find one that minimises the performance output. In this sense it is similar to LQR control. Let $K$ be a stabilising feedback controller for the system. We will start by defining the closed loop transfer function ($G(z)$) on the closed loop system.
+In the case of $\mathcal{H}_2$ control we do not only want to find a stabilising feedback controller, we want to find one that minimises the performance output. In this sense it is similar to LQR control. Let $K$ be a stabilising feedback controller for the system. We will begin with defining the closed loop transfer function ($G(z)$) on the closed loop system:
 \begin{align*}
 	\mathbf{x}(t+1) &= (A + B K) \mathbf{x}(t) + \mathbf{w}(t) \\
 	\mathbf{z}(t)   &= (C   + D   K) \mathbf{x}(t) \\
@@ -26,21 +26,19 @@ We define the performance of a given controller as $\gamma$. Using this notation
 	\mathbf{z}(t)   &= (C   + D   K) \mathbf{x}(t) \\
 	G_K(z) &= (C + DK)(z I - (A+BK))^{-1}
 \end{align*}
-We want to find the feedback gain $K$ for which the cost function is minimal, i.e. let the minimal cost be as follows.
+We want to find the feedback gain $K$ for which the cost function is minimal, i.e. let the minimal cost be as follows:
 \begin{equation*}
 	J^\ast = inf \{ J(K) := \left\| G_K(z) \right\|^2_{\mathcal{H}_2} \, | \, K \mbox{ stabilises the closed loop system}\}
 \end{equation*}
-Then we want to find $K$ such that $J(K) = J^\ast$. However, instead of using this definition directly, we will be considering the following theorem that gives us an equivalence between the definition and a set of matrix inequalities.
+Then we want to find $K$ such that $J(K) = J^\ast$. However, instead of using this definition directly, we will consider the following theorem that gives us an equivalence between the definition and a set of matrix inequalities.
 
 % \todo{find reference for statement that is 'well-known' according to paper page 8}
 \Thr{}{
-	A+BK is stable and $\left\| G_K(z) \right\|^2_{\mathcal{H}_2} < \gamma$ if and only if there exists a symmetric positive definite matrix $P$ such that
+	A+BK is stable and $\left\| G_K(z) \right\|^2_{\mathcal{H}_2} < \gamma$ if and only if there exists a symmetric positive definite matrix $P$ such that:
 	\begin{align} \label{H2Inequalities}
 		P &> (A + BK)^\top P (A + BK) + (C+DK)^\top (C+DK) & trace(P) &< \gamma^2
 	\end{align}
 }
-
-
 
 % What is H2 Data-driven
 \subsection{Data driven $\mathcal{H}_2$ control}
@@ -130,7 +128,7 @@ This theorem was implemented in the functions below.
 \mon{[bool, K, diagnostics, gamma, info] = isInformH2(X, U, Phi, C, D, tolerance, options)}: Checks is the data is informative for \mbox{H2} control using a given tolerance and a given spdsetting object from Yalmip.
 
 \subsubsection*{Input arguments}
-\textbf{\mon{X}}: State data matrix of dimension $n \times T+1$ from a input/state data set.\\
+\textbf{\mon{X}}: State data matrix of dimension $n \times (T+1)$ from a input/state data set.\\
 \textbf{\mon{U}}: Input data matrix of dimension $m \times T$ from a input/state data set.\\
 \textbf{\mon{Phi}}: Noise matrix as in (\ref{noiseBound}). \\ 
 \textbf{\mon{C}}: State performance matrix. \\ 
@@ -150,7 +148,7 @@ Due to computational limitation in the solver or conditioning of this problem it
 
 % Example using function
 \subsection{Example} \label{ExampleH2}
-In this example we will consider the same data that we used in the quadratic stabilisation example. However, we will be adding a performance output $z(t)$ to the system.
+In this example we will consider the same data that we used in the quadratic stabilisation example. However, we will be adding a performance output $z(t)$ to the system:
 \begin{align*}
 	x(t+1) &= x(t) - \frac{1}{2}u(t) + w(t) \\
 	z(t)   &= \frac{1}{2}x(t) \\
@@ -159,15 +157,15 @@ In this example we will consider the same data that we used in the quadratic sta
 	X   &= \begin{bmatrix}     0   &  0.1533 &  0.6281 & 0.1956 & -0.2466 & -0.2571 \end{bmatrix} \\
 \end{align*}
 
-As we saw in that example we can use the following $\Phi$ as a valid noise bound.
+As we saw in that example we can use the following $\Phi$ as a valid noise bound:
 
 \begin{equation*}
-\Phi = \begin{bmatrix} 0.05 & \overline{0} \\ \overline{0}^\top & -I_5 \end{bmatrix}
+\Phi = \begin{bmatrix} 0.05 & 0_{1,5} \\ 0_{5,1} & -I_5 \end{bmatrix}
 \end{equation*}
 
 We also know that the generalised Slater condition holds. Note that we picked $C = 0.5$ and $D=0$ Because of this we penalise the state being non zero. Hence the optimal controller will be a deadbeat controller. 
 
-At this point we only need to find a $Y = Y^\top > 0$, $Z = Z^\top$, $L$, $\alpha$ and $\beta$ such that the following inequalities hold.
+At this point we only need to find a $Y = Y^\top > 0$, $Z = Z^\top$, $L$, $\alpha$ and $\beta$ such that the following inequalities hold:
 
 \begin{equation*}
 	\begin{bmatrix}
@@ -188,7 +186,7 @@ At this point we only need to find a $Y = Y^\top > 0$, $Z = Z^\top$, $L$, $\alph
 	trace(Z) &< \gamma^2
 \end{align*}
 
-Using numerical tools like Yalmip we are able to find that the following values form a valid solution.
+Using numerical tools like Yalmip we are able to find that the following values form a valid solution:
 
 \begin{align*}
 	Y &= 3.578190407584625 \\
@@ -197,12 +195,12 @@ Using numerical tools like Yalmip we are able to find that the following values 
 	a &= 80.398493367163880 \\
 	b &= 1.162504055224782e-06
 \end{align*}
-With a performance of $\gamma = 0.528650049362224$ and a feedback gain $K = 1.917417382202476$. This will result in a closed loop system which is 'close' to deadbeat stable.
+With a performance of $\gamma = 0.528650049362224$ and a feedback gain $K = 1.917417382202476$. This will result in a closed loop system which is 'close' to deadbeat stable:
 \begin{equation*}
 	A + BK = 0.0413
 \end{equation*}
 
-We are also able to find a stabilising feedback gain using the provided Matlab function.
+We are also able to find a stabilising feedback gain using the provided Matlab function:
 \begin{lstlisting}
 C = 0.5;
 D = 0;
@@ -211,9 +209,9 @@ X = [ 0       0.1533 0.6281 0.1956 -0.2466 -0.2571];
 Phi = [0.05 zeros(1,5) ; zeros(5,1) -eye(5)];
 [bool, K] = isInformH2(X, U, Phi, C, D)
 \end{lstlisting}
-Which will return: \mon{[ 1, 1.917417382202475 ]}.
+which will return: \mon{[ 1, 1.917417382202475 ]}.
 
-Since we have the 'true' system, we are also able to find the best possible $\gamma_{best}$ and $K_{best}$. For this we will use on of the intemediary steps of the theorem \cite[Equation 36]{waarde2020noisy}. We will use the following code to compute the optimal gain.
+Since we have the 'true' system, we are also able to find the best possible $\gamma_{best}$ and $K_{best}$. For this we will use on of the intemediary steps of the theorem \cite[Equation 36]{waarde2020noisy}. We will use the following code to compute the optimal gain:
 \begin{lstlisting}
 A = 1;
 B = -0.5;
@@ -229,9 +227,9 @@ optimize(Cond,-Y);
 gamma_best = sqrt(trace(inv(value(Y))))
 K_best = value(L) * inv(value(Y))
 \end{lstlisting}
-Which will return: \mon{gamma\_best = 0.5} and \mon{K\_best = 2};
+which will return: \mon{gamma\_best = 0.5} and \mon{K\_best = 2}.
 
-From this we can see that the optimal feedback gain is indeed a deadbeat controller. We can verify that calculated gamma using (\ref{H2Inequalities}). Since we are considering the 1 dimensional case, we have that $\gamma^2 > P = trace(P)$, thus we can rewrite the equation to get the following. 
+From this we can see that the optimal feedback gain is indeed a deadbeat controller. We can verify that calculated gamma using (\ref{H2Inequalities}). Since we are considering the 1 dimensional case, we have that $\gamma^2 > P = trace(P)$, thus we can rewrite the equation to get the following:
 \begin{align*}
 	\gamma^2 &> (A + BK)^2 P + (C+DK)^2 
 	%\gamma^2 &>  C^2

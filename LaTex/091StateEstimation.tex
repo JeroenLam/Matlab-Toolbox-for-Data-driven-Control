@@ -1,21 +1,21 @@
 \section{State estimation}
 % Abstract section
-In this section we will consider if and how we can reconstruct the state data only based on the input and ouput data. We will use this reconstructed state data to construct a controller for stabilisability by dynamic measurement feedback. We will also show how this theory can be applied in a example.
+In this section we will consider if and how we can reconstruct the state data only based on the input and ouput data. We will use this reconstructed state data to construct a controller for stabilisability by dynamic measurement feedback. We will also show how this theory can be applied to an example.
 
 % Introduce state estimation
 
 
 % Introduce the i/o set (and informativity?)
-We will be considering discrete time systems of the following form.
+We will consider discrete-time systems of the following form:
 \begin{subequations}
 	\begin{align} 
 	x(t+1) &= A_s x(t) + B_s u(t) \tag{\ref{outputSys}a} \\
 	y(t)   &= C_s x(t) + D_s u(t) \tag{\ref{outputSys}b}
 	\end{align}
 \end{subequations}
-We will assume that our data does not contain any state space data, i.e. $\mathcal{D} = \{ U_-,Y_- \}$. We will also assume our data to be sampled from a single interval as well as that the dimension of the state space is known. If the dimension of the state space is not know beforehand then it might be found using subspace identification methods. However, we will not be going into details about subspace identification methods in this paper.
+We will assume that our data does not contain any state space data, i.e. $\mathcal{D} = \{ U_-,Y_- \}$. We will also assume our data to be sampled from a single interval as well as that the dimension of the state space is known. If the dimension of the state space is not know beforehand then it might be found using subspace identification methods. However, we will not be going into details about subspace identification methods in this thesis.
 
-Using these assumption we will define the set of systems corresponding to the input output data as all systems $(A,B,C,D)$ such that there exists a state sequence $X$ for which the system equations hold. %\todo{Add this to the start instead and reference?}
+Using these assumption we will define the set of systems corresponding to the input output data as all systems $(A,B,C,D)$ such that there exists a state sequence $X$ for which the system equations hold: %\todo{Add this to the start instead and reference?}
 \begin{equation*}
 	\Sigma_{i/o} = \left\{ (A,B,C,D) \, | \, \exists X \in \mathbb{R}^{n \times (T+1)} \mbox{ s.t. } \begin{bmatrix} X_{+} \\ Y_{-} \end{bmatrix} = \begin{bmatrix} A_s & B_s \\ C_s & D_s \end{bmatrix} \begin{bmatrix} X_{-} \\ U_{-} \end{bmatrix} \mbox{ holds} \right\}
 \end{equation*}
@@ -23,56 +23,56 @@ Using these assumption we will define the set of systems corresponding to the in
 Using this set we can define informativity for stabilisation by dynamic measurement feedback for input output data as follows.
 
 \Def{\cite[Def 38]{waarde2019data}}{
-	We say that the data $(U_-,Y_-)$ is informative for stabilisation by dynamic measurement feedback if there exist matrices $K$, $L$ and $M$ such that all systems described by the data are stabilised using the given controller. I.e. $\Sigma_{i/o} \subseteq \Sigma_{K,L,M}$.
+	We say that the data $(U_-,Y_-)$ is informative for stabilisation by dynamic measurement feedback if there exist matrices $K$, $L$ and $M$ such that all systems described by the data are stabilised using the given controller, i.e. $\Sigma_{i/o} \subseteq \Sigma_{K,L,M}$.
 }
 
-We will start by noting that analogous to the input state output case we are able to reduce our reduce our input data to be of full rank. In other words, using the following lemma we are able to assume that $\bar{U}_-$ has full row rank of dimension $k$.
+We begin with noting that analogous to the input state output case we are able to reduce our reduce our input data to be of full rank. In other words, using the following lemma we are able to assume that $\bar{U}_-$ has full row rank of dimension $k$.
 
 \Lemma{\cite[Lemma 39]{waarde2019data}}{
 	Consider the data $(U_-,Y_-)$ and the corresponding set $\Sigma_{i/o}$. Let $S$ be a matrix of full column rank such that $U_- = S\bar{U}_-$ with $\bar{U}_-$ a matrix of full row rank. \newline
 	Then the data $(U_-,Y_-)$ is informative for stabilisation by dynamic measurement feedback if and only if the data $(\bar{U}_-,Y_-)$ is informative for stabilisation by dynamic measurement feedback.
 }
 
-Before we look at the state sequence reconstruction we will first need to introduce some notation. We will start by defining a \textit{Hankel matrix of depth $l$}. A Henkel matrix is defined on a signal $f(0), \dots, f(T-1)$, in our case this would be the column entries of the $U_-$ matrix or the $Y_-$ matrix. Using this signal we can define the Henkel matrix of depth $l$ given a signal $f$ as follows.
+Before we look at the state sequence reconstruction we will first need to introduce some notation. We will begin with defining a \textit{Hankel matrix of depth $l$}. A Henkel matrix is defined on a signal $f(0), \dots, f(T-1)$, in our case this would be the column entries of the $U_-$ matrix or the $Y_-$ matrix. Using this signal we can define the Henkel matrix of depth $l$ given a signal $f$ as follows:
 \begin{equation*}
 	\mathcal{H}_l (f) = 
 	\begin{bmatrix} 
-		f(0) & f(1) & \dots & F(T-l) \\ 
-		f(1) & f(2) & \dots & f(T-l+1) \\ 
+		f(0) & f(1) & \cdots & f(T-l) \\ 
+		f(1) & f(2) & \cdots & f(T-l+1) \\ 
 		\vdots & \vdots & & \vdots \\ 
-		f(l-1) & f(l) & \dots & f(T-1)
+		f(l-1) & f(l) & \cdots & f(T-1)
 	\end{bmatrix}
 \end{equation*}
-Provided our input and output data, take $k$ such that $2k < T$. We can construct the following block Hankel matrices, $\mathcal{H}_{2k}(u)$ and $\mathcal{H}_{2k}(y)$. We can partition these matrices in 'past' and 'future' data.
+Provided our input and output data, take $k$ such that $2k < T$. We can construct the following block Hankel matrices, $\mathcal{H}_{2k}(u)$ and $\mathcal{H}_{2k}(y)$. We can partition these matrices in 'past' and 'future' data:
 \begin{align*}
 	\mathcal{H}_{2k}(u) &= \begin{bmatrix} U_p \\ U_f \end{bmatrix} & 
 	\mathcal{H}_{2k}(y) &= \begin{bmatrix} Y_p \\ Y_f \end{bmatrix}
 \end{align*}
-Where each of the partitions have $k$ block rows. Now we will define $x(0), \dots, x(T)$ to be a state sequence compatible with the data $(U_-,Y_-)$. We will partition the state sequence as follows.
+where each of the partitions have $k$ block rows. Now we will define $x(0), \dots, x(T)$ to be a state sequence compatible with the data $(U_-,Y_-)$. We will partition the state sequence as follows:
 \begin{align*}
-	X_p &= \begin{bmatrix} x(0) \dots x(T-2k) \end{bmatrix} \\
-	X_f &= \begin{bmatrix} x(k) \dots x(T-k) \end{bmatrix} 
+	X_p &= \begin{bmatrix} x(0) & \cdots & x(T-2k) \end{bmatrix} \\
+	X_f &= \begin{bmatrix} x(k) & \cdots & x(T-k) \end{bmatrix} 
 \end{align*}
 Finally we will define $rs(M)$ to denote the row space of a given matrix $M$. 
 
 \Thr{\cite[Thr 40]{waarde2019data}}{
-	Consider a system of the form (\ref{outputSys}) and assume it is minimal. Let $n$ be the dimension of the state space and the input/output data $(U_-,Y_-)$ be sampled from a single interval. Assume that $k$ is such that $n < k < \frac{1}{2}T$. If
+	Consider a system of the form (\ref{outputSys}) and assume it is minimal. Let $n$ be the dimension of the state space and the input/output data $(U_-,Y_-)$ be sampled from a single interval. Assume that $k$ is such that $n < k < \frac{1}{2}T$. If:
 	\begin{equation} \label{StateIdentificationRank}
 		rank\begin{bmatrix} \mathcal{H}_{2k}(u) \\ \mathcal{H}_{2k}(y) \end{bmatrix} = 2km + n
 	\end{equation}
-	then
+	then:
 	\begin{equation*}
 		rs(X_f) = rs\left( \begin{bmatrix} U_p \\ Y_p \end{bmatrix} \right) \cap rs\left( \begin{bmatrix} U_f \\ Y_f \end{bmatrix} \right)
 	\end{equation*}
 	and the row space of $X_f$ is of dimension $n$.
 }
 
-Using this theorem we are able to construct a valid state sequence up to similarity transform $S$. I.e. we can find $\hat{X} = S X_f$ for some unknown invertible matrix $S$. Using this state sequence we can construct the following input/state/output sequences.
+Using this theorem we are able to construct a valid state sequence up to similarity transform $S$. In other words, we can find $\hat{X} = S X_f$ for some unknown invertible matrix $S$. Using this state sequence we can construct the following input/state/output sequences:
 \begin{subequations} \label{StateExtimationData}
 	\begin{align*}
-		\hat{U}_- &= \begin{bmatrix} u(k) & u(k+1) & \dots & u(T-k-1) \end{bmatrix} \\
-		\hat{Y}_- &= \begin{bmatrix} y(k) & y(k+1) & \dots & y(T-k-1) \end{bmatrix} \\
-		\hat{X} &= S \begin{bmatrix} x(k) & x(k+1) & \dots & x(T-k) \end{bmatrix} 
+		\hat{U}_- &= \begin{bmatrix} u(k) & u(k+1) & \cdots & u(T-k-1) \end{bmatrix} \\
+		\hat{Y}_- &= \begin{bmatrix} y(k) & y(k+1) & \cdots & y(T-k-1) \end{bmatrix} \\
+		\hat{X} &= S \begin{bmatrix} x(k) & x(k+1) & \cdots & x(T-k) \end{bmatrix} 
 	\end{align*}
 \end{subequations}
 
@@ -93,23 +93,24 @@ Note that the conditions provided in the corollary above are sufficient but not 
 Before we look at an example we first make some notes on how to actually compute the state sequence from the intersection. For this we will use the following theorem.
 
 \Thr{\cite[Thr 4]{bookMoonen}}{
-	We take the following matrices based on the previous theorems.
+	We take the following matrices based on the previous theorems:
 	\begin{align*}
 		H_1 &= \begin{bmatrix} U_p \\ Y_p \end{bmatrix} & H_2 &= \begin{bmatrix} U_f \\ Y_f \end{bmatrix} & H &= \begin{bmatrix} H_1 \\ H_2 \end{bmatrix}
 	\end{align*}
 	We take the following singular value decomposition:
 	\begin{equation*}
-		H = \begin{bmatrix} U_{11} & U_{12} \\ U_{21} & U_{22} \end{bmatrix} \begin{bmatrix} S_{11} & 0 \\ 0 & 0 \end{bmatrix} v^t
+		H = \begin{bmatrix} U_{11} & U_{12} \\ U_{21} & U_{22} \end{bmatrix} \begin{bmatrix} S_{11} & 0 \\ 0 & 0 \end{bmatrix} V^\top
 	\end{equation*}
 	Then the state sequence $X_f$ can be calculated as:
 	\begin{equation*}
 		X_f = U_q^\top U_{12}^\top H_1
 	\end{equation*}
-	where $U_q$ is defined through the singular value decomposition of $U^\top_{12} U_{11} S_{11}$.
+	where $U_q$ is defined through the singular value decomposition of $U^\top_{12} U_{11} S_{11}$:
 	%(an $n \times(2li-n)$ matrix accounting for the necessary reduction of $2li-n$ mutually dependent row vectors of $U^\top_{12} H_1$ to $n$ independent vectors) 
 	\begin{equation*}
 		U^\top_{12} U_{11} S_{11} = \begin{bmatrix} U_q & U_q^\perp \end{bmatrix} \begin{bmatrix} S_q & 0 \\ 0 & 0 \end{bmatrix} \begin{bmatrix}V^\top_q \\ V_q ^{\top \perp} \end{bmatrix}
 	\end{equation*}
+	with $U_q^\perp$ and $V_q ^{\top \perp}$ spanning the kernels of $U_q$ and $V^\top_q$ respectively.
 }
 
 This theorem gives us a relatively easy to compute method for finding the state sequence of the data. The above described algorithm has been implemented in the following function.
@@ -129,9 +130,9 @@ This theorem gives us a relatively easy to compute method for finding the state 
 
 \subsubsection*{Output arguments}
 \textbf{\mon{bool}}: (boolean) True if the data is informative for state space identification, false otherwise\\
-\textbf{\mon{X\_hat}}: (matrix) A state sequence that can be used to find a dynamic measurement feedback controller.\\
-\textbf{\mon{U\_hat}}: (matrix) A input sequence that can be used to find a dynamic measurement feedback controller.\\
-\textbf{\mon{Y\_hat}}: (matrix) A output sequence that can be used to find a dynamic measurement feedback controller.
+\textbf{\mon{X\_hat}}: (matrix) An state sequence that can be used to find a dynamic measurement feedback controller.\\
+\textbf{\mon{U\_hat}}: (matrix) An input sequence that can be used to find a dynamic measurement feedback controller.\\
+\textbf{\mon{Y\_hat}}: (matrix) An output sequence that can be used to find a dynamic measurement feedback controller.
 
 \subsection{Examples}
 In this example we will consider the following system:
@@ -149,14 +150,14 @@ We will use this system to generate the following data:
 	U_- &= \begin{bmatrix} 1& 2& 0& 1&0&-2&-1&0& 1& 2& 0&10&-5 \end{bmatrix} \\
 	Y_- &= \begin{bmatrix} 0& 1& 1&-2&2& 0&-4&3& 1&-3& 4&-1& 7 \end{bmatrix} 
 \end{align*}
-We will start by defining the following values:
+We will begin with defining the following values:
 \[\begin{array}{rcll}
 	n & = & 2 & \mbox{Dimension of state space.} \\
 	m & = & 1 & \mbox{Dimension of input space.} \\
 	l & = & 2 & \mbox{Dimension of output space.} \\
 	T & = & 13 & \mbox{Number of samples.}
 \end{array}\]
-We will start by picking a value for $k$ such that $n < k < \frac{1}{2} T$. We will pick $k = 3$. Now we will define the block Hankel matrices
+We need to pick a value for $k$ such that $n < k < \frac{1}{2} T$. We will pick $k = 3$. Now we will define the block Hankel matrices:
 \begin{align*}
 	\mathcal{H}_{2k}(u) &= \begin{bmatrix}
 		1  &   2  &   0  &   1  &   0  &  -2  &  -1  &   0\\
@@ -178,23 +179,22 @@ We will start by picking a value for $k$ such that $n < k < \frac{1}{2} T$. We w
 	\end{bmatrix} = \begin{bmatrix} Y_p \\ Y_f \end{bmatrix}
 \end{align*}
 
-Using MatLab we can verify that the rank condition is satisfied.
+Using MatLab we can verify that the rank condition is satisfied:
 \[ rank\begin{bmatrix} \mathcal{H}_{2k}(u) \\ \mathcal{H}_{2k}(y) \end{bmatrix} = 8 \]
 
-Now that all preliminary conditions are checked we can start reconstructing the state sequence. We will start by calculating the singular value decomposition of $H$.
+Now that all preliminary conditions are checked we can begin reconstructing the state sequence. We will begin with calculating the singular value decomposition of $H$:
 \begin{equation*}
-	H = \begin{bmatrix} Y_p\\U_p\\Y_f\\U_f \end{bmatrix} = \begin{bmatrix} U_{11} & U_{12} \\ U_{21} & U_{22} \end{bmatrix} \begin{bmatrix} S_{11} & 0 \\ 0 & 0 \end{bmatrix} v^t 
+	H = \begin{bmatrix} Y_p\\U_p\\Y_f\\U_f \end{bmatrix} = \begin{bmatrix} U_{11} & U_{12} \\ U_{21} & U_{22} \end{bmatrix} \begin{bmatrix} S_{11} & 0 \\ 0 & 0 \end{bmatrix} V^\top 
 \end{equation*}
-Where $U_{11}$ has size $6 \times 8$ and $U_{12}$ has size $6 \times 4$.
+where $U_{11}$ has size $6 \times 8$ and $U_{12}$ has size $6 \times 4$.
 
-Using these matrices we can compute the singular value decomposition of the following matrix to find $U_q$.
+Using these matrices we can compute the singular value decomposition of the following matrix to find $U_q$:
 \begin{equation*}
 U^\top_{12} U_{11} S_{11} = \begin{bmatrix} U_q & U_q^\perp \end{bmatrix} \begin{bmatrix} S_q & 0 \\ 0 & 0 \end{bmatrix} \begin{bmatrix}V^\top_q \\ V_q ^{\top \perp} \end{bmatrix}
 \end{equation*}
-Note that $U_q$ is of size $4 \times 2$.
+where $U_q$ has size $4 \times 2$.
 
-Now that we have found all the components to reconstruct a state sequence we get the following.
-
+Now that we have found all the components to reconstruct a state sequence we get the following:
 \begin{equation*}
 	\hat{X}_f = U_q^\top U_{12}^\top H_1 = 
 	\begin{bmatrix}
@@ -202,24 +202,24 @@ Now that we have found all the components to reconstruct a state sequence we get
 		0.2141 &   0.4000 &  -1.2282 &   1.6563 &   1.2141 &  -2.2564 &   0.6282 &   0.1859
 	\end{bmatrix}
 \end{equation*}
-Recall that the sequence $X_f$ was defined as $X_f = \begin{bmatrix} x(k) \dots x(T-k) \end{bmatrix}$. As we can see this state sequence differs from our original state sequence.
+Recall that the sequence $X_f$ was defined as $X_f = \begin{bmatrix} x(k) \dots x(T-k) \end{bmatrix}$. As we can see this state sequence differs from our original state sequence:
 \begin{align*}
 %	X   &= \begin{bmatrix} 0& 2& 2&-2&2& 0&-4&3& 1&-3& 4&-1& 7&-11 \\ 
 %						   0&-1&-2& 1&0&-2& 4&1&-4& 2&-1&-3&-6& 4 \end{bmatrix} \\
 	X_f &= \begin{bmatrix} -2  &   2  &   0  &  -4  &   3  &   1  &  -3  &   4 \\
 							1  &   0  &  -2  &   4  &   1  &  -4  &   2  &  -1 \end{bmatrix}
 \end{align*}
-To conclude that the 'real' $X_f$ is indeed the same up to similarity transformation as $\hat{X}_f$ we will calculate the rank of the following matrix to conclude that they are linearly dependent.
+To conclude that the 'real' $X_f$ is indeed the same up to similarity transformation as $\hat{X}_f$ we will calculate the rank of the following matrix to conclude that they are linearly dependent:
 \begin{equation*}
-	rank\left(\begin{bmatrix} \hat{X}_f \\ X_f \end{bmatrix}\right) = rank \left( \hat{X}_f \right) = rank \left( X_f \right) = 2
+	rank\begin{bmatrix} \hat{X}_f \\ X_f \end{bmatrix} = rank \left( \hat{X}_f \right) = rank \left( X_f \right) = 2
 \end{equation*}
-We will now finish by defining a correspond $\hat{U}_-$ and $\hat{Y}_-$ for the found state sequence.
+We will now finish by defining a correspond $\hat{U}_-$ and $\hat{Y}_-$ for the found state sequence:
 \begin{align*}
 	\hat{U}_- &= \begin{bmatrix} 1&0&-2&-1&0&1&2&0 \end{bmatrix} = \begin{bmatrix} u(k) & u(k+1) & \dots & u(T-k-1) \end{bmatrix}\\
 	\hat{Y}_- &= \begin{bmatrix} -2&2&0&-4&3&1&-3&4 \end{bmatrix} = \begin{bmatrix} y(k) & y(k+1) & \dots & y(T-k-1) \end{bmatrix}
 \end{align*}
 
-Using the provided matlab function \mon{[bool, X\_hat, U\_hat, Y\_hat] = isInformStateIdentification(U, Y, n)} we can get the same result.
+Using the provided matlab function \mon{[bool, X\_hat, U\_hat, Y\_hat] = isInformStateIdentification(U, Y, n)} we can get the same result:
 \begin{lstlisting}
 U = [1  2  0  1  0 -2 -1  0  1  2  0 10 -5];
 Y = [0  1  1 -2  2  0 -4  3  1 -3  4 -1  7];
@@ -227,7 +227,7 @@ Y = [0  1  1 -2  2  0 -4  3  1 -3  4 -1  7];
 \end{lstlisting}
 
 
-We can now use this newly defined input/state/output data to find a controler for dynamic feedback stabilisation as described by the theorem. For this we will use the provided Matlab function discussed in the previous section.
+We can now use this newly defined input/state/output data to find a controler for dynamic feedback stabilisation as described by the theorem. For this we will use the provided Matlab function discussed in the previous section:
 \begin{lstlisting}
 [bool, K, L, M] = isInformDynamicMeasurementFeedback(X_hat, U_hat, Y_hat);
 \end{lstlisting}
@@ -238,5 +238,5 @@ L &= \begin{bmatrix} 0.9512\\0.0070 \end{bmatrix} &
 M &= \begin{bmatrix} -1.2989&-2.0616 \end{bmatrix} 
 \end{align*}
 
-Since we have acces to the original system we can also verify that this is indeed a stabilising controller.
-\[ eig\left( \begin{bmatrix} A & BM \\ LC & K + LDM \end{bmatrix} \right)  = \left\{ 0,0,0.5,0.5 \right\}\]
+Since we have acces to the original system we can also verify that this is indeed a stabilising controller:
+\[ \sigma\left( \begin{bmatrix} A & BM \\ LC & K + LDM \end{bmatrix} \right)  = \left\{ 0,0,0.5,0.5 \right\}\]

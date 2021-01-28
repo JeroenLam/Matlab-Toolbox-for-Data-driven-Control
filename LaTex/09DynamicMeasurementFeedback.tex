@@ -1,10 +1,10 @@
 \section{Dynamic measurement feedback}
 % Abstract section
-In this section we will consider input-state-output systems and how we can use their data to construct a dynamic measurement feedback controller that stabilises the closed loop system. We will start by recalling what a dynamic measurement feedback controller entails. After which we will consider how we can extend this to data-driven control and how we can define the set of systems as well as informativity. We will then consider necessary and sufficient conditions for finding a dynamic measurement feedback controller for input-state-output data. In the next section we will introduce the concept of state estimation which we will use to extend our theory about dynamic measurement feedback to work using only input and output data.
+In this section we will consider input-state-output systems and how we can use their data to construct a dynamic measurement feedback controller that stabilises the closed loop system. We will begin with recalling what a dynamic measurement feedback controller entails. After which we will consider how we can extend this to data-driven control and how we can define the set of systems as well as informativity. We will then consider necessary and sufficient conditions for finding a dynamic measurement feedback controller for input-state-output data. In the next section we will introduce the concept of state estimation which we will use to extend our theory about dynamic measurement feedback to work using only input and output data.
 
 % Introduce Dynamic feedback control for normal control (reference to Trentelman book)
-\subsection{Non-data driven dynamic feedback control}
-In this section we will consider discrete time systems that are of the following form.
+\subsection{Dynamic feedback control}
+In this section we will consider discrete-time systems that are of the following form:
 \begin{subequations}\label{outputSys}
 	\begin{align} 
 		x(t+1) &= A_s x(t) + B_s u(t) \\
@@ -12,7 +12,7 @@ In this section we will consider discrete time systems that are of the following
 	\end{align}
 \end{subequations}
 
-Instead of only using state feedback we will also add an observer to the loop. By combining the observer and the state feedback we get a dynamic measurement controller (see \cite[section 3.12]{bookTrentelman}).
+Instead of only using state feedback we will also add an observer to the loop. By combining the observer and the state feedback we get a dynamic measurement controller (see \cite[section 3.12]{bookTrentelman}):
 %Instead of using a static feedback gain $K$ we will couple the input of the system to a new linear system. We will call this system the dynamic measurement controller and it is given by:
 \begin{align*}
 	w(t+1) &= Kw(t) + Ly(t) \\
@@ -42,22 +42,22 @@ Recall that the $\Sigma_{i/o/s}$ is given by:
 \begin{bmatrix} A & B \\ C & D \end{bmatrix} 
 \begin{bmatrix} X_{-} \\ U_{-} \end{bmatrix} \right\} 
 \end{equation}
-We will now define the set of systems to be stabilised using the dynamic feedback controller $(K,L,M)$ as follows.
+We will now define the set of systems to be stabilised using the dynamic feedback controller $(K,L,M)$ as follows:
 \[
 	\Sigma_{K,L,M} = \left\{ (A,B,C,D) \, | \, \begin{bmatrix} A & BM \\ LC & K + LDM \end{bmatrix} \mbox{ is stable} \right\}
 \]
 Using these sets we can construct a definition for informativity for dynamic measurement feedback.
 
 \Def{Informative for stabilisation by dynamic measurement feedback \cite[Def 32]{waarde2019data}}{
-	We say that the data $(U_-, X, Y_-)$ is informative for stabilisation by dynamic measurement feedback if there exists matrices $K$, $L$ and $M$ such that all systems described by the data are stabilised using the dynamic measurement controller $(K,L,M)$. I.e. $\Sigma_{i/o/s} \subseteq \Sigma_{K,L,M}$.
+	We say that the data $(U_-, X, Y_-)$ is informative for stabilisation by dynamic measurement feedback if there exists matrices $K$, $L$ and $M$ such that all systems described by the data are stabilised using the dynamic measurement controller $(K,L,M)$, i.e. $\Sigma_{i/o/s} \subseteq \Sigma_{K,L,M}$.
 }
 
-We will start by assuming that our input data is of full rank. The following theorem provides us with a condition on when the data is informative for dynamic measurement feedback.
+We will begin with assuming that our input data is of full rank. The following theorem provides us with a condition on when the data is informative for dynamic measurement feedback.
 
 \Thr{\cite[Thr 34]{waarde2019data}}{
 	Consider the data $(U_-,X,Y_-)$ and assume that $U_-$ has full row rank. Then the data is informative for stabilisation by dynamic measurement feedback if and only if the following conditions are satisfied:
 	\begin{enumerate}
-		\item We have that the data is informative for system identification.
+		\item We have that the data is informative for system identification:
 			\[ \Sigma_{i/o/s} = \left\{ (A_s, B_s, C_s, D_s) \right\} \]
 		\item The pair $(A_s,B_s)$ is stabilisable and the pair $(C_s,A_s)$ is detectable.
 	\end{enumerate}
@@ -73,8 +73,8 @@ Although the results of this theorem is useful it is quite limited in applicabil
 
 \Lemma{\cite[Lem 33]{waarde2019data}}{
 	Consider the data $(U_-, X, Y_-)$ and the corresponding set $\Sigma_{i/o/s}$. Let the rank $U_-$ be $k$ where $k \leq m$. Then we can find a matrix $S$ of size $m \times k$ such that $S$ has full column rank and $U_- = S \bar{U}_-$ where $\bar{U}_-$ has full row rank of dimension $k$. 
-	Then the data $(U_-,X,Y_-)$ is informative for stabilisation by dynamic measurement feedback if and only if the data $(\bar{U}_-, X, Y_-)$ is informative for stabilisation by dynamic measurement feedback. 
-	Moreover, if we define $\bar{\Sigma}_{i/o/s}$ to be the set of systems that are described by the reduced data $(\bar{U}_-,X,Y_-)$ , $(\bar{K},\bar{L},\bar{M})$ is the corresponding dynamic measurement controller and $S^\dagger$ is the left inverse of $S$, then 
+	Then the data $(U_-,X,Y_-)$ is informative for stabilisation by dynamic measurement feedback if and only if the data $(\bar{U}_-, X, Y_-)$ is informative for stabilisation by dynamic measurement feedback. \\
+	Moreover, if we define $\bar{\Sigma}_{i/o/s}$ to be the set of systems that are described by the reduced data $(\bar{U}_-,X,Y_-)$ , $(\bar{K},\bar{L},\bar{M})$ is the corresponding dynamic measurement controller and $S^\dagger$ is the left inverse of $S$, then:
 	\begin{align*}
 		\Sigma_{i/o/s} \subseteq \Sigma_{K,L,M} &\Longrightarrow \bar{\Sigma}_{i/o/s} \subseteq \Sigma_{K,L,S^\dagger M} \\
 		\bar{\Sigma}_{i/o/s} \subseteq \Sigma_{\bar{K},\bar{L},\bar{M}} &\Longrightarrow \Sigma_{i/o/s} \subseteq \Sigma_{\bar{K},\bar{L},S\bar{M}}
@@ -86,7 +86,7 @@ Using this duality we are able to extend the precious theorem to work for cases 
 \Cor{\cite[Cor 36]{waarde2019data}}{
 	Let $S$ be any full column rank matrix such that $U_- = S \bar{U}_-$ with $\bar{U}_-$ full row rank $k$. The data $(U_-,X,Y_-)$ is informative for stabilisation by dynamic measurement feedback if and only if the following two conditions are satisfied:
 	\begin{enumerate}
-		\item $(\bar{U}_-,X,Y_-)$ is informative for system identification.
+		\item $(\bar{U}_-,X,Y_-)$ is informative for system identification:
 			\[ \Sigma_{i/o/s} = \left\{ (\bar{A}_s, \bar{B}_s, \bar{C}_s, \bar{D}_s) \right\} \]
 		\item The pair $(\bar{A}_s,\bar{B}_s)$ is stabilisable and the pair $(\bar{C}_s,\bar{A}_s)$ is detectable.
 	\end{enumerate}
@@ -99,7 +99,7 @@ Using this duality we are able to extend the precious theorem to work for cases 
 	\end{enumerate}
 }
 
-Note that if we where to substitute $U_- = S\bar{U}_-$ in the state space equations we get the following.
+Note that if we where to substitute $U_- = S\bar{U}_-$ in the state space equations we get the following:
 \[ \begin{bmatrix} X_{+} \\ Y_{-} \end{bmatrix} = 
 \begin{bmatrix} A_s & B_s \\ C_s & D_s \end{bmatrix} 
 \begin{bmatrix} X_{-} \\ U_{-} \end{bmatrix} = 
@@ -113,7 +113,6 @@ If we assume that the state and reduced input data have full rank then we can se
 
 % Example using function
 \subsection{Implementation}
-The algorithm above is implemented in the following functions:
 \subsubsection*{Syntax} 
 \mon{[bool, K, L, M] = isInformDynamicMeasurementFeedback(X, U, Y)} \\
 \mon{[bool, K, L, M] = isInformDynamicMeasurementFeedback(X, U, Y, polesM, polesL)}
@@ -123,7 +122,7 @@ The algorithm above is implemented in the following functions:
 \mon{[bool, K, L, M] = isInformDynamicMeasurementFeedback(X, U, Y, polesM, polesL)}: Returns if the data is informative for dynamic measurement feedback. If the data is informative the function also returns a controller \mon{(K,L,M)} where the poles of \mon{M} and \mon{L} are placed at the provided locations.
 
 \subsubsection*{Input arguments} 
-\textbf{\mon{X}}: State data matrix of dimension $n \times T+1$ from a input/state/output dataset.\\
+\textbf{\mon{X}}: State data matrix of dimension $n \times (T+1)$ from a input/state/output dataset.\\
 \textbf{\mon{U}}: Input data matrix of dimension $m \times T$ from a input/state/output dataset.\\
 \textbf{\mon{Y}}: Output data matrix of dimension $p \times T$ from a input/state/output dataset.\\
 \textbf{\mon{polesM}}: An array containing the desired pole locations for \mon{A + BM}.\\
@@ -131,36 +130,36 @@ The algorithm above is implemented in the following functions:
 
 \subsubsection*{Output arguments} 
 \textbf{\mon{bool}}: (boolean) True if the data is informative for dynamic measurement feedback, false otherwise\\
-\textbf{\mon{K}}: (matrix) The $K$ matrix of the dynamic measurement feedback controller.\\
-\textbf{\mon{L}}: (matrix) The $L$ matrix of the dynamic measurement feedback controller.\\
-\textbf{\mon{M}}: (matrix) The $M$ matrix of the dynamic measurement feedback controller.
+\textbf{\mon{K}}: (matrix) The \mon{K} matrix of the dynamic measurement feedback controller.\\
+\textbf{\mon{L}}: (matrix) The \mon{L} matrix of the dynamic measurement feedback controller.\\
+\textbf{\mon{M}}: (matrix) The \mon{M} matrix of the dynamic measurement feedback controller.
 
 \subsection{Examples}
-We will consider an example in which the input data is not full rank. We will consider the following data.
+We will consider an example in which the input data is not full rank. We will consider the following data:
 \begin{align*}
 	U_- &= \begin{bmatrix} 1&-1&2&0\\-1&1&-2&0 \end{bmatrix} \\
 	X &= \begin{bmatrix} 1&3&2&1&-4\\0&3&-5&-6&-2 \end{bmatrix} \\
 	Y_- &= \begin{bmatrix} 2&6&4&2 \end{bmatrix} \\
 \end{align*}
-We will start by finding a matrix $S$ such that $U_- = S \bar{U}_-$ where $S$ has full column rank and $\bar{U}_-$ has full row rank.
+We will begin with finding a matrix $S$ such that $U_- = S \bar{U}_-$ where $S$ has full column rank and $\bar{U}_-$ has full row rank:
 \begin{align*}
 	U_- &= \begin{bmatrix} 1 \\ -1 \end{bmatrix} \begin{bmatrix} 1&-1&2&0 \end{bmatrix} = S\bar{U}_-
 \end{align*}
-We will now use the reduced input sequence to identify the system. Note that this system will be different from the true systems, since those where not identifiable. 
+We will now use the reduced input sequence to identify the system. Note that this system will be different from the true systems, since those where not identifiable:
 \begin{align*}
 \bar{A} &= \begin{bmatrix} 2&1\\-2&0 \end{bmatrix} &
 \bar{B} &= \begin{bmatrix} 1\\-1 \end{bmatrix} &
 \bar{C} &= \begin{bmatrix} 2&0 \end{bmatrix} &
 \bar{D} &= \begin{bmatrix} 0 \end{bmatrix} &
 \end{align*}
-Lastly, we have to check if the pair $(\bar{A},\bar{B})$ is stabilisable and the pair $(\bar{C},\bar{A})$ is detectable. Before we check these conditions, we will first check if the system is controllable and observable, since this directly implies that it is also stabilisable and detectable.
+Lastly, we have to check if the pair $(\bar{A},\bar{B})$ is stabilisable and the pair $(\bar{C},\bar{A})$ is detectable. Before we check these conditions, we will first check if the system is controllable and observable, since this directly implies that it is also stabilisable and detectable:
 \begin{align*}
 rank\begin{bmatrix} \bar{B}&\bar{A}\bar{B} \end{bmatrix} &= rank\begin{bmatrix} 1&1\\-1&-2 \end{bmatrix} =2 &
 rank\begin{bmatrix} \bar{C}\\\bar{C}\bar{A} \end{bmatrix} &= rank\begin{bmatrix} 2&4\\0&2 \end{bmatrix} = 2
 \end{align*}
-From this we can conclude that the data is indeed informative for stabilisation by dynamic measurement feedback. At this point we can use non data-driven techniques to find a stabilising dynamic feedback controller $(K,L,\bar{M})$ for our system $(\bar{A},\bar{B},\bar{C},\bar{D})$. After we have found such a controller we can construct the controller for our original system by calculating $(K,L,S\bar{M})$.
+From this we can conclude that the data is indeed informative for stabilisation by dynamic measurement feedback. At this point we can use non data-driven techniques to find a stabilising dynamic feedback controller $(K,L,\bar{M})$ for our system $(\bar{A},\bar{B},\bar{C},\bar{D})$. After we have found such a controller we can construct the controller for our true systems by calculating $(K,L,S\bar{M})$.
 
-We can also find the same result by using the provided Matlab function.
+We can also find the same result by using the provided Matlab function:
 \begin{lstlisting}
 U = [1 -1 2 0 ; -1 1 -2 0];
 Y = [2  6 4 2];
@@ -168,7 +167,7 @@ X = [1 3 2 1 -4 ; 0 3 -5 -6 -2];
 
 [bool] = isInformDynamicMeasurementFeedback(X, U, Y);
 \end{lstlisting}
-Which will return \mon{[ 1 ]}.
+which will return \mon{[ 1 ]}.
 
 
 

@@ -1,4 +1,4 @@
-function [bool] = isObsvEig(C, A, lambda)
+function [bool] = isObservableEig(C, A, lambda)
 %ISOBSVEIG Summary of this function goes here
 %   Detailed explanation goes here
     if size(A,1) ~= size(A,2) || size(A,2) ~= size(C,2)
